@@ -223,6 +223,10 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	action_type = [{'type': '', 'name': 'Action Type'}, {'type': 'auto', 'name': 'Automatic'}, {'type': 'base', 'name': 'Base Action'}, {'type': 'conflict', 'name': 'Conflict Action'}]
 
+	affects_others_type = [{'type': '', 'name': 'Affects Others Type'}, {'type': 'grant', 'name': 'Grants Affect to Others'}, {'type': 'affect', 'name': 'Effect Affects Others'}]
+
+	affects_others_req = [{'type': '', 'name': 'Requirement'}, {'type': 'touch', 'name': 'Touch'}, {'type': 'carry', 'name': 'Carry'}]
+
 	after = [{'type': '', 'name': 'After Check'}, {'type': 'always', 'name': 'Always'}, {'type': 'choice', 'name': 'Player Choice'}, {'type': 'gm', 'name': 'GM Choice'}, {'type': 'target', 'name': 'If Opponent Targeted'}, {'type': 'fail', 'name': 'After Player Failure'}, {'type': 'fail_choice', 'name': 'After Player Failure Optional'}, {'type': 'success', 'name': 'After Player Success'}, {'type': 'success_choice', 'name': 'After Player Success Optional'}, {'type': 'opp_fail', 'name': 'After Opponent Failure'}, {'type': 'opp_fail_choice', 'name': 'After Opponent Failure Optional'}, {'type': 'opp_success', 'name': 'After Opponent Success'}, {'type': 'opp_success_choice', 'name': 'After Opponent Success Optional'}]
 
 	against = [{'type': '', 'name': 'Check Against'}, {'type': 'dc', 'name': 'DC'}, {'type': 'trait', 'name': 'Opponent Trait'} ]
@@ -608,7 +612,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											damage_applied=damage_applied, precise_type=precise_type, move_multiple=move_multiple, before=before, after=after, check_frequency=check_frequency, 
 											check_sense_type=check_sense_type, check_sense_target=check_sense_target, descriptor_effect_type=descriptor_effect_type, effect_type=effect_type, effortless_type=effortless_type,
 											feedback_type=feedback_type, source_type=source_type, sense_micro=sense_micro, micro_expertise=micro_expertise, unreliable_type=unreliable_type, rank_type=rank_type,
-											incurable_type=incurable_type, deg_mod_weaken_type=deg_mod_weaken_type, progressive_type=progressive_type)
+											incurable_type=incurable_type, deg_mod_weaken_type=deg_mod_weaken_type, progressive_type=progressive_type, affects_others_type=affects_others_type, 
+											affects_others_req=affects_others_req)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -2547,6 +2552,8 @@ def power_post_mod():
 	subtle_opposed = request.get_json()['subtle_opposed']
 	subtle_null_trait_type = request.get_json()['subtle_null_trait_type']
 	subtle_null_trait = request.get_json()['subtle_null_trait']
+	others_type = request.get_json()['others_type']
+	others_req = request.get_json()['others_req']
 	others_carry = request.get_json()['others_carry']
 	others_touch = request.get_json()['others_touch']
 	others_touch_continuous = request.get_json()['others_touch_continuous']
@@ -2764,6 +2771,8 @@ def power_post_mod():
 							subtle_opposed = subtle_opposed,
 							subtle_null_trait_type = subtle_null_trait_type,
 							subtle_null_trait = subtle_opponent_trait,
+							others_type = others_type,
+							others_req = others_req,
 							others_carry = others_carry,
 							others_touch = others_touch,
 							others_touch_continuous = others_touch_continuous,

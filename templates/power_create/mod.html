@@ -1200,19 +1200,35 @@
 		</div>
 
 		<div>
+			<select class="select-sml" id="mod_others_type" name="mod_others_type">
+				{% for a in affects_others_type %}
+					<option value="{{a.type}}">{{a.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+		<div>
+			<select class="select-sml" id="mod_others_req" name="mod_others_req" onchange="mod_others_req()">
+				{% for a in affects_others_req %}
+					<option value="{{a.type}}">{{a.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div style="display: none;">
 			<div class="check-div">
 				<input type="checkbox" id="mod_others_carry" class="medium-checkbox med-checkbox" > Requires Carrying
 			</div>
 		</div>
 		
-		<div>
+		<div style="display: none;">
 			<div class="check-div">
 				<input type="checkbox" id="mod_others_touch" class="medium-checkbox med-checkbox" onclick="mod_others_touch()"> Requires Touch
 			</div>
 		</div>
 
 		<div id="mod-others-touch">
-			<div class="check-div">
+			<div class="check-div-fit" style="font-size: 80%;">
 				<input type="checkbox" id="mod_others_touch_continuous" class="medium-checkbox med-checkbox" > Continuous
 			</div>
 		</div>

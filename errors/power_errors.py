@@ -897,6 +897,8 @@ def mod_post_errors(data):
 	subtle_opposed = data['subtle_opposed']
 	subtle_null_trait_type = data['subtle_null_trait_type']
 	subtle_null_trait = data['subtle_null_trait']
+	others_type = data['others_type']
+	others_req = data['others_type']
 	others_carry = data['others_carry']
 	others_touch = data['others_touch']
 	others_touch_continuous = data['others_touch_continuous']
@@ -1151,6 +1153,9 @@ def mod_post_errors(data):
 	errors = variable_field('increase', progressive_type, 'Degree by Group', progressive_degree_type, errors)
 	errors = variable_fields('repeat', 'Repeat Degree Effect', progressive_type, [progressive_degree], errors)
 	errors = variable_field('repeat', progressive_type, 'Repeat Degree Effect', progressive_degree, errors)
+
+	errors = check_fields(others, 'Affects Others', [others_type], errors)
+	errors = check_field(others, 'Affects Others', 'Affects Others Type', others_type, errors)
 
 
 	return (errors)

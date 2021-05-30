@@ -2085,6 +2085,8 @@ class PowerMod(db.Model):
 	subtle_opposed = db.Column(db.Integer, db.ForeignKey('power_opposed.id'))
 	subtle_null_trait_type = db.Column(db.String())
 	subtle_null_trait = db.Column(db.Integer)
+	others_type = db.Column(db.String())
+	others_req = db.Column(db.String())
 	others_carry = db.Column(db.Boolean)
 	others_touch = db.Column(db.Boolean)
 	others_touch_continuous = db.Column(db.Boolean)
@@ -2218,6 +2220,8 @@ class PowerMod(db.Model):
 			'subtle_opposed': self.subtle_opposed,
 			'subtle_null_trait_type': self.subtle_null_trait_type,
 			'subtle_null_trait': self.subtle_null_trait,
+			'others_type': self.others_type,
+			'others_req': self.others_req,
 			'others_carry': self.others_carry,
 			'others_touch': self.others_touch,
 			'others_touch_continuous': self.others_touch_continuous,

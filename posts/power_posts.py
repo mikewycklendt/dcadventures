@@ -994,6 +994,8 @@ def mod_post(entry, body, cells):
 	subtle_opposed = entry.subtle_opposed
 	subtle_null_trait_type = entry.subtle_null_trait_type
 	subtle_null_trait = entry.subtle_opponent_trait
+	others_type = entry.others_type
+	others_req = entry.others_req
 	others_carry = entry.others_carry
 	others_touch = entry.others_touch
 	others_touch_continuous = entry.others_touch_continuous
@@ -1122,6 +1124,13 @@ def mod_post(entry, body, cells):
 	incurable_type_select  = [{'type': '', 'name': 'Incurable Type'}, {'type': 'counter', 'name': 'Cannot be Countered by Effect'}, {'type': 'permanent', 'name': 'Effect Permanent'}]
 	incurable_type = selects(incurable_type, incurable_type_select)
 
+	affects_others_type = [{'type': '', 'name': 'Affects Others Type'}, {'type': 'grant', 'name': 'Grants Affect to Others'}, {'type': 'affect', 'name': 'Effect Affects Others'}]
+	others_type = selects(others_type, affects_others_type)
+
+	affects_others_req = [{'type': '', 'name': 'Requirement'}, {'type': 'touch', 'name': 'Touch'}, {'type': 'carry', 'name': 'Carry'}]
+	others_req = selects(others_req, affects_others_req)
+
+
 	limited_mod = integer_convert(limited_mod)
 	limited_subjects = integer_convert(limited_subjects)
 	ranks_ranks = integer_convert(ranks_ranks)
@@ -1248,8 +1257,8 @@ def mod_post(entry, body, cells):
 
 	cells = check_cell('Affects Others', 15, others, cells, True)
 	new_mod = mod_create('Affects Others', 17)
-	new_mod = mod_cell('Requires Carrying:', 18, [others_carry], new_mod)
-	new_mod = mod_cell('Requires Touch:', 18, [others_touch], new_mod)
+	new_mod = mod_cell('Type:', 6, [others_type], new_mod)
+	new_mod = mod_cell('Requirement', 13, [others_req], new_mod)
 	new_mod = mod_cell('Continous Touch:', 18, [others_touch_continuous], new_mod)
 	body = mod_add(others, new_mod, body)
 
