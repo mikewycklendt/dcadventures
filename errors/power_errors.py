@@ -1552,6 +1552,8 @@ def sense_post_errors(data):
 	track_speed = data['track_speed']
 	track_speed_type = data['track_speed_type']
 	counter_conceal_uv = data['counter_conceal_uv']
+	communication = data['communication']
+	communication_other = data['communication_other']
 
 	errors = id_check(PowerCost, cost, 'Cost', errors)
 	errors = id_check(PowerRanks, ranks, 'Ranks', errors)
@@ -1581,7 +1583,8 @@ def sense_post_errors(data):
 	errors = id_check(PowerDes, counter_conceal_descriptor, 'Counters Concealment Descriptor', errors)
 	errors = id_check(Light, light_penalty, 'Light Type', errors)
 	errors = id_check(Unit, illusion_unit, 'Unit', errors)
-	errors = id_check(Condition, condition, 'Conndition', errors)
+	errors = id_check(Condition, condition, 'Condition', errors)
+	errors = id_check(Communication, communication, 'Communication Medium', errors)
 
 	errors = int_check(sense_cost, 'Sense Cost', errors)
 	errors = int_check(subsense_cost, 'Subsense Cost', errors)
@@ -1631,6 +1634,11 @@ def sense_post_errors(data):
 
 	errors = variable_fields('remote', 'Remote Sensing', sense_type, [remote_ranged], errors)
 	errors = variable_field('remote', sense_type, 'Remote Sensing', remote_ranged, errors)
+
+	errors = variable_fields('communicate', 'Communication', sense_type, [sense, communication], errors)
+	errors = variable_field('communicate', sense_type, 'Sense', sense, errors)
+	errors = variable_field('communicate', sense_type, 'Communication Medium', communication, errors)
+	errors = variable_field('other', communication, 'Other Communication Medium', communication_other, errors)
 
 	errors = check_field(dark, 'Counters Darkness', 'Lighting', lighting, errors)
 	errors = check_of(time, 'Time Effect', 'a Time Effect or Time Effect by Group', [time_value, time_type], errors)

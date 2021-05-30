@@ -3521,6 +3521,8 @@ def power_post_sense():
 	track_speed = request.get_json()['track_speed']
 	track_speed_type = request.get_json()['track_speed_type']
 	counter_conceal_uv = request.get_json()['counter_conceal_uv']
+	communication = request.get_json()['communication']
+	communication_other = request.get_json()['communication_other']
 
 
 	cost = db_integer(PowerCost, cost)
@@ -3567,6 +3569,10 @@ def power_post_sense():
 	illusion_range = integer(illusion_range)
 	awareness_subtle_ranks = integer(awareness_subtle_ranks)
 
+	body = user_item(Communication, 'Communication Medium', communication, communication_other, 'communication-sml', body, True, True, sense, 'sense_id')
+	communication = body['output']
+
+	communication = db_integer(Communication, communication)	
 
 	try:
 		entry = PowerSenseEffect(power_id = power_id,
@@ -3651,7 +3657,8 @@ def power_post_sense():
 									cognition_self = cognition_self,
 									track_speed = track_speed,
 									track_speed_type = track_speed_type,
-									counter_conceal_uv = counter_conceal_uv
+									counter_conceal_uv = counter_conceal_uv,
+									communication = communication
 								)
 
 		db.session.add(entry)

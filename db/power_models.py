@@ -2552,6 +2552,7 @@ class PowerSenseEffect(db.Model):
 	track_speed = db.Column(db.Integer, db.ForeignKey('power_movement.id'))
 	track_speed_type = db.Column(db.Integer, db.ForeignKey('power_move_type.id'))
 	counter_conceal_uv = db.Column(db.Boolean)
+	communication = db.Column(db.Integer, db.ForeignKey('communication.id'))
 	
 
 	def format(self):
@@ -2640,7 +2641,8 @@ class PowerSenseEffect(db.Model):
 			'cognition_self': self.cognition_self,
 			'track_speed': self.track_speed,
 			'track_speed_type': self.track_speed_type,
-			'counter_conceal_uv': self.counter_conceal_uv
+			'counter_conceal_uv': self.counter_conceal_uv,
+			'communication': self.communication
 		}
 
 class PowerReverse(db.Model):

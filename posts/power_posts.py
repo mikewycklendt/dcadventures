@@ -1826,6 +1826,7 @@ def sense_post(entry, body, cells):
 	track_speed = entry.track_speed
 	track_speed_type = entry.track_speed_type
 	counter_conceal_uv = entry.counter_conceal_uv
+	communication = entry.communication
 
 
 	body = one_multiple(PowerSenseEffect, power_id, body)
@@ -1863,6 +1864,7 @@ def sense_post(entry, body, cells):
 	light_penalty = get_name(Light, light_penalty)
 	illusion_unit = get_name(Unit, illusion_unit)
 	condition = get_name(Condition, condition)
+	communication = get_name(Communication, communication)
 
 	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'anyone', 'name': 'Anyone'}]
 	target = selects(target, targets_select)
@@ -1939,7 +1941,7 @@ def sense_post(entry, body, cells):
 	w = width(22, 14, conceal_power_sense)
 	vcells = vcell('conceal', w, [concealment, word, conceal_power_sense], vcells)
 	vcells = vcell('counter_conceal', 40, ['Counters', counter_conceal, 'Concealment'], vcells)
-	vcells = vcell('communicate', 20, ['Communication Link'], vcells)
+	vcells = vcell('communicate', 40, ['Communicate with', communication], vcells)
 	vcells = vcell('light', 40, ['No', light_penalty, 'Penalty on', light_penalty_trait, 'Checks'], vcells)
 	illusion_selective = check_string('Selective', illusion_selective)
 	vcells = vcell('illusion', 40, [illusion_selective, 'Illusion', illusion_range, illusion_unit, 'in Diameter'], vcells)
