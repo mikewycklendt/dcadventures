@@ -43,7 +43,7 @@ function sense_sense() {
 	const communication = 'sense_communication';
 	
 	id_select(select, fill, subsense_select, all_var_sub);
-	id_select(select, communication, all_var_other_sub);
+	id_select(select, communication, communication_select, all_var_other_sub);
 }
 
 function sense_subsense() {
