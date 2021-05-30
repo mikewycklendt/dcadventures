@@ -649,8 +649,8 @@ def get_communication_select():
 			options.append({'id': 'x', 'name': variable_sense})
 			options.append({'id': 'other', 'name': other_sense})
 
-		for subsense in subsenses:
-			options.append({'id': communications.id, 'name': communications.name})
+		for c in communications:
+			options.append({'id': c.id, 'name': c.name})
 
 		body['options'] = options
 	except:
