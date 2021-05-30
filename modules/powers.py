@@ -4497,6 +4497,7 @@ def power_post_degree():
 	effect_descriptor_type = request.get_json()['effect_descriptor_type']
 	effect_descriptor_count = request.get_json()['effect_descriptor_count']
 	effect_power = request.get_json()['effect_power']
+	effect_acute = request.get_json()['effect_acute']
 	fail = preset_convert('fail', value)
 	null_condition = request.get_json()['null_condition']
 	weaken_type = request.get_json()['weaken_type']
@@ -4504,6 +4505,7 @@ def power_post_degree():
 	weaken_val = request.get_json()['weaken_val']
 	reverse_type = request.get_json()['reverse_type']
 	reverse = request.get_json()['reverse']
+	communication_acute = request.get_json()['communication_acute']
 
 	errors = power_degree_post_errors(data)
 
@@ -4692,13 +4694,15 @@ def power_post_degree():
 						effect_descriptor_type = effect_descriptor_type,
 						effect_descriptor_count = effect_descriptor_count,
 						effect_power = effect_power,
+						effect_acute = effect_acute,
 						fail = fail,
 						null_condition = null_condition,
 						weaken_type = weaken_type,
 						weaken_max = weaken_max,
 						weaken_val = weaken_val,
 						reverse_type = reverse_type,
-						reverse = reverse)
+						reverse = reverse,
+						communication_acute = communication_acute)
 
 	db.session.add(entry)
 	db.session.commit()

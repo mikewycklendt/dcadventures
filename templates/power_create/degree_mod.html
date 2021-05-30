@@ -78,6 +78,12 @@
 
 	<div id="deg-mod-effect">
 
+		<div class="hidden" id="deg-mod-understand">
+			<div class="check-div-fit">
+				<input type="checkbox" id="deg_mod_communication_acute" class="medium-checkbox med-checkbox" > Requires Acute Sense
+			</div>	
+		</div>
+
 		<div id="deg-mod-reverse">
 			<div>
 				<select class="select-sml" id="deg_mod_reverse_type" name="deg_mod_reverse_type">
@@ -147,6 +153,12 @@
 						<option value="{{e.type}}">{{e.name}}</option>
 					{% endfor %}
 				</select>
+			</div>
+
+			<div class="hidden" id="deg-mod-effect-acute">
+				<div class="check-div-fit">
+					<input type="checkbox" id="deg_mod_effect_acute" class="medium-checkbox med-checkbox" > Requires Acute Sense
+				</div>	
 			</div>
 
 			<div id="deg-mod-effect-descriptor">

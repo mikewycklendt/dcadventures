@@ -30,7 +30,8 @@ function deg_mod_type() {
 					{'val': ['null', 'uncontrol', 'detect'], 'div': 'deg-mod-effect-type'},
 					{'val': ['null_condition'], 'div': 'deg-mod-null-condition'},
 					{'val': ['weaken'], 'div': 'deg-mod-weaken'},
-					{'val': ['reverse'], 'div': 'deg-mod-reverse'}];
+					{'val': ['reverse'], 'div': 'deg-mod-reverse'},
+					{'val': ['understand'], 'div': 'deg-mod-understand'}];
 
 	select_opacity_shared(select, options);
 }
@@ -38,7 +39,8 @@ function deg_mod_type() {
 function deg_mod_effect() {
 	const select = 'deg_mod_effect';
 	const options = [{'val': 'descriptor', 'div': 'deg-mod-effect-descriptor'},
-					{'val': 'power', 'div': 'deg-mod-effect-power'}];
+					{'val': 'power', 'div': 'deg-mod-effect-power'},
+					{'val': 'this', 'div': 'deg-mod-effect-acute'}];
 
 	select_opacity(select, options);
 }
@@ -367,12 +369,14 @@ function deg_mod_submit() {
 	const effect_descriptor_type = select("deg_mod_effect_descriptor_type");
 	const effect_descriptor_count = select("deg_mod_effect_descriptor_count");
 	const effect_power = select("deg_mod_effect_power");
+	const effect_acute = check("deg_mod_effect_acute");
 	const null_condition = select("deg_mod_null_condition");
 	const weaken_type = select("deg_mod_weaken_type");
 	const weaken_max = select("deg_mod_weaken_max");
 	const weaken_val = select("deg_mod_weaken_val");
 	const reverse_type = select("deg_mod_reverse_type");
 	const reverse = select("deg_mod_reverse");
+	const communication_acute = check("deg_mod_communication_acute")
 	
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -486,12 +490,14 @@ function deg_mod_submit() {
 			'effect_descriptor_type': effect_descriptor_type,
 			'effect_descriptor_count': effect_descriptor_count,
 			'effect_power': effect_power,
+			'effect_acute': effect_acute,
 			'null_condition': null_condition,
 			'weaken_type': weaken_type,
 			'weaken_val': weaken_val,
 			'weaken_max': weaken_max,
 			'reverse_type': reverse_type,
-			'reverse': reverse
+			'reverse': reverse,
+			'communication_acute': communication_acute
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

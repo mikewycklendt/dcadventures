@@ -2730,12 +2730,14 @@ def power_degree_post(entry, body, cells):
 	effect_descriptor_type = entry.effect_descriptor_type
 	effect_descriptor_count = entry.effect_descriptor_count
 	effect_power = entry.effect_power
+	effect_acute = entry.effect_acute
 	null_condition = entry.null_condition
 	weaken_type = entry.weaken_type
 	weaken_max = entry.weaken_max
 	weaken_val = entry.weaken_val
 	reverse_type = entry.reverse_type
 	reverse = entry.reverse
+	communication_acute = entry.communication_acute
 
 	title_name = get_name(PowerDegreeType, title)
 	body['title'] = title_name
@@ -2846,7 +2848,10 @@ def power_degree_post(entry, body, cells):
 	mind_select = [{'type': '', 'name': 'Read Mind'}, {'type': 'affect', 'name': 'Affect Surface Thoughts'}, {'type': 'surface', 'name': 'Surface Thoughts'}, {'type': 'personal', 'name': knowledge_mind_count + 'Personal Thoughts'}, {'type': 'memory', 'name': knowledge_mind_count + 'Memories'}, {'type': 'sub', 'name': knowledge_mind_count + 'Subconscious Thoughts'}, {'type': 'sense', 'name': 'Sensory Link'}]
 	knowledge_mind = selects(knowledge_mind, mind_select)
 
-	effect_type = [{'type': '', 'name': 'Nullify Type'}, {'type': 'this', 'name': 'This Power'}, {'type': 'active', 'name': 'Active Oppponent Effect'}, {'type': 'descriptor', 'name': effect_descriptor_count + 'Effects with Descriptor' + effect_descriptor}, {'type': 'power', 'name': effect_power}]
+	effect_acute = check_string(' if Sense is Acute', effect_acute)
+	communication_acute = check_string(' if Sense is Acute', communication_acute)
+
+	effect_type = [{'type': '', 'name': 'Nullify Type'}, {'type': 'this', 'name': 'This Power' + effect_acute}, {'type': 'active', 'name': 'Active Oppponent Effect'}, {'type': 'descriptor', 'name': effect_descriptor_count + 'Effects with Descriptor' + effect_descriptor}, {'type': 'power', 'name': effect_power}]
 	effect = selects(effect, effect_type)
 
 	cells = cell('Keyword', 15, [keyword])
@@ -2916,7 +2921,7 @@ def power_degree_post(entry, body, cells):
 	
 	vcells = vcell('detect', 45, [effect, 'Detected'], vcells)
 	
-	vcells = vcell('understand', 26, ['Understand Communication'], vcells)
+	vcells = vcell('understand', 26, ['Understand Communication', communication_acute], vcells)
 	
 	vcells = vcell('act', 12, ['Can Act'], vcells)
 
