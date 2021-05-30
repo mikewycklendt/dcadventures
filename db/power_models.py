@@ -886,7 +886,7 @@ class PowerDegree(db.Model):
 	weaken_val = db.Column(db.Integer)
 	reverse_type = db.Column(db.String())
 	reverse = db.Column(db.Integer, db.ForeignKey('power_degree.id'))
-	communication_acute - db.Column(db.Boolean)
+	communication_acute = db.Column(db.Boolean)
 
 
 	def format(self):
