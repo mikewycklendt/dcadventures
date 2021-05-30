@@ -2552,6 +2552,7 @@ class PowerSenseEffect(db.Model):
 	track_speed = db.Column(db.Integer, db.ForeignKey('power_movement.id'))
 	track_speed_type = db.Column(db.Integer, db.ForeignKey('power_move_type.id'))
 	counter_conceal_uv = db.Column(db.Boolean)
+	
 
 	def format(self):
 		return {

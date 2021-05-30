@@ -388,6 +388,37 @@ class SubSense(db.Model):
 			'normsl': self.normsl
 		}
 
+class Communication(db.Model):
+	__tablename__ = 'communication'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	sense_id = db.Column(db.Integer, db.ForeignKey('senses.id'))
+	all = db.Column(db.Boolean)
+	current = db.Column(db.Boolean)
+	any = db.Column(db.Boolean)
+	var = db.Column(db.Boolean)
+	none = db.Column(db.Boolean)
+	hide = db.Column(db.Boolean)
+	power = db.Column(db.Boolean)
+	show = db.Column(db.Boolean)
+	approved = db.Column(db.Boolean)
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'sense_id': self.sense_id,
+			'all': self.all,
+			'current': self.current,
+			'any': self.any,
+			'var': self.var,
+			'none': self.none,
+			'hide': self.hide,
+			'power': self.power,
+			'show': self.show,
+			'approved': self.approved
+		}
+
 class Light(db.Model):
 	__tablename__ = 'light'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)

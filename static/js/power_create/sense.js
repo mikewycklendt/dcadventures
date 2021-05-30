@@ -40,8 +40,10 @@ function sense_cost() {
 function sense_sense() {
 	const select = 'sense_sense';
 	const fill = 'sense_subsense';
+	const communication = 'sense_communication';
 	
-	id_select(select, fill, subsense_select, all_var_sub)
+	id_select(select, fill, subsense_select, all_var_sub);
+	id_select(select, communication, all_var_other_sub);
 }
 
 function sense_subsense() {
@@ -76,7 +78,8 @@ function sense_type() {
 					{'val': ['remote'], 'div': 'sense-remote'},
 					{'val': ['precog', 'postcog'], 'div': 'sense-cognition'},
 					{'val': ['postcog'], 'div': 'sense-cognition-self'},
-					{'val': ['track'], 'div': 'sense-track'}];
+					{'val': ['track'], 'div': 'sense-track'},
+					{'val': ['communicate'], 'div': 'sense-communication'}];
 
 	select_opacity_shared(select, options);
 }
@@ -264,6 +267,13 @@ function aense_comprehend_type()  {
 	select_opacity(select, options);
 }
 
+function sense_communication() {
+	const select = 'sense_communication';
+	const options = [{'val': 'other', 'div': 'sense-communication-other'}];
+
+	select_opacity(select, options);
+}
+
 let sense_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
@@ -356,6 +366,8 @@ function sense_submit() {
 	const track_speed = select("sense_track_speed");
 	const track_speed_type = select("sense_track_speed_type");
 	const counter_conceal_uv = check("sense_counter_conceal_uv");
+	const communication = select("sense_communication");
+	const communication_other = text("sense_communication_other");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -450,7 +462,9 @@ function sense_submit() {
 			'cognition_self': cognition_self,
 			'track_speed': track_speed,
 			'track_speed_type': track_speed_type,
-			'counter_conceal_uv': counter_conceal_uv
+			'counter_conceal_uv': counter_conceal_uv,
+			'communication': communication,
+			'communication_other': communication_other
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

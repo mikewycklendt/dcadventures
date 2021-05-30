@@ -21,7 +21,7 @@ from base_files import sidebar, stylesheets, meta_name, meta_content, title
 from models import setup_db
 
 from models import Modifier, ModifierTable, LevelType, Levels, Damage, DamageType
-from db.rule_models import Ability, Defense, Action, ConflictAction, Skill, Check, Condition, Maneuver, Ranged, Sense, SubSense, Light, Ground, Range, Consequence, Material, Complex, Cover, Conceal, Phase, SkillTable, SkillType
+from db.rule_models import Ability, Defense, Action, ConflictAction, Skill, Check, Condition, Maneuver, Ranged, Sense, SubSense, Light, Ground, Range, Consequence, Material, Complex, Cover, Conceal, Phase, SkillTable, SkillType, Communication
 from db.measure_models import MeasureType, Unit, Math, Rank, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert
 from db.user_rules import Nature, Emotion, Environment, Job, Creature, NarrowCreature
 
@@ -570,11 +570,11 @@ def get_subsense_select():
 
 	print(sense_id_str)
 
-	options = []
+	options = [{'id': '', 'name': 'Subsense'}]
 
 	if sense_id_str == 'x':
 		options.append({'id': 'all', 'name': 'All Subsenses'})
-		options.append({'id': 'x', 'name': 'Varisble Subsense'})
+		options.append({'id': 'x', 'name': 'Variable Subsense'})
 		body['options'] = options
 		return jsonify(body)
 
@@ -609,6 +609,57 @@ def get_subsense_select():
 
 	print(body)
 	return jsonify(body)
+
+@select.route('/select/sense/communication', methods=['POST'])
+def get_communication_select():
+	body = {}
+	body['success'] = True
+
+	sense_id_str = request.get_json()['id']
+	sub = request.get_json()['sub']
+
+	print(sense_id_str)
+
+	options = [{'id': '', 'name': 'Communication Medium'}]
+
+	if sense_id_str == 'x':
+		options.append({'id': 'all', 'name': "All of Sense's Communication Mediums"})
+		options.append({'id': 'x', 'name': 'Variable Communication Medium'})
+		body['options'] = options
+		return jsonify(body)
+
+	if sense_id_str == 'all':
+		options.append({'id': 'all', 'name': 'All Communication Mediums'})
+
+		body['options'] = options
+		return jsonify(body)
+
+	try:
+		sense_id = int(sense_id_str)
+		sense = db.session.query(Sense).filter_by(id=sense_id).one()
+		communications = db.session.query(Communication).filter_by(sense_id=sense_id, show=True).order_by(Communication.name).all()
+		
+		any_sense = 'Any ' + sense.name + ' Communication Medium'
+		all_sense = 'All ' + sense.name + ' Communication Mediums'
+		other_sense = 'Other ' + sense.name + ' Communication Mediums'
+		variable_sense = 'Variable ' + sense.name + ' Communication Medium'
+
+		if sub == 'all-var-other' or sub == 'sense':
+			options.append({'id': 'all', 'name': all_sense})
+			options.append({'id': 'x', 'name': variable_sense})
+			options.append({'id': 'other', 'name': other_sense})
+
+		for subsense in subsenses:
+			options.append({'id': communications.id, 'name': communications.name})
+
+		body['options'] = options
+	except:
+		body['success'] = False
+		body['options'] = 'no results'
+
+	print(body)
+	return jsonify(body)
+
 
 
 @select.route('/select/check/trigger', methods=['POST'])

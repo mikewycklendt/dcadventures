@@ -154,6 +154,14 @@
 	transition: all .3s ease-out;
 }
 
+#sense-communication {
+	display: grid;
+	grid-template-columns: 35% auto auto;
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+}
+
 #sense-cognition {
 	display: grid;
 	grid-template-columns: 43% auto auto auto;

@@ -17,6 +17,7 @@ const power_cost_select = '/select/power/cost';
 const power_ranks_select = '/select/power/ranks';
 const narrow_creature_select = '/select/creature/narrow';
 const check_trigger_select = '/select/check/trigger';
+const communication_select = '/select/sense/communication'
 
 const head_feature_info_select = '/info/headquarters/feature';
 const feature_info_select = '/info/feature';
@@ -28,6 +29,7 @@ const ability_icon_select = '/select/icon/ability';
 
 const variable_sub = 'variable';
 const all_var_sub = 'all-var';
+const all_var_other_sub = 'all-var-other';
 const any_var_sub = 'any-var';
 const other_var_sub = 'variable-other';
 const any_sub = 'any'
