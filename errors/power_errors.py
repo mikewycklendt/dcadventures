@@ -1561,6 +1561,7 @@ def sense_post_errors(data):
 	counter_conceal_uv = data['counter_conceal_uv']
 	communication = data['communication']
 	communication_other = data['communication_other']
+	communication_range = data['communication_range']
 
 	errors = id_check(PowerCost, cost, 'Cost', errors)
 	errors = id_check(PowerRanks, ranks, 'Ranks', errors)
@@ -1573,7 +1574,7 @@ def sense_post_errors(data):
 	errors = id_check(PowerDegree, condition_degree, 'Degree of Succeaa/Failure', errors)
 	errors = id_check(PowerMove, track_speed, 'Tracking Speed', errors)
 	errors = id_check(PowerMoveType, track_speed_type, 'Tracking Speed by Group', errors)
-
+	errors = id_check(PowerRangedType, communication_range, 'Communication Range by Gtoup', errors)
 
 	errors = power_check(power_id, errors)
 
@@ -1642,9 +1643,10 @@ def sense_post_errors(data):
 	errors = variable_fields('remote', 'Remote Sensing', sense_type, [remote_ranged], errors)
 	errors = variable_field('remote', sense_type, 'Remote Sensing', remote_ranged, errors)
 
-	errors = variable_fields('communicate', 'Communication', sense_type, [sense, communication], errors)
+	errors = variable_fields('communicate', 'Communication', sense_type, [sense, communication, communication_range], errors)
 	errors = variable_field('communicate', sense_type, 'Sense', sense, errors)
 	errors = variable_field('communicate', sense_type, 'Communication Medium', communication, errors)
+	errors = variable_field('communicate', sense_type, 'Communication Range by Group', communication_range, errors)
 	errors = variable_field('other', communication, 'Other Communication Medium', communication_other, errors)
 
 	errors = check_field(dark, 'Counters Darkness', 'Lighting', lighting, errors)

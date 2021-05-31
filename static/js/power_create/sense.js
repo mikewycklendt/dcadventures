@@ -367,6 +367,7 @@ function sense_submit() {
 	const track_speed_type = select("sense_track_speed_type");
 	const counter_conceal_uv = check("sense_counter_conceal_uv");
 	const communication = select("sense_communication");
+	const communication_range = select("sense_communication_range");
 	const communication_other = text("sense_communication_other");
 
 	///const power_id = document.getElementById('power_id').value;
@@ -464,7 +465,8 @@ function sense_submit() {
 			'track_speed_type': track_speed_type,
 			'counter_conceal_uv': counter_conceal_uv,
 			'communication': communication,
-			'communication_other': communication_other
+			'communication_other': communication_other,
+			'communication_range': communication_range
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

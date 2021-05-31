@@ -122,6 +122,16 @@
 					</select>
 				</div>
 
+				<div>
+					<select class="ranged-type-sml" id="sense_communication_range" name="sense_communication_range">
+						<option value="">Range by Group</option>
+						<option value="">Use Ranged form to Put Options Here</option>
+						{% for p in power_ranged_type %}
+							<option value={{p.id}}>{{p.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
 				<div class="hidden text-sml" id="sense-communication-other">
 					<input type="text" id="sense_communication_other" name="sense_communication_other" placeholder="Other Communication Medium">
 				</div>

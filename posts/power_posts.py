@@ -1830,6 +1830,7 @@ def sense_post(entry, body, cells):
 	track_speed_type = entry.track_speed_type
 	counter_conceal_uv = entry.counter_conceal_uv
 	communication = entry.communication
+	communication_range = entry.communication_range
 
 
 	body = one_multiple(PowerSenseEffect, power_id, body)
@@ -1845,6 +1846,7 @@ def sense_post(entry, body, cells):
 	condition_degree = get_keyword(PowerDegree, condition_degree)
 	track_speed = get_keyword(PowerMove, track_speed)
 	track_speed_type = get_name(PowerMoveType, track_speed_type)
+	communication_range = get_name(PowerRangedType, communication_range)
 
 	height_trait = trait_select(height_trait, height_trait_type)
 	resist_trait = trait_select(resist_trait, resist_trait_type)
@@ -1944,7 +1946,7 @@ def sense_post(entry, body, cells):
 	w = width(22, 14, conceal_power_sense)
 	vcells = vcell('conceal', w, [concealment, word, conceal_power_sense], vcells)
 	vcells = vcell('counter_conceal', 40, ['Counters', counter_conceal, 'Concealment'], vcells)
-	vcells = vcell('communicate', 40, ['Communicate with', communication], vcells)
+	vcells = vcell('communicate', 45, [communication, 'Communication in', communication_range, 'Range'], vcells)
 	vcells = vcell('light', 40, ['No', light_penalty, 'Penalty on', light_penalty_trait, 'Checks'], vcells)
 	illusion_selective = check_string('Selective', illusion_selective)
 	vcells = vcell('illusion', 40, [illusion_selective, 'Illusion', illusion_range, illusion_unit, 'in Diameter'], vcells)

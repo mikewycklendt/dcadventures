@@ -3527,6 +3527,7 @@ def power_post_sense():
 	counter_conceal_uv = request.get_json()['counter_conceal_uv']
 	communication = request.get_json()['communication']
 	communication_other = request.get_json()['communication_other']
+	communication_range = request.get_json()['communication_range']
 
 
 	cost = db_integer(PowerCost, cost)
@@ -3541,6 +3542,7 @@ def power_post_sense():
 	remote_ranged = db_integer(PowerRangedType, remote_ranged)
 	track_speed = db_integer(PowerMove, track_speed)
 	track_speed_type = db_integer(PowerMoveType, track_speed_type)
+	communication_range = db_integer(PowerRangedType, communication_range)
 
 	illusion_unit = db_integer(Unit, illusion_unit)
 	power_id = integer(power_id)
@@ -3662,7 +3664,8 @@ def power_post_sense():
 									track_speed = track_speed,
 									track_speed_type = track_speed_type,
 									counter_conceal_uv = counter_conceal_uv,
-									communication = communication
+									communication = communication,
+									communication_range = communication_range
 								)
 
 		db.session.add(entry)
