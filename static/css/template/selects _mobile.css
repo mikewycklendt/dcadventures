@@ -251,6 +251,12 @@
 	font-size: 80%;
 }
 
+.ranged-type-sml {
+	height: 3.5vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
 .time-sml {
 	height: 3.5vw; 
 	padding: .1vw;  

@@ -238,6 +238,12 @@
 	font-size: 80%;
 }
 
+.ranged-type-sml {
+	height: 100%;  
+	padding: .1vw;  
+	font-size: 80%;
+}
+
 .time-sml {
 	height: 100%;  
 	padding: .1vw;  
