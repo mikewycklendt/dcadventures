@@ -202,19 +202,12 @@
 	transition: all .3s linear;
 }
 
-#create-support-action {
+.create-support {
 	display: grid;
 	gap: 3px;
-	grid-template-columns: 50% 50%;
+	grid-template-columns: 60% 37%;
 	border-radius: 5px;
-	border: 1px solid lightblue;
-}
-
-#create-support-effort {
-	display: grid;
-	gap: 3px;
-	grid-template-columns: 50% 50%;
-	border-radius: 5px;
+	padding: 2px;
 	border: 1px solid lightblue;
 }
 
