@@ -953,6 +953,7 @@ def mod_post(entry, body, cells):
 	effortless_degree_type = entry.effortless_degree_type
 	effortless_retries = entry.effortless_retries
 	simultaneous_descriptor = entry.simultaneous_descriptor
+	area_type = entry.area_type
 	area_damage = entry.area_damage
 	area_ranged = entry.area_ranged
 	area_descriptor = entry.area_descriptor
@@ -1130,6 +1131,8 @@ def mod_post(entry, body, cells):
 	affects_others_req = [{'type': '', 'name': 'Requirement'}, {'type': 'touch', 'name': 'Touch'}, {'type': 'carry', 'name': 'Carry'}]
 	others_req = selects(others_req, affects_others_req)
 
+	area_type_select = [{'type': '', 'name': 'Area Type'}, {'type': 'affect', 'name': 'Affects All Targets in Area'}, {'type': 'descriptor', 'name': 'Affects All Targets with Descriptor'}, {'type': 'attach', 'name': 'Attaches Effect to Area'}, {'type': 'attach_descriptor', 'name': 'Attaches to All Targets in Area with Descriptor'}, {'type': 'range', 'name': 'Works with all Targets in Range'}, {'type': 'grant', 'name': 'Grants Effects to Others in Area'}]
+	area_type = selects(area_type, area_type_select)
 
 	limited_mod = integer_convert(limited_mod)
 	limited_subjects = integer_convert(limited_subjects)
@@ -1155,9 +1158,9 @@ def mod_post(entry, body, cells):
 
 	cells = check_cell('Area', 7, area, cells, True)
 	new_mod = mod_create('Area', 6)
+	new_mod = mod_cell('Type', 6, [area_type], new_mod)
 	new_mod = mod_cell('Range', 7, [area_ranged], new_mod)
 	new_mod = mod_cell('Descriptor', 7, [area_descriptor], new_mod)
-	new_mod = mod_cell('Attached to Area', 16, [area_attach], new_mod)
 	new_mod = mod_cell('Selective', 12, [selective], new_mod)
 	body = mod_add(area, new_mod, body)
 

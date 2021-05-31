@@ -559,6 +559,14 @@
 			Area
 		</div>
 
+		<div>
+			<select class="select-sml" id="mod_area_type" name="mod_area_type" onchange="mod_area_type()">
+				{% for a in area_type %}
+					<option value="{{a.type}}">{{a.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
 		<div style="display: none;">
 			<select class="select-sml damage-sml" id="mod_area_damage" name="mod_area_damage">
 				<option value="">Damage Effect</option>
@@ -569,7 +577,7 @@
 			</select>
 		</div>
 
-		<div>
+		<div class="hidden" id="mod-area-range">
 			<select class="select-sml ranged-type-sml" id="mod_area_ranged" name="mod_area_ranged">
 				<option value="">Range by Group</option>
 				<option value="">Use rsnged form to put options here</option>
@@ -579,7 +587,7 @@
 			</select>
 		</div>
 
-		<div>
+		<div class="hidden" id="mod-area-descriptor">
 			<select class="select-sml descriptor-sml" id="mod_area_descriptor" name="mod_area_descriptor">
 				<option value="">Affects with Descriptor</option>
 				<option value="">Use above form to put descriptors here</option>
@@ -589,14 +597,14 @@
 			</select>
 		</div>
 
-		<div>
+		<div style="display: none;">
 			<div class="check-div-fit" style="font-size: 80%;">
 				<input type="checkbox" id="mod_area_attach" class="medium-checkbox med-checkbox"> Attached
 			</div>
 		</div>
 
 		<div>
-			<div class="check-div" style="font-size: 80%;">
+			<div class="check-div-fit" style="font-size: 80%;">
 				<input type="checkbox" id="mod_selective" class="medium-checkbox med-checkbox"> Selective
 			</div>
 		</div>

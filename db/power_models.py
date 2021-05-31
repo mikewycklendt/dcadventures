@@ -2044,6 +2044,7 @@ class PowerMod(db.Model):
 	effortless_degree_type = db.Column(db.String())
 	effortless_retries = db.Column(db.Boolean)
 	simultaneous_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
+	area_type = db.Column(db.String())
 	area_damage = db.Column(db.Integer, db.ForeignKey('power_damage.id'))
 	area_ranged = db.Column(db.Integer, db.ForeignKey('power_ranged_type.id'))
 	area_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
@@ -2179,6 +2180,7 @@ class PowerMod(db.Model):
 			'effortless_degree': self.effortless_degree,
 			'effortless_retries': self.effortless_retries,
 			'simultaneous_descriptor': self.simultaneous_descriptor,
+			'area_type': self.area_type,
 			'area_damage': self.area_damage,
 			'area_ranged': self.area_ranged,
 			'area_descriptor': self.area_descriptor,

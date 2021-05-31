@@ -855,6 +855,7 @@ def mod_post_errors(data):
 	effortless_degree = data['effortless_degree']
 	effortless_retries = data['effortless_retries']
 	simultaneous_descriptor = data['simultaneous_descriptor']
+	area_type = data['area_type']
 	area_damage = data['area_damage']
 	area_ranged = data['area_ranged']
 	area_descriptor = data['area_descriptor']
@@ -996,8 +997,14 @@ def mod_post_errors(data):
 	errors = check_field(affects_objects, 'Affects Objects', 'Affect Object Alone', objects_alone, errors)
 	errors = check_field(affects_objects, 'Affects Objects', 'Affect Object with Character', objects_character, errors)
 	
-	errors = check_fields(area, 'Area', [area_ranged], errors)
-	errors = check_field(area, 'Area', 'Area Range', area_ranged, errors)
+	errors = check_fields(area, 'Area', [area_type], errors)
+	errors = check_field(area, 'Area', 'Area Type', area_type, errors)
+	errors = variable_fields('descriptor', 'Affects All Targets in Area with Descriptor', area_type, [area_descriptor], errors)
+	errors = variable_field('descriptor', area_type, 'Area Descriptor', area_descriptor, errors)
+	errors = variable_fields('attach_descriptor', 'Attsches to All Targets in Area with Descriptor', area_type, [area_descriptor], errors)
+	errors = variable_field('attach_descriptor', area_type, 'Area Descriptor', area_descriptor, errors)
+	errors = variable_fields('range', 'Works with all Targets in Range', area_type, [area_ranged], errors)
+	errors = variable_field('range', area_type, 'Range by Group', area_ranged, errors)
 
 	errors = check_fields(limited, 'Limited', [limited_type, limited_mod], errors)
 	errors = check_field(limited, 'Limited', 'Limited Type', limited_type, errors)

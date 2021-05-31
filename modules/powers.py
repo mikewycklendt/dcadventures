@@ -239,6 +239,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	all_traits = [{'type': '', 'name': 'Trait Type'}, {'type': 'this_power', 'name': 'This Power'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'advantage', 'name': 'Advantage'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'power', 'name': 'Power'}]
 
+	area_type = [{'type': '', 'name': 'Area Type'}, {'type': 'affect', 'name': 'Affects All Targets in Area'}, {'type': 'descriptor', 'name': 'Affects All Targets with Descriptor'}, {'type': 'attach', 'name': 'Attaches Effect to Area'}, {'type': 'attach_descriptor', 'name': 'Attaches to All Targets in Area with Descriptor'}, {'type': 'range', 'name': 'Works with all Targets in Range'}, {'type': 'grant', 'name': 'Grants Effects to Others in Area'}]
+
 	appear_form = [{'type': '', 'name': 'Form'}, {'type': 'quick', 'name': 'Quick Change'}, {'type': 'single', 'name': 'Single Form'}, {'type': 'narrow', 'name': 'Narrow Form'}, {'type': 'broad', 'name': 'Broad Form'}, {'type': 'any', 'name': 'Any Form of Same Mass'}]
 
 	aquatic = [{'type': '', 'name': 'Aquatic Type'}, {'type': 'surface', 'name': 'Surface'}, {'type': 'underwater', 'name': 'Underwater'}, {'type': 'bpth', 'name': 'Both'}]
@@ -613,7 +615,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											check_sense_type=check_sense_type, check_sense_target=check_sense_target, descriptor_effect_type=descriptor_effect_type, effect_type=effect_type, effortless_type=effortless_type,
 											feedback_type=feedback_type, source_type=source_type, sense_micro=sense_micro, micro_expertise=micro_expertise, unreliable_type=unreliable_type, rank_type=rank_type,
 											incurable_type=incurable_type, deg_mod_weaken_type=deg_mod_weaken_type, progressive_type=progressive_type, affects_others_type=affects_others_type, 
-											affects_others_req=affects_others_req)
+											affects_others_req=affects_others_req, area_type=area_type)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -2504,6 +2506,7 @@ def power_post_mod():
 	effortless_degree = request.get_json()['effortless_degree']
 	effortless_retries = request.get_json()['effortless_retries']
 	simultaneous_descriptor = request.get_json()['simultaneous_descriptor']
+	area_type = request.get_json()['area_type']
 	area_damage = request.get_json()['area_damage']
 	area_ranged = request.get_json()['area_ranged']
 	area_descriptor = request.get_json()['area_descriptor']
@@ -2724,6 +2727,7 @@ def power_post_mod():
 							effortless_degree = effortless_degree,
 							effortless_retries = effortless_retries,
 							simultaneous_descriptor = simultaneous_descriptor,
+							area_type = area_type,
 							area_mod = area_mod,
 							area_range = area_range,
 							area_per_rank = area_per_rank,

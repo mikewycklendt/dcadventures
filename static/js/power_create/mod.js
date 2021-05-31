@@ -51,6 +51,16 @@ function mod_area() {
 	check_drop(check, div, entry);
 }
 
+function mod_area_type() {
+	const select = 'mod_area_type';
+	const options = [{'val': ['range'], 'div': 'mod-area-range'},
+					{'val': ['descriptor', 'attach_descriptor'], 'div': 'mod-area-descriptor'}];
+	const fields = ['mod_area_ranged', 'mod_area_descriptor'];
+
+	reset_all(fields);
+	select_opacity_shared(select, options);
+}
+
 function mod_limited() {
 	const check = 'mod_limited'
 	const div = 'mod-limited';
@@ -511,6 +521,7 @@ function mod_submit() {
 	const effortless_retries = check("mod_effortless_retries");
 	const effortless_degree_type = select("mod_effortless_degree_type");
 	const simultaneous_descriptor = select("mod_simultaneous_descriptor");
+	const area_type = select("mod_area_type");
 	const area_damage = select("mod_area_damage");
 	const area_ranged = select("mod_area_ranged");
 	const area_descriptor = select("mod_area_descriptor");
@@ -654,6 +665,7 @@ function mod_submit() {
 			'effortless_degree': effortless_degree,
 			'effortless_retries': effortless_retries,
 			'simultaneous_descriptor': simultaneous_descriptor,
+			'area_type': area_type,
 			'area_damagw': area_damage,
 			'area_range': area_ranged,
 			'area_descriptor': area_descriptor,
