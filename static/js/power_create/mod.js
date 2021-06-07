@@ -402,7 +402,9 @@ function mod_feedback_type() {
 	const select = 'mod_feedback_type';
 	const options = [{'val': 'mod', 'div': 'mod-feedback-mod'},
 					{'val': 'defense', 'div': 'mod-feedback-defense'}]
+	const fields = ["mod_feedback_mod", "mod_feedback_defense"];
 
+	reset_all(fields);
 	select_opacity(select, options);
 }
 
@@ -594,7 +596,7 @@ function mod_submit() {
 	const extra_circ = select("mod_extra_circ");
 	const multiple = select("mod_multiple");
 	const feedback = check("mod_feedback");
-	const feedback_effect = select("mod_feedback_effect")
+	const feedback_effect = select("mod_feedback_effect");
 	const feedback_mod = select("mod_feedback_mod");
 	const feedback_type = select("mod_feedback_type");
 	const feedback_cover = select("mod_feedback_cover");
