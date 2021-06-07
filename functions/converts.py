@@ -1472,6 +1472,13 @@ def check_when_convert(id, when, frequency):
 			when = 'Before Consequence Happens'
 		elif when == 'after':
 			when = 'After Consequence Happens'
+	elif id == 'descriptor':
+		if when == 'before':
+			when = 'Before Opponent Uses Descriptor'
+		elif when == 'after':
+			when = 'After Opponent Uses Descriptor'
+		elif when == 'attempt':
+			when = 'When Opponent Attempts to Use Descriptor'
 
 	when = frequency + ' ' + when
 	

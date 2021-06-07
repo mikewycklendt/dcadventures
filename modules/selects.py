@@ -721,6 +721,10 @@ def check_trigger_select():
 	elif id == 'consequence':
 		options.append({'id': 'before', 'name': 'Before Consequence Happens'})
 		options.append({'id': 'after', 'name': 'After Consequence Happens'})
+	elif id == 'descriptor':
+		options.append({'id': 'before', 'name': 'Before Opponent Uses Descriptor'})
+		options.append({'id': 'after', 'name': 'After Opponent Uses Descriptor'})
+		options.append({'id': 'attempt', 'name': 'When Opponent Attempts to Use Descriptor'})
 
 	print(body)
 	body['options'] = options
