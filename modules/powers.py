@@ -283,7 +283,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	check_traits = [{'type': '', 'name': 'Rank'}, {'type': 'this_power', 'name': 'This Power'}, {'type': 'this_extra', 'name': 'This Extra'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'skill', 'name': 'Base Skill'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'power', 'name': 'Power'}, {'type': 'equip', 'name': 'Equipment'}, {'type': 'speed', 'name': 'Speed Rank'}, {'type': 'distance', 'name': 'Distance Rank'}, {'type': 'active', 'name': 'Active Opponent Rank'}, {'type': 'attack', 'name': 'Attack Bonus'}, {'type': 'size', 'name': 'Size Rank'}, {'type': 'interact', 'name': 'Any Interarction'}, {'type': 'manipulate',  'name': 'Any Manipulation'}]
 
-	check_trigger = [{'type': '', 'name': 'Attached'}, {'type': 'primary', 'name': 'Primary Check'}, {'type': 'variable', 'name': 'Variable Check'}, {'type': 'opposed', 'name': 'Opponent Check'}, {'type': 'change', 'name': 'Condition Change'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'conflict', 'name': 'Conflict'}, {'type': 'sense', 'name': 'Sense'}, {'type': 'consequence', 'name': 'Consequence'}]
+	check_trigger = [{'type': '', 'name': 'Attached'}, {'type': 'primary', 'name': 'Primary Check'}, {'type': 'variable', 'name': 'Variable Check'}, {'type': 'opposed', 'name': 'Opponent Check'}, {'type': 'change', 'name': 'Condition Change'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'conflict', 'name': 'Conflict'}, {'type': 'sense', 'name': 'Sense'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'descriptor', 'name': 'Opponent Uses Descriptor'}]
 
 	check_type = [{'type': '', 'name': 'When'}, {'type': 'before', 'name': 'Before'}, {'type': 'replace', 'name': 'Replace'}, {'type': 'extra', 'name': 'In Addition'}, {'type': 'success', 'name': 'After Success'}, {'type': 'fail', 'name': 'After Failure'}, {'type': 'player', 'name': 'Player Choice'}, {'type': 'gm', 'name': 'GM Choice'}, {'type': 'active', 'name': 'Target Active'}]
 
@@ -2200,6 +2200,7 @@ def power_post_environment():
 	immunity_environment = db_integer(Environment, immunity_environment)
 	move_nature = db_integer(Nature, move_nature)
 	element = db_integer(Element, element)
+	light_check = db_integer(PowerCheckType, light_check)
 
 	radius = integer(radius)
 	distance = integer(distance)
@@ -3795,6 +3796,7 @@ def power_post_check():
 	overwrite = request.get_json()['overwrite']
 	maintain_concentrate = request.get_json()['maintain_concentrate']
 	frequency = request.get_json()['frequency'] 
+	descriptor = request.get_json()['descriptor']
 
 	power_id = db_integer(Power, power_id)
 	extra_id = db_integer(Extra, extra_id)
@@ -3812,6 +3814,7 @@ def power_post_check():
 	opponent_type = db_integer(PowerOpposedType, opponent_type)
 	variable_type = db_integer(PowerCheckType, variable_type)
 	overwrite = db_integer(PowerCheck, overwrite)
+	descriptor = db_integer(PowerDes, descriptor)
 
 
 	attack = integer(attack)
@@ -3897,7 +3900,8 @@ def power_post_check():
 						primary = primary,
 						overwrite = overwrite,
 						maintain_concentrate = maintain_concentrate,
-						frequency = frequency
+						frequency = frequency,
+						descriptor = descriptor
 					)
 
 	db.session.add(entry)

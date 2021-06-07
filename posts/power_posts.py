@@ -2097,6 +2097,7 @@ def power_check_post(entry, body, cells):
 	overwrite = entry.overwrite
 	maintain_concentrate = entry.maintain_concentrate
 	frequency = entry.frequency
+	descriptor = entry.descriptor
 
 	title_name = get_name(PowerCheckType, title)
 
@@ -2187,6 +2188,7 @@ def power_check_post(entry, body, cells):
 	vcells = vcell('sense', w, [sense_target, sense_type, sense, mental], vcells)
 	vcells = vcell('consequence', 30, [consequence_null, consequence, 'on', consequence_target], vcells)
 	vcells = vcell('target', 20, [target_type], vcells)
+	vcells = vcell('descriptor', 20, ['Check When Opponent Uses', descriptor, 'Descriptor'], vcells)
 	cells = drop_vcell('Trigger', [trigger_title], 9, trigger, vcells, cells)
 
 	attack = add_plus(attack)

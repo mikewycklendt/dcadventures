@@ -156,6 +156,15 @@
 	grid-template-columns: 16% 25% 25% auto;
 }
 
+#check-descriptor {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+	text-align: center;
+	grid-template-columns: 30% 35% 25% auto;
+}
+
 #check-maintain {
 	display: none;
 	max-height: 0;

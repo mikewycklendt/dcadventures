@@ -418,6 +418,7 @@ class PowerCheck(db.Model):
 	frequency = db.Column(db.String())
 	overwrite = db.Column(db.Integer, db.ForeignKey('power_check.id'))
 	maintain_concentrate = db.Column(db.Boolean)
+	descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	
 	def format(self):
 		return {
@@ -477,7 +478,8 @@ class PowerCheck(db.Model):
 			'primary': self.primary,
 			'frequency': self.frequency,
 			'overwrite': self.overwrite,
-			'maintain_concentrate': self.maintain_concentrate
+			'maintain_concentrate': self.maintain_concentrate,
+			'descriptor': self.descriptor
 		}
 
 

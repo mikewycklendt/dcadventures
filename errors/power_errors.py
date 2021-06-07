@@ -1758,6 +1758,7 @@ def power_check_post_errors(data):
 	primary = data['primary']
 	frequency = data['frequency']
 	overwrite = data['overwrite']
+	descriptor = data['descriptor']
 
 
 
@@ -1788,6 +1789,8 @@ def power_check_post_errors(data):
 	errors = id_check(PowerCheckType, variable_type, 'Linked Variable Check by Group', errors)
 	errors = id_check(PowerOpposed, opponent, 'Linked Opponent Check', errors)
 	errors = id_check(PowerOpposedType, opponent_type, 'Linked Opponent Check by Group', errors)
+	errors = id_check(PowerDes, descriptor, 'Descriptor', errors)
+
 
 	errors = int_check(attack, 'Attack Check Modifier', errors)
 
@@ -1804,27 +1807,29 @@ def power_check_post_errors(data):
 	errors = required(target, 'Check Target', errors)
 	errors = required(frequency, 'Frequency', errors)
 
-	errors = variable_fields('change', 'Trigger', trigger, [condition1, condition2, conditions_target], errors)
+	errors = variable_fields('change', 'Attached to Condition Change', trigger, [condition1, condition2, conditions_target], errors)
 	errors = variable_field('change', trigger, 'Starting Condition', condition1, errors)
 	errors = variable_field('change', trigger, 'Ending Condition', condition2, errors)
 	errors = variable_field('change', trigger, 'Condition Target', conditions_target, errors)
-	errors = variable_fields('condition', 'Trigger', trigger, [condition, condition_target], errors)
+	errors = variable_fields('condition', 'Attached to Condition', trigger, [condition, condition_target], errors)
 	errors = variable_field('condition', trigger, 'Condition', condition, errors)
 	errors = variable_field('condition', trigger, 'Condition Target', condition_target, errors)
-	errors = variable_fields('conflict', 'Trigger', trigger, [conflict], errors)
+	errors = variable_fields('conflict', 'Attached to Conflict Action', trigger, [conflict], errors)
 	errors = variable_field('conflict', trigger, 'Conflict Action', conflict, errors)
-	errors = variable_fields('sense', 'Trigger', trigger, [sense, sense_type, sense_target], errors)
+	errors = variable_fields('sense', 'Attached to Sense Use', trigger, [sense, sense_type, sense_target], errors)
 	errors = variable_field('sense', trigger, 'Sense', sense, errors)
 	errors = variable_field('sense', trigger, 'Sense User', sense_target, errors)
 	errors = variable_field('sense', trigger, 'Sense Use Type', sense_type, errors)
 	errors = valid_options(mental, 'Excludes Mental Senses', ['any', 'x'], 'Variable Sense or Any Senae', sense, 'Sense', errors)
-	errors = variable_fields('opposed', 'Trigger', trigger, [opponent], errors)
+	
 	errors = variable_fields('target', 'Trigger', trigger, [target_type], errors)
 	errors = variable_field('target', trigger, 'Target Type', target_type, errors)
-	errors = select_of('opposed', 'is triggered bt an Opponent Check', 'Trigger', trigger, [opponent, opponent_type], ['Opponent Check'], errors)
+	errors = select_of('opposed', 'is attached to an Opponent Check', 'Trigger', trigger, [opponent, opponent_type], ['Opponent Check'], errors)
 	errors = seperate([opponent_type, opponent], 'Opponent Check', errors)
-	errors = select_of('variable', trigger, 'is triggered bt a Variable Check', 'Trigger', trigger, [variable, variable_type], ['Variable Check'], errors)
+	errors = select_of('variable', trigger, 'is attatched to a Variable Check', 'Trigger', trigger, [variable, variable_type], ['Variable Check'], errors)
 	errors = seperate([variable_type, variable], 'Variable Check', errors)
+	errors = variable_fields('descriptor', 'Attached to Opponent Use of Descriptor', trigger, [descriptor], errors)
+	errors = variable_fields('descriptor', trigger, 'Descriptor', descriptor, errors)
 
 	errors = variable_fields('consequence', 'Trigger', trigger, [consequence_target, consequence], errors)
 	errors = variable_field('consequence', trigger, 'Consequence Target', consequence_target, errors)

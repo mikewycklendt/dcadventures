@@ -155,6 +155,22 @@
 		</div>
 	</div>
 
+	<div id="check-descriptor">
+		<div style="font-size: 80%;">
+			Opponent Use of Descriptor:
+		</div>
+
+		<div>
+			<select class="descriptor-sml" id="check_descriptor" name="check_descriptor">
+				<option value="">Descriptor</option>
+				<option value="">Use Descriptor Form to Put Options Here</option>
+				{% for d in descriptor_options %}
+					<option value={{d.id}}>{{d.name}}</option>
+			</select>
+		</div>
+
+	</div>
+
 	<div id="check-conflict">
 		
 		<div class="valign">

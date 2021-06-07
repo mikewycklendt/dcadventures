@@ -151,7 +151,8 @@ function check_submit() {
 	const primary = check("check_primary");
 	const frequency = select("check_frequency");
 	const overwrite = select("check_overwrite");
-	const maintain_concentrate = check("check_maintain_concentrate")
+	const maintain_concentrate = check("check_maintain_concentrate");
+	const descriptor = select("check_descriptor");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -223,7 +224,8 @@ function check_submit() {
 			'primary': primary,
 			'frequency': frequency,
 			'overwrite': overwrite,
-			'maintain_concentrate': maintain_concentrate
+			'maintain_concentrate': maintain_concentrate,
+			'descriptor': descriptor
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
