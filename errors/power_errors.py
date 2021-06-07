@@ -392,7 +392,7 @@ def create_post_errors(data):
 	errors = id_check(PowerOpposed, move_opposed, 'Opponent Check to Move', errors)
 	errors = id_check(PowerCheck, trap_check, 'Check to Trap', errors)
 	errors = id_check(PowerOpposed, trap_opposed, 'Check to Escape', errors)
-	errors = id_check(PowerCheck, trap_resist, 'Trap Resistance Check' errors)
+	errors = id_check(PowerCheck, trap_resist, 'Trap Resistance Check', errors)
 	errors = id_check(PowerCheck, ranged_check, 'Ranged Damage Check', errors)
 	errors = id_check(PowerDamage, ranged_damage, 'Ranged Damage', errors)
 	errors = id_check(PowerDamage, weapon_damage, 'Weapon Damage', errors)
