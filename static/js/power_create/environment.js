@@ -171,6 +171,8 @@ function env_submit() {
 	const move_cost_circ = check("env_move_cost_circ");
 	const move_other = text("env_move_other");
 	const conceal_type = select("env_conceal_type");
+	const darkness_descriptor = check("env_darkness_descriptor");
+	const light_check = select("env_light_check");
 	const visibility_trait_type = select("env_visibility_trait_type");
 	const visibility_trait = select("env_visibility_trait");
 	const visibility_mod = select("env_visibility_mod");
@@ -215,6 +217,8 @@ function env_submit() {
 			'move_cost_circ': move_cost_circ,
 			'move_other': move_other,
 			'conceal_type': conceal_type,
+			'light_check': light_check,
+			'darkness_descriptor': darkness_descriptor,
 			'visibility_trait_type': visibility_trait_type,
 			'visibility_trait': visibility_trait,
 			'visibility_mod': visibility_mod,

@@ -707,6 +707,8 @@ def environment_post(entry, body, cells):
 	move_cost_circ = entry.move_cost_circ
 	move_other = entry.move_other
 	conceal_type = entry.conceal_type
+	darkness_descriptor = entry.darkness_descriptor
+	light_check = entry.light_check
 	visibility_trait_type = entry.visibility_trait_type
 	visibility_trait = entry.visibility_trait
 	visibility_mod = entry.visibility_mod
@@ -725,6 +727,8 @@ def environment_post(entry, body, cells):
 	immunity_environment = get_name(Environment, immunity_environment)
 	move_nature = get_name(Nature, move_nature)
 	element = get_name(Element, element)
+
+	light_check = get_name(PowerCheckType, light_check)
 
 	temp_type_select = [{'type': '', 'name': 'Type'}, {'type': 'all', 'name': 'All'}, {'type': 'cold', 'name': 'Cold'}, {'type': 'heat', 'name': 'Heat'}, {'type': 'pressure', 'name': 'High Pressure'}, {'type': 'radiation', 'name': 'Radiation'}, {'type': 'vaccum', 'name': 'Vaccuum'}]
 	temp_type = selects(temp_type, temp_type_select)
@@ -772,9 +776,10 @@ def environment_post(entry, body, cells):
 	new_mod = mod_cell('Surface Modifier:', 18, [move_cost_circ], new_mod)
 	body = mod_add(impede, new_mod, body)
 
-	cells = check_cell('Counter Conceal', 17, conceal, cells, True)
-	new_mod = mod_create('Counters Concealment', 23)
-	new_mod = mod_cell('Type:', 7, [conceal_type], new_mod)
+	cells = check_cell('Light', 7, conceal, cells, True)
+	new_mod = mod_create('Create Light', 13)
+	new_mod = mod_cell('Darkness Concealment Effect:', 25, [conceal_type], new_mod)
+	new_mod = mod_cell('Counters Effects with Darkness Descriptor:', 35 [light_check, 'Check Group'], new_mod)
 	body = mod_add(conceal, new_mod, body)
 	
 	cells = check_cell('Elements', 11, elements, cells, True)
@@ -1018,6 +1023,7 @@ def mod_post(entry, body, cells):
 	extra_dc = entry.extra_dc
 	extra_circ = entry.extra_circ
 	feedback = entry.feedback
+	feedback_effect = entry.feedback_effect
 	feedback_type = entry.feedback_type
 	feedback_cover = entry.feedback_cover
 	feedback_mod = entry.feedback_mod
@@ -1148,6 +1154,9 @@ def mod_post(entry, body, cells):
 
 	feedback_type_select = [{'type': '', 'name': 'Feedback Type'}, {'type': 'mod', 'name': feedback_mod + ' Reaistance Modifier'}, {'type': 'defense', 'name': 'Power Rank For ' + feedback_defense}]
 	feedback_type = selects(feedback_type, feedback_type_select)
+
+	feedback_effect_select = [{'type': '', 'name': ''}, {'type': 'create', 'name': 'Created Objects are Damaged'}, {'type': 'illusion', 'name': 'Dsmsging Attack on Illusion'}, {'type': 'mind', 'name': 'Mind Reading Target Suffers Damage'}, {'type': 'remote', 'name': 'Dsmsging Attack at Where Displaced Senses Are'}]
+	feedback_effect = selects(feedback_effect, feedback_effect_select)
 
 	cells = cell('Extra', 15, [extra])
 	cells = check_cell('Affects Objects', 16, affects_objects, cells, True)
@@ -1364,6 +1373,7 @@ def mod_post(entry, body, cells):
 
 	cells = check_cell('Feedback', 10, feedback, cells, True)
 	new_mod = mod_create('Feedback', 12)
+	new_mod = mod_cell('Type': 6, [feedback_effect, new_mod], new_mod)
 	new_mod = mod_cell('Resistance:', 12, [feedback_type], new_mod)
 	new_mod = mod_cell('Cover', 8, [feedback_cover], new_mod)	
 	body = mod_add(feedback, new_mod, body)
@@ -2833,7 +2843,7 @@ def power_degree_post(entry, body, cells):
 	updown = [{'type': '', 'name': 'Direction'}, {'type': 1, 'name': 'Up'}, {'type': -1, 'name': 'Down'}]
 	condition_damage = selects(condition_damage, updown)
 	
-	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'anyone', 'name': 'Anyone'}]
+	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'anyone', 'name': 'Anyone'}, {'type': 'object', 'name': 'Object'}]
 	target = selects(target, targets_select)
 	circ_target = selects(circ_target, targets_select)
 	effect_target = selects(effect_target, targets_select)
@@ -2916,7 +2926,9 @@ def power_degree_post(entry, body, cells):
 	vcells = vcell('check', 35, [compare, 'Comparison Check'], vcells, 7, check_type)
 	vcells = vcell('check', 35, [variable, 'Variable Check'], vcells, variable_id, check_type)
 
-	vcells = vcell('object', 25, ['Object Destroyed'], vcells)
+	vcells = vcell('broke', 25, ['Object Broken'], vcells)
+
+	vcells = vcell('destroy', 25, ['Object Destroyed'], vcells)
 	
 	vcells = vcell('dc', 25, ['Attach DC to Object'], vcells)
 	

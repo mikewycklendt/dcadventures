@@ -1896,6 +1896,8 @@ class PowerEnv(db.Model):
 	move_cost_circ = db.Column(db.Boolean)
 	move_other = db.Column(db.String())
 	conceal_type = db.Column(db.String())
+	darkness_descriptor = db.Column(db.Boolean)
+	light_check = db.Column(db.Integer, db.ForeignKey('power_check_type.id'))
 	visibility_trait_type = db.Column(db.String())
 	visibility_trait = db.Column(db.Integer)
 	visibility_mod = db.Column(db.Integer)
@@ -1936,6 +1938,8 @@ class PowerEnv(db.Model):
 			'move_cost_circ': self.move_cost_circ,
 			'move_other': self.move_other,
 			'conceal_type': self.conceal_type,
+			'darkness_descriptor': self.darkness_descriptor,
+			'light_check': self.light_check,
 			'visibility_trait_type': self.visibility_trait_type,
 			'visibility_trait': self.visibility_trait,
 			'visibility_mod': self.visibility_mod,
@@ -2113,6 +2117,7 @@ class PowerMod(db.Model):
 	extra_circ = db.Column(db.Integer, db.ForeignKey('power_circ_type.id'))
 	multiple = db.Column(db.String())
 	feedback = db.Column(db.Boolean)
+	feedback_effect = db.Column(db.String())
 	feedback_type = db.Column(db.String())
 	feedback_cover = db.Column(db.Integer, db.ForeignKey('cover.id'))
 	feedback_mod = db.Column(db.Integer)
@@ -2249,6 +2254,7 @@ class PowerMod(db.Model):
 			'extra_circ': self.extra_circ,
 			'multiple': self.multiple,
 			'feedback': self.feedback,
+			'feedback_effect': self.feedback_effect,
 			'feedback_type': self.feedback_type,
 			'feedback_cover': self.feedback_cover,
 			'feedback_mod': self.feedback_mod,

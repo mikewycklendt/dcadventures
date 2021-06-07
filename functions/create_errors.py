@@ -357,7 +357,7 @@ def value_limit(limit, selects, names, errors):
 	return (errors)
 
 	
-def variable_field(value, field, name, f, errors):
+def variable_field(value, field, name, f, errors, mod=False):
 	error_msgs = errors['error_msgs']
 	error = False
 
@@ -369,6 +369,32 @@ def variable_field(value, field, name, f, errors):
 				
 	if error:
 		message = name + ' field is required.'
+		if mod:
+			message += ' If no options are in the dropdown you have not created a rule that is compatible with this modifier.'
+		error_msgs.append(message)
+
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+	
+	
+def variable_field_required(value, field, name, firstname, value_name, second_name, f, v, errors, mod=False):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if field != value:
+		return (errors)
+	else:
+		if f != v:
+			error = True
+				
+	if error:
+		message = 'If you want to choose ' + firstname + ' for the ' + name + ' field, you must also choose ' + value_name + ' for the ' + second_name + ' field.'  
+		if mod:
+			message += ' If no options are in the dropdown you have not created a rule that is compatible with this modifier.'
 		error_msgs.append(message)
 
 
@@ -681,7 +707,7 @@ def check_fields(check, name, values, errors):
 
 	return (errors)
 
-def check_field(check, checkname, name, value, errors):
+def check_field(check, checkname, name, value, errors, mod=False):
 
 	error_msgs = errors['error_msgs']
 	error = False
@@ -692,6 +718,8 @@ def check_field(check, checkname, name, value, errors):
 				
 	if error:
 		message = name + ' field is required or uncheck the ' + checkname + ' checkbox.'
+		if mod:
+			message += ' If no options are in the dropdown you have not created a rule that is compatible with this modifier yet.'
 		error_msgs.append(message)
 
 	errors['error_msgs'] = error_msgs

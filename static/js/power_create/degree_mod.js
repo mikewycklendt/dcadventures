@@ -269,6 +269,8 @@ let deg_mod_grid = {'titles': false,
 					'font': 80,
 					'mod': []}
 
+let degree_counts = {'mind': 0};
+
 function deg_mod_submit() {
 
 	const columns = deg_mod_grid.columns;
@@ -520,6 +522,11 @@ function deg_mod_submit() {
 			}
 
 			selects_add(id, keyword, selects);
+
+			if (knowledge == 'mind') {
+				selects_add('mind', 'Mind Reading Target Suffers Damage', 'feedback-sml', degree_counts.mind)
+				degree_counts.mind += 1;
+			}
 
 			if (type == 'weaken') {
 				selects_add(id, keyword, weaken_sml);

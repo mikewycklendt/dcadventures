@@ -232,6 +232,8 @@ let create_grid = {'titles': false,
 					'font': 80,
 					'mod': []}
 
+let create_counts = {'count': 0}
+
 function create_submit() {
 
 	const columns = create_grid.columns;
@@ -357,6 +359,9 @@ function create_submit() {
 		if (jsonResponse.success) {
 			
 			extra_effect_check(jsonResponse)
+
+			selects_add('create', 'Created Objects are Damaged', 'feedback-sml', create_counts.count);
+			create_counts.count += 1;
 
 			create_grid.columns.length = 0;
 			create_grid.columns = jsonResponse.rows;

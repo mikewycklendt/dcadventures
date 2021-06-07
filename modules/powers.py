@@ -291,7 +291,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	comprehend = [{'type': '', 'name': 'Can Comprehend'}, {'type': 'x', 'name': 'Variable'}, {'type': 'animal', 'name': 'Animals'}, {'type': 'language', 'name': 'Lsnguages'}, {'type': 'machine', 'name': 'Machines'}, {'type': 'object', 'name': 'Objects'}, {'type': 'plant', 'name': 'Plants'}, {'type': 'spirit', 'name': 'Spirits'}]
 
-	conceal_type = [{'type': 'reduce', 'name': 'Reduce'}, {'type': 'eliminate', 'name': 'Eliminate'}]
+	conceal_type = [{'type': '', 'name': 'Darkness Concealment Effect'}, {'type': 'reduce', 'name': 'Reduce'}, {'type': 'eliminate', 'name': 'Eliminate'}]
 
 	counter_conceal = [{'type': '', 'name': 'Counter Type'}, {'type': 'descriptor', 'name': 'Effects with Descriptor'}, {'type': 'penetrate', 'name': 'Penetrates Concealment'}, {'type': 'all', 'name': 'All Concealment'}]
 
@@ -317,7 +317,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	defense_multiple = [{'type': '', 'name': 'If Multiple'}, {'type': 'all', 'name': 'All take Effect'}, {'type': 'turn', 'name': 'Choose on Turn'}, {'type': 'x', 'name': 'Choose When Aquiring Effect'}]
 
-	deg_mod_type = [{'type': 'measure', 'name': 'Measurement'}, {'type': 'condition', 'name': 'Condition Change'}, {'type': 'null_condition', 'name': 'Nullify Condition'}, {'type': 'action', 'name': 'Action Change'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'time', 'name': 'Time Modifier'}, {'type': 'damage', 'name': 'Damage'}, {'type': 'level', 'name': 'Level'}, {'type': 'knowledge', 'name': 'Gain Knowledge'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'check', 'name': 'Check'}, {'type': 'object', 'name': 'Object Destroyed'}, {'type': 'dc', 'name': 'Attach DC to Object'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'null', 'name': 'Effect Nullified'}, {'type': 'uncontrol', 'name': 'Effect Uncontrolled'}, {'type': 'detect', 'name': "Detect Effect"}, {'type': 'act', 'name': 'Can Act'}, {'type': 'no_act', 'name': "Can't Act"}, {'type': 'no_reattempt', 'name': "Can't Reattempt"}, {'type': 'reattempt', 'name': "Can Reattempt"}, {'type': 'understand', 'name': 'Understand Communication'}, {'type': 'sense', 'name': 'Sense Condition'}, {'type': 'weaken', 'name': 'Weaken'}, {'type': 'reverse', 'name': 'Reverse Degree Effect'}]
+	deg_mod_type = [{'type': 'measure', 'name': 'Measurement'}, {'type': 'condition', 'name': 'Condition Change'}, {'type': 'null_condition', 'name': 'Nullify Condition'}, {'type': 'action', 'name': 'Action Change'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'time', 'name': 'Time Modifier'}, {'type': 'damage', 'name': 'Damage'}, {'type': 'level', 'name': 'Level'}, {'type': 'knowledge', 'name': 'Gain Knowledge'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'check', 'name': 'Check'}, {'type': 'broke', 'name': 'Object Broken'}, {'type': 'destroy', 'name': 'Object Destroyed'}, {'type': 'dc', 'name': 'Attach DC to Object'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'null', 'name': 'Effect Nullified'}, {'type': 'uncontrol', 'name': 'Effect Uncontrolled'}, {'type': 'detect', 'name': "Detect Effect"}, {'type': 'act', 'name': 'Can Act'}, {'type': 'no_act', 'name': "Can't Act"}, {'type': 'no_reattempt', 'name': "Can't Reattempt"}, {'type': 'reattempt', 'name': "Can Reattempt"}, {'type': 'understand', 'name': 'Understand Communication'}, {'type': 'sense', 'name': 'Sense Condition'}, {'type': 'weaken', 'name': 'Weaken'}, {'type': 'reverse', 'name': 'Reverse Degree Effect'}]
 
 	deg_mod_weaken_type = [{'type': '', 'name': 'Points Type'}, {'type': 'val', 'name': 'Value'}, {'type': 'degree', 'name': 'Value Per Degree'}, {'type': 'check', 'name': 'Check Difference'}]
 
@@ -361,7 +361,9 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	extremity = [{'type': '', 'name': 'Extremity'}, {'type': 'intense', 'name': 'Intense'}, {'type': 'extreme', 'name': 'Extreme'}]
 
-	feedback_type = [{'type': '', 'name': 'Feedback Type'}, {'type': 'mod', 'name': 'Reaistance Modifier'}, {'type': 'defense', 'name': 'Power Rank For Defense'}]
+	feedback_resist = [{'type': '', 'name': 'Resistance Effect'}, {'type': 'mod', 'name': 'Reaistance Modifier'}, {'type': 'defense', 'name': 'Power Rank For Defense'}]
+
+	feedback_type = [{'type': '', 'name': ''}, {'type': 'create', 'name': 'Created Objects are Damaged'}, {'type': 'illusion', 'name': 'Dsmsging Attack on Illusion'}, {'type': 'mind', 'name': 'Mind Reading Target Suffers Damage'}, {'type': 'remote', 'name': 'Dsmsging Attack at Where Displaced Senses Are'}]
 
 	frequency = [{'type': '', 'name': 'Frequency'}, {'type': 'always', 'name': 'Always'}, {'type': 'target', 'name': 'If Opponent Targeted'}, {'type': 'gm', 'name': 'GM Discretion'}, {'type': 'player', 'name': 'Player Choice'}]
 
@@ -613,7 +615,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											organization=organization, animals=animals, languages=languages, spirits=spirits, emotion_type=emotion_type, immunity_trait=immunity_trait, base_traits=base_traits,
 											damage_applied=damage_applied, precise_type=precise_type, move_multiple=move_multiple, before=before, after=after, check_frequency=check_frequency, 
 											check_sense_type=check_sense_type, check_sense_target=check_sense_target, descriptor_effect_type=descriptor_effect_type, effect_type=effect_type, effortless_type=effortless_type,
-											feedback_type=feedback_type, source_type=source_type, sense_micro=sense_micro, micro_expertise=micro_expertise, unreliable_type=unreliable_type, rank_type=rank_type,
+											feedback_resist=feedback_resist, source_type=source_type, sense_micro=sense_micro, micro_expertise=micro_expertise, unreliable_type=unreliable_type, rank_type=rank_type,
 											incurable_type=incurable_type, deg_mod_weaken_type=deg_mod_weaken_type, progressive_type=progressive_type, affects_others_type=affects_others_type, 
 											affects_others_req=affects_others_req, area_type=area_type)
 
@@ -2173,6 +2175,8 @@ def power_post_environment():
 	move_cost_circ = request.get_json()['move_cost_circ']
 	move_other = request.get_json()['move_other']
 	conceal_type = request.get_json()['conceal_type']
+	darkness_descriptor = request.get_json()['darkness_descriptor']
+	light_check = request.get_json()['light_check']
 	visibility_trait_type = request.get_json()['visibility_trait_type']
 	visibility_trait = request.get_json()['visibility_trait']
 	visibility_mod = request.get_json()['visibility_mod']
@@ -2267,6 +2271,8 @@ def power_post_environment():
 							move_cost_circ = move_cost_circ,
 							move_other = move_other,
 							conceal_type = conceal_type,
+							darkness_descriptor = darkness_descriptor,
+							light_check = light_check,
 							visibility_trait_type = visibility_trait_type,
 							visibility_trait = visibility_trait,
 							visibility_mod = visibility_mod,
@@ -2581,6 +2587,7 @@ def power_post_mod():
 	extra_dc = request.get_json()['extra_dc']
 	extra_circ = request.get_json()['extra_circ']
 	multiple = request.get_json()['multiple']
+	feedback_effect = request.get_json()['feedback_effect']
 	feedback_mod = request.get_json()['feedback_mod']
 	feedback_type = request.get_json()['feedback_type']
 	feedback_cover = request.get_json()['feedback_cover']
@@ -2798,6 +2805,7 @@ def power_post_mod():
 							extra_dc = extra_dc,
 							extra_circ = extra_circ,
 							multiple = multiple,
+							feedback_effect = feedback_effect,
 							feedback_mod = feedback_mod,
 							feedback_type = feedback_type,
 							feedback_cover = feedback_cover,

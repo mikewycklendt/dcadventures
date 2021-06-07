@@ -279,6 +279,9 @@ let sense_grid = {'titles': false,
 					'font': 80,
 					'mod': []}
 
+let sense_counts = {'illusion': 0,
+					'remote': 0}
+
 function sense_submit() {
 	
 	const columns = sense_grid.columns;
@@ -479,6 +482,16 @@ function sense_submit() {
 			
 			extra_effect_check(jsonResponse)
 			
+			if (sense_type == 'illusion') {
+				selects_add('illusion', 'Dsmsging Attack on Illusion', 'feedback-sml', sense_counts.illusion);
+				sense_counts.illusion += 1;	
+			}
+			
+			if (sense_type == 'remote') {
+				selects_add('remote', 'Dsmsging Attack at Where Displaced Senses Are', 'feedback-sml', sense_counts.remote);
+				sense_counts.remote += 1;	
+			}
+
 			sense_grid.columns.length = 0;
 			sense_grid.columns = jsonResponse.rows;
 

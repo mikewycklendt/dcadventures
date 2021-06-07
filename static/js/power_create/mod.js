@@ -594,6 +594,7 @@ function mod_submit() {
 	const extra_circ = select("mod_extra_circ");
 	const multiple = select("mod_multiple");
 	const feedback = check("mod_feedback");
+	const feedback_effect = select("mod_feedback_effect")
 	const feedback_mod = select("mod_feedback_mod");
 	const feedback_type = select("mod_feedback_type");
 	const feedback_cover = select("mod_feedback_cover");
@@ -741,6 +742,7 @@ function mod_submit() {
 			'extra_circ': extra_circ,
 			'multiple': multiple,
 			'feedback': feedback,
+			'feedback_effect': feedback_effect,
 			'feedback_type': feedback_type,
 			'feedback_cover': feedback_cover,
 			'feedback_mod': feedback_mod,

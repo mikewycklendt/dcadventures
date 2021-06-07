@@ -1,4 +1,5 @@
 
+from logging import error
 from models import Modifier, ModifierTable, LevelType, Levels, Damage, DamageType
 from db.rule_models import Ability, Defense, Element, EnvCondition, Action, ConflictAction, Skill, Check, Condition, Maneuver, Ranged, Sense, SubSense, Light, Ground, Range, Consequence, Material, Complex, Cover, Conceal, Phase, SkillTable, SkillType, Communication
 from db.measure_models import MeasureType, Unit, Math, Rank, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert
@@ -20,7 +21,7 @@ from functions.create import name_exist, db_insert, capitalize
 from functions.linked import link_add, delete_link, level_add, delete_level, linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link
 from functions.user_functions import user_item
 
-from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable, not_required, seperate_checks, checked_invalid_option, variable_fields_of, incompatible, valid_options, extra_option, variable_required_rules, cross_check
+from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable, not_required, seperate_checks, checked_invalid_option, variable_fields_of, incompatible, valid_options, extra_option, variable_required_rules, cross_check, variable_field_required
 from functions.create_posts import send_multiple, one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string, circ_cell
 
 from create_functions.power_create import power_check, rule_check, rule_select, cost_check, extra_cost, extra_check, extra_convert, field_cost, multiple_cost, variable_cost, sense_cost, power_rules, valid_extra, ranks_error, ranks_function, cost_error, cost_exist, cost_check_table, degree_check, extra_cost_exist, multiple_error, trait_cost, power_sense_condition, power_reflect_immune, extra_rule_select
@@ -243,8 +244,8 @@ def character_post_errors(data):
 	meta = data['meta']
 	metamorph = data['metamorph']
 
-	errors = id_check(PowerCost, cost)
-	errors = id_check(PowerRanks, ranks)
+	errors = id_check(PowerCost, cost, 'Cost', errors)
+	errors = id_check(PowerRanks, ranks, 'Ranks', errors)
 
 	errors = power_check(power_id, errors)
 
@@ -385,16 +386,16 @@ def create_post_errors(data):
 	ranged_damage = data['ranged_damage']
 	ranged_check = data['ranged_check']
 
-	errors = id_check(PowerCost, cost, errors)
-	errors = id_check(PowerRanks, ranks, errors)
-	errors = id_check(PowerCheck, move_check, errors)
-	errors = id_check(PowerOpposed, move_opposed, errors)
-	errors = id_check(PowerCheck, trap_check, errors)
-	errors = id_check(PowerOpposed, trap_opposed, errors)
-	errors = id_check(PowerCheck, trap_resist, errors)
-	errors = id_check(PowerCheck, ranged_check, errors)
-	errors = id_check(PowerDamage, ranged_damage, errors)
-	errors = id_check(PowerDamage, weapon_damage, errors)
+	errors = id_check(PowerCost, cost, 'Cost', errors)
+	errors = id_check(PowerRanks, ranks, 'Ranks', errors)
+	errors = id_check(PowerCheck, move_check, 'Check to Move', errors)
+	errors = id_check(PowerOpposed, move_opposed, 'Opponent Check to Move', errors)
+	errors = id_check(PowerCheck, trap_check, 'Check to Trap', errors)
+	errors = id_check(PowerOpposed, trap_opposed, 'Check to Escape', errors)
+	errors = id_check(PowerCheck, trap_resist, 'Trap Resistance Check' errors)
+	errors = id_check(PowerCheck, ranged_check, 'Ranged Damage Check', errors)
+	errors = id_check(PowerDamage, ranged_damage, 'Ranged Damage', errors)
+	errors = id_check(PowerDamage, weapon_damage, 'Weapon Damage', errors)
 
 	errors = power_check(power_id, errors)
 
@@ -450,6 +451,9 @@ def create_post_errors(data):
 	errors = check_field(transform, 'Transform', 'Transform Ending Mass', transfom_mass, errors)
 
 	errors = together('a Transform Descriptor', [transform_start_descriptor, transform_end_descriptor], errors)
+
+	errors = variable_field_required('prop', volume, 'Volume', 'Proportional', 'Proportional', 'Toughness', 'ptop', toughness, errors)
+	errors = variable_field_required('prop', toughness, 'Toughness', 'Proportional', 'Proportional', 'Volume', 'ptop', volume, errors)
 
 	return (errors)
 
@@ -566,8 +570,8 @@ def defense_post_errors(data):
 	errors = required(extra_id, 'Extra', errors)
 	errors = extra_check(extra_id, 'Extra', errors)
 
-	errors = id_check(PowerCost, cost, errors)
-	errors = id_check(PowerRanks, ranks, errors)
+	errors = id_check(PowerCost, cost, 'Cost', errors)
+	errors = id_check(PowerRanks, ranks, 'Ranks', errors)
 
 	errors = id_check(PowerCheck, reflect_check, 'Reflect Check', errors)
 	errors = id_check(Descriptor, immunity_damage, 'Descriptor', errors)
@@ -655,6 +659,8 @@ def environment_post_errors(data):
 	move_cost_circ = data['move_cost_circ']
 	move_other = data['move_other']
 	conceal_type = data['conceal_type']
+	darkness_descriptor = data['darkness_descriptor']
+	light_check = data['light_check']
 	visibility_trait_type = data['visibility_trait_type']
 	visibility_trait = data['visibility_trait']
 	visibility_mod = data['visibility_mod']
@@ -665,8 +671,9 @@ def environment_post_errors(data):
 	element_strength = data['element_strength']
 	element_mass = data['element_mass']
 
-	errors = id_check(PowerCost, cost)
-	errors = id_check(PowerRanks, ranks)
+	errors = id_check(PowerCost, cost, 'Cost', errors)
+	errors = id_check(PowerRanks, ranks, 'Ranks', errors)
+	errors = id_check(PowerCheckType, light_check, 'Counters Darkness Effects Check by Group', errors)
 
 	errors = power_check(power_id, errors)
 
@@ -700,8 +707,12 @@ def environment_post_errors(data):
 	errors = check_field(impede, 'Impedes Movement', 'Impedes Movement Nature Type', move_nature, errors)
 	errors = check_field(impede, 'Impedes Movement', 'Impedes Movement Speed Modifier', move_speed, errors)
 	errors = select_variable('other', move_nature, 'another nature type for impeding movement', 'other', move_other, errors)
+
 	errors = check_fields(conceal, 'Light', [conceal_type], errors)
 	errors = check_field(conceal, 'Light', 'Counters Concealment Type', conceal_type, errors)
+	errors = check_fields(darkness_descriptor, 'Counters Darkness Descriptor Effects', [light_check], errors)
+	errors = check_field(darkness_descriptor, 'Counters Darkness Descriptor Effects', 'Counter Check by Group', light_check, errors)
+
 	errors = check_fields(visibility, 'Visibility', [visibility_trait_type, visibility_trait, visibility_mod], errors)
 	errors = check_field(visibility, 'Visibility', 'Visibility Trait Type', visibility_trait_type, errors)
 	errors = check_field(visibility, 'Visibility', 'Visibility Trait', visibility_trait, errors)
@@ -922,6 +933,7 @@ def mod_post_errors(data):
 	extra_circ = data['extra_circ']
 	feedback_mod = data['feedback_mod']
 	feedback = data['feedback']
+	feedback_effect = data['feedback_effect']
 	feedback_type = data['feedback_type']
 	feedback_cover = data['feedback_cover']
 	feedback_defense = data['feedback_defense']
@@ -1126,8 +1138,9 @@ def mod_post_errors(data):
 	errors = check_field(extra, 'Extra Effect', 'Count', extra_count, errors)
 	errors = check_of(extra, 'Extra Effect', 'a degree, circumstance or dc', [extra_dc, extra_degree, extra_circ], errors)
 	
-	errors = check_fields(feedback, 'Feedback', [feedback_type, feedback_cover], errors)
-	errors = check_field(feedback, 'Feedback', 'Feedbacl Type', feedback_type, errors)
+	errors = check_fields(feedback, 'Feedback', [feedback_effect, feedback_type, feedback_cover], errors)
+	errors = check_field(feedback, 'Feedback', 'Feedback Type', feedback_effect, errors, True)
+	errors = check_field(feedback, 'Feedback', 'Resistance', feedback_type, errors)
 	errors = check_field(feedback, 'Feedback', 'Feedbacl Cover', feedback_cover, errors)
 
 	errors = variable_fields('mod', 'Feedback', feedback_type, [feedback_mod], errors)
@@ -1232,10 +1245,10 @@ def ranged_post_errors(data):
 	errors = id_check(Range, general, 'General Range', errors)
 	errors = id_check(Math, penalty_math, 'Math', errors)
 
-	errors = id_check(PowerCirc, circ)
-	errors = id_check(PowerDamage, damage)
-	errors = id_check(PowerDC, dc)
-	errors = id_check(PowerDegree, degree)
+	errors = id_check(PowerCirc, circ, 'Circumstance Modifier', errors)
+	errors = id_check(PowerDamage, damage, 'Damage', errors)
+	errors = id_check(PowerDC, dc, 'DC', errors)
+	errors = id_check(PowerDegree, degree, 'Degree of Success/Failure', errors)
 
 	errors = int_check(flat_value, 'Flat Value', errors)
 	print(errors)

@@ -319,7 +319,7 @@
 
 	<div id="env-conceal">
 		<div>
-			Counter Concealment:
+			Create Light:
 		</div>
 
 		<div>
@@ -329,10 +329,23 @@
 				{% endfor %}
 			</select>
 		</div>
-		
+	
 		<div>
+			<div class="check-div-fit" style="font-size: 80%;">
+				<input type="checkbox" id="env_darkness_descriptor" class="medium-checkbox med-checkbox" > Counters Darkness Descriptor
+			</div>
 		</div>
 
+		<div class="hidden" id="env-darkness-descriptor">
+			<select class="check-title-sml" id="env_light_check" name="env_light_check">
+				<option value="">Check by Group</option>
+				<option value="">Use Check Form to Put Options Here</option>
+				{% for p in power_check_type %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	
 		<div></div>
 
 	</div>

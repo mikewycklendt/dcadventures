@@ -956,16 +956,28 @@ function deleted_item(divs, id) {
 	}
 }
 
-function selects_add(id, name, selects_input) {
+function selects_add(id, name, selects_input, mod=false) {
 	let selects = document.getElementsByClassName(selects_input);
 	let select;
 
-	for (select of selects) {
-		const o = document.createElement('option');
-		o.value = id;
-		o.text = name;
-		select.add(o);
+	if (mod != false) {
+		if (mod < 1) {
+			for (select of selects) {
+				const o = document.createElement('option');
+				o.value = id;
+				o.text = name;
+				select.add(o);
+			}	
+		}
+	} else {
+		for (select of selects) {
+			const o = document.createElement('option');
+			o.value = id;
+			o.text = name;
+			select.add(o);
+		}
 	}
+
 }
 
 function selects_add_new(id, name, selects) {
