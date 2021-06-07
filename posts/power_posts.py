@@ -1373,9 +1373,11 @@ def mod_post(entry, body, cells):
 
 	cells = check_cell('Feedback', 10, feedback, cells, True)
 	new_mod = mod_create('Feedback', 12)
-	new_mod = mod_cell('Type': 6, [feedback_effect, new_mod], new_mod)
+	new_mod = mod_cell('Type:', 6, [feedback_effect], new_mod)
 	new_mod = mod_cell('Resistance:', 12, [feedback_type], new_mod)
-	new_mod = mod_cell('Cover', 8, [feedback_cover], new_mod)	
+	new_mod = mod_cell('Cover', 8, [feedback_cover], new_mod)
+	new_mod = mod_cell('Modifier', 10, [feedback_mod], new_mod)
+	new_mod = mod_cell('Power Rank for Defense', 22, [feedback_defense], new_mod)
 	body = mod_add(feedback, new_mod, body)
 	
 	word = check_string('Per Rank', advantage_rank_per)
