@@ -136,6 +136,13 @@ function env_condition_temp_type() {
 
 }
 
+function env_darkness_descriptor() {
+	const check = 'env_darkness_descriptor';
+	const div = 'env-darkness-descriptor';
+
+	check_display(check, div);
+}
+
 let env_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
