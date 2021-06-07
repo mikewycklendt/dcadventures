@@ -65,7 +65,8 @@ function check_trigger() {
 					{'val': 'conflict', 'div': 'check-conflict'},
 					{'val': 'sense', 'div': 'check-sense'},
 					{'val': 'consequence', 'div': 'check-consequence'},
-					{'val': 'target', 'div': 'check-target'}];
+					{'val': 'target', 'div': 'check-target'},
+					{'val': 'descriptor', 'div': 'check-descriptor'}];
 	const entry = 'check-entry';
 	const fill = 'check_when';
 	const power_id = select("all_power_select");
