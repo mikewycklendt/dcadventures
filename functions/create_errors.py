@@ -1337,7 +1337,12 @@ def linked_field(value, field, table, name, rule, required, errors):
 			message = 'Invalid Linked Degree.'
 			error_msgs.append(message)
 
-	check = db.session.query(table).filter_by(id=field).one()
+	try:
+		check = db.session.query(table).filter_by(id=field).one()
+	except:
+		error = True
+		message = 'Could not find the linked degree.'
+		error_msgs.append(message)
 
 	if value == 'linked':
 		if check.type != 'consequence':
@@ -1348,7 +1353,7 @@ def linked_field(value, field, table, name, rule, required, errors):
 			consequence = db.session.query(Consequence).filter_by(id=check.consequence).one()
 			if consequence.linked == True:
 				error = True
-				message = 'The ' + name + ' you set in the ' + rule + ' this rule links to is set to linked.  A Linked ' + name + ' cannot be linked to a ' + rule + ' where the ' + name + ' is set to linked.  Tou must set the ' + name + ' in the ' + rule +  ' a linked ' + name + ' is linked to.
+				message = 'The ' + name + ' you set in the ' + rule + ' this rule links to is set to linked.  A Linked ' + name + ' cannot be linked to a ' + rule + ' where the ' + name + ' is set to linked.  Tou must set the ' + name + ' in the ' + rule +  ' a linked ' + name + ' is linked to.'
 				error_msgs.append(message)
 	elif value == 'linked_first' or value == 'linked_second':
 		if check.type != 'condition':
@@ -1360,13 +1365,13 @@ def linked_field(value, field, table, name, rule, required, errors):
 				condition = db.session.query(Condition).filter_by(check.condition1).first()
 				if condition.linked_first == True or condition.linked_second == True:
 					error = True	
-					message = 'The ' + name + ' you set in the ' + rule + ' this rule links to is set to linked.  A Linked ' + name + ' cannot be linked to a ' + rule + ' where the ' + name + ' is set to linked.  Tou must set the ' + name + ' in the ' + rule +  ' a linked ' + name + ' is linked to.
+					message = 'The ' + name + ' you set in the ' + rule + ' this rule links to is set to linked.  A Linked ' + name + ' cannot be linked to a ' + rule + ' where the ' + name + ' is set to linked.  Tou must set the ' + name + ' in the ' + rule +  ' a linked ' + name + ' is linked to.'
 					error_msgs.append(message)
 			elif value == 'linked_second':
 				condition = db.session.query(Condition).filter_by(check.condition2).first()
 				if condition.linked_first == True or condition.linked_second == True:
 					error = True	
-					message = 'The ' + name + ' you set in the ' + rule + ' this rule links to is set to linked.  A Linked ' + name + ' cannot be linked to a ' + rule + ' where the ' + name + ' is set to linked.  Tou must set the ' + name + ' in the ' + rule +  ' a linked ' + name + ' is linked to.
+					message = 'The ' + name + ' you set in the ' + rule + ' this rule links to is set to linked.  A Linked ' + name + ' cannot be linked to a ' + rule + ' where the ' + name + ' is set to linked.  Tou must set the ' + name + ' in the ' + rule +  ' a linked ' + name + ' is linked to.'
 					error_msgs.append(message)
 
 	errors['error_msgs'] = error_msgs
