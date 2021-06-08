@@ -592,6 +592,10 @@ def defense_post_errors(data):
 
 	errors = int_check(immunity_descriptor_count, 'Effect Count', errors)
 
+	errors = variable_field_of('replace', use, 'Works With', [dodge, fortitude, parry, toughness, will, active], errors)
+	errors = variable_field('add', use, 'Modifier', mod, errors)
+	errors = variable_field('rsnk', use, 'Modifier', mod, errors)
+
 	errors = together('a die roll', [roll, outcome], errors)
 	errors = check_fields(reflect, 'Reflects Attacks', [reflect_check], errors)
 	errors = check_field(reflect, 'Reflects Attacks', 'Reflect Check', reflect_check, errors)
@@ -608,6 +612,7 @@ def defense_post_errors(data):
 	errors = variable('Descriptor Immunity', 'descriptor', value, fields, errors)
 	fields = field('Rule', immunity_rule)
 	errors = variable('Game Rule Immunity', 'rule', value, fields, errors)
+
 
 	errors = variable_field('descriptor', immunity_type, 'Immune from Descriptor Type', immunity_descriptor_type, errors)
 

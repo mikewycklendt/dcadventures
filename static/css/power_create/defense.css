@@ -71,7 +71,7 @@
 	font-size: 90%;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 33% 34% 33%;
+	grid-template-columns: 5% auto auto auto 5%;
 	grid-auto-rows: auto;
 }
 
@@ -80,7 +80,7 @@
 	font-size: 90%;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 33% 34% 33%;
+	grid-template-columns: 10% auto auto auto 10%;
 	grid-auto-rows: auto;
 }
 

@@ -473,7 +473,7 @@ def variable_field_of(value, field, names, fields, errors):
 		return (errors)
 	else:
 		for f in fields:
-			if f != '':
+			if f != '' and f != False:
 				error = False
 				
 	if error:
