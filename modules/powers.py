@@ -2639,7 +2639,7 @@ def power_post_mod():
 	limited_degree = db_integer(PowerDegree, limited_degree)
 	concentration_check = db_integer(PowerCheck, concentration_check)
 	concentration_check_type = db_integer(PowerCheckType, concentration_check_type)
-	concentration_opposed = db_integer(PowerOpposed, concentration_opposed)
+	concentration_opposed = db_integer(PowerOpposedType, concentration_opposed)
 	effortless_degree = db_integer(PowerDegree, effortless_degree)
 	progressive_degree = db_integer(PowerDegree, progressive_degree)
 	progressive_degree_type = db_integer(PowerDegreeType, progressive_degree_type)
@@ -2834,7 +2834,7 @@ def power_post_mod():
 							precise_type = precise_type,
 							sustained_action = sustained_action,
 							sustained_no_move = sustained_no_move,
-							concentration_type = concentration_type
+							concentration_type = concentration_type,
 							concentration_check = concentration_check,
 							concentration_check_type = concentration_check_type,
 							concentration_opposed = concentration_opposed,
