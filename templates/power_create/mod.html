@@ -274,24 +274,35 @@
 		</div>
 
 		<div>
-			<div class="hidden" id="mod-progressive-degree">
-				<select class="degree-sml" id="mod_progressive_degree" name="mod_progressive_degree">
-					<option value="">Degree Effect</option>
-					<option value="">Use Degree of Success/Failure Form to put Optionns Here</option>
-					{% for p in power_degree %}
-						<option value={{p.id}}>{{p.name}}</option>
-					{% endfor %}
-				</select>
+			<div class="hidden split" id="mod-progressive-degree">
+
+				<div>
+					<select class="degree-sml" id="mod_progressive_degree" name="mod_progressive_degree">
+						<option value="">Degree Effect</option>
+						<option value="">Use Degree of Success/Failure Form to put Optionns Here</option>
+						{% for p in power_degree %}
+							<option value={{p.id}}>{{p.name}}</option>
+						{% endfor %}
+					</select>	
+				</div>
+
+				<div>
+					<div class="check-div-fit" style="font-size: 80%;">
+						<input type="checkbox" id="mod_progressive_degree_all" class="medium-checkbox med-checkbox" > All Of Degrees Effects
+					</div>
+				</div>
 			</div>
 
-			<div class="hidden" id="mod-progressive-degree-type">
-				<select class="degree-title-sml" id="mod_progressive_degree_type" name="mod_progressive_degree_type">
-					<option value="">Degree Effect by Group</option>
-					<option value="">Use Degree of Success/Failure Form to put Optionns Here</option>
-					{% for p in power_degree_type %}
-						<option value={{p.id}}>{{p.name}}</option>
-					{% endfor %}
-				</select>
+			<div class="hidden split" id="mod-progressive-degree-type">
+				<div>
+					<select class="degree-title-sml" id="mod_progressive_degree_type" name="mod_progressive_degree_type">
+						<option value="">Degree Effect by Group</option>
+						<option value="">Use Degree of Success/Failure Form to put Optionns Here</option>
+						{% for p in power_degree_type %}
+							<option value={{p.id}}>{{p.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
 			</div>
 		</div>
 

@@ -170,7 +170,7 @@
 	font-size: 100%;
 	width: 98%;
 	gap: .2vw;
-	grid-template-columns: 13% 25% 32% 30%;
+	grid-template-columns: 13% 25% auto;
 	grid-auto-rows: auto;
 	max-height: 0;
 	overflow: hidden;

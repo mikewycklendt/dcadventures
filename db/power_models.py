@@ -2159,6 +2159,7 @@ class PowerMod(db.Model):
 	incurable_type = db.Column(db.String())
 	progressive_type = db.Column(db.String())
 	progressive_degree = db.Column(db.Integer, db.ForeignKey('power_degree.id'))
+	progressive_degree_all = db.Column(db.Boolean)
 	progressive_degree_type = db.Column(db.Integer, db.ForeignKey('power_degree_type.id'))
 	cumulative = db.Column(db.Boolean)
 	cumulative_degree = db.Column(db.Integer, db.ForeignKey('power_degree_type.id'))
@@ -2299,6 +2300,7 @@ class PowerMod(db.Model):
 			'incurable_type': self.incurable_type,
 			'progressive_type': self.progressive_type,
 			'progressive_degree': self.progressive_degree,
+			'progressive_degree_all': self.progressive_degree_all,
 			'progressive_degree_type': self.progressive_degree_type,
 			'cumulative_degree': self.cumulative_degree
 		}

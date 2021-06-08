@@ -1340,6 +1340,7 @@ def mod_post(entry, body, cells):
 	new_mod = mod_create('Progressive', 14)
 	new_mod = mod_cell('Type', 6, [progressive_type], new_mod)
 	new_mod = mod_cell('Degree', 9, [progressive_degree], new_mod)
+	new_mod = mod_cell('All of Degrees Effects', 23, [progressive_degree_all], new_mod)
 	new_mod = mod_cell('Degree by Group', 18, [progressive_degree_type], new_mod)
 	body = mod_add(progressive, new_mod, body)
 

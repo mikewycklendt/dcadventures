@@ -2637,6 +2637,7 @@ def power_post_mod():
 	incurable_type = request.get_json()['incurable_type']
 	progressive_type = request.get_json()['progressive_type']
 	progressive_degree = request.get_json()['progressive_degree']
+	progressive_degree_all = request.get_json()['progressive_degree_all']
 	progressive_degree_type  = request.get_json()['progressive_degree_type']
 	cumulative_degree = request.get_json()['cumulative_degree']
 	cumulative = request.get_json()['cumulative']
@@ -2859,6 +2860,7 @@ def power_post_mod():
 							incurable_type = incurable_type,
 							progressive_type = progressive_type,
 							progressive_degree = progressive_degree,
+							progressive_degree_all = progressive_degree_all,
 							progressive_degree_type = progressive_degree_type,
 							cumulative_degree = cumulative_degree,
 							cumulative = cumulative
