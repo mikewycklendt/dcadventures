@@ -592,9 +592,13 @@ def defense_post_errors(data):
 
 	errors = int_check(immunity_descriptor_count, 'Effect Count', errors)
 
+	errors = variable_field_of('add', use, 'Works With', [dodge, fortitude, parry, toughness, will, active], errors)
 	errors = variable_field_of('replace', use, 'Works With', [dodge, fortitude, parry, toughness, will, active], errors)
-	errors = variable_field('add', use, 'Modifier', mod, errors)
-	errors = variable_field('rsnk', use, 'Modifier', mod, errors)
+	errors = variable_field_of('power', defense, 'Works With', [dodge, fortitude, parry, toughness, will, active], errors)
+	errors = required_if_any(defense, 'If this rule ihvolves a defense, the Use Type field', use, errors)
+	errors = variable_field('mod', use, 'Modifier', mod, errors)
+	errors = variable_field('mod_rank', use, 'Modifier', mod, errors)
+
 
 	errors = together('a die roll', [roll, outcome], errors)
 	errors = check_fields(reflect, 'Reflects Attacks', [reflect_check], errors)

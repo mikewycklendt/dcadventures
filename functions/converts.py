@@ -1375,6 +1375,8 @@ def trait_select(value, trait):
 		value = "Emotion Effects"
 	elif trait == 'any':
 		value = "Any Trait"
+	elif trait == 'mass_rank':
+		value = "Mass Rank"
 	
 	return (value)
 

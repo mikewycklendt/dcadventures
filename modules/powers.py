@@ -533,7 +533,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	unreliable_type = [{'type': '', 'name': 'Unreliable Type'}, {'type': 'fail', 'name': "Effect Doesn't Work"}, {'type': 'info', 'name': 'Bad Information From GM'}]
 
-	use_type = [{'type': '', 'name': 'Use Type'}, {'type': 'add', 'name': 'Add to'}, {'type': 'rank', 'name': 'Add Per Rank'}, {'type': 'replace', 'name': 'In Place of'}, {'type': 'gm', 'name': 'GM Choice'}]
+	use_type = [{'type': '', 'name': 'Use Type'}, {'type': 'mod', 'name': 'Modified'}, {'type': 'mod_rank', 'name': 'Modified Per Rank'}, {'type': 'add', 'name': 'Add to Works With'}, {'type': 'replace', 'name': 'In Place of Works With'}, {'type': 'gm', 'name': 'GM Choice'}]
 
 	value_bonus = [{'type': 'value', 'name': 'Value'}, {'type': 'bonus', 'name': 'Enhanced Skill'}]
 	

@@ -940,6 +940,8 @@ def skill_trait_select():
 		body['options'] = [{'id': "0", 'name': "Alteration Effects"}]
 	elif trait == 'all_emotion':
 		body['options'] = [{'id': "0", 'name': "All Emotion Effects"}]
+	elif trait == 'mass_rank':
+		body['options'] = [{'id': "0", 'name': "Mass Rank"}]
 	elif trait == 'any':
 		body['options'] = [{'id': "0", 'name': "Any Trait"}]
 	else:
