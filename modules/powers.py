@@ -2638,6 +2638,8 @@ def power_post_mod():
 	progressive_type = request.get_json()['progressive_type']
 	progressive_degree = request.get_json()['progressive_degree']
 	progressive_degree_type  = request.get_json()['progressive_degree_type']
+	cumulative_degree = request.get_json()['cumulative_degree']
+	cumulative = request.get_json()['cumulative']
 
 
 	cost = db_integer(PowerCost, cost)
@@ -2656,6 +2658,7 @@ def power_post_mod():
 	effortless_degree = db_integer(PowerDegree, effortless_degree)
 	progressive_degree = db_integer(PowerDegree, progressive_degree)
 	progressive_degree_type = db_integer(PowerDegreeType, progressive_degree_type)
+	cumulative_degree = db_integer(PowerDegreeType, cumulative_degree)
 
 	power_id = integer(power_id)
 	extra_id = db_integer(Extra, extra_id)
@@ -2856,7 +2859,9 @@ def power_post_mod():
 							incurable_type = incurable_type,
 							progressive_type = progressive_type,
 							progressive_degree = progressive_degree,
-							progressive_degree_type = progressive_degree_type
+							progressive_degree_type = progressive_degree_type,
+							cumulative_degree = cumulative_degree,
+							cumulative = cumulative
 						)
 
 		db.session.add(entry)

@@ -1073,6 +1073,8 @@ def mod_post(entry, body, cells):
 	progressive_type = entry.progressive_type
 	progressive_degree = entry.progressive_degree
 	progressive_degree_type = entry.progressive_degree_type
+	cumulative = entry.cumulative
+	cumulative_degree = entry.cumulative_degree
 
 
 	body = one_multiple(PowerMod, power_id, body)
@@ -1093,6 +1095,7 @@ def mod_post(entry, body, cells):
 	effortless_degree = get_keyword(PowerDegree, effortless_degree)
 	progressive_degree = get_keyword(PowerDegree. progressive_degree)
 	progressive_degree_type = get_name(PowerDegreeType, progressive_degree_type)
+	cumulative_degree = get_name(PowerDegreeType, cumulative_degree)
 
 	limited_trait = trait_select(limited_trait, limited_trait_type)
 	subtle_null_trait = trait_select(subtle_null_trait, subtle_null_trait_type)
@@ -1427,6 +1430,11 @@ def mod_post(entry, body, cells):
 	new_mod = mod_create('Unreliable', 12)
 	new_mod = mod_cell('Type', 6, [unreliable_type], new_mod)
 	body = mod_add(unreliable, new_mod, body)
+
+	cells = check_cell('Cumulative', 12, cumulative, cells, True)
+	new_mod = mod_create('Cumulative', 15)
+	new_mod = mod_cell('Degree of Success Failure Group:', 27, [cumulative_degree], new_mod)
+	body = mod_add(cumulative, new_mod, body)
 
 	cells = check_cell('Radius', 7, ranks, cells)
 	cells = check_cell('Accurate', 9, accurate, cells)

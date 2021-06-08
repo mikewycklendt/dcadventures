@@ -484,6 +484,14 @@ function mod_progressive_type() {
 	select_opacity_shared(select, options);
 }
 
+function mod_cumulative() {
+	const check = 'mod_cumulative';
+	const div = 'mod-cumulative';
+	const entry = 'mod-entry';
+
+	check_drop(check, div, entry);
+}
+
 let mod_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
@@ -629,7 +637,9 @@ function mod_submit() {
 	const incurable_type = select("mod_incurable_type");
 	const progressive_type = select("mod_progressive_type");
 	const progressive_degree = select("mod_progressive_degree");
-	const progressive_degree_type = select("mod_progressive_degree_type")
+	const progressive_degree_type = select("mod_progressive_degree_type");
+	const cumulative = check("mod_cumulative");
+	const cumulative_degree = select("mod_cumulative_degree");
 	
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -778,7 +788,9 @@ function mod_submit() {
 			'incurable_type': incurable_type,
 			'progressive_type': progressive_type,
 			'progressive_degree': progressive_degree,
-			'progressive_degree_type': progressive_degree_type
+			'progressive_degree_type': progressive_degree_type,
+			'cumulative': cumulative,
+			'cumulative_degree': cumulative_degree
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

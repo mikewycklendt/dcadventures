@@ -238,7 +238,9 @@ function create_duration() {
 function create_duration_type() {
 	const select = 'create_duration_type';
 	const options = [{'val': ['4', '5'], 'div': 'create-duration-innate'}];
+	const checks = ['create_duration_innate']
 
+	uncheck_all(checks);
 	select_opacity_shared(select, options);
 }
 

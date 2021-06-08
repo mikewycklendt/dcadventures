@@ -980,6 +980,8 @@ def mod_post_errors(data):
 	progressive_type = data['progressive_type']
 	progressive_degree = data['progressive_degree']
 	progressive_degree_type = data['progressive_degree_type']
+	cumulative = data['cumulative']
+	cumulative_degree = data['cumulative_degree']
 
 	errors = id_check(PowerCost, cost, 'Cost', errors)
 	errors = id_check(PowerRanks, ranks, 'Ranks', errors)
@@ -996,6 +998,8 @@ def mod_post_errors(data):
 	errors = id_check(PowerOpposedType, concentration_opposed, 'Concentration Opponent Check Group', errors)
 	errors = id_check(PowerDegree, progressive_degree, 'Progressive Degree', errors)
 	errors = id_check(PowerDegreeType, progressive_degree_type, 'Progressive Degree by Group', errors)
+	errors = id_check(PowerDegreeType, cumulative_degree, 'Cumulative Degree Group', errors)
+
 
 	errors = power_check(power_id, errors)
 
@@ -1200,12 +1204,16 @@ def mod_post_errors(data):
 	errors = check_fields(incurable, 'Incurable', [incurable_type], errors)
 	errors = check_field(incurable, 'Incurable', 'Incurable Type', incurable_type, errors)
 
-	errors = check_fields(progressive, 'Progressivr', [progressive_type], errors)
+	errors = check_fields(progressive, 'Progressive', [progressive_type], errors)
 	errors = check_field(progressive, 'Progressive', 'Progressive Type', progressive_type, errors)
 	errors = variable_fields('increase', 'Increase Effect Degree', progressive_type, [progressive_degree_type], errors)
 	errors = variable_field('increase', progressive_type, 'Degree by Group', progressive_degree_type, errors)
 	errors = variable_fields('repeat', 'Repeat Degree Effect', progressive_type, [progressive_degree], errors)
 	errors = variable_field('repeat', progressive_type, 'Repeat Degree Effect', progressive_degree, errors)
+
+	errors = check_fields(cumulative, 'Cumulative', [cumulative_degree], errors)
+	errors = check_field(cumulative, 'Cumulative', 'Degree of Success/Failure Group', cumulative_degree, errors)
+	
 
 	errors = check_fields(others, 'Affects Others', [others_type], errors)
 	errors = check_field(others, 'Affects Others', 'Affects Others Type', others_type, errors)
