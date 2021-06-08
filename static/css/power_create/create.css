@@ -145,6 +145,16 @@
 	transition: all .4s ease-out;
 }
 
+#create-duration {
+	display: none;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 18% 30% auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
 #create-weapon-value {
 	opacity: 0%;
 	transition: all .3s linear;
