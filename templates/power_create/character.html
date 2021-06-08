@@ -406,6 +406,10 @@
 			Carrying Capacity:
 		</div>
 
+		<div class="vcenter" style="font-size: 80%;">
+			Size Rank
+	   </div>
+
 		<div>
 			<select class="select-sml" id="char_carry_capacity" name="char_carry_capacity">
 				<option value="">Max Size</option>
@@ -413,14 +417,11 @@
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
 				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
+					<option value={{i}}>+{{i}}</option>
 				{% endfor %}
 			</select>
 		</div>
 
-		<div>
-			 - size rank
-		</div>
 
 	</div>
 
