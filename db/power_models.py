@@ -1670,7 +1670,7 @@ class PowerCreate(db.Model):
 	cost = db.Column(db.Integer, db.ForeignKey('power_cost.id'))
 	ranks = db.Column(db.Integer, db.ForeignKey('power_ranks.id'))
 	ranged_damage = db.Column(db.Integer, db.ForeignKey('power_damage.id'))
-	
+	ranged_check = db.Column(db.Integer, db.ForeignKey('power_check_type.id'))
 	weapon_damage = db.Column(db.Integer, db.ForeignKey('power_damage.id'))
 	multiple = db.Column(db.String())
 	duration = db.Column(db.Boolean)
