@@ -1654,7 +1654,7 @@ class PowerCreate(db.Model):
 	transform_start_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	transform_end_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	move_player = db.Column(db.String())
-	move_check = db.Column(db.Integer, db.ForeignKey('power_check.id'))
+	
 	move_opposed = db.Column(db.Integer, db.ForeignKey('power_opposed.id'))
 	move_opponent_check = db.Column(db.Boolean)
 	trap_check = db.Column(db.Integer, db.ForeignKey('power_check.id'))
