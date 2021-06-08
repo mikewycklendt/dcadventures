@@ -212,7 +212,7 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="extra_action" name="extra_action">
+			<select class="select-sml" id="extra_action" name="extra_action" onchange="extra_action()">
 				<option value="">Action</option>
 				{% for a in actions %}
 					<option value={{a.id}}>{{a.name}}</option>
@@ -227,6 +227,15 @@
 				{% endfor %}
 			</select>
 		</div>	
+
+		<div class="hidden" id="extra-action-limit">
+			<select class="select-sml" id="extra_action_limit" name="extra_action_limit">
+				<option value="">Limit Per Turn</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
 	</div>
 
 	<div id="extras-extra-effect">

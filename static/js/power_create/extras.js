@@ -55,6 +55,14 @@ function extra_range() {
 	select_entry(check, base, entry, field, value);
 }
 
+function extra_action() {
+	const select = 'extra_action';
+	const options = [{'val': '3', 'div': 'extra-action-limit'}]
+	const fields = ['extra_action_limit']
+
+	reset_all(fields);
+	select_opacity(select, options);
+}
 
 let extras_grid = {'titles': false,
 				'columns': [],
@@ -105,6 +113,7 @@ function extras_submit() {
 	const action_check = check("extra_action_check");
 	const action = select("extra_action");
 	const action_type = select("extra_action_type");
+	const action_limit = select("extra_action_limit");
 	const routine = check("extra_routine");
 	const skill = select("extra_skill");
 	const skill_type = select("extra_skill_type");
@@ -162,6 +171,7 @@ function extras_submit() {
 			'action_check': action_check,
 			'action': action,
 			'action_type': action_type,
+			'action_limit': action_limit,
 			'routine': routine,
 			'skill_type': skill_type,
 			'skill': skill,

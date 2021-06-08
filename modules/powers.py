@@ -955,6 +955,7 @@ def power_post_extra():
 	action_check = request.get_json()['action_check']
 	action = request.get_json()['action']
 	action_type = request.get_json()['action_type']
+	action_limit = request.get_json()['action_limit']
 	routine = request.get_json()['routine']
 	skill_type = request.get_json()['skill_type']
 	skill = request.get_json()['skill']
@@ -972,6 +973,8 @@ def power_post_extra():
 	extra_effect_count = integer(extra_effect_count)
 	cost = var_convert(cost)
 	ranks = var_convert(ranks)
+
+	action_limit = integer(action_limit)
 
 	try:
 		entry = Extra(power_id = power_id,
@@ -1010,6 +1013,7 @@ def power_post_extra():
 						action_check = action_check,
 						action = action,
 						action_type = action_type,
+						action_limit = action_limit,
 						routine = routine,
 						skill_type = skill_type,
 						skill = skill,
