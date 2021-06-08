@@ -266,7 +266,7 @@ trait amount
 	display: none;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 17% 10% 13% auto auto auto;
+	grid-template-columns: 14% 10% 14% auto auto auto;
 	grid-auto-rows: auto;
 	max-height: 0;
 	overflow: hidden;
