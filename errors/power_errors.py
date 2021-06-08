@@ -976,7 +976,7 @@ def mod_post_errors(data):
 	errors = id_check(PowerDegree, limited_degree, 'Degree'. errors)
 	errors = id_check(PowerCheck, concentration_check, 'Concentration Check', errors)
 	errors = id_check(PowerCheckType, concentration_check_type, 'Concentration Check by Group', errors)
-	errors = id_check(PowerOpposed, concentration_opposed)
+	errors = id_check(PowerOpposedType, concentration_opposed, 'Concentration Opponent Check Group', errors)
 	errors = id_check(PowerDegree, progressive_degree, 'Progressive Degree', errors)
 	errors = id_check(PowerDegreeType, progressive_degree_type, 'Progressive Degree by Group', errors)
 
