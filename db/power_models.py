@@ -1654,11 +1654,12 @@ class PowerCreate(db.Model):
 	transform_start_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	transform_end_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	move_player = db.Column(db.String())
-	
-	
+	move_check = db.Column(db.Integer, db.ForeignKey('power_check_type.id'))
+	move_opposed = db.Column(db.Integer, db.ForeignKey('power_opposed_type.id'))
 	move_opponent_check = db.Column(db.Boolean)
-	
-	
+	trap_check = db.Column(db.Integer, db.ForeignKey('power_check_type.id'))
+	trap_resist = db.Column(db.Integer, db.ForeignKey('power_check_type.id'))
+	trap_opposed = db.Column(db.Integer, db.ForeignKey('power_opposed_type.id'))
 	trap_escape = db.Column(db.Boolean)
 	support_strength = db.Column(db.Integer)
 	support_strengthen = db.Column(db.Boolean)
@@ -1669,7 +1670,7 @@ class PowerCreate(db.Model):
 	cost = db.Column(db.Integer, db.ForeignKey('power_cost.id'))
 	ranks = db.Column(db.Integer, db.ForeignKey('power_ranks.id'))
 	ranged_damage = db.Column(db.Integer, db.ForeignKey('power_damage.id'))
-	ranged_check = db.Column(db.Integer, db.ForeignKey('power_check.id'))
+	
 	weapon_damage = db.Column(db.Integer, db.ForeignKey('power_damage.id'))
 	multiple = db.Column(db.String())
 	duration = db.Column(db.Boolean)
