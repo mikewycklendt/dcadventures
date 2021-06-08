@@ -227,6 +227,8 @@ def character_post_errors(data):
 	limbs_projection = data['limbs_projection']
 	limbs_duration = data['limbs_duration']
 	carry_capacity = data['carry_capacity']
+	carry_internsl = data['carry_internal']
+	carry_mass = data['carry_mass']
 	points_value = data['points_value']
 	points_type = data['points_type']
 	points_trait_type = data['points_trait_type']
@@ -287,7 +289,9 @@ def character_post_errors(data):
 	errors = check_field(limbs, 'Extra Limbs', 'Active Condition', [limbs_condition], errors)
 	errors = check_field(limbs, 'Extra Limbs', 'Limbs Duration', [limbs_duration], errors)
 	errors = check_field(limbs, 'Extra Limbs', 'Limbs', limbs_count, errors)
-	errors = check_field(carry, 'Extra Carry', 'Carry Capacity', carry_capacity, errors)
+	
+	errors = check_of(carry, 'Extra Carry'. 'Size Modifier or Mass Rank', [carry_mass, carry_capacity], errors)
+	errors = check_field(carry_internal, 'Internal', 'Size Modifier', carry_capacity, errors)
 
 	errors = check_fields(points, 'Hero Points', [points_value, points_trait_type, points_trait], errors)
 	errors = check_field(points, 'Hero Points', 'Points Value', points_value, errors)

@@ -412,12 +412,30 @@
 
 		<div>
 			<select class="select-sml" id="char_carry_capacity" name="char_carry_capacity">
-				<option value="">Max Size</option>
+				<option value="">Size Nodifier</option>
 				{% for i in negatives %}
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
 				{% for i in positives %}
 					<option value={{i}}>+{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div class="check-div-fit" style="font-size: 80%;">
+				<input type="checkbox" id="char_carry_internal" class="medium-checkbox med-checkbox" > Internal
+			</div>
+		</div>
+
+		<div>
+			<select class="select-sml" id="char_carry_mass" name="char_carry_mass">
+				<option value="">Mass Rank</option>
+				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
 				{% endfor %}
 			</select>
 		</div>

@@ -297,6 +297,8 @@ function char_submit() {
 	const limbs_condition = select("char_limbs_condition");
 	const limbs_duration = select("char_limbs_duration")
 	const carry_capacity = select("char_carry_capacity");
+	const carry_internal = check("char_carry_internal");
+	const carry_mass = select("char_carry_mass");
 	const points_value = select("char_points_value");
 	const points_trait_type = select("char_points_trait_type");
 	const points_trait = select("char_points_trait");
@@ -369,6 +371,8 @@ function char_submit() {
 			'limbs_condition': limbs_condition,
 			'limbs_duration': limbs_duration,
 			'carry_capacity': carry_capacity,
+			'carry_internal': carry_internal,
+			'carry_mass': carry_mass,
 			'points_type': points_type,
 			'points_value': points_value,
 			'points_trait_type': points_trait_type,

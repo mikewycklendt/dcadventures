@@ -1455,6 +1455,8 @@ def power_post_character():
 	limbs_projection = request.get_json()['limbs_projection']
 	limbs_duration = request.get_json()['limbs_duration']
 	carry_capacity = request.get_json()['carry_capacity']
+	carry_internal = request.get_json()['carry_internal']
+	carry_mass = request.get_json()['carry_mass']
 	points_type = request.get_json()['points_type']
 	points_value = request.get_json()['points_value']
 	points_trait_type = request.get_json()['points_trait_type']
@@ -1561,6 +1563,8 @@ def power_post_character():
 							limbs_sustained = limbs_sustained,
 							limbs_projection = limbs_projection,
 							carry_capacity = carry_capacity,
+							carry_internal = carry_internal,
+							carry_mass = carry_mass,
 							points_type = points_type,
 							points_value = points_value,
 							points_trait_type = points_trait_type,

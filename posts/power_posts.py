@@ -103,6 +103,8 @@ def character_post(entry, body, cells):
 	limbs_projection = entry.limbs_projection
 	limbs_duration = entry.limbs_duration
 	carry_capacity = entry.carry_capacity
+	carry_internal = entry.carry_internal
+	carry_mass = entry.carry_mass
 	points_value = entry.points_value
 	points_trait_type = entry.points_trait_type
 	points_trait = entry.points_trait
@@ -208,8 +210,10 @@ def character_post(entry, body, cells):
 
 	cells = check_cell('Carry', 7, carry, cells, True)
 	new_mod = mod_create('Extra Carry Capacity:', 25)
-	sizerank = string('- Size Rank', [carry_capacity])
-	new_mod = mod_cell('Maximum Size Rank', 22, [carry_capacity, sizerank], new_mod)
+	sizerank = add_plus(carry_capacity)
+	new_mod = mod_cell('Maximum Size Rank', 22, ['Size Rank', carry_capacity], new_mod)
+	new_mod = mod_cell('Internal', 10, [carry_internal], new_mod)
+	new_mod = mod_cell('Mass Rank', 12, [carry_mass], new_mod)
 	body = mod_add(carry, new_mod, body)
 
 	cells = check_cell('Sustained', 11, sustained, cells)

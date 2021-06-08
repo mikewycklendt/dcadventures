@@ -1497,6 +1497,8 @@ class PowerChar(db.Model):
 	limbs_condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	limbs_duration = db.Column(db.Integer, db.ForeignKey('power_duration.id'))
 	carry_capacity = db.Column(db.Integer)
+	carry_internal = db.Column(db.Boolean)
+	carry_mass = db.Column(db.Integer)
 	points_type = db.Column(db.String())
 	points_value = db.Column(db.Integer)
 	points_trait_type = db.Column(db.String())
@@ -1563,6 +1565,8 @@ class PowerChar(db.Model):
 			'limbs_projection': self.limbs_projection,
 			'limbs_duration': self.limbs_duration,
 			'carry_capacity': self.carry_capacity,
+			'carry_internal': self.carry_internal,
+			'carry_mass': self.carry_mass,
 			'points_type': self.points_type,
 			'points_value': self.points_value,
 			'points_trait_type': self.points_trait_type,
