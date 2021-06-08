@@ -101,6 +101,7 @@ def character_post(entry, body, cells):
 	limbs_sustained = entry.limbs_sustained
 	limbs_condition = entry.limbs_condition
 	limbs_projection = entry.limbs_projection
+	limbs_duration = entry.limbs_duration
 	carry_capacity = entry.carry_capacity
 	points_value = entry.points_value
 	points_trait_type = entry.points_trait_type
@@ -143,6 +144,7 @@ def character_post(entry, body, cells):
 	limbs_condition = get_name(Condition, limbs_condition)
 	appear_creature = get_name(Creature, appear_creature)
 	appear_creature_narrow = get_name(NarrowCreature, appear_creature_narrow)
+	limbs_duration = get_name(PowerDuration, limbs_duration)
 
 	limbs_rank = ('Limbs Per Rank', limbs_rank)
 
@@ -200,8 +202,7 @@ def character_post(entry, body, cells):
 	new_mod = mod_create('Extra Limbs', 14)
 	new_mod = mod_cell('Limbs', 6, [limbs_count, limbs_rank], new_mod)
 	new_mod = mod_cell('Condition:', 10, [limbs_condition], new_mod)
-	new_mod = mod_cell('Continuous:', 11, [limbs_continuous], new_mod)
-	new_mod = mod_cell('Sustained:', 10, [limbs_sustained], new_mod)
+	new_mod = mod_cell('Duration', 10, [limbs_duration], new_mod)
 	new_mod = mod_cell('Projection:', 12, [limbs_projection], new_mod)
 	body = mod_add(limbs, new_mod, body)
 
@@ -690,7 +691,6 @@ def environment_post(entry, body, cells):
 	impede = entry.impede
 	conceal = entry.conceal
 	visibility = entry.visibility
-	selective = entry.selective
 	immunity = entry.immunity
 	immunity_type = entry.immunity_type
 	temp_type = entry.temp_type
@@ -718,6 +718,7 @@ def environment_post(entry, body, cells):
 	element = entry.element
 	element_strength = entry.element_strength
 	element_mass = entry.element_mass
+	selective = entry.selective
 
 	cost = get_cost(cost, ranks, extra_id)
 
@@ -807,6 +808,7 @@ def environment_post(entry, body, cells):
 	new_mod = mod_cell('Type', 6, [temp_type], new_mod, value)
 	new_mod = mod_cell('Extremity', 10, [immunity_extremity], new_mod, value)
 	body = mod_add(immunity, new_mod, body)
+
 
 	cells = circ_cell('Cost', 'Cost', 5, cost, cells, body)
 	

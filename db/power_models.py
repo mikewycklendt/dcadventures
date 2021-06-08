@@ -1495,6 +1495,7 @@ class PowerChar(db.Model):
 	limbs_sustained = db.Column(db.Boolean)
 	limbs_projection = db.Column(db.Boolean)
 	limbs_condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	limbs_duration = db.Column(db.Integer, db.ForeignKey('power_duration.id'))
 	carry_capacity = db.Column(db.Integer)
 	points_type = db.Column(db.String())
 	points_value = db.Column(db.Integer)
@@ -1560,6 +1561,7 @@ class PowerChar(db.Model):
 			'limbs_continuous': self.limbs_continuous,
 			'limbs_sustained': self.limbs_sustained,
 			'limbs_projection': self.limbs_projection,
+			'limbs_duration': self.limbs_duration,
 			'carry_capacity': self.carry_capacity,
 			'points_type': self.points_type,
 			'points_value': self.points_value,
@@ -1950,7 +1952,8 @@ class PowerEnv(db.Model):
 			'elements': self.elements,
 			'element': self.element,
 			'element_strength': self.element_strength,
-			'element_mass': self.element_mass
+			'element_mass': self.element_mass,
+			'multiple': self.multiple
 		}
 
 class PowerMinion(db.Model):

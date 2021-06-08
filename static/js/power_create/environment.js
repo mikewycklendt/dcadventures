@@ -189,6 +189,7 @@ function env_submit() {
 	const element = select("env_element");
 	const element_strength = select("env_element_strength");
 	const element_mass = select("env_element_mass");
+	const selective = check("env_selective");
 	
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -237,7 +238,8 @@ function env_submit() {
 			'elements': elements,
 			'element': element,
 			'element_strength': element_strength,
-			'element_mass': element_mass
+			'element_mass': element_mass,
+			'selective': selective
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

@@ -361,7 +361,7 @@
 
 		<div>
 			<select class="select-sml" id="char_limbs_condition" name="char_limbs_condition">
-				<option value="">Condition While Using</option>
+				<option value="">Active Condition</option>
 				{% for c in conditions %}
 					<option value={{c.id}}>{{c.name}}</option>
 				{% endfor %}
@@ -369,12 +369,21 @@
 		</div>
 
 		<div>
+			<select class="select-sml" id="char_limbs_duration" name="char_limbs_duration">
+				<option value="">Limbs Duration</option>
+				{% for d in duration_type %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div style="display: none;">
 			<div class="check-div" style="font-size: 80%;">
 				<input type="checkbox" id="char_limbs_continuous" class="medium-checkbox med-checkbox" > Continuous
 			</div>
 		</div>
 		
-		<div>
+		<div style="display: none;">
 			<div class="check-div" style="font-size: 80%;">
 				<input type="checkbox" id="char_limbs_sustained" class="medium-checkbox med-checkbox" > Sustained
 			</div>

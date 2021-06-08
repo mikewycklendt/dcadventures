@@ -353,6 +353,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	environment_immunity = [{'type': '', 'name': 'Type'}, {'type': 'env', 'name': 'Environment'}, {'type': 'condition', 'name': 'Environment Condition'}]
 
+	env_multiple = [{'type': '', 'name': 'If Multiple'}, {'type': 'x', 'name': 'Choose with Power'}, {'type': 'all', 'name': 'All take Effect'}, {'type': 'selective', 'name': 'Selective'}]
+
 	equipment_use = [{'type': '', 'name': 'Use Type'}, {'type': 'use', 'name': 'With Use of'}, {'type': 'resist', 'name': 'Resist'}]
 
 	extra_type = [{'type': '', 'name': 'Effect Type'}, {'type': 'over', 'name': 'Overwrite All'}, {'type': 'form', 'name': 'Overwrite Used Forms'}, {'type': 'filled', 'name': 'Overwrite Filled'}, {'type': 'required', 'name': 'Overwrites Required'}, {'type': 'uncheck', 'name': 'Checked = Unchecked'}, {'type': 'add', 'name': 'Add'}]
@@ -1451,6 +1453,7 @@ def power_post_character():
 	limbs_sustained = request.get_json()['limbs_sustained']
 	limbs_condition = request.get_json()['limbs_condition']
 	limbs_projection = request.get_json()['limbs_projection']
+	limbs_duration = request.get_json()['limbs_duration']
 	carry_capacity = request.get_json()['carry_capacity']
 	points_type = request.get_json()['points_type']
 	points_value = request.get_json()['points_value']
@@ -1553,6 +1556,7 @@ def power_post_character():
 							limbs_count = limbs_count,
 							limbs_rank = limbs_rank,
 							limbs_condition = limbs_condition,
+							limbs_duration = limbs_duration,
 							limbs_continuous = limbs_continuous,
 							limbs_sustained = limbs_sustained,
 							limbs_projection = limbs_projection,
@@ -2189,6 +2193,7 @@ def power_post_environment():
 	element = request.get_json()['element']
 	element_strength = request.get_json()['element_strength']
 	element_mass = request.get_json()['element_mass']
+	selective = request.get_json()['selective']
 
 
 	cost = db_integer(PowerCost, cost)
@@ -2282,7 +2287,8 @@ def power_post_environment():
 							elements = elements,
 							element = element,
 							element_strength = element_strength,
-							element_mass = element_mass)
+							element_mass = element_mass,
+							selective = selective)
 
 		db.session.add(entry)
 		db.session.commit()

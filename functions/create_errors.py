@@ -579,6 +579,30 @@ def dependent(name, value, values, errors):
 		errors['error'] = error
 
 	return (errors)
+	
+def dependent_of(name, names, value, values, errors):
+
+	error_msgs = errors['error_msgs']
+	error = True
+
+	check = False
+
+	if value == '':
+		return (errors)
+
+	for value in values:
+		if value != '' and value != False:
+			error = False
+				
+	if error:
+		message = 'If this rule ' + name + ' you must ' + names + '.'
+		error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
 
 
 def valid_time_type(table, id, values, message):

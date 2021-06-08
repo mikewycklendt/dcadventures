@@ -21,7 +21,7 @@ from functions.create import name_exist, db_insert, capitalize
 from functions.linked import link_add, delete_link, level_add, delete_level, linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link
 from functions.user_functions import user_item
 
-from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable, not_required, seperate_checks, checked_invalid_option, variable_fields_of, incompatible, valid_options, extra_option, variable_required_rules, cross_check, variable_field_required
+from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable, not_required, seperate_checks, checked_invalid_option, variable_fields_of, incompatible, valid_options, extra_option, variable_required_rules, cross_check, variable_field_required, dependent_of
 from functions.create_posts import send_multiple, one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string, circ_cell
 
 from create_functions.power_create import power_check, rule_check, rule_select, cost_check, extra_cost, extra_check, extra_convert, field_cost, multiple_cost, variable_cost, sense_cost, power_rules, valid_extra, ranks_error, ranks_function, cost_error, cost_exist, cost_check_table, degree_check, extra_cost_exist, multiple_error, trait_cost, power_sense_condition, power_reflect_immune, extra_rule_select
@@ -225,6 +225,7 @@ def character_post_errors(data):
 	limbs_sustained = data['limbs_sustained']
 	limbs_condition = data['limbs_condition']
 	limbs_projection = data['limbs_projection']
+	limbs_duration = data['limbs_duration']
 	carry_capacity = data['carry_capacity']
 	points_value = data['points_value']
 	points_type = data['points_type']
@@ -282,9 +283,12 @@ def character_post_errors(data):
 	errors = variable_fields('defense', 'Reduced Defense', reduced_trait_type, [reduced_trait], errors)
 	errors = variable_field('defense', reduced_trait_type, 'Defense', reduced_trait, errors)
 
-	errors = check_of(limbs, 'Extra Limbs', [limbs_continuous, limbs_sustained, limbs_distracting, limbs_projection], errors)
+	errors = check_fields(limbs, 'Extra Limbs', [limbs_duration, limbs_count, limbs_condition], errors)
+	errors = check_field(limbs, 'Extra Limbs', 'Active Condition', [limbs_condition], errors)
+	errors = check_field(limbs, 'Extra Limbs', 'Limbs Duration', [limbs_duration], errors)
 	errors = check_field(limbs, 'Extra Limbs', 'Limbs', limbs_count, errors)
 	errors = check_field(carry, 'Extra Carry', 'Carry Capacity', carry_capacity, errors)
+
 	errors = check_fields(points, 'Hero Points', [points_value, points_trait_type, points_trait], errors)
 	errors = check_field(points, 'Hero Points', 'Points Value', points_value, errors)
 	errors = check_field(points, 'Hero Points', 'Trait Type', points_trait_type, errors)
@@ -692,6 +696,9 @@ def environment_post_errors(data):
 	errors = id_check(Element, element)
 
 	errors = together_names('an Environmental Effect Range', ['Starting Radius', 'Distance Rank', 'Cost Per Rank'], [radius, distance, rank], errors)
+
+	errors = dependent_of('affects an area of the environment', 'create an Environment Condition, Impede Movement, Create Light or Affects Visibility rule', radius, [condition_check, impede, conceal, visibility], errors)
+
 	errors = check_fields(condition_check, 'Environmental Condition', [condition_temp_type], errors)
 	errors = check_field(condition_check, 'Environmental Condition', 'Temperature Type', condition_temp_type, errors)
 
