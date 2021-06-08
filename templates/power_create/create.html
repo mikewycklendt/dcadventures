@@ -210,7 +210,7 @@
 	</div>
 
 	<div id="create-duration">
-		<div>
+		<div class="valign">
 			Object Duration:
 		</div>
 
@@ -233,7 +233,7 @@
 	<div id="create-transform">
 
 		<div id="create-transform-row1">
-			<div>
+			<div class="valign">
 				Transform:
 			</div>
 
@@ -296,6 +296,11 @@
 	</div>
 
 	<div id="create-move">
+
+		<div class="valign">
+			Moveable
+		</div>
+
 		<div>
 			<select class="select-sml" id="create_move_player" name="create_move_player" onchange="create_move_player()">
 				{% for m in moveable %}
@@ -304,19 +309,17 @@
 			</select>
 		</div>
 
-		<div>
-			<div id="create-move-check">
-				<select class="check-sml" id="create_move_check" name="create_move_check">
-					<option value="">Check</option>
-					<option value="">Use Variable Check Form to Put Options Here</option>
-					{% for p in power_check %}
-						<option value={{p.id}}>{{p.name}}</option>
-					{% endfor %}
-				</select>
-			</div>
+		<div id="create-move-check">
+			<select class="check-sml" id="create_move_check" name="create_move_check">
+				<option value="">Check</option>
+				<option value="">Use Variable Check Form to Put Options Here</option>
+				{% for p in power_check %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
 		</div>
-
-		<div class="check-div">
+		
+		<div class="check-div-fit">
 			<input type="checkbox" id="create_move_opponent_check" class="medium-checkbox med-checkbox" onclick="create_move_opponent_check()"> Opponent Can Move
 		</div>
 
@@ -335,7 +338,7 @@
 	</div>
 
 	<div id="create-trap">
-		<div>
+		<div class="valign">
 			Trap:
 		</div>
 
@@ -379,7 +382,7 @@
 	</div>
 
 	<div id="create-ranged">
-		<div>
+		<div class="valign">
 			Ranged Attack:
 		</div>
 
@@ -407,7 +410,7 @@
 
 	<div id="create-weapon">
 		
-		<div>
+		<div class="valign">
 			Weapon:
 		</div>
 

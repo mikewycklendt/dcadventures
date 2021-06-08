@@ -224,7 +224,7 @@
 #create-move {
 	display: none;
 	width: 98%;
-	grid-template-columns: 15% 25% 25% 35%;
+	grid-template-columns: 10% 17% auto auto auto;
 	gap: 3px;
 	max-height: 0;
 	overflow: hidden;
