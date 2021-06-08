@@ -2143,7 +2143,7 @@ class PowerMod(db.Model):
 	concentration_type = db.Column(db.String())
 	concentration_check = db.Column(db.Integer, db.ForeignKey('power_check.id'))
 	concentration_check_type = db.Column(db.Integer, db.ForeignKey('power_check_type.id'))
-	
+	concentration_opposed = db.Column(db.Integer, db.ForeignKey('power_opposed_type.id'))
 	concentration_effort = db.Column(db.Boolean)
 	unreliable_type = db.Column(db.String())
 	incurable_type = db.Column(db.String())

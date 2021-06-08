@@ -1066,7 +1066,7 @@ def mod_post(entry, body, cells):
 	limited_degree = get_keyword(PowerDegree, limited_degree)
 	concentration_check = get_keyword(PowerCheck, concentration_check)
 	concentration_check_type = get_name(PowerCheckType, concentration_check_type)
-	concentration_opposed = get_keyword(PowerOpposed, concentration_opposed)
+	concentration_opposed = get_name(PowerOpposedType, concentration_opposed)
 	effortless_degree = get_keyword(PowerDegree, effortless_degree)
 	progressive_degree = get_keyword(PowerDegree. progressive_degree)
 	progressive_degree_type = get_name(PowerDegreeType, progressive_degree_type)
