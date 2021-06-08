@@ -227,6 +227,7 @@ class Extra(db.Model):
 	action_check = db.Column(db.Boolean)
 	action = db.Column(db.Integer, db.ForeignKey('actions.id'))
 	action_type = db.Column(db.String())
+	action_limit = db.Column(db.Integer)
 	routine = db.Column(db.Boolean)
 	skill_type = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
 	skill = db.Column(db.Integer, db.ForeignKey('skills.id'))
@@ -307,6 +308,7 @@ class Extra(db.Model):
 			'action_check': self.action_check,
 			'action': self.action,
 			'action_type': self.action_type,
+			'action_limit': self.action_limit,
 			'skill_type': self.skill_type,
 			'skill': self.skill,
 			'range_check': self.range_check,
