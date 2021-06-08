@@ -290,7 +290,7 @@ def character_post_errors(data):
 	errors = check_field(limbs, 'Extra Limbs', 'Limbs Duration', [limbs_duration], errors)
 	errors = check_field(limbs, 'Extra Limbs', 'Limbs', limbs_count, errors)
 	
-	errors = check_of(carry, 'Extra Carry'. 'Size Modifier or Mass Rank', [carry_mass, carry_capacity], errors)
+	errors = check_of(carry, 'Extra Carry', 'Size Modifier or Mass Rank', [carry_mass, carry_capacity], errors)
 	errors = check_field(carry_internal, 'Internal', 'Size Modifier', carry_capacity, errors)
 
 	errors = check_fields(points, 'Hero Points', [points_value, points_trait_type, points_trait], errors)
