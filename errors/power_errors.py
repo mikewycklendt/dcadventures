@@ -2610,10 +2610,10 @@ def power_degree_post_errors(data):
 	errors = variable_field('reverse', type, 'Degree Type', reverse_type, errors)
 	errors = variable_field('reverse', type, 'Degree', reverse, errors)
 
-	errors = linked_field(condition1, linked, 'Condition', 'Degree of Success/Failure rule', 'linked degree', errors)
-	errors = linked_field(condition2, linked, 'Condition', 'Degree of Success/Failure rule', 'linked degree', errors)
+	errors = linked_field(condition1, linked, PowerDegree, 'Condition', 'Degree of Success/Failure rule', 'linked degree', errors)
+	errors = linked_field(condition2, linked, PowerDegree, 'Condition', 'Degree of Success/Failure rule', 'linked degree', errors)
 
-	errors = linked_field(consequence, linked, 'Consequence', 'Degree of Success/Failure rule', 'linked degree', errors)
+	errors = linked_field(consequence, linked, PowerDegree, 'Consequence', 'Degree of Success/Failure rule', 'linked degree', errors)
 
 	errors = linked_group_check(PowerDC, 'other', target, 'other', 'target', power_id, 'power_id', 'a degree of success or failure for another character', 'DC', 'the target field to Other Character', errors)
 

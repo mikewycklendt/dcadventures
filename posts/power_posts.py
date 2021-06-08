@@ -3810,6 +3810,7 @@ def power_extra_post(entry, body, cells):
 	action_check = entry.action_check
 	action = entry.action
 	action_type = entry.action_type
+	action_limit = entry.action_limit
 	routine = entry.routine
 	skill_type = entry.skill_type
 	skill = entry.skill
@@ -3836,6 +3837,8 @@ def power_extra_post(entry, body, cells):
 
 	target_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'anyone', 'name': 'Anyone'}]
 	target = selects(target, target_select)
+
+	action_limit = integer_convert(action_limit)
 
 	cells = cell('Name', 23, [name])
 	cells = cell('Cost', 12, [cost], cells)
@@ -3883,6 +3886,7 @@ def power_extra_post(entry, body, cells):
 	cells = check_cell('Action', 8, action_check, cells, True)
 	new_mod = mod_create('Changes Action Type', 23)
 	new_mod = mod_cell('Action', 8, [action], new_mod)
+	new_mod = mod_cell('Limit Per Turn', 17, [action_limit], new_mod)
 	new_mod = mod_cell('Type', 5, [action_type], new_mod)
 	body = mod_add(action_check, new_mod, body)
 

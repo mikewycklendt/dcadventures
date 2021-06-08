@@ -325,16 +325,6 @@ def seperate_checks(checks, names, errors):
 	
 	return (errors)
 
-	
-
-
-	if error:
-		errors['error'] = error
-		error_msgs.append(message)
-		errors['error_msgs'] = error_msgs
-	
-	return (errors)
-
 
 def value_limit(limit, selects, names, errors):
 	error_msgs = errors['error_msgs']
@@ -1325,7 +1315,7 @@ def linked_group_check(table, value, field, required, column, id, group_column, 
 	return (errors)
 
 
-def linked_field(value, field, name, rule, required, errors):
+def linked_field(value, field, table, name, rule, required, errors):
 
 	error_msgs = errors['error_msgs']
 	error = False
@@ -1338,6 +1328,46 @@ def linked_field(value, field, name, rule, required, errors):
 
 		message = 'If this ' + rule + ' involves a linked ' + name + ' you must set the ' + required + '.'
 		error_msgs.append(message)
+
+	if field != '':
+		try:
+			field = int(field)
+		except:
+			error = True
+			message = 'Invalid Linked Degree.'
+			error_msgs.append(message)
+
+	check = db.session.query(table).filter_by(id=field).one()
+
+	if value == 'linked':
+		if check.type != 'consequence':
+			error = True
+			message = 'You set this rule to have a linked ' + name + ' but the ' + rule + ' you linked this rule to does not set a ' + name + '.  Link this rule to the ' + rule + ' that sets the ' + name + ' this rule links to.'
+			error_msgs.append(message)
+		else:
+			consequence = db.session.query(Consequence).filter_by(id=check.consequence).one()
+			if consequence.linked == True:
+				error = True
+				message = 'The ' + name + ' you set in the ' + rule + ' this rule links to is set to linked.  A Linked ' + name + ' cannot be linked to a ' + rule + ' where the ' + name + ' is set to linked.  Tou must set the ' + name + ' in the ' + rule +  ' a linked ' + name + ' is linked to.
+				error_msgs.append(message)
+	elif value == 'linked_first' or value == 'linked_second':
+		if check.type != 'condition':
+			error = True
+			message = 'You set this rule to have a linked ' + name + ' but the ' + rule + ' you linked this rule to does not set a ' + name + '.  Link this rule to the ' + rule + ' that sets the ' + name + ' this rule links to.'
+			error_msgs.append(message)
+		if check.condition_type == 'condition':
+			if value == 'linked_first':
+				condition = db.session.query(Condition).filter_by(check.condition1).first()
+				if condition.linked_first == True or condition.linked_second == True:
+					error = True	
+					message = 'The ' + name + ' you set in the ' + rule + ' this rule links to is set to linked.  A Linked ' + name + ' cannot be linked to a ' + rule + ' where the ' + name + ' is set to linked.  Tou must set the ' + name + ' in the ' + rule +  ' a linked ' + name + ' is linked to.
+					error_msgs.append(message)
+			elif value == 'linked_second':
+				condition = db.session.query(Condition).filter_by(check.condition2).first()
+				if condition.linked_first == True or condition.linked_second == True:
+					error = True	
+					message = 'The ' + name + ' you set in the ' + rule + ' this rule links to is set to linked.  A Linked ' + name + ' cannot be linked to a ' + rule + ' where the ' + name + ' is set to linked.  Tou must set the ' + name + ' in the ' + rule +  ' a linked ' + name + ' is linked to.
+					error_msgs.append(message)
 
 	errors['error_msgs'] = error_msgs
 	if error:
