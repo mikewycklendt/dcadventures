@@ -1715,12 +1715,12 @@ def power_post_create():
 	cost = db_integer(PowerCost, cost)
 	ranks = db_integer(PowerRanks, ranks)
 
-	move_check = db_integer(PowerCheck, move_check)
-	move_opposed = db_integer(PowerOpposed, move_opposed)
-	trap_check = db_integer(PowerCheck, trap_check)
-	trap_resist = db_integer(PowerCheck, trap_resist)
-	trap_opposed = db_integer(PowerOpposed, trap_opposed)
-	ranged_check = db_integer(PowerCheck, ranged_check)
+	move_check = db_integer(PowerCheckType, move_check)
+	move_opposed = db_integer(PowerOpposedType, move_opposed)
+	trap_check = db_integer(PowerCheckType, trap_check)
+	trap_resist = db_integer(PowerCheckType, trap_resist)
+	trap_opposed = db_integer(PowerOpposedType, trap_opposed)
+	ranged_check = db_integer(PowerCheckType, ranged_check)
 	ranged_damage = db_integer(PowerDamage, ranged_damage)
 	weapon_damage = db_integer(PowerDamage, weapon_damage)
 

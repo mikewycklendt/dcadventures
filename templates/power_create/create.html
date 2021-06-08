@@ -310,8 +310,8 @@
 		</div>
 
 		<div id="create-move-check">
-			<select class="check-sml" id="create_move_check" name="create_move_check">
-				<option value="">Check</option>
+			<select class="check-title-sml" id="create_move_check" name="create_move_check">
+				<option value="">Check by Group</option>
 				<option value="">Use Variable Check Form to Put Options Here</option>
 				{% for p in power_check %}
 					<option value={{p.id}}>{{p.name}}</option>
@@ -325,7 +325,7 @@
 
 		<div id="create-move-opp">
 			<div>
-				<select class="opposed-sml" id="create_move_opposed" name="create_move_opposed">
+				<select class="opposed-title-sml" id="create_move_opposed" name="create_move_opposed">
 					<option value="">Opponent Check</option>
 					<option value="">Use Opponent Check Form to Put Options Here</option>
 					{% for p in power_opposed %}
@@ -343,8 +343,8 @@
 		</div>
 
 		<div>
-			<select class="check-sml" id="create_trap_check" name="create_trap_check">
-				<option value="">Check to Trap</option>
+			<select class="check-title-sml" id="create_trap_check" name="create_trap_check">
+				<option value="">Check Group to Trap</option>
 				<option value="">Use Variable Check Form to Put Options Here</option>
 				{% for p in power_check %}
 					<option value={{p.id}}>{{p.name}}</option>
@@ -353,8 +353,8 @@
 		</div>
 		
 		<div>
-			<select class="check-sml" id="create_trap_resist" name="create_trap_resist">
-				<option value="">Check to Hold</option>
+			<select class="check-title-sml" id="create_trap_resist" name="create_trap_resist">
+				<option value="">Check Group to Hold</option>
 				<option value="">Use Variable Check Form to Put Options Here</option>
 				{% for p in power_check %}
 					<option value={{p.id}}>{{p.name}}</option>
@@ -370,8 +370,8 @@
 
 		<div>
 			<div id="create-trap-escape">
-				<select class="opposed-sml" id="create_trap_opposed" name="create_trap_opposed">
-					<option value="">Check for Opponent to Escape</option>
+				<select class="opposed-title-sml" id="create_trap_opposed" name="create_trap_opposed">
+					<option value="">Escape Opponent Check Group</option>
 					<option value="">Use Opponent Check Form to Put Options Here</option>
 					{% for p in power_opposed %}
 						<option value={{p.id}}>{{p.name}}</option>
@@ -397,8 +397,8 @@
 		</div>
 
 		<div>
-			<select class="check-sml" id="create_ranged_check" name="create_ranged_check" >
-				<option value="">Check</option>
+			<select class="check-title-sml" id="create_ranged_check" name="create_ranged_check" >
+				<option value="">Check by Group</option>
 				<option value="">Use Variable Check Form to Put Options here</option>
 				{% for p in power_check %}
 					<option value={{p.id}}>{{p.name}}</option>

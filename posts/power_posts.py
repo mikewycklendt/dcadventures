@@ -338,13 +338,13 @@ def create_post(entry, body, cells):
 	
 	body = one_multiple(PowerCreate, power_id, body)
 
-	move_check = get_keyword(PowerCheck, move_check)
-	move_opposed = get_keyword(PowerOpposed, move_opposed)
-	trap_check = get_keyword(PowerCheck, trap_check)
-	trap_opposed = get_keyword(PowerOpposed, trap_opposed)
-	trap_resist = get_keyword(PowerCheck, trap_resist)
+	move_check = get_name(PowerCheckType, move_check)
+	move_opposed = get_name(PowerOpposedType, move_opposed)
+	trap_check = get_name(PowerCheckType, trap_check)
+	trap_opposed = get_name(PowerOpposedType, trap_opposed)
+	trap_resist = get_name(PowerCheckType, trap_resist)
 	ranged_damage = get_keyword(PowerDamage, ranged_damage)
-	ranged_check = get_keyword(PowerCheck, ranged_check)
+	ranged_check = get_name(PowerCheckType, ranged_check)
 	weapon_damage = get_keyword(PowerDamage, weapon_damage)
 	
 	trap_trait = trait_select(trap_trait, trap_trait_type)
