@@ -330,6 +330,9 @@ def create_post(entry, body, cells):
 	ranged_damage = entry.ranged_damage
 	ranged_check = entry.ranged_check
 	multiple = entry.multiple
+	duration = entry.duration
+	duration_type = entry.duration_type
+	duration_innate = entry.duration_innate
 
 	cost = get_cost(cost, ranks, extra_id)
 	
@@ -348,7 +351,9 @@ def create_post(entry, body, cells):
 	trap_resist_trait = trait_select(trap_resist_trait, trap_resist_check)
 
 	extra = extra_name(extra_id)
-	complexity = name(Complex, complexity)
+	complexity = get_name(Complex, complexity)
+	duration_type = get_name(PowerDuration, duration_type)
+
 	transform_start_descriptor = descriptor_name(transform_start_descriptor)
 	transform_end_descriptor = descriptor_name(transform_end_descriptor)
 
@@ -431,6 +436,12 @@ def create_post(entry, body, cells):
 	new_mod = mod_create('Weapon', 10)
 	new_mod = mod_cell('Damage:', 8, [weapon_damage], new_mod)
 	body = mod_add(weapon, new_mod, body)
+
+	cells = check_cell('Duration', 10, duration, cells, True)
+	new_mod = mod_create('Object Duration', 20)
+	new_mod = mod_cell('Type:', 7, [duration_type], new_mod)
+	new_mod = mod_cell('Innate:', 8, [duration_innate], new_mod)
+	body = mod_add(duration, new_mod, body)
 
 	cells = check_cell('Support', 9, support, cells, True)
 	new_mod = mod_create('Supports Weight', 19)

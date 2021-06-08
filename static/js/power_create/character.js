@@ -126,7 +126,7 @@ function char_insub() {
 function char_reduced_trait_type() {
 	const select = 'char_reduced_trait_type';
 	const fill = 'char_reduced_trait';
-	const options = [{'val': ['speed', 'size'], 'div': 'char-penalty'}]
+	const options = [{'val': ['speed', 'size', 'mass_rank'], 'div': 'char-penalty'}]
 	const checks = ['char_penalty']
 
 	uncheck_all(checks);
@@ -144,7 +144,7 @@ function char_reduced_trait() {
 function char_trait_type() {
 	const select = 'char_trait_type';
 	const fill = 'char_trait';
-	const options = [{'val': ['speed', 'size'], 'div': 'char-bonus'}]
+	const options = [{'val': ['speed', 'size', 'mass_rank'], 'div': 'char-bonus'}]
 	const checks = ['char_bonus']
 
 	uncheck_all(checks);
@@ -246,10 +246,26 @@ function char_appear_form() {
 	select_opacity_shared(select, options);
 }
 
+function char_sustained() {
+	const check = 'char_sustained';
+	const checks = ['char_permanent'];
+
+	uncheck_check(check, checks);
+}
+
+function char_permanent() {
+	const check = 'char_permanent';
+	const checks = ['char_sustained'];
+
+	uncheck_check(check, checks);
+}
+
 let char_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
 					'mod': []}
+
+let char_counts = {'count': 0, 'trait': 0, 'insub': 0}
 
 function char_submit() {
 
@@ -413,7 +429,15 @@ function char_submit() {
 			new_items(insert, items);
 
 			extra_effect_check(jsonResponse)
+			
+			if (trait != '' || reduced_trait != '') {
+				selects_add('trait', 'Changes to Traits Permanent', 'permanent-sml', char_counts.trait);
+			}
 
+			if (insubstantial === true) {
+				selects_add('insub', 'Permanently Insubstantial', 'permanent-sml', char_counts.insub);	
+			}
+			
 			char_grid.columns.length = 0;
 			char_grid.columns = jsonResponse.rows;
 

@@ -1673,6 +1673,9 @@ class PowerCreate(db.Model):
 	ranged_check = db.Column(db.Integer, db.ForeignKey('power_check.id'))
 	weapon_damage = db.Column(db.Integer, db.ForeignKey('power_damage.id'))
 	multiple = db.Column(db.String())
+	duration = db.Column(db.Boolean)
+	duration_type = db.Column(db.String())
+	duration_innate = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -1723,7 +1726,10 @@ class PowerCreate(db.Model):
 			'cost': self.cost,
 			'ranks': self.ranks,
 			'ranged_damage': self.ranged_damage,
-			'ranged_check': self.ranged_check
+			'ranged_check': self.ranged_check,
+			'duration': self.duration,
+			'duration_type': self.duration_type,
+			'duration_innate': self.duration_innate
 		}
 
 class PowerDamage(db.Model):

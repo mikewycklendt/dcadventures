@@ -227,6 +227,21 @@ function create_trap_escape() {
 	check_display(check, div);
 }
 
+function create_duration() {
+	const check = 'create_duration';
+	const div = 'create-duration';
+	const entry = 'create-entry';
+
+	check_drop(check, div, entry);
+}
+
+function create_duration_type() {
+	const select = 'create_duration_type';
+	const options = [{'val': ['4', '5'], 'div': 'create-duration-innate'}];
+
+	select_opacity_shared(select, options);
+}
+
 let create_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
@@ -287,6 +302,9 @@ function create_submit() {
 	const ranged_damage = select("create_ranged_damage")
 	const ranged_check = select("create_ranged_check")
 	const multiple = select("create_multiple")
+	const duration = check("create_duration");
+	const duration_type = select("create_duration_type");
+	const duration_innate = check("create_duration_innate");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -347,7 +365,10 @@ function create_submit() {
 			'font': font,
 			'ranged_damage': ranged_damage,
 			'ranged_check': ranged_check,
-			'multiple': multiple
+			'multiple': multiple,
+			'duration': duration,
+			'duration_type': duration_type,
+			'duration_innate': duration_innate
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
@@ -361,6 +382,7 @@ function create_submit() {
 			extra_effect_check(jsonResponse)
 
 			selects_add('create', 'Created Objects are Damaged', 'feedback-sml', create_counts.count);
+			selects_add('create', 'Created Objects Permanent', 'permanent-sml', create_counts.count);
 			create_counts.count += 1;
 
 			create_grid.columns.length = 0;

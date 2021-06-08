@@ -143,6 +143,15 @@ function check_drop(field, divdrop, entrydrop) {
 	}
 }
 
+function uncheck_check(check_input, checks_input) {
+	const check = document.getElementById(check_input);
+
+	if (check.checked == true) {
+		uncheck_all(checks_input);
+	}
+
+}
+
 function uncheck_all(checks_input) {
 	let checks;
 	for (checks of checks_input){

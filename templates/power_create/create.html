@@ -109,19 +109,19 @@
 	<div id="create-row2">
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="create_damageable" class="medium-checkbox med-checkbox"> Can be Damaged
-			</div>
-		</div>
-
-		<div>
-			<div class="check-div">
-				<input type="checkbox" id="create_maintained" class="medium-checkbox med-checkbox"> Maintained
+				<input type="checkbox" id="create_damageable" class="medium-checkbox med-checkbox"> Damageahle
 			</div>
 		</div>
 
 		<div>
 			<div class="check-div">
 				<input type="checkbox" id="create_repairable" class="medium-checkbox med-checkbox"> Repairable
+			</div>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="create_maintained" class="medium-checkbox med-checkbox"> Maintained
 			</div>
 		</div>
 
@@ -134,6 +134,11 @@
 		<div>
 			<div class="check-div">
 				<input type="checkbox" id="create_stationary" class="medium-checkbox med-checkbox" onclick="create_moveable()"> Stationary
+			</div>
+		</div>
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="create_duration" class="medium-checkbox med-checkbox"> Duration
 			</div>
 		</div>
 
@@ -202,6 +207,27 @@
 			</div>
 		</div>
 
+	</div>
+
+	<div id="create-duration">
+		<div>
+			Object Duration:
+		</div>
+
+		<div>
+			<select class="select-sml" id="create_duration_type" name="create_duration_type" onchange="create_duration_type()">
+				<option value="">Object Duration</option>
+				{% for d in duration_type %}
+					<option value={{d.id}}>{{d.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div id="create-duration-innate">
+			<div class="check-div-fit">
+				<input type="checkbox" id="create_duration_innate" class="medium-checkbox med-checkbox" > Innate
+			</div>
+		</div>
 	</div>
 
 	<div id="create-transform">

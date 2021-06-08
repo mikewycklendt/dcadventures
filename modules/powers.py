@@ -439,6 +439,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	
 	partners = [{'type': '', 'name': 'N/A'}, {'type': 'power', 'name': 'Same Power'}, {'type': 'device', 'name': 'Device'}, {'type': 'both', 'name': 'Power or Device'}, {'type': 'skill', 'name': 'Skill Check'}]
 
+	permanent_type = [{'type': 'trait', 'name': 'Changes to Traits Permanent'}, {'type': 'create', 'name': 'Created Objects Permanent'}, {'type': 'insub', 'name': 'Permanently Insubstantial'}]
+
 	permanence = [{'type': '', 'name': 'Permanence'},{'type': 'temp', 'name': 'Temporary'}, {'type': 'perm', 'name': 'Permanent'}, {'type': 'turn', 'name': 'Chosen on Turn'}]
 
 	points_type = [{'type': '', 'name': 'Points Type'}, {'type': 'taken', 'name': 'Taken From Trait'}, {'type': 'restore', 'name': 'Restored to Trait'}]
@@ -1700,6 +1702,9 @@ def power_post_create():
 	ranged_damage = request.get_json()['ranged_damage']
 	ranged_check = request.get_json()['ranged_check']
 	multiple = request.get_json()['multiple']
+	duration = request.get_json()['duration']
+	duration_type = request.get_json()['duration_type']
+	duration_innate = request.get_json()['duration_innate']
 	
 
 	power_id = integer(power_id)
@@ -1790,7 +1795,11 @@ def power_post_create():
 							support_effort_rounds = support_effort_rounds,
 							cost = cost,
 							ranks = ranks,
-							multiple = multiple)
+							multiple = multiple,
+							duration = duration,
+							duration_type = duration_type,
+							duration_innate = duration_innate
+							)
 
 		db.session.add(entry)
 		db.session.commit()

@@ -393,6 +393,9 @@ def create_post_errors(data):
 	ranks = data['ranks']
 	ranged_damage = data['ranged_damage']
 	ranged_check = data['ranged_check']
+	duration = data['duration']
+	duration_type = data['duration_type']
+	duration_innate = data['duration_innate']
 
 	errors = id_check(PowerCost, cost, 'Cost', errors)
 	errors = id_check(PowerRanks, ranks, 'Ranks', errors)
@@ -462,6 +465,9 @@ def create_post_errors(data):
 
 	errors = variable_field_required('prop', volume, 'Volume', 'Proportional', 'Proportional', 'Toughness', 'ptop', toughness, errors)
 	errors = variable_field_required('prop', toughness, 'Toughness', 'Proportional', 'Proportional', 'Volume', 'ptop', volume, errors)
+
+	errors = check_fields(duration, 'Object Duration', [duration_type], errors)
+	errors = check_field(duration, 'Object Duration', 'Duration', duration_type, errors)
 
 	return (errors)
 
