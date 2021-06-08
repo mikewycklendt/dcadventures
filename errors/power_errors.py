@@ -954,6 +954,7 @@ def mod_post_errors(data):
 	advantage_rank_per = data['advantage_rank_per']
 	precise_type = data['precise_type']
 	sustained_action = data['sustained_action']
+	concentration_type = data['concentration_type']
 	concentration_check = data['concentration_check']
 	concentration_check_type = data['concentration_check_type']
 	concentration_opposed = data['concentration_opposed']
@@ -1169,6 +1170,10 @@ def mod_post_errors(data):
 	errors = check_fields(sustained, 'Sustained', [sustained_action], errors)
 	errors = check_field(sustained, 'Sustained', 'Action to Sustain', sustained_action, errors)
 
+	errors = check_fields(concentration_check, 'Concentration', [concentration_type], errors)
+	errors = variable_fields('opposed', 'Success on Opponent Check', concentration_type, [concentration_opposed], errors)
+	errors = variable_field('opposed', concentration_type, 'Opponent Check by Group', concentration_opposed, errors)
+	errors = variable_fields_of('check', concentration_type, 'Success on Check', [concentration_check, concentration_check_type], errors)	
 	errors = seperate([concentration_check, concentration_check_type, concentration_opposed], 'Concentration', errors)
 	errors = check_of(concentration, 'Concentration', 'Concentration Check', [concentration_check, concentration_check_type, concentration_opposed], errors)
 	

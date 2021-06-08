@@ -244,10 +244,18 @@
 	font-size: 80%;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 13% auto auto auto auto;
+	grid-template-columns: 13% 22% 65%;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
+}
+
+#mod-concentration-type  {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 70% 30%;
+	gap: 3px;
 }
 
 #mod-limited {

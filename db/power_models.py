@@ -2140,9 +2140,10 @@ class PowerMod(db.Model):
 	precise_type = db.Column(db.Boolean)
 	sustained_action = db.Column(db.Integer, db.ForeignKey('actions.id'))
 	sustained_no_move = db.Column(db.Boolean)
+	concentration_type = db.Column(db.String())
 	concentration_check = db.Column(db.Integer, db.ForeignKey('power_check.id'))
 	concentration_check_type = db.Column(db.Integer, db.ForeignKey('power_check_type.id'))
-	concentration_opposed = db.Column(db.Integer, db.ForeignKey('power_opposed.id'))
+	
 	concentration_effort = db.Column(db.Boolean)
 	unreliable_type = db.Column(db.String())
 	incurable_type = db.Column(db.String())
@@ -2277,6 +2278,7 @@ class PowerMod(db.Model):
 			'precise_type': self.precise_type,
 			'sustained_action': self.sustained_action,
 			'sustained_no_move': self.sustained_no_move,
+			'concentration_type': self.concentration_type,
 			'concentration_check': self.concentration_check,
 			'concentration_check_type': self.concentration_check_type,
 			'concentration_opposed': self.concentration_opposed,

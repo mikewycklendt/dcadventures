@@ -636,7 +636,7 @@ def defense_post(entry, body, cells):
 
 	word = check_string('Not ', immunity_except)
 	cells = check_cell('Immunity', 10, immunity, cells, True)
-	select =[{'type': 'trait', 'name': word + 'Immune From Trait', 'w': 18}, {'type': 'damage', 'name': word + 'Immune From Damage Type', 'w': 25}, {'type': 'descriptor', 'name': word + 'Immune From Descriptor', 'w': 25}, {'type': 'rule', 'name': word + 'Immune From Game Rule', 'w': 25}, {'type': 'consequence', 'name': word + 'Immune from Consequence', 'w': 25}, {'type': 'critical', 'name': word + 'Immune from Critical Hits', 'w': 25}, {'type': 'env', 'name': word + 'Immune from Environment', 'w': 30}, {'type': 'condition_effect', 'name': word + 'Immune from Effect Condition', 'w': 35}, {'type': 'condition_attack', 'name': word + 'Immune from Attack Condition', 'w': 35}, {'type': 'emotion', 'name': word + 'Immune from Emotion', 'w': 22}, {'type': 'life', 'name': 'Life Support', 'w': 15}, {'type': 'eat', 'name': 'Eat Anything', 'w': 15}]
+	select =[{'type': 'trait', 'name': word + 'Immune From Trait', 'w': 18}, {'type': 'damage', 'name': word + 'Immune From Damage Type', 'w': 25}, {'type': 'descriptor', 'name': word + 'Immune From Descriptor', 'w': 25}, {'type': 'rule', 'name': word + 'Immune From Game Rule', 'w': 25}, {'type': 'consequence', 'name': word + 'Immune from Consequence', 'w': 25}, {'type': 'critical', 'name': word + 'Immune from Critical Hits', 'w': 25}, {'type': 'env', 'name': word + 'Immune from Environment', 'w': 30}, {'type': 'condition_effect', 'name': word + 'Immune from Effect Condition', 'w': 35}, {'type': 'condition_attack', 'name': word + 'Immune from Attack Condition', 'w': 35}, {'type': 'emotion', 'name': word + 'Immune from Emotion', 'w': 22}, {'type': 'life', 'name': 'Life Support', 'w': 15}, {'type': 'eat', 'name': 'Eat Anything', 'w': 15}, {'type': 'timeline', 'name': 'Immune from Changes in Timeline', 'w': 45}]
 	new_mod = mod_create('Immunity', 17, immunity_type, select)
 	value = 'trait'
 	new_mod = mod_cell('Trait:', 15, [immunity_trait], new_mod, value)
@@ -1042,6 +1042,7 @@ def mod_post(entry, body, cells):
 	advantage_effect = entry.advantage_effect
 	precise_type = entry.precise_type
 	sustained_action = entry.sustained_action
+	concentration_type = entry.concentration_type
 	concentration_check = entry.concentration_check
 	concentration_check_type = entry.concentration_check_type
 	concentration_opposed = entry.concentration_opposed
@@ -1122,7 +1123,7 @@ def mod_post(entry, body, cells):
 	result_select = [{'type': '', 'name': 'Result'}, {'type': 'high', 'name': 'Higher'}, {'type': 'low', 'name': 'Lower'}]
 	points_reroll_result = selects(points_reroll_result, result_select)
 
-	subtle_type_select = [{'type': '', 'name': 'Subtle Type'}, {'type': 'detect', 'name': 'Detectable'}, {'type': 'undetectable', 'name': 'Undetectable'}, {'type': 'notice', 'name': 'Effect Not Noticeable'}, {'type': 'invisible', 'name': 'Effect Target Invisible'}, {'type': 'understand', 'name': 'Not Understandable'}]
+	subtle_type_select = [{'type': '', 'name': 'Subtle Type'}, {'type': 'detect', 'name': 'Detectable'}, {'type': 'undetectable', 'name': 'Undetectable'}, {'type': 'notice', 'name': 'Effect Not Noticeable'}, {'type': 'invisible', 'name': 'Effect Target Invisible'}, {'type': 'understand', 'name': 'Not Understandable'}, {'type': 'silent', 'name': 'Silent'}]
 	subtle_type = selects(subtle_type, subtle_type_select)
 
 	precise_type_select = [{'type': '', 'name': 'Precise Type'}, {'type': 'objects', 'name': 'Fine Msnipulation of Objects'}, {'type': 'body', 'name': 'Effects Speecific Parts of Body'}, {'type': 'choice', 'name': 'Choose What Effect Affects'}]
@@ -1163,6 +1164,10 @@ def mod_post(entry, body, cells):
 
 	feedback_effect_select = [{'type': '', 'name': ''}, {'type': 'create', 'name': 'Created Objects are Damaged'}, {'type': 'illusion', 'name': 'Dsmsging Attack on Illusion'}, {'type': 'mind', 'name': 'Mind Reading Target Suffers Damage'}, {'type': 'remote', 'name': 'Dsmsging Attack at Where Displaced Senses Are'}]
 	feedback_effect = selects(feedback_effect, feedback_effect_select)
+
+	group = string(' Group', concentration_check_type)
+	concentration_type_select = [{'type': '', 'name': 'Concentration Type'}, {'type': 'require', 'name': 'Effect Requires Concentration'}, {'type': 'check', 'name': 'Success on ' + concentration_check_type + concentration_check + ' Check' + group}, {'type': 'opposed', 'name': 'Concentration for Success on ' + concentration_opposed + ' Opponent Check Group'}]
+
 
 	cells = cell('Extra', 15, [extra])
 	cells = check_cell('Affects Objects', 16, affects_objects, cells, True)

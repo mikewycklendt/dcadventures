@@ -293,6 +293,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	conceal_type = [{'type': '', 'name': 'Darkness Concealment Effect'}, {'type': 'reduce', 'name': 'Reduce'}, {'type': 'eliminate', 'name': 'Eliminate'}]
 
+	concentration_type = [{'type': '', 'name': 'Concentration Type'}, {'type': 'require', 'name': 'Effect Requires Concentration'}, {'type': 'check', 'name': 'Concentration for Success on Check'}, {'type': 'opposed', 'name': 'Concentration for Success on Opponent Check'}]
+
 	counter_conceal = [{'type': '', 'name': 'Counter Type'}, {'type': 'descriptor', 'name': 'Effects with Descriptor'}, {'type': 'penetrate', 'name': 'Penetrates Concealment'}, {'type': 'all', 'name': 'All Concealment'}]
 
 	condition = [{'type': '', 'name': 'Condition Type'}, {'type': 'active', 'name': 'Active Condition'}, {'type': 'change', 'name': 'Condition Change'}, {'type': 'damage', 'name': 'Damage Condition'}, {'type': 'null', 'name': 'Nullify Condition'}]
@@ -377,7 +379,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	immunity_trait = [{'type': "power", 'name': 'Power'}, {'type': "extra", 'name': 'Extra'}, {'type': "skill", 'name': 'Skill'}, {'type': "bonus", 'name': 'Enhanced Skill'}, {'type': "interact", 'name': 'Any Interaction Skill'}, {'type': "manipulate", 'name': 'Any Manipulation Skill'}, {'type': "resist", 'name': 'Powers Resisted By'}, {'type': "alteration", 'name': 'Alteration Effects'}, {'type': "skill_emotion", 'name': "Skills Affecting Emotion"}, {'type': "power_emotion", 'name': "Powers Affecting Emotion"}, {'type': "trait_emotion", 'name': "All Traits Affecting Emotion"}, {'type': "all_emotion", 'name': 'All Emotion Effects'}]
 
-	immunity_type = [{'type': '', 'name': 'Immunity'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'damage', 'name': 'Damage Type'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'critiical', 'name': 'Critical Hits'}, {'type': 'env', 'name': 'Environment'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'emotion', 'name': 'Emotion'}, {'type': 'condition_effect', 'name': 'Condition from Effect'}, {'type': 'condition_attack', 'name': 'Condition from Attack'}, {'type': 'life', 'name': 'Life Support'}, {'type': 'eat', 'name': 'Eat Anything'}]
+	immunity_type = [{'type': '', 'name': 'Immunity'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'damage', 'name': 'Damage Type'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'critiical', 'name': 'Critical Hits'}, {'type': 'env', 'name': 'Environment'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'emotion', 'name': 'Emotion'}, {'type': 'condition_effect', 'name': 'Condition from Effect'}, {'type': 'condition_attack', 'name': 'Condition from Attack'}, {'type': 'life', 'name': 'Life Support'}, {'type': 'eat', 'name': 'Eat Anything'}, {'type': 'timeline', 'name': 'Changes in Timeline'}]
 
 	incurable_type  = [{'type': '', 'name': 'Incurable Type'}, {'type': 'counter', 'name': 'Cannot be Countered by Effect'}, {'type': 'permanent', 'name': 'Effect Permanent'}]
 
@@ -497,7 +499,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	strength_based = [{'type': '', 'name': 'Strength Based'}, {'type': 'always', 'name': 'Always'}, {'type': 'turn', 'name': 'Chosen on Turn'}, {'type': 'x', 'name': 'Chosen With Power'}]
 
-	subtle_type = [{'type': '', 'name': 'Subtle Type'}, {'type': 'detect', 'name': 'Detectable'}, {'type': 'undetectable', 'name': 'Undetectable'}, {'type': 'notice', 'name': 'Effect Not Noticeable'}, {'type': 'invisible', 'name': 'Effect Target Invisible'}, {'type': 'understand', 'name': 'Not Understandable'}]
+	subtle_type = [{'type': '', 'name': 'Subtle Type'}, {'type': 'detect', 'name': 'Detectable'}, {'type': 'undetectable', 'name': 'Undetectable'}, {'type': 'notice', 'name': 'Effect Not Noticeable'}, {'type': 'invisible', 'name': 'Effect Target Invisible'}, {'type': 'understand', 'name': 'Not Understandable'}, {'type': 'silent', 'name': 'Silent'}]
 
 	suffocation_type = [{'type': '',  'name': 'Suffocation Type'}, {'type': 'all',  'name': 'All'}, {'type': 'x',  'name': 'Variable'}, {'type': 'water',  'name': 'Underwater'}, {'type': 'alien',  'name': 'Alien Atmosphere'}, {'type': 'forced',  'name': 'Forced'}]
 
@@ -619,7 +621,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											check_sense_type=check_sense_type, check_sense_target=check_sense_target, descriptor_effect_type=descriptor_effect_type, effect_type=effect_type, effortless_type=effortless_type,
 											feedback_resist=feedback_resist, source_type=source_type, sense_micro=sense_micro, micro_expertise=micro_expertise, unreliable_type=unreliable_type, rank_type=rank_type,
 											incurable_type=incurable_type, deg_mod_weaken_type=deg_mod_weaken_type, progressive_type=progressive_type, affects_others_type=affects_others_type, 
-											affects_others_req=affects_others_req, area_type=area_type)
+											affects_others_req=affects_others_req, area_type=area_type, concentration_type=concentration_type)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -2613,6 +2615,7 @@ def power_post_mod():
 	precise_type = request.get_json()['precise_type']
 	sustained_action = request.get_json()['sustained_action']
 	sustained_no_move = request.get_json()['sustained_no_move']
+	concentration_type = request.get_json()['concentration_type']
 	concentration_check = request.get_json()['concentration_check']
 	concentration_check_type = request.get_json()['concentration_check_type']
 	concentration_opposed = request.get_json()['concentration_opposed']
@@ -2831,6 +2834,7 @@ def power_post_mod():
 							precise_type = precise_type,
 							sustained_action = sustained_action,
 							sustained_no_move = sustained_no_move,
+							concentration_type = concentration_type
 							concentration_check = concentration_check,
 							concentration_check_type = concentration_check_type,
 							concentration_opposed = concentration_opposed,

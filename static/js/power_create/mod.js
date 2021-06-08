@@ -440,6 +440,16 @@ function mod_concentration() {
 	check_drop(check, div, entry);
 }
 
+function mod_concentration_type() {
+	const select = 'mod_concentration_type';
+	const option = [{'val': ['check', 'opposed'], 'div': 'mod-concentration-type'}];
+	const options = [{'val': 'check', 'div': 'mod-concentration-check'},
+					{'val': 'opposed', 'div': 'mod-concentration-opposed'}]
+
+	select_opacity_shared(select, option);
+	select_opacity(select, options);
+}
+
 function mod_unreliable() {
 	const check = 'mod_unreliable';
 	const div = 'mod-unreliable';
@@ -610,6 +620,7 @@ function mod_submit() {
 	const precise_type = select("mod_precise_type");
 	const sustained_action = select("mod_sustained_action");
 	const sustained_no_move = check("mod_sustained_no_move");
+	const concentration_type = select("mod_concentration_type");
 	const concentration_check = select("mod_concentration_check");
 	const concentration_check_type = select("mod_concentration_check_type");
 	const concentration_opposed = select("mod_concentration_opposed");
@@ -758,6 +769,7 @@ function mod_submit() {
 			'precise_type': precise_type,
 			'sustained_action': sustained_action,
 			'sustained_no_move': sustained_no_move,
+			'concentration_type': concentration_type,
 			'concentration_check': concentration_check,
 			'concentration_check_type': concentration_check_type,
 			'concentration_opposed': concentration_opposed,
