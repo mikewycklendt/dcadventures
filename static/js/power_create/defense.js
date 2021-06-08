@@ -174,6 +174,14 @@ function defense_cover() {
 	check_drop(check, div, entry);
 }
 
+function defense_force() {
+	const check = 'defense_force';
+	const div = 'defense-force';
+	const entry = 'defense-entry';
+
+	check_drop(check, div, entry);
+}
+
 let defense_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
@@ -232,6 +240,8 @@ function defense_submit() {
 	const multiple = select("defense_multiple");
 	const cost = select("defense_cost");
 	const ranks = select("defense_ranks");
+	const force = check("defense_force");
+	const force_imperv = check("defense_force_imperv");
 	
 
 	///const power_id = document.getElementById('power_id').value;
@@ -293,7 +303,9 @@ function defense_submit() {
 			'immunity_toxic': immunity_toxic,
 			'multiple': multiple,
 			'cost': cost,
-			'ranks': ranks
+			'ranks': ranks,
+			'force_imperv': force_imperv,
+			'force': force
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

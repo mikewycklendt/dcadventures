@@ -565,6 +565,8 @@ def defense_post(entry, body, cells):
 	multiple = entry.multiple
 	cost = entry.cost
 	ranks = entry.ranks
+	force = entry.force
+	force_imperv = entry.force_imperv
 	
 	body = one_multiple(PowerDefense, power_id, body)
 
@@ -607,6 +609,9 @@ def defense_post(entry, body, cells):
 
 	outcome = math_convert(outcome)
 
+	resist_area = check_string('Area', resist_area)
+	resist_perception = check_string('Perception', resist_perception)
+
 	cells.clear()
 
 	cells = cell('Extra', 15, [extra])
@@ -624,8 +629,10 @@ def defense_post(entry, body, cells):
 	cells = check_cell('Toughness', 10, toughness, cells)
 	cells = check_cell('Will', 5, will, cells)
 	cells = check_cell('Active', 7, active, cells)
-	cells = check_cell('Resists Area', 12, resist_area, cells)
-	cells = check_cell('Resists Perception', 19, resist_perception, cells)
+	
+	w = width(9, 8, resist_perception)
+	comma = string(',' [resist_perception])
+	cells = cell('Resists', w, [resist_area, comma, resist_perception], cells)
 	
 	cells = check_cell('Reflect', 10, reflect, cells, True)
 	new_mod = mod_create('Reflects Attacks', 17)
@@ -671,6 +678,11 @@ def defense_post(entry, body, cells):
 	new_mod = mod_create('Provides Cover', 20)
 	new_mod = mod_cell('Cover Type', 18, [cover_type], new_mod)
 	body = mod_add(cover_check, new_mod, body)
+
+	cells = check_cell('Force Field', 13, force, cells, True)
+	new_mod = mod_create('Force Field', 20)
+	new_mod = mod_cell('Impervious', 14, [force_imperv], new_mod)
+	body = mod_add(force, new_mod, body)
 		
 	cells = circ_cell('Multiple', 'If Multiple', 8, multiple, cells, body)
 	cells = circ_cell('Cost', 'Cost', 5, cost, cells, body)

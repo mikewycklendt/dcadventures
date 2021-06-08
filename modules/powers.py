@@ -2018,6 +2018,8 @@ def power_post_defense():
 	multiple = request.get_json()['multiple']
 	cost = request.get_json()['cost']
 	ranks = request.get_json()['ranks']
+	force_imperv = request.get_json()['force_imperv']
+	force = request.get_json()['force']
 
 	reflect_check = db_integer(PowerCheck, reflect_check)
 
@@ -2094,7 +2096,9 @@ def power_post_defense():
 								immunity_except = immunity_except,
 								multiple = multiple,
 								cost = cost,
-								ranks = ranks
+								ranks = ranks,
+								force_imperv = force_imperv,
+								force = force
 							)
 		db.session.add(entry)
 		db.session.commit()

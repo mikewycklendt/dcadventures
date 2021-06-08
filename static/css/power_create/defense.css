@@ -71,7 +71,16 @@
 	font-size: 90%;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 10% 20% 25% 25% 20%;
+	grid-template-columns: 12% auto auto auto;
+	grid-auto-rows: auto;
+}
+
+#defense-row3 {
+	display: grid;
+	font-size: 90%;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: auto auto auto;
 	grid-auto-rows: auto;
 }
 
@@ -94,6 +103,17 @@
 	width: 98%;
 	gap: 3px;
 	grid-template-columns: 14% 30% 13% 27%;
+	grid-auto-rows: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#defense-force {
+	display: none;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 18% 30% auto;
 	grid-auto-rows: auto;
 	max-height: 0;
 	overflow: hidden;

@@ -141,6 +141,15 @@ a {
 	border: 1px solid lightblue;
 }
 
+.check-div-cen {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding-right: .4vw;
+	border-radius: 5px;
+	border: 1px solid lightblue;
+}
+
 .vcenter {
 	display: flex;
 	height: 100%;

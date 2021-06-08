@@ -571,6 +571,8 @@ def defense_post_errors(data):
 	multiple = data['multiple']
 	cost = data['cost']
 	ranks = data['ranks']
+	force = data['force']
+	force_imperv = data['force_imperv']
 
 	errors = power_check(power_id, errors)
 

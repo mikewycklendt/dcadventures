@@ -1821,6 +1821,8 @@ class PowerDefense(db.Model):
 	multiple = db.Column(db.String())
 	cost = db.Column(db.Integer, db.ForeignKey('power_cost.id'))
 	ranks = db.Column(db.Integer, db.ForeignKey('power_ranks.id'))
+	force = db.Column(db.Boolean)
+	force_imperv = db.Column(db.Boolean)
 
 
 	def format(self):
@@ -1870,7 +1872,9 @@ class PowerDefense(db.Model):
 			'immunity_except': self.immunity_except,
 			'multiple': self.multiple,
 			'cost': self.cost,
-			'ranks': self.ranks
+			'ranks': self.ranks,
+			'force_imperv': self.force_imperv,
+			'force': self.force
 		}
 
 
