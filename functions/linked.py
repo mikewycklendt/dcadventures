@@ -1,4 +1,5 @@
 
+from create_functions.error_functions import db_integer
 from models import *
 from db.rule_models import *
 from db.measure_models import *
@@ -237,7 +238,7 @@ def linked_ref(table, value, name, column, body):
 
 	if value != '':
 		try:
-			value = int(value)
+			value = db_integer(table, value)
 			edit = db.session.query(table).filter(table.id == value).one()
 			setattr(tsble, column, True)
 			db.session.commit()

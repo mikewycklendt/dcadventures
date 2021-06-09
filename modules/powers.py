@@ -233,7 +233,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	animals = [{'type': '', 'name': 'Comprehend Animals'}, {'type': 'speak', 'name': 'Speak to'}, {'type': 'understad', 'name': 'Understand'}, {'type': 'both', 'name': 'Both'}]
 
-	attached = [{'type': '', 'name': 'Attached'}, {'type': 'primary', 'name': 'Primary Check'}, {'type': 'condition', 'name': 'Conditional'}, {'type': 'before', 'name': 'Before Check'}, {'type': 'after', 'name': 'After Check'}, {'type': 'before_var', 'name': 'Before Variable Check'}, {'type': 'after_var', 'name': 'After Variable Check'}, {'type': 'opponent', 'name': 'After Opponent Check'}]
+	attached = [{'type': '', 'name': 'Attached'}, {'type': 'primary', 'name': 'Primary Check'}, {'type': 'condition', 'name': 'Conditional'}, {'type': 'before', 'name': 'Before Primary Check'}, {'type': 'after', 'name': 'After Primary Check'}, {'type': 'before_var', 'name': 'Before Variable Check'}, {'type': 'after_var', 'name': 'After Variable Check'}, {'type': 'before_opponent', 'name': 'Before Opponent Check'}, {'type': 'after_opponent', 'name': 'After Opponent Check'}]
 
 	auto_type = [{'type': '', 'name': 'Check Type'}, {'type': 'check', 'name': 'Variable Check'}, {'type': 'check_type', 'name': 'Variable Check by Group'}, {'type': 'opposed', 'name': 'Opponent Check'}, {'type': 'opposed_type', 'name': 'Opponent Check by Group'}]
 
@@ -3897,12 +3897,13 @@ def power_post_check():
 	body = link_add(PowerOpposed, PowerOpposedType, 'power_id', power_id, title, keyword, body)
 	title = body['title_id']
 
-	body = linked_ref(PowerOpposed, opponent, 'Opponent Check Trigger', 'chained', body)
-	body = linked_ref(PowerCheck, variable, 'Variable Check Trigger', 'chained', body)
-	body = linked_ref(PowerOpposedType, opponent_type, 'Opponent Check Trigger', 'chained', body)
-	body = linked_ref(PowerCheckType, variable_type, 'Variable Check Trigger', 'chained', body)
+	body = linked_ref(PowerOpposed, opponent, 'Attached Opponent Check', 'chained', body)
+	body = linked_ref(PowerCheck, variable, 'Attached Variable Check', 'chained', body)
+	body = linked_ref(PowerOpposedType, opponent_type, 'Attached Opponent Check', 'chained', body)
+	body = linked_ref(PowerCheckType, variable_type, 'Attached Variable Check', 'chained', body)
 
 	body = linked_field(PowerCheckType, title, 'Variable Check', 'multiple', multiple, body)
+	body = linked_field(PowerCheckType, title, 'Primary Check', 'primary', primary, body, power_id)
 
 	if body['success'] == False:
 		return jsonify(body)
@@ -5264,6 +5265,7 @@ def power_post_opposed():
 	opposed = db_integer(PowerOpposed, opposed)
 	variable_type = db_integer(PowerCheckType, variable_type)
 	recurring_degree_type = db_integer(PowerDegreeType, recurring_degree_type)
+	primary = preset_convert('primary', attached)
 
 	trait = integer(trait)
 	mod = integer(mod)
@@ -5276,12 +5278,15 @@ def power_post_opposed():
 	body['created'] = created
 
 	body = linked_ref(PowerCheck, variable, 'Attached Variable Check', 'chained', body)
-	body = linked_ref(PowerCheckType, variable_type, 'Attached Variable Check', 'chained', body)
+	body = linked_ref(PowerCheckType, variable_type, 'Attached Variable Check Group', 'chained', body)
+	body = linked_ref(PowerOpposedType, opponent, 'Attached Opponent Check Group', 'chained', body)
+	body = linked_ref(PowerOpposed, opposed, 'Attached Opponent Check', 'chained', body)
 
 	body = link_add(PowerOpposed, PowerOpposedType, 'power_id', power_id, title, keyword, body)
 	title = body['title_id']
 
 	body = linked_field(PowerOpposedType, title, 'Opponent Check', 'multiple', multiple, body)
+	body = linked_field(PowerOpposedType, title, 'Primary Check', 'primary', primary, body)
 
 	if body['success'] == False:
 		return jsonify(body)
@@ -5327,7 +5332,8 @@ def power_post_opposed():
 						opposed = opposed,
 						variable_type = variable_type,
 						before = before,
-						after = after
+						after = after,
+						primary = primary
 					)			
 
 	db.session.add(entry)

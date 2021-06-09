@@ -1289,6 +1289,7 @@ class PowerOpposed(db.Model):
 	variable_type = db.Column(db.Integer, db.ForeignKey('power_check_type.id'))
 	before = db.Column(db.String())
 	after = db.Column(db.String())
+	primary = db.Column(db.Boolean)
 
 
 	def format(self):
@@ -1337,7 +1338,8 @@ class PowerOpposed(db.Model):
 			'opposed': self.opposed,
 			'variable_type': self.variable_type,
 			'before': self.before,
-			'after': self.after
+			'after': self.after,
+			'primary': self.primary
 		}
 
 
