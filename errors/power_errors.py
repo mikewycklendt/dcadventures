@@ -1800,8 +1800,8 @@ def power_check_post_errors(data):
 	frequency = data['frequency']
 	overwrite = data['overwrite']
 	descriptor = data['descriptor']
-
-
+	power_check = data['power_check']
+	power_action = data['power_action']
 
 	errors = power_check(power_id, errors)
 	errors = id_check(Power, power_id, 'Power', errors)
@@ -2953,6 +2953,8 @@ def power_opposed_post_errors(data):
 	variable_type = data['variable_type']
 	before = data['before']
 	after = data['after']
+	power_check = data['power_check']
+	power_action = data['power_action']
 
 
 	errors = power_check(power_id, errors)
@@ -3008,9 +3010,10 @@ def power_opposed_post_errors(data):
 
 	errors = variable_field('before', attached, 'Before Check', before, errors) 
 	errors = variable_field('after', attached, 'After Check', after, errors)
-	errors = variable_field('before_var', attached, 'Before Ceck', before, errors)
+	errors = variable_field('before_var', attached, 'Before Check', before, errors)
+	errors = variable_field('before_opponent', attached, 'Before Check', before, errors)
 	errors = variable_field('after_var', attached, 'After Check', after, errors)
-	errors = variable_field('opponent', attached, 'After Check', after, errors)
+	errors = variable_field('after_opponent', attached, 'After Check', after, errors)
 	errors = variable_field('primary', attached, 'Frequency', frequency, errors)
 
 	errors = select_of('opponent', 'Happens After an Opponent Check', 'Attached', attached, [opponent, opposed], ['Opponent Check'], errors)

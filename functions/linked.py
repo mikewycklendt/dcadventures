@@ -1,5 +1,4 @@
 
-from create_functions.error_functions import db_integer
 from models import *
 from db.rule_models import *
 from db.measure_models import *
@@ -14,6 +13,8 @@ from db.power_models import *
 from db.skill_models import *
 from db.vehicle_models import *
 from db.weapon_models import *
+
+from functions.converts import *
 
 from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()

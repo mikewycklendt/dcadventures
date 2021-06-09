@@ -34,6 +34,7 @@
 		<div>
 			<select class="base-select" id="check" name="check" onchange="check_type()">
 				<option value="">Check Type</option>
+				<option value="X">Variable Check</option>
 				<option value="none">None</option>
 				{% for c in checks %}
 					<option value={{c.id}}>{{c.name}}</option>
@@ -50,6 +51,8 @@
 		
 		<select class="base-select" id="action" name="action" onchange="movement()">
 			<option value=''>Action Type</option>
+			<option value="x">Variable Action</option>
+			<option value="none">None</option>
 			{% for a in actions %}
 				<option value={{a.id}}>{{a.name}}</option>
 			{% endfor %}

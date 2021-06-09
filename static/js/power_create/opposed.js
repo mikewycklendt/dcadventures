@@ -18,13 +18,16 @@ function opposed_base() {
 function opposed_attached() {
 	const select = 'opposed_attached';
 	const div = 'opposed-variable-title';
+	const opposed_div = 'opposed-opponent-title'
 	const options = [{'val': ['before_var', 'after_var'], 'div': 'opposed-variable'},
-					{'val': ['opponent'], 'div': 'opposed-opponent'}]
+					{'val': ['before_opponent', 'after_opponent'], 'div': 'opposed-opponent'}]
 	const values = [{'val': 'before_var', 'text': 'Before Variable Check:'}, 
-					{'val': 'after_var', 'text': 'After Variable Check:'}];
+					{'val': 'after_opponent', 'text': 'After Opponent Check:'}, 
+					{'val': 'after_var', 'text': 'After Variable Check:'}, 
+					{'val': 'before_opponent', 'text': 'Before Opponent Check:'}];
 	const entry = "opposed-entry";
-	const attached = [{'val': ['before', 'before_var'], 'div': 'opposed-before'},
-					{'val': ['after', 'after_var', 'opponent'], 'div': 'opposed-after'},
+	const attached = [{'val': ['before', 'before_var', 'before_opponent'], 'div': 'opposed-before'},
+					{'val': ['after', 'after_var', 'after_opponent'], 'div': 'opposed-after'},
 					{'val': ['primary'], 'div': 'opposed-primary'}]
 	const fields = ['opposed_before', 'opposed_after', 'opposed_frequency']
 
@@ -32,6 +35,7 @@ function opposed_attached() {
 	select_opacity_shared(select, attached);
 	select_maxheight_shared(select, options, entry);
 	div_text(select, div, values);
+	div_text(select, opposed_div, values);
 }
 
 function opposed_trait_type() {
@@ -155,6 +159,8 @@ function opposed_submit() {
 	const variable_type = select("opposed_variable_type");
 	const before = select("opposed_before");
 	const after = select("opposed_after");
+	const power_check = select("check");
+	const power_action = select("action");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -212,7 +218,9 @@ function opposed_submit() {
 			'opposed': opposed,
 			'variable_type': variable_type,
 			'before': before,
-			'after': after
+			'after': after,
+			'power_check': power_check,
+			'power_action': power_action
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

@@ -154,6 +154,8 @@ function check_submit() {
 	const overwrite = select("check_overwrite");
 	const maintain_concentrate = check("check_maintain_concentrate");
 	const descriptor = select("check_descriptor");
+	const power_check = select("check");
+	const power_action = select("action");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -226,7 +228,9 @@ function check_submit() {
 			'frequency': frequency,
 			'overwrite': overwrite,
 			'maintain_concentrate': maintain_concentrate,
-			'descriptor': descriptor
+			'descriptor': descriptor,
+			'power_check': power_check,
+			'power_action': power_action
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
