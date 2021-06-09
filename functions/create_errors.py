@@ -1381,7 +1381,7 @@ def linked_field(value, field, table, name, rule, required, errors):
 
 	return (errors)
 
-def primary_check(name, trait, check_values, value_name, table, type_table, other_table, other_name, title, primary, power_action, power_check, power_id, body, variable=False, opposed=False, opposed_type=False):
+def primary_check(name, trait, check_values, value_name, type_table, other_table, other_name, title, primary, power_action, power_check, power_id, body, variable=False, opposed=False, opposed_type=False):
 
 	error_msgs = body['error_msgs']
 	error = False
@@ -1397,7 +1397,7 @@ def primary_check(name, trait, check_values, value_name, table, type_table, othe
 
 	if stop:
 		error = True
-		message = 'If this ' + name + ' is a primary check for this ' + trait + ', you must set this ' + trait + "'s Check to " + vslue_name + '. In the base power settings. You have currently set a different primary check for this ' + trait + '.'
+		message = 'If this ' + name + ' is a primary check for this ' + trait + ', you must set this ' + trait + "'s base Check to " + value_name + ' in the base power settings. You have currently set a different primary check for this ' + trait + '.'
 		error_msgs.append(message)
 
 	if variable:
@@ -1430,9 +1430,15 @@ def primary_check(name, trait, check_values, value_name, table, type_table, othe
 					error = True
 					message = 'You have already set the primary check for this ' + trait + ' with the ' + other_name + ' form.  You can still make this check the primary check by making this check an opposed check or comparison check and selecting either the primary opponent check or primary opponent check group.  If rhis check is not an opposed check or comparison check but you still want it to be the primary check you must delete the primary check group you created on the opponent check form first or you can keep the opponent check as the primary check and attach this check to it.'
 					error_msgs.append(nessage)
+			if opposed_type is not None:
+				check = db.session.query(PowerOpposedType).filter_by(id=opposed).one()
+				if check.primary != False:
+					error = True
+					message = 'You have already set the primary check for this ' + trait + ' with the ' + other_name + ' form.  You can still make this check the primary check by making this check an opposed check or comparison check and selecting either the primary opponent check or primary opponent check group.  If rhis check is not an opposed check or comparison check but you still want it to be the primary check you must delete the primary check group you created on the opponent check form first or you can keep the opponent check as the primary check and attach this check to it.'
+					error_msgs.append(nessage)
 
-	errors['error_msgs'] = error_msgs
+	body['error_msgs'] = error_msgs
 	if error:
-		errors['error'] = error
+		body['success'] = False
 
 	return (body)

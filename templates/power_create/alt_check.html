@@ -455,6 +455,19 @@
 			<select class="opposed-sml" id="check_opposed" name="check_opposed">
 				<option value="">Opponent Check</option>
 				<option value="">Use opponent check form to put options here</option>
+				{% for p in power_opposed_type %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="opposed-title-sml" id="check_opposed_type" name="check_opposed_type">
+				<option value="">Opponent Check by Group</option>
+				<option value="">Use opponent check form to put options here</option>
+				{% for p in power_opposed_type %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
 			</select>
 		</div>
 	</div>

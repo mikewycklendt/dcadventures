@@ -20,7 +20,7 @@ function check_check_type() {
 	const options = [{'val': ['5'], 'div': 'check-attack'}, 
 					{'val': ['1', '6'], 'div': 'check-dc'}, 
 					{'val': ['2', '7'], 'div': 'check-opposed'}]
-	const fields = ['check_attack', 'check_opposed', 'check_dc_value', 'check_dc_type']
+	const fields = ['check_attack', 'check_opposed', 'check_opposed_type', 'check_dc_value', 'check_dc_type']
 	const entry = 'check-entry';
 	const titles = [{'val': '1', 'text': 'Skill Check', 'div': 'check-dc-title'},
 					{'val': '6', 'text': 'Resistance Check', 'div': 'check-dc-title'},
@@ -128,6 +128,7 @@ function check_submit() {
 	const attack = select("check_attack");
 	const attack_range = select("check_attack_range");
 	const opposed = select("check_opposed");
+	const opposed_type = select("check_opposed_type");
 	const condition = select("check_condition");
 	const condition_target = select("check_condition_target");
 	const conditions_target = select("check_conditions_target");
@@ -204,6 +205,7 @@ function check_submit() {
 			'attack': attack,
 			'attack_range': attack_range,
 			'opposed': opposed,
+			'opposed_type': opposed_type,
 			'condition': condition,
 			'condition_target': condition_target,
 			'conditions_target': conditions_target,

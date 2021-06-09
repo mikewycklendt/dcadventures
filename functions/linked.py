@@ -263,6 +263,25 @@ def linked_field(table, value, name, column, insert, body):
 	error_msgs = body['error_msgs']
 	error = False
 
+	if column == 'primary':
+		try:
+			check = db.session.query(table).filter_by(id=value).one()
+			if check.primary != insert:
+				error = True
+				if insert == True:
+					message = 'You set this check as a primary check but the check group you are putting it in is not a primary check group.  Primary Checks should have their own group.  Either put this check in the primary check group if one exists or create a new title for the primary check group.'
+					error_msgs.append(message)
+				else:
+					message = 'You set this check to go into the primary check group but did not set this check as a primary check.  Only primary checks should go in a primary check group.  Change the title to put this check into a group that is not a primary check.  You can still attach this check to the primary check but it cannot be in the primary check group if it is not a primary check.'
+					error_msgs.append(message)				
+		except:
+			error = True
+			message = 'There was an error processing that ' + name + ' Group.'
+			error_msgs.append(message)
+			db.session.rollback()
+		finally:
+			db.session.close()
+
 	if value != '':
 		try:
 			value = int(value)

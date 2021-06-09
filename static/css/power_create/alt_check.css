@@ -144,7 +144,7 @@
 	overflow: hidden;
 	transition: all .4s ease-out;
 	text-align: center;
-	grid-template-columns: 20% 35% 50%;
+	grid-template-columns: 20% 35% 35%;
 }
 
 #check-consequence {

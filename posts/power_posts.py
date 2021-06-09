@@ -2116,6 +2116,7 @@ def power_check_post(entry, body, cells):
 	keyword = entry.keyword
 	attack = entry.attack
 	opposed = entry.opposed
+	opposed_type = entry.opposed_type
 	condition = entry.condition
 	condition_target = entry.condition_target
 	conditions_target = entry.conditions_target
@@ -2154,7 +2155,6 @@ def power_check_post(entry, body, cells):
 
 	trait = trait_select(trait, trait_type)
 
-	check_type = get_name(Check, check_type)
 	conflict = get_name(ConflictAction, conflict)
 	conflict_range = get_name(Ranged, conflict_range)
 	condition1 = get_name(Condition, condition1)
@@ -2181,7 +2181,7 @@ def power_check_post(entry, body, cells):
 	variable = get_keyword(PowerCheck, variable)
 	variable_type = get_name(PowerCheckType, variable_type)
 	overwrite = get_keyword(PowerCheck, overwrite)
-
+	opposed_type = get_name(PowerOpposedType, opposed_type)
 
 	mental = check_string('Except Mental', mental)
 	touch = check_string('Must Maintain Touch', touch)
@@ -2240,8 +2240,8 @@ def power_check_post(entry, body, cells):
 	vcells = vcell(5, 8, [attack, word, maneuver, 'at', attack_range, 'Range', touch])
 	vcells = vcell(1, 8, [dc, dc_value], vcells)
 	vcells = vcell(6, 8, [dc, dc_value], vcells)
-	vcells = vcell(2, 8, [opposed], vcells)
-	vcells = vcell(7, 8, [opposed], vcells)
+	vcells = vcell(2, 8, [opposed, opposed_type], vcells)
+	vcells = vcell(7, 8, [opposed, opposed_type], vcells)
 	vcells = vcell(3, 8, [''], vcells)
 	vcells = vcell(4, 8, [''], vcells)
 	vcells = vcell(8, 8, [''], vcells)

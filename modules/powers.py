@@ -41,7 +41,7 @@ from functions.create import name_exist, db_insert, capitalize
 from functions.linked import link_add, delete_link, linked_ref, level_add, delete_level, linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link, linked_field
 from functions.user_functions import user_item
 
-from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, required_setting, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable
+from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, required_setting, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable, primary_check
 from functions.create_posts import send_multiple, one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string, circ_cell
 
 from errors.power_errors import power_save_errors, power_cost_post_errors, power_extra_post_errors, power_check_post_errors, power_circ_post_errors, power_dc_post_errors, power_degree_post_errors, power_move_post_errors, power_opposed_post_errors, power_time_post_errors, change_action_post_errors, character_post_errors, create_post_errors, damage_post_errors, defense_post_errors, environment_post_errors, levels_post_errors, minion_post_errors, mod_post_errors, ranged_post_errors, resist_post_errors, resisted_by_post_errors, reverse_effect_post_errors, sense_post_errors
@@ -3828,6 +3828,7 @@ def power_post_check():
 	keyword = request.get_json()['keyword']
 	attack = request.get_json()['attack']
 	opposed = request.get_json()['opposed']
+	opposed_type = request.get_json()['opposed_type']
 	condition = request.get_json()['condition']
 	condition_target = request.get_json()['condition_target']
 	conditions_target = request.get_json()['conditions_target']
@@ -3855,6 +3856,8 @@ def power_post_check():
 	maintain_concentrate = request.get_json()['maintain_concentrate']
 	frequency = request.get_json()['frequency'] 
 	descriptor = request.get_json()['descriptor']
+	power_check = request.get_json()['power_check']
+	power_action = request.get_json()['power_action']
 
 	power_id = db_integer(Power, power_id)
 	extra_id = db_integer(Extra, extra_id)
@@ -3873,6 +3876,7 @@ def power_post_check():
 	variable_type = db_integer(PowerCheckType, variable_type)
 	overwrite = db_integer(PowerCheck, overwrite)
 	descriptor = db_integer(PowerDes, descriptor)
+	opposed_type = db_integer(PowerOpposedType, opposed_type)
 
 
 	attack = integer(attack)
@@ -3903,7 +3907,9 @@ def power_post_check():
 	body = linked_ref(PowerCheckType, variable_type, 'Attached Variable Check', 'chained', body)
 
 	body = linked_field(PowerCheckType, title, 'Variable Check', 'multiple', multiple, body)
-	body = linked_field(PowerCheckType, title, 'Primary Check', 'primary', primary, body, power_id)
+	body = linked_field(PowerCheckType, title, 'Primary Check', 'primary', primary, body)
+
+	body = primary_check('Variable Check', 'Power', ['x'], 'Variable Check', PowerCheckType, PowerOpposedType, 'Opponent Check', title, primary, power_action, power_check, power_id, body, True, opposed, opposed_type)
 
 	if body['success'] == False:
 		return jsonify(body)
@@ -3934,6 +3940,7 @@ def power_post_check():
 						keyword = keyword,
 						attack = attack,
 						opposed = opposed,
+						opposed_type = opposed_type,
 						condition = condition,
 						condition_target = condition_target,
 						conditions_target = conditions_target,
@@ -5241,6 +5248,8 @@ def power_post_opposed():
 	variable_type = request.get_json()['variable_type']
 	before = request.get_json()['before']
 	after = request.get_json()['after']
+	power_check = request.get_json()['power_check']
+	power_action = request.get_json()['power_action']
 
 
 	power_id = db_integer(Power, power_id)
@@ -5287,6 +5296,8 @@ def power_post_opposed():
 
 	body = linked_field(PowerOpposedType, title, 'Opponent Check', 'multiple', multiple, body)
 	body = linked_field(PowerOpposedType, title, 'Primary Check', 'primary', primary, body)
+
+	body = primary_check('Opponent Check', 'Power', ['2', '7'], 'Opposed or Comparison', PowerOpposedType, PowerCheckType, 'Variable Check', title, primary, power_action, power_check, power_id, body)
 
 	if body['success'] == False:
 		return jsonify(body)

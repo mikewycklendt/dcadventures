@@ -406,6 +406,7 @@ class PowerCheck(db.Model):
 	ranged = db.Column(db.Integer, db.ForeignKey('power_ranged_type.id'))
 	attack = db.Column(db.Integer)
 	opposed = db.Column(db.Integer, db.ForeignKey('power_opposed.id'))
+	opposed_type = db.Column(db.Integer, db.ForeignKey('power_opposed_type.id'))
 	condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	condition_target = db.Column(db.String())
 	conditions_target = db.Column(db.String())
@@ -467,6 +468,7 @@ class PowerCheck(db.Model):
 			'keyword': self.keyword,
 			'attack': self.attack,
 			'opposed': self.opposed,
+			'opposed_type': self.opposed_type,
 			'condition': self.condition,
 			'condition_target': self.condition_target,
 			'conditions_target': self.conditions_target,

@@ -21,7 +21,7 @@ from functions.create import name_exist, db_insert, capitalize
 from functions.linked import link_add, delete_link, level_add, delete_level, linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link
 from functions.user_functions import user_item
 
-from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable, not_required, seperate_checks, checked_invalid_option, variable_fields_of, incompatible, valid_options, extra_option, variable_required_rules, cross_check, variable_field_required, dependent_of
+from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_field_of, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable, not_required, seperate_checks, checked_invalid_option, variable_fields_of, incompatible, valid_options, extra_option, variable_required_rules, cross_check, variable_field_required, dependent_of
 from functions.create_posts import send_multiple, one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string, circ_cell
 
 from create_functions.power_create import power_check, rule_check, rule_select, cost_check, extra_cost, extra_check, extra_convert, field_cost, multiple_cost, variable_cost, sense_cost, power_rules, valid_extra, ranks_error, ranks_function, cost_error, cost_exist, cost_check_table, degree_check, extra_cost_exist, multiple_error, trait_cost, power_sense_condition, power_reflect_immune, extra_rule_select
@@ -1779,6 +1779,7 @@ def power_check_post_errors(data):
 	keyword = data['keyword']
 	attack = data['attack']
 	opposed = data['opposed']
+	opposed_type = data['opposed_type']
 	condition = data['condition']
 	condition_target = data['condition_target']
 	conditions_target = data['conditions_target']
@@ -1824,6 +1825,7 @@ def power_check_post_errors(data):
 	errors = id_check(PowerTimeType, time, 'Time Effect', errors)
 	errors = id_check(PowerMoveType, move, 'Movement Effect', errors)
 	errors = id_check(PowerOpposed, opposed, 'Opponent Check', errors)
+	errors = id_check(PowerOpposedType, opposed_type, 'Opponent Check by Group', errors)
 	errors = id_check(PowerRangedType, ranged, 'Ranged', errors)
 	errors = id_check(PowerCheck, overwrite, 'Check to Overwrite', errors)
 	errors = id_check(PowerCheck, variable, 'Linked Variable Check', errors)
@@ -1879,8 +1881,9 @@ def power_check_post_errors(data):
 	errors = variable_fields('5', 'Attack Check', check_type, [attack_range], errors)
 	errors = variable_field('5', check_type, 'Range', attack_range, errors)
 
-	errors = variable_field_linked('2', check_type, opposed, 'Opposed Check', 'Opponent Check', errors)
-	errors = variable_field_linked('7', check_type, opposed, 'Comparison Check', 'Opponent Check', errors)
+	errors = variable_field_of('2', check_type, 'Opponent Check or Opponent Check by Group', [opposed, opposed_type], errors)
+	errors = variable_field_of('7', check_type, 'Opponent Check or Opponent Check by Group', [opposed, opposed_type], errors)
+	errors = seperate([opposed_type, opposed_type], 'Opponent Check or Opponent Check by Group', errors)
 
 	errors = select_of('1', 'uses a skill check', 'Check Type', check_type, [dc, dc_value], ['DC', 'DC by group'], errors)
 	errors = select_of('6', 'uses a resistance check', 'Check Type', check_type, [dc, dc_value], ['DC', 'DC by group'], errors)
