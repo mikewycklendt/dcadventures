@@ -1,5 +1,3 @@
-
-from create_functions.error_functions import db_integer
 from db.linked_models import *
 from create_functions.power_create import trait_cost
 from models import *
