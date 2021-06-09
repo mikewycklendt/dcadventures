@@ -64,6 +64,32 @@ function extra_action() {
 	select_opacity(select, options);
 }
 
+function extra_required_check() {
+	const check = 'extra_required_check';
+	const div = 'extras-required';
+	const entry = 'extras-entry';
+
+	check_drop(check, div, entry);
+}
+
+function extra_auto() {
+	const check = 'extra_auto';
+	const div = 'extras-auto';
+	const entry = 'extras-entry';
+
+	check_drop(check, div, entry);
+}
+
+function extra_auto_type() {
+	const select = 'extra_auto_type';
+	const options = [{'val': 'check', 'div': 'extra-auto-check'},
+					{'val': 'check_type', 'div': 'extra-auto-check-type'},
+					{'val': 'opposed', 'div': 'extra-auto-opposed'},
+					{'val': 'opposed_type', 'div': 'extra-auto-opposed-type'}]
+
+	select_opacity(select, options);
+}
+
 let extras_grid = {'titles': false,
 				'columns': [],
 				'font': 80,
@@ -88,6 +114,7 @@ function extras_submit() {
 	const stack = check("extra_stack");
 	const power_rank = check("extra_power_rank");
 	const type = select("extra_type");
+	const required_check = check("extra_required_check");
 	const required = select("extra_required");
 	const extra_effect = check("extra_extra_effect");
 	const extra_effect_count = select("extra_extra_effect_count");
@@ -118,8 +145,14 @@ function extras_submit() {
 	const skill = select("extra_skill");
 	const skill_type = select("extra_skill_type");
 	const range_check = check("extra_range_check");
-	const range = select("extra_range")
-	
+	const range = select("extra_range");
+	const auto = check("extra_auto");
+	const auto_type = select("extra_auto_type");
+	const auto_check = select("extra_auto_check");
+	const auto_check_type = select("extra_auto_check_type");
+	const auto_opposed = select("extra_auto_opposed");
+	const auto_opposed_type = select("extra_auto_opposed_type");
+
 	
 	const errors = 'extras-err';
 	const err_line = 'extras-err-line';
@@ -146,6 +179,7 @@ function extras_submit() {
 			'stack': stack,
 			'power_rank': power_rank,
 			'type': type,
+			'required_check': required_check,
 			'required': required,
 			'extra_effect': extra_effect,
 			'extra_effect_count': extra_effect_count,
@@ -176,7 +210,13 @@ function extras_submit() {
 			'skill_type': skill_type,
 			'skill': skill,
 			'range_check': range_check,
-			'range': range
+			'range': range,
+			'auto': auto,
+			'auto_type': auto_type,
+			'auto_check': auto_check,
+			'auto_check_type': auto_check_type,
+			'auto_opposed': auto_opposed,
+			'auto_opposed_type': auto_opposed_type
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

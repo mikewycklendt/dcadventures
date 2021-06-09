@@ -3275,6 +3275,7 @@ def power_extra_post_errors(data):
 	alternate = data['alternate']
 	flat = data['flat']
 	type = data['type']
+	required_check = data['required_check']
 	required = data['required']
 	extra_effect = data['extra_effect']
 	extra_effect_count = data['extra_effect_count']
@@ -3305,6 +3306,12 @@ def power_extra_post_errors(data):
 	skill = data['skill']
 	range_check = data['range_check']
 	range = data['range']
+	auto = data['auto']
+	auto_type = data['auto_type']
+	auto_check = data['auto_check']
+	auto_check_type = data['auto_check_type']
+	auto_opposed = data['auto_opposed']
+	auto_opposed_type = data['auto_opposed_type']
 
 	errors = power_check(power_id, errors)
 	errors = id_check(Power, power_id, 'Power', errors)
@@ -3317,6 +3324,11 @@ def power_extra_post_errors(data):
 	errors = id_check(Ranged, range, 'Range', errors)
 	errors = id_check(Skill, skill_type, 'Skill', errors)
 	errors = id_check(SkillBonus, skill, 'Enhanced Skill', errors)
+	errors = id_check(Extra, required, 'Required Extra', errors)
+	errors = id_check(PowerCheck, auto_check, 'Automatic Check', errors)
+	errors = id_check(PowerCheckType, auto_check_type, 'Automatic Check Group', errors)
+	errors = id_check(PowerOpposed, auto_opposed, 'Automatic Opponent Check', errors)
+	errors = id_check(PowerOpposedType, auto_opposed_type, 'Automatic Opponent Check Group', errors)
 
 	errors = required(name, 'Name', errors)
 	errors = not_required(alternate, cost, 'Cost', errors)
@@ -3325,6 +3337,21 @@ def power_extra_post_errors(data):
 	errors = required(type, 'Effect Type', errors)
 	errors = check_fields(extra_effect, 'Extra Effect', [extra_effect_count], errors)
 	errors = check_field(extra_effect, 'Extra Effect', 'Extra Effects Count', extra_effect_count, errors)
+
+	errors = check_fields(required_check, 'Required Extra', [required], errors)
+	errors = check_field(required_check, 'Required Extra', 'Required Extra', required, errors)
+
+	errors = check_fields(auto, 'Automatic Check', [auto_type], errors)
+	errors = check_field(auto, 'Automatic Check', 'Check Type', auto_type, errors)
+	errors = variable_fields('check', 'Automatic Check', auto_type, [auto_check], errors)
+	errors = variable_field('check', auto_type, 'Check', auto_check, errors)
+	errors = variable_fields('check_type', 'Automatic Check Group', auto_type, [auto_check_type], errors)
+	errors = variable_field('check_type', auto_type, 'Check Group', auto_check_type, errors)
+	errors = variable_fields('opposed', 'Automatic Opponent Check', auto_type, [auto_opposed], errors)
+	errors = variable_field('opposed', auto_type, 'Opponent Check', auto_opposed, errors)
+	errors = variable_fields('opposed_type', 'Automatic Opponent Check Group', auto_type, [auto_opposed_type], errors)
+	errors = variable_field('opposed_type', auto_type, 'Opponent Check Group', auto_opposed_type, errors)
+
 
 	errors = check_fields(target_check, 'Changes Target', [target, target_type], errors)
 	errors = check_field(target_check, 'Changes Target', 'Changes Target Type', target_type, errors)

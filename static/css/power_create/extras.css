@@ -124,6 +124,27 @@
 	font-size: 80%;
 }
 
+#extras-required {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+	grid-template-columns: 24% 25% 25% 25%;
+	grid-auto-rows: auto;
+	font-size: 80%;
+}
+
+
+#extras-auto {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+	grid-template-columns: 24% 25% 35%;
+	grid-auto-rows: auto;
+	font-size: 80%;
+}
+
 #extras-range {
 	display: none;
 	max-height: 0;

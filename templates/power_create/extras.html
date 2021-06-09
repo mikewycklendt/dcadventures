@@ -64,6 +64,20 @@
 				</div>	
 			</div>
 
+			<div class="extras-split">
+				<div>
+					<div class="check-div">
+						<input type="checkbox" id="extra_flat" class="medium-checkbox med-checkbox"> Flat Cost
+					</div>
+				</div>	
+
+				<div>
+					<div class="check-div">
+						<input type="checkbox" id="extra_power_rank" class="medium-checkbox med-checkbox"> Linked Ranks
+					</div>
+				</div>	
+			</div>
+
 			<div>
 				<select class="select-sml" id="extra_type" name="extra_type">
 					{% for e in extra_type %}
@@ -72,11 +86,6 @@
 				</select>
 			</div>
 
-			<div>		
-				<select class="select-sml" id="extra_required" name="extra_required">
-					<option value=>Required Extra</option>
-				</select>
-			</div>
 		</div>
 
 		<div>
@@ -93,6 +102,7 @@
 				<input type="checkbox" id="extra_routine" class="medium-checkbox med-checkbox" onclick="extra_routine()"> Routine Skill Check
 			</div>
 		</div>	
+
 		<div>
 			<div class="check-div">
 				<input type="checkbox" id="extra_target_check" class="medium-checkbox med-checkbox" onclick="extra_target_check()"> Changes Effect Target
@@ -101,13 +111,13 @@
 
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="extra_power_rank" class="medium-checkbox med-checkbox"> Power's Ranks
+				<input type="checkbox" id="extra_extra_effect" class="medium-checkbox med-checkbox" onclick="extra_extra_effect()"> Extra Effect
 			</div>
 		</div>	
-		
+
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="extra_extra_effect" class="medium-checkbox med-checkbox" onclick="extra_extra_effect()"> Extra Effect
+				<input type="checkbox" id="extra_auto" class="medium-checkbox med-checkbox" onclick="extra_auto()"> Automatic Check
 			</div>
 		</div>	
 	</div>
@@ -134,7 +144,7 @@
 	
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="extra_flat" class="medium-checkbox med-checkbox"> Flat Cost
+				<input type="checkbox" id="extra_required_check" class="medium-checkbox med-checkbox" onclick="extra_required_check()"> Required
 			</div>
 		</div>	
 	
@@ -145,6 +155,74 @@
 		</div>	
 	
 	</div>		
+
+	<div id="extras-auto">
+		<div>
+			Automatic Check
+		</div>
+
+		<div>
+			<select class="select-sml" id="extra_auto_type" name="extra_auto_type" onchange="extra_auto_type()">
+				{% for a in auto_type %}
+					<option value={{a.type}}>{{a.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div class="hidden" id="extra-auto-check">
+			<select class="check-sml" id="extra_auto_check" name="extra_auto_check">
+				<option value="">Check</option>
+				<option value="">Use Variable Check Form to Put Options Here</option>
+				<option value="primary">Primary Check</option>
+				{% for p in power_check %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+		<div class="hidden" id="extra-auto-check-type">
+			<select class="check-title-sml" id="extra_auto_check_type" name="extra_auto_check_type">
+				<option value="">Check by Group</option>
+				<option value="">Use Variable Check Form to Put Options Here</option>
+				<option value="primary">Primary Check</option>
+				{% for p in power_check_type %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+		<div class="hidden" id="extra-auto-opposed">
+			<select class="opposed-sml" id="extra_auto_opposed" name="extra_auto_opposed">
+				<option value="">Opponent Check</option>
+				<option value="">Use Opponent Check Form to Put Options Here</option>
+				{% for p in power_opposed %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+		<div class="hidden" id="extra-auto-opposed-type">
+			<select class="opposed-title-sml" id="extra_auto_opposed_type" name="extra_auto_opposed_type">
+				<option value="">Opponent Check by Group</option>
+				<option value="">Use Opponent Check Form to Put Options Here</option>
+				{% for p in power_opposed_type %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	<div id="extras-required">
+		<div>
+			Required Extra:
+		</div>
+
+		<div>		
+			<select class="select-sml" id="extra_required" name="extra_required">
+				<option value=>Required Extra</option>
+			</select>
+		</div>
+	</div>
 
 	<div id="extras-range">
 		<div>

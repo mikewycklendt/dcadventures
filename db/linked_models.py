@@ -166,6 +166,7 @@ class PowerCheckType(db.Model):
 	chained = db.Column(db.Boolean)
 	multiple = db.Column(db.String())
 	damage = db.Column(db.Boolean)
+	primary = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -175,7 +176,8 @@ class PowerCheckType(db.Model):
 			'effect': self.effect,
 			'chained': self.chained,
 			'multiple': self.multiple,
-			'damage': self.damage
+			'damage': self.damage,
+			'primary': self.primary
 		}
 
 class PowerCircType(db.Model):
@@ -255,6 +257,7 @@ class PowerOpposedType(db.Model):
 	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
 	effect = db.Column(db.Boolean)
 	multiple = db.Column(db.String())
+	primary = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -262,7 +265,8 @@ class PowerOpposedType(db.Model):
 			'name': self.name,
 			'power_id': self.power_id,
 			'effect': self.effect,
-			'multiple': self.multiple
+			'multiple': self.multiple,
+			'primary': self.primary
 		}
 
 class PowerRangedType(db.Model):

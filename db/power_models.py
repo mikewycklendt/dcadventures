@@ -218,6 +218,7 @@ class Extra(db.Model):
 	stack = db.Column(db.Boolean)
 	power_rank = db.Column(db.Boolean)
 	type = db.Column(db.String())
+	required_check = db.Column(db.Boolean)
 	required = db.Column(db.Integer, db.ForeignKey('extras.id'))
 	extra_effect_count = db.Column(db.Integer)
 	extra_effect = db.Column(db.Boolean)
@@ -233,6 +234,12 @@ class Extra(db.Model):
 	skill = db.Column(db.Integer, db.ForeignKey('skills.id'))
 	range_check = db.Column(db.Boolean)
 	range = db.Column(db.Integer, db.ForeignKey('ranged.id'))
+	auto = db.Column(db.Boolean)
+	auto_type = db.Column(db.String())
+	auto_check = db.Column(db.Integer, db.ForeignKey('power_check.id'))
+	auto_check_type = db.Column(db.Integer, db.ForeignKey('power_check_type.id'))
+	auto_opposed = db.Column(db.Integer, db.ForeignKey('power_opposed.id'))
+	auto_opposed_type = db.Column(db.Integer, db.ForeignKey('power_opposed_type.id'))
 
 	variable = db.Column(db.Boolean)
 	character = db.Column(db.Boolean)
@@ -275,6 +282,7 @@ class Extra(db.Model):
 			'routine': self.routine,
 			'power_rank': self.power_rank,
 			'type': self.type,
+			'required_check': self.required_check,
 			'required': self.required,
 			'variable': self.variable,
 			'character': self.character,
@@ -312,7 +320,13 @@ class Extra(db.Model):
 			'skill_type': self.skill_type,
 			'skill': self.skill,
 			'range_check': self.range_check,
-			'range': self.range
+			'range': self.range,
+			'auto': self.auto,
+			'auto_type': self.auto_type,
+			'auto_check': self.auto_check,
+			'auto_check_type': self.auto_check_type,
+			'auto_opposed': self.auto_opposed,
+			'auto_opposed_type': self.auto_opposed_type
 		}
 
 class PowerCost(db.Model):

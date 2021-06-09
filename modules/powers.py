@@ -41,7 +41,7 @@ from functions.create import name_exist, db_insert, capitalize
 from functions.linked import link_add, delete_link, linked_ref, level_add, delete_level, linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link, linked_field
 from functions.user_functions import user_item
 
-from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable
+from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, required_setting, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable
 from functions.create_posts import send_multiple, one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string, circ_cell
 
 from errors.power_errors import power_save_errors, power_cost_post_errors, power_extra_post_errors, power_check_post_errors, power_circ_post_errors, power_dc_post_errors, power_degree_post_errors, power_move_post_errors, power_opposed_post_errors, power_time_post_errors, change_action_post_errors, character_post_errors, create_post_errors, damage_post_errors, defense_post_errors, environment_post_errors, levels_post_errors, minion_post_errors, mod_post_errors, ranged_post_errors, resist_post_errors, resisted_by_post_errors, reverse_effect_post_errors, sense_post_errors
@@ -234,6 +234,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	animals = [{'type': '', 'name': 'Comprehend Animals'}, {'type': 'speak', 'name': 'Speak to'}, {'type': 'understad', 'name': 'Understand'}, {'type': 'both', 'name': 'Both'}]
 
 	attached = [{'type': '', 'name': 'Attached'}, {'type': 'primary', 'name': 'Primary Check'}, {'type': 'condition', 'name': 'Conditional'}, {'type': 'before', 'name': 'Before Check'}, {'type': 'after', 'name': 'After Check'}, {'type': 'before_var', 'name': 'Before Variable Check'}, {'type': 'after_var', 'name': 'After Variable Check'}, {'type': 'opponent', 'name': 'After Opponent Check'}]
+
+	auto_type = [{'type': '', 'name': 'Check Type'}, {'type': 'check', 'name': 'Variable Check'}, {'type': 'check_type', 'name': 'Variable Check by Group'}, {'type': 'opposed', 'name': 'Opponent Check'}, {'type': 'opposed_type', 'name': 'Opponent Check by Group'}]
 
 	all_some = [{'type': 'always', 'name': 'Always'}, {'type': 'some', 'name': 'Sometimes'}]
 
@@ -623,7 +625,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											check_sense_type=check_sense_type, check_sense_target=check_sense_target, descriptor_effect_type=descriptor_effect_type, effect_type=effect_type, effortless_type=effortless_type,
 											feedback_resist=feedback_resist, source_type=source_type, sense_micro=sense_micro, micro_expertise=micro_expertise, unreliable_type=unreliable_type, rank_type=rank_type,
 											incurable_type=incurable_type, deg_mod_weaken_type=deg_mod_weaken_type, progressive_type=progressive_type, affects_others_type=affects_others_type, 
-											affects_others_req=affects_others_req, area_type=area_type, concentration_type=concentration_type)
+											affects_others_req=affects_others_req, area_type=area_type, concentration_type=concentration_type, auto_type=auto_type)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -930,6 +932,7 @@ def power_post_extra():
 	stack = request.get_json()['stack']
 	power_rank = request.get_json()['power_rank']
 	type = request.get_json()['type']
+	required_check = request.get_json()['required_check']
 	required = request.get_json()['required']
 	extra_effect = request.get_json()['extra_effect']
 	extra_effect_count = request.get_json()['extra_effect_count']
@@ -961,6 +964,12 @@ def power_post_extra():
 	skill = request.get_json()['skill']
 	range_check = request.get_json()['range_check']
 	range = request.get_json()['range']
+	auto = request.get_json()['auto']
+	auto_type = request.get_json()['auto_type']
+	auto_check = request.get_json()['auto_check']
+	auto_check_type = request.get_json()['auto_check_type']
+	auto_opposed = request.get_json()['auto_opposed']
+	auto_opposed_type = request.get_json()['auto_opposed_type']
 
 	power_id = integer(power_id)
 	inherit = db_integer(Power, inherit)
@@ -969,6 +978,10 @@ def power_post_extra():
 	skill_type = db_integer(Skill, skill_type)
 	skill = db_integer(SkillBonus, skill)
 	range = db_integer(Ranged, range)
+	auto_check = db_integer(PowerCheck, auto_check)
+	auto_check_type = db_integer(PowerCheckType, auto_check_type)
+	auto_opposed = db_integer(PowerOpposed, auto_opposed)
+	auto_opposed_type = db_integer(PowerOpposedType, auto_opposed_type)
 
 	extra_effect_count = integer(extra_effect_count)
 	cost = var_convert(cost)
@@ -988,6 +1001,7 @@ def power_post_extra():
 						stack = stack,
 						power_rank = power_rank,
 						type = type,
+						required_check = required_check,
 						required = required,
 						extra_effect = extra_effect,
 						extra_effect_count = extra_effect_count,
@@ -1018,7 +1032,13 @@ def power_post_extra():
 						skill_type = skill_type,
 						skill = skill,
 						range_check = range_check,
-						range =  range
+						range =  range,
+						auto = auto,
+						auto_type = auto_type,
+						auto_check = auto_check,
+						auto_check_type = auto_check_type,
+						auto_opposed = auto_opposed,
+						auto_opposed_type = auto_opposed_type
 					)
 
 		db.session.add(entry)

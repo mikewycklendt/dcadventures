@@ -631,7 +631,7 @@ def mod_cell(title, width, content, mod, value='e'):
 		except:
 			if c == True:
 				contentwidth = '7%'
-	
+		
 
 	text = ''
 

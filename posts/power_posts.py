@@ -1,4 +1,5 @@
 
+from os import error
 from models import Modifier, ModifierTable, LevelType, Levels, Damage, DamageType
 from db.rule_models import Ability, Defense, Element, EnvCondition, Action, ConflictAction, Skill, Check, Condition, Maneuver, Ranged, Sense, SubSense, Light, Ground, Range, Consequence, Material, Complex, Cover, Conceal, Phase, SkillTable, SkillType, Communication
 from db.measure_models import MeasureType, Unit, Math, Rank, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert
@@ -3816,6 +3817,10 @@ def power_extra_post(entry, body, cells):
 	skill = entry.skill
 	range_check = entry.range_check
 	range = entry.range
+	auto = entry.auto
+	auto_type = entry.auto_type
+	auto_check = entry.auto_check
+	auto_check_type = entry.auto_check_type
 
 
 	cost = var_string(cost)
@@ -3827,6 +3832,8 @@ def power_extra_post(entry, body, cells):
 	skill = get_name(SkillBonus, skill)
 	action = get_name(Action, action)
 	range = get_name(Ranged, range)
+	auto_check = get_keyword(PowerCheck, auto_check)
+	auto_check_type = get_name(PowerCheckType, auto_check_type)
 
 	extra_type = [{'type': '', 'name': 'Effect Type'}, {'type': 'uncheck', 'name': 'Checked = Unchecked'}, {'type': 'over', 'name': 'Overwrite'}, {'type': 'filled', 'name': 'Overwrite Filled'}, {'type': 'required', 'name': 'Overwrites Required'}, {'type': 'add', 'name': 'Add'}]
 	type = selects(type, extra_type)
@@ -3843,13 +3850,31 @@ def power_extra_post(entry, body, cells):
 	cells = cell('Name', 23, [name])
 	cells = cell('Cost', 12, [cost], cells)
 	cells = cell('Per Rank', 12, [ranks], cells)
-	cells = cell('Effect Type', 12, [type], cells)
-	cells = cell('Required Extra', 17, [required], cells)
-	cells = check_cell('Flat Cost', 12, flat, cells)
-	cells = check_cell('Alternate Effect', 17, alternate, cells)
-	cells = check_cell('Stackable', 11, stack, cells)
-	cells = check_cell('Power Rank', 12, power_rank, cells)
+	cells = cell('Effect Type', 17, [type], cells)
 	
+	cells = check_cell('Flat', 5, flat, cells)
+	cells = check_cell('Linked Rank', 12, power_rank, cells)
+	cells = check_cell('Alternate', 11, alternate, cells)
+	cells = check_cell('Stackable', 11, stack, cells)
+
+	cells = check_cell('Required', 9, required_check, cells, True)
+	new_mod = mod_create('Required', 10)
+	new_mod = mod_cell('Extra:', 7, [required], new_mod)
+	body = mod_add(required_check, new_mod, body)
+
+	cells = check_cell('Automatic', 11, auto, cells, True)
+	auto_type_select = [{'type': 'check', 'name': 'Variable Check', 'w': 18}, {'type': 'check_type', 'name': 'Variable Check Group', 'w': 23}, {'type': 'opposed', 'name': 'Opponent Check', 'w': 18}, {'type': 'opposed_type', 'name': 'Opponent Check Group', 'w': 23}]
+	new_mod = mod_create('Automatic Check', 20, auto_type, auto_type_select)
+	value = 'check'
+	new_mod = mod_cell('', 0, [auto_check], new_mod, value)
+	value = 'check_type'
+	new_mod = mod_cell('', 0, [auto_check_type], new_mod, value)
+	value = 'opposed'
+	new_mod = mod_cell('', 0, [auto_opposed], new_mod, value)
+	value = 'opposed_type'
+	new_mod = mod_cell('', 0, [auto_opposed_type], new_mod, value)
+	body = mod_add(auto, new_mod, body)
+
 	cells = check_cell('Extra Effect', 14, extra_effect, cells, True)
 	new_mod = mod_create('Extra Effect', 15)
 	new_mod = mod_cell('Effects', 7, [extra_effect_count], new_mod)
