@@ -3906,10 +3906,10 @@ def power_post_check():
 	body = linked_ref(PowerOpposedType, opponent_type, 'Attached Opponent Check', 'chained', body)
 	body = linked_ref(PowerCheckType, variable_type, 'Attached Variable Check', 'chained', body)
 
-	body = linked_field(PowerCheckType, title, 'Variable Check', 'multiple', multiple, body)
+	body = linked_field(PowerCheckType, title, 'Variable Check', 'multiple', multiple, body, True)
 	body = linked_field(PowerCheckType, title, 'Primary Check', 'primary', primary, body)
 
-	body = primary_check('Variable Check', 'Power', ['x'], 'Variable Check', PowerCheckType, PowerOpposedType, 'Opponent Check', title, primary, power_action, power_check, power_id, body, True, opposed, opposed_type)
+	body = primary_check('Variable Check', 'Power', ['x'], 'Variable Check', PowerCheckType, PowerOpposedType, 'Opponent Check', title, primary, power_action, power_check, 'power_id', power_id, body, True, opposed, opposed_type, PowerOpposed)
 
 	if body['success'] == False:
 		return jsonify(body)
@@ -5294,10 +5294,10 @@ def power_post_opposed():
 	body = link_add(PowerOpposed, PowerOpposedType, 'power_id', power_id, title, keyword, body)
 	title = body['title_id']
 
-	body = linked_field(PowerOpposedType, title, 'Opponent Check', 'multiple', multiple, body)
+	body = linked_field(PowerOpposedType, title, 'Opponent Check', 'multiple', multiple, body, True)
 	body = linked_field(PowerOpposedType, title, 'Primary Check', 'primary', primary, body)
 
-	body = primary_check('Opponent Check', 'Power', ['2', '7'], 'Opposed or Comparison', PowerOpposedType, PowerCheckType, 'Variable Check', title, primary, power_action, power_check, power_id, body)
+	body = primary_check('Opponent Check', 'Power', ['2', '7'], 'Opposed or Comparison', PowerOpposedType, PowerCheckType, 'Variable Check', title, primary, power_action, power_check, 'power_id', power_id, body)
 
 	if body['success'] == False:
 		return jsonify(body)

@@ -258,7 +258,7 @@ def linked_ref(table, value, name, column, body):
 
 	return (body)
 	
-def linked_field(table, value, name, column, insert, body):
+def linked_field(table, value, name, column, insert, body, check=False):
 	
 	error_msgs = body['error_msgs']
 	error = False
@@ -281,6 +281,22 @@ def linked_field(table, value, name, column, insert, body):
 			db.session.rollback()
 		finally:
 			db.session.close()
+
+	if column == 'multiple' and check == True:
+		try:
+			check = db.session.query(table).filter_by(id=value).one()
+			if check.multiple != insert:
+				error = True
+				message = 'You are trying to put this check into a title group that has checks with a different if multiple option.  All checks in a title group must have the same if multiple value, so you can either assign it the same if multiple option as the ones in this title group or create a new title group for this check.'
+				error_msgs.append(message)
+		except:
+			error = True
+			message = 'There was an error processing that ' + name + ' Group.'
+			error_msgs.append(message)
+			db.session.rollback()
+		finally:
+			db.session.close()
+
 
 	if value != '':
 		try:

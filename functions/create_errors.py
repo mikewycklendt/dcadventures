@@ -1381,7 +1381,7 @@ def linked_field(value, field, table, name, rule, required, errors):
 
 	return (errors)
 
-def primary_check(name, trait, check_values, value_name, type_table, other_table, other_name, title, primary, power_action, power_check, power_id, body, variable=False, opposed=False, opposed_type=False):
+def primary_check(name, trait, check_values, value_name, type_table, other_table, other_name, title, primary, action, check, column, id, body, variable=False, opposed=False, opposed_type=False, opposed_table=False):
 
 	error_msgs = body['error_msgs']
 	error = False
@@ -1392,7 +1392,7 @@ def primary_check(name, trait, check_values, value_name, type_table, other_table
 	stop = True
 
 	for c in check_values:
-		if c == power_check:
+		if c == check:
 			stop = False
 
 	if stop:
@@ -1401,7 +1401,7 @@ def primary_check(name, trait, check_values, value_name, type_table, other_table
 		error_msgs.append(message)
 
 	if variable:
-		if power_action != 'x':
+		if action != 'x':
 			error = True
 			message = 'If this is the primary check for this ' + trait + ' you must set the action field in the base power settings to variable.'
 			error_msgs.append(message)
@@ -1412,26 +1412,30 @@ def primary_check(name, trait, check_values, value_name, type_table, other_table
 		message = 'You set this ' + name  + ' to be a primary check for this ' + trait + ' but the title group you have assigned it to is not a primary check group. Keep all Primary Checks in the same group.'
 		error_msgs.append(message)
 
-	check = db.session.query(type_table).filter_by(power_id=power_id, primary=True).first()
+	attribute = getattr(type_table, column)
+	the_filter = attribute == id
+	check = db.session.query(type_table).filter(the_filter, type_table.primary==True).first()
 	if check.id != title:
 		error = True
 		message = 'You have already created a group for this ' + trait + "'s primary check.  If this is a primary check for this " + trait + ', put this check in the group containing the existing primary checks.'
 		error_msgs.append(message)
 
-	check = db.session.query(other_table).filter_by(power_id=power_id, primary=True).first()
+	attribute = getattr(other_table, column)
+	the_filter = attribute == id
+	check = db.session.query(other_table).filter(the_filter, other_table.primary==True).first()
 	if check is not None:
 		if opposed == False and opposed_type == False:
 			error = True
 			message = 'You have already set the primary check for this ' + trait + ' with the ' + other_name + ' form.  You can either attach this check to it or you can delete the primary check you created with the ' + other_name + ' form and create the primary check here.'
 		else:
 			if opposed is not None:
-				check = db.session.query(PowerOpposed).filter_by(id=opposed).one()
+				check = db.session.query(opposed_table).filter_by(id=opposed).one()
 				if check.primary != False:
 					error = True
 					message = 'You have already set the primary check for this ' + trait + ' with the ' + other_name + ' form.  You can still make this check the primary check by making this check an opposed check or comparison check and selecting either the primary opponent check or primary opponent check group.  If rhis check is not an opposed check or comparison check but you still want it to be the primary check you must delete the primary check group you created on the opponent check form first or you can keep the opponent check as the primary check and attach this check to it.'
 					error_msgs.append(nessage)
 			if opposed_type is not None:
-				check = db.session.query(PowerOpposedType).filter_by(id=opposed).one()
+				check = db.session.query(other_table).filter_by(id=opposed_type).one()
 				if check.primary != False:
 					error = True
 					message = 'You have already set the primary check for this ' + trait + ' with the ' + other_name + ' form.  You can still make this check the primary check by making this check an opposed check or comparison check and selecting either the primary opponent check or primary opponent check group.  If rhis check is not an opposed check or comparison check but you still want it to be the primary check you must delete the primary check group you created on the opponent check form first or you can keep the opponent check as the primary check and attach this check to it.'
@@ -1442,3 +1446,39 @@ def primary_check(name, trait, check_values, value_name, type_table, other_table
 		body['success'] = False
 
 	return (body)
+
+def primary_exist(check_type, check_table, opposed_table, column, id, power=False):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	check_convert = db_integer(Check, check_type)
+	check_title = get_name(Check, check_convert)
+
+	if check_type == 'x':
+		attribute = getattr(check_table, column)
+		the_filter = attribute == id
+		if power == False:
+			check = db.session.query(check_table).filter(the_filter, check_table.primary == True).first()
+		else:
+			check = db.session.query(check_table).filter(the_filter, check_table.primary == True, check_table.extra_id== None).first()
+		if check is None:
+			error = True
+			message = 'You set this base powers check to Variable Check but you never set a primary check for the base power with the Variable Check Form.  Either create a primary check for the base power with the variable check form or make a different selection on the base powers Check Type field.'
+			error_msgs.append(message)
+	if check_type == '2' or check_type == '7':
+		attribute = getattr(check_table, column)
+		the_filter = attribute == id
+		if power == False:
+			check = db.session.query(opposed_table).filter(the_filter, opposed_table.primary == True).first()
+		else:
+			check = db.session.query(opposed_table).filter(the_filter, opposed_table.primary == True, opposed_table.extra_id== None).first()
+		if check is None:
+			error = True
+			message = 'You set this base powers check to ' + check_title + ' Check but you never set a primary check for the base power with the Opponent Check Form.  Either create a primary check for the base power with the Opponent check form or make a different selection on the base powers Check Type field.'
+			error_msgs.append(message)
+		
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
