@@ -90,6 +90,20 @@ function extra_auto_type() {
 	select_opacity(select, options);
 }
 
+function extra_power_rank() {
+	const check = 'extra_power_rank'
+	const checks = ['extra_flat']
+
+	uncheck_check(check, checks);
+}
+
+function extra_flat() {
+	const check = 'extra_flat';
+	const checks = ['extra_power_rank']
+
+	uncheck_check(check, checks);
+}
+
 let extras_grid = {'titles': false,
 				'columns': [],
 				'font': 80,
