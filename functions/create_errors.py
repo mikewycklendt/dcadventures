@@ -1,5 +1,6 @@
 
-from db.linked_models import PowerOpposedType
+from create_functions.error_functions import db_integer
+from db.linked_models import *
 from create_functions.power_create import trait_cost
 from models import *
 from db.rule_models import *
@@ -15,6 +16,8 @@ from db.power_models import *
 from db.skill_models import *
 from db.vehicle_models import *
 from db.weapon_models import *
+
+from functions.converts import get_name, db_integer
 
 from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
