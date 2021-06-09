@@ -1397,7 +1397,7 @@ def primary_check(name, trait, check_values, value_name, table, type_table, othe
 
 	if stop:
 		error = True
-		message = 'If this ' + name + ' is a primary check for this ' + trait + ', you must set this ' + trait + "'s Check to " + vslue_name '. In the base power settings. You have currently set a different primary check for this ' + trait '.'
+		message = 'If this ' + name + ' is a primary check for this ' + trait + ', you must set this ' + trait + "'s Check to " + vslue_name '. In the base power settings. You have currently set a different primary check for this ' + trait + '.'
 		error_msgs.append(message)
 
 	if variable:
@@ -1405,7 +1405,7 @@ def primary_check(name, trait, check_values, value_name, table, type_table, othe
 			error = True
 			message = 'If this is the primary check for this ' + trait + ' you must set the action field in the base power settings to variable.'
 			error_msgs.append(message)
-			
+
 	check = db.session.query(type_table).filter_by(id=title).one()
 	if check.primary != True:
 		error = True
