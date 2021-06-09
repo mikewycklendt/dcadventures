@@ -1397,7 +1397,7 @@ def primary_check(name, trait, check_values, value_name, table, type_table, othe
 
 	if stop:
 		error = True
-		message = 'If this ' + name + ' is a primary check for this ' + trait + ', you must set this ' + trait + "'s Check to " + vslue_name '. In the base power settings. You have currently set a different primary check for this ' + trait + '.'
+		message = 'If this ' + name + ' is a primary check for this ' + trait + ', you must set this ' + trait + "'s Check to " + vslue_name + '. In the base power settings. You have currently set a different primary check for this ' + trait + '.'
 		error_msgs.append(message)
 
 	if variable:
