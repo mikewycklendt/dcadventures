@@ -319,14 +319,14 @@
 	</div>
 			
 	<div id="opposed-opponent">
-		<div class="valign" id="opposed-opponent-title">
+		<div class="vcenter" id="opposed-opponent-title" style="font-size: 90%;">
 			Opponent Check
 		</div>
 	
 		<div>
 			<select class="opposed-title-sml" id="opposed_opponent" name="opposed_opponent">
 				<option value="">Opponent Check by Group</option>
-				<option value="">Use Variable Check form to put options here</option>
+				<option value="">Use Opponent Check form to put options here</option>
 				{% for p in power_opposed_type %}
 					<option value={{p.id}}>{{p.name}}</option>
 				{% endfor %}
@@ -336,7 +336,7 @@
 		<div>
 			<select class="opposed-sml" id="opposed_opposed" name="opposed_opposed">
 				<option value="">Opponent Check</option>
-				<option value="">Use Variable Check form to put options here</option>
+				<option value="">Use Opponent Check form to put options here</option>
 				{% for p in power_opposed %}
 					<option value={{p.id}}>{{p.name}}</option>
 				{% endfor %}
