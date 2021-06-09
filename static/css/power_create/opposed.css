@@ -181,6 +181,11 @@
 	gap: .3vw;
 }
 
+#opposed-opponent-title {
+	opacity: 0%;
+	transition: all .3s ease-out;
+}
+
 #opposed-variable-title {
 	opacity: 100%;
 	transition: all .3s ease-out;
