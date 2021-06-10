@@ -68,13 +68,6 @@
 	transition: all .4s ease-out;
 }
 
-#deg-mod-entry input[type="text"] {
-	width: 90%; 
-	height: 1.2vw; 
-	font-size: 100%; 
-	padding: 2%;
-}
-
 #deg-mod-entry-title {
 	border-bottom: 1px solid lightblue;
 	width: 70%;
