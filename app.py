@@ -116,23 +116,6 @@ def home_mobile(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, m
 	return render_template('template_mobile.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
 
-@app.route('/table/db')
-def table_db_columns_create():
-
-	name = 'All Descriptors'
-
-	entry = PowerDes(all=True, name=name)
-	db.session.add(entry)
-	db.session.commit()
-
-	results = db.session.query(PowerDes).filter_by(hidden=None).all()
-
-	for result in results:
-		print (result.id)
-		print (result.name)
-
-	return ('hidden descriptors added')
-
 
 
 if __name__ == '__main__':

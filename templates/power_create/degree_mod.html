@@ -92,6 +92,7 @@
 				<select class="descriptor-sml" id="deg_mod_restore_descriptor" name="deg_mod_restore_descriptor">
 					<option value="">Works on Effects With Descriptor</option>
 					<option value="">Use Descriptor Form to Put Options Here</option>
+					<option value="all">All Descriptors</option>
 					{% for d in descriptor_options %}
 						<option value={{d.id}}>{{d.name}}</option>
 					{% endfor %}

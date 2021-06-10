@@ -504,8 +504,10 @@ function mod_persistent() {
 
 function mod_persistent_type() {
 	const select = 'mod_persistent_type';
-	const options = [{'val': 'degree', 'name': 'mod-persistent-degree'}]
+	const options = [{'val': 'degree', 'div': 'mod-persistent-degree'}]
+	const fields = ['mod_persistent_degree'];
 
+	reset_all(fields);
 	select_opacity(select, options);
 }
 
