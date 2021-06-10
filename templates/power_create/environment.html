@@ -35,7 +35,7 @@
 
 		<div></div>
 
-		<div>
+		<div class="text-sml">
 			<input type="text" id="env_radius" name="env_radius">
 		</div>
 
@@ -220,7 +220,7 @@
 			Other Environment:
 		</div>
 
-		<div>
+		<div class="text-sml">
 			<input type="text" id="env_immunity_environment_other" name="env_immunity_environment_other" placeholder="Environment">
 		</div>
 
@@ -273,7 +273,7 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="env_move_nature" name="env_move_nature" onchange="env_move_other()">
+			<select class="select-sml nature-sml" id="env_move_nature" name="env_move_nature" onchange="env_move_other()">
 				<option value="">Nature Type</option>
 				<option value="x">Variable</option>
 				<option value="other">Other</option>
@@ -284,7 +284,7 @@
 		</div>
 
 		<div>
-			<select class="select-sml nature-sml" id="env_move_speed" name="env_move_speed">
+			<select class="select-sml" id="env_move_speed" name="env_move_speed">
 				<option value="">Speed Mod</option>
 				{% for i in negatives %}
 					<option value={{i}}>{{i}}</option>
@@ -303,7 +303,7 @@
 
 		<div></div>
 
-		<div id="env-move-other">
+		<div class="text-sml" id="env-move-other">
 		     <input type="text" id="env_move_other" name="env_move_other" placeholder="Other Nature">
 		</div>
 	</div>

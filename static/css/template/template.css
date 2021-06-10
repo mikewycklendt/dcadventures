@@ -235,8 +235,22 @@ body{
 	padding: .1vw;
 }
 
-.med-textarea textarea{
+.textarea-med textarea{
 	width: 100%; 
+	height: 6.5vw; 
+	font-size: 90%; 
+	padding: 2%;
+}
+
+.textarea-md textarea {
+	width: 95%; 
+	height: 4vw; 
+	font-size: 110%; 
+	padding: 2%;
+}
+
+.textarea-des textarea{
+	width: 80%; 
 	height: 6.5vw; 
 	font-size: 90%; 
 	padding: 2%;

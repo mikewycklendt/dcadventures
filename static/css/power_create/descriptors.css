@@ -129,12 +129,6 @@
 	grid-auto-rows: auto;
 }
 
-.descriptor-des-field textarea {
-	width: 95%; 
-	height: 3vw; 
-	font-size: 110%; 
-	padding: 2%;
-}
 
 .descriptor-des-field {
 	display: none;

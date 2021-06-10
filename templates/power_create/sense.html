@@ -16,10 +16,12 @@
 			</select>
 		</div>
 
-		<select class="extra-select" id="sense_extra" name="sense_extra" onchange="sense_base(); sense_extra()">
-			<option value=>Base or Extra</option>
-			<option value=0>Base Effect</option>
-		</select>
+		<div>
+			<select class="extra-select" id="sense_extra" name="sense_extra" onchange="sense_base(); sense_extra()">
+				<option value=>Base or Extra</option>
+				<option value=0>Base Effect</option>
+			</select>
+		</div>
 	</div>
 
 </div>
@@ -132,7 +134,7 @@
 					</select>
 				</div>
 
-				<div class="hidden text-sml" id="sense-communication-other">
+				<div class="hidden text-sml text-blue" id="sense-communication-other">
 					<input type="text" id="sense_communication_other" name="sense_communication_other" placeholder="Other Communication Medium">
 				</div>
 			</div>
@@ -217,7 +219,7 @@
 			</div>
 
 			<div id="sense-illusion">
-				<div>
+				<div class="text-sml">
 					<input type="text" id="sense_illusion_range" name="sense_illusion_range" placeholder="Area"> 
 				</div>
 
@@ -588,7 +590,7 @@
 		</div>
 		
 		<div>
-			<select class="ranged-sml" id="sense_ranged_type" name="sense_ranged_type">
+			<select class="ranged-type-sml" id="sense_ranged_type" name="sense_ranged_type">
 				<option value="">Range by Group</option>
 				<option value="">Use Ranged Form to Put Options Here</option>
 				{% for p in power_ranged_type %}
@@ -729,7 +731,7 @@
 				</select>
 			</div>
 
-			<div>
+			<div class="text-sml">
 				<input type="text" id="sense_dis_value" name="sense_dis_value"> 
 			</div>
 

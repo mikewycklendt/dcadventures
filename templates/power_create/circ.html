@@ -6,7 +6,7 @@
 	
 	<div class="power-base" id="circ-base">
 
-		<div>
+		<div class="text-med">
 			<input type="text" id="circ_title" name="circ_title" placeholder="Title">
 		</div>
 		
@@ -377,7 +377,7 @@
 					</div>
 				
 					<div id="circ-measure-unit">
-						<div>
+						<div class="text-sml">
 							<input type="text" id="circ_unit_value" name="circ_unit_value" placeholder="Value">
 						</div>
 
@@ -432,15 +432,15 @@
 									{% endfor %}
 							</select>
 						</div>
-						
-				<div>
-					<select class="select-sml" id="circ_measure_math_rank" name="circ_measure_math_rank">
-						<option value="">Rank</option>
-						{% for m in measure_rank %}
-							<option value={{m.id}}>{{m.name}}</option>
-						{% endfor %}
-					</select> 
-				</div>
+								
+						<div>
+							<select class="select-sml" id="circ_measure_math_rank" name="circ_measure_math_rank">
+								<option value="">Rank</option>
+								{% for m in measure_rank %}
+									<option value={{m.id}}>{{m.name}}</option>
+								{% endfor %}
+							</select> 
+						</div>
 					</div>
 				</div>
 			</div>
@@ -506,11 +506,11 @@
 	</div>
 
 	<div id="circ-button-row">	
-		<div>
+		<div class="text-sml">
 			<input type="text" id="circ_circumstance" name="circ_circumstance" placeholder="Circumstance">
 		</div>
 
-		<div>
+		<div class="text-sml">
 			<input type="text" id="circ_keyword" name="circ_keyword" placeholder="Keyword">
 		</div>
 

@@ -254,3 +254,7 @@ input[type=text]:focus {
 	background-color: lightblue;
 	outline: 2px solid #af0101;
 }
+
+.text-blue input[type="text"] {
+	background-color: lightblue;
+}

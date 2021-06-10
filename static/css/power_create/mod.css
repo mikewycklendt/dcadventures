@@ -496,11 +496,6 @@
 	transition: all .4s ease-out;
 }
 
-#mod-limited-creature-other input[type="text"] {
-	height: 1.1vw;
-	padding: .2vw;
-	background-color: lightblue;
-}
 
 #mod-limited-language-mod {
 	opacity: 0%;
