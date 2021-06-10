@@ -238,10 +238,3 @@
 	width: 99%;
 	grid-template-rows: auto;
 }
-
-#circ-button-row input[type="text"] {
-	height: 1.4vw;
-	padding: .3vw;
-	width: 96%;
-	font-size: 110%;
-}
