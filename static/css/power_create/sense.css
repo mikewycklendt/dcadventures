@@ -88,10 +88,10 @@
 }
 
 #sense-illusion {
-	grid-template-columns: 20% 25% 32% 23%;
+	grid-template-columns: 15% 15% auto auto;
 	display: none;
 	opacity: 0%;
-	gap: .3vw;
+	gap: 5px;
 	transition: all .3s ease-out;
 }
 

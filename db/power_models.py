@@ -2616,6 +2616,7 @@ class PowerSenseEffect(db.Model):
 	ranged_sense = db.Column(db.Boolean)
 	illusion_range = db.Column(db.Integer)
 	illusion_unit = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
+	illusion_opposed = db.Column(db.Integer, db.ForeignKey('power_opposed_type.id'))
 	illusion_selective = db.Column(db.Boolean)
 	condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	condition_degree = db.Column(db.Integer, db.ForeignKey('power_degree.id'))

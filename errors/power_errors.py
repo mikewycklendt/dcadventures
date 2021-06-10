@@ -1622,6 +1622,7 @@ def sense_post_errors(data):
 	light_penalty_trait = data['light_penalty_trait']
 	illusion_range = data['illusion_range']
 	illusion_unit = data['illusion_unit']
+	illusion_opposed = data['illusion_opposed']
 	condition = data['condition']
 	condition_degree = data['condition_degree']
 	remote_ranged = data['remote_ranged']
@@ -1703,9 +1704,10 @@ def sense_post_errors(data):
 	errors = variable_field('light', sense_type, 'Trait Type', light_penalty_trait_type, errors)
 	errors = variable_field('light', sense_type, 'Trait', light_penalty_trait, errors)
 
-	errors = variable_fields('illusion', 'Illusion', sense_type, [illusion_range, illusion_unit], errors)
+	errors = variable_fields('illusion', 'Illusion', sense_type, [illusion_range, illusion_unit, illusion_opposed], errors)
 	errors = variable_field('illusion', sense_type, 'Illusion Units', illusion_unit, errors)
 	errors = variable_field('illusion', sense_type, 'Illusion Diameter', illusion_range, errors)
+	errors = variable_field('illusion', sense_type, 'Interaction Check Group', illusion_opposed, errors)
 
 	errors = variable_fields('condition', 'Sense Condition', sense_type, [condition_degree, condition], errors)
 	errors = variable_field('condition', sense_type, 'Degree of Succesa/Failure', condition_degree, errors)

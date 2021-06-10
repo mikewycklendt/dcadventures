@@ -357,6 +357,7 @@ function sense_submit() {
 	const ranged_sense = check('sense_ranged_sense');
 	const illusion_range = select("sense_illusion_range");
 	const illusion_unit = select("sense_illusion_unit");
+	const illusion_opposed = select("sense_illusion_opposed");
 	const illusion_selective = check("sense_illusion_selective")
 	const condition = select("sense_condition");
 	const condition_degree = select("sense_condition_degree");
@@ -455,6 +456,7 @@ function sense_submit() {
 			'ranged_sense': ranged_sense,
 			'illusion_range': illusion_range,
 			'illusion_unit': illusion_unit,
+			'illusion_opposed': illusion_opposed,
 			'illusion_selective': illusion_selective,
 			'condition': condition,
 			'condition_degree': condition_degree,

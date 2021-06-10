@@ -1883,6 +1883,7 @@ def sense_post(entry, body, cells):
 	light_penalty_trait = entry.light_penalty_trait
 	illusion_range = entry.illusion_range
 	illusion_unit = entry.illusion_unit
+	illusion_opposed = entry.illusion_opposed
 	illusion_selective = entry.illusion_selective
 	condition_degree = entry.condition_degree
 	condition = entry.condition
@@ -1913,6 +1914,7 @@ def sense_post(entry, body, cells):
 	track_speed = get_keyword(PowerMove, track_speed)
 	track_speed_type = get_name(PowerMoveType, track_speed_type)
 	communication_range = get_name(PowerRangedType, communication_range)
+	illusion_opposed = get_name(PowerOpposedType, illusion_opposed)
 
 	height_trait = trait_select(height_trait, height_trait_type)
 	resist_trait = trait_select(resist_trait, resist_trait_type)
@@ -2015,7 +2017,7 @@ def sense_post(entry, body, cells):
 	vcells = vcell('communicate', 45, [communication, 'Communication in', communication_range, 'Range'], vcells)
 	vcells = vcell('light', 40, ['No', light_penalty, 'Penalty on', light_penalty_trait, 'Checks'], vcells)
 	illusion_selective = check_string('Selective', illusion_selective)
-	vcells = vcell('illusion', 40, [illusion_selective, 'Illusion', illusion_range, illusion_unit, 'in Diameter'], vcells)
+	vcells = vcell('illusion', 55, [illusion_range, illusion_unit, 'Wide', illusion_selective, 'Illusion with', illusion_opposed, 'Check'], vcells)
 	vcells = vcell('condition', 40, [condition, 'on', condition_degree, 'Degree'], vcells)
 	remote_simultaneous = check_string('Simultaneously', remote_simultaneous)
 	vcells = vcell('remote', 40, ['Remote Sense at', remote_ranged, 'Range', remote_simultaneous], vcells)

@@ -231,6 +231,16 @@
 						{% endfor %}
 					</select>
 				</div>
+
+				<div>
+					<select class="opposed-title-sml" id="sense_illusion_opposed" name="sense_illusion_opposed">
+						<option value="">Interaction Check Group</option>
+						<option value="">Use Opponent Check Form to Put Options Here</option>
+						{% for p in power_opposed_type %}
+							<option value={{p.id}}>{{p.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
 						
 				<div>
 					<div class="check-div-fit">
