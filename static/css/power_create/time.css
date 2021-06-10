@@ -92,7 +92,7 @@
 #time-math {
 	display: none;
 	opacity: 0%;
-	grid-template-columns: 25% 35% 20% 20%;
+	grid-template-columns: 22% 30% 16% 16% 16%;
 	transition: all .3s ease-in;
 }
 
