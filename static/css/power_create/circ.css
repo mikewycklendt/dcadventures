@@ -225,4 +225,5 @@
 	grid-template-columns: 68% 15% 15%;
 	width: 99%;
 	grid-template-rows: auto;
+	gap: 4px;
 }

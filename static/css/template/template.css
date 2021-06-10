@@ -225,16 +225,16 @@ body{
 
 .text-small input[type="text"] {
 	height: 1.3vw;
-	font-size: 80%;
+	font-size: 90%;
 	padding: .1vw;
-	width: 96%;
+	width: 98%;
 }
 
 .text-sml input[type="text"] {
 	height: 1.3vw;
-	font-size: 80%;
+	font-size: 90%;
 	padding: .1vw;
-	width: 96%;
+	width: 98%;
 }
 
 .textarea-med textarea{
