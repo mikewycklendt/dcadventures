@@ -52,7 +52,7 @@ class Unit(db.Model):
 		return {
 			'id': self.id,
 			'name': self.name,
-			'type_id': self.type_id
+			'type_id': self.type_id,
 			'hide': self.hide,
 			'time': self.time,
 			'distance': self.distance,
