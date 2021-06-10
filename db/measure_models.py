@@ -1,3 +1,4 @@
+from datetime import time
 from flask import Flask, render_template, request, Response, flash, redirect, url_for
 from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
@@ -42,12 +43,20 @@ class Unit(db.Model):
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 	type_id = db.Column(db.Integer, db.ForeignKey('measurement_type.id'))
+	hide = db.Column(db.Boolean)
+	time = db.Column(db.Boolean)
+	distance = db.Column(db.Boolean)
+	speed = db.Column(db.Boolean)
 
 	def format(self):
 		return {
 			'id': self.id,
 			'name': self.name,
 			'type_id': self.type_id
+			'hide': self.hide,
+			'time': self.time,
+			'distance': self.distance,
+			'speed': self.speed
 		}
 
 class Math(db.Model):

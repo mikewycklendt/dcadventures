@@ -1374,6 +1374,7 @@ class PowerTime(db.Model):
 	trait = db.Column(db.Integer)
 	math = db.Column(db.Integer, db.ForeignKey('math.id'))
 	math_value = db.Column(db.Integer)
+	math_units = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
 	recovery_penalty = db.Column(db.Integer)
 	recovery_incurable = db.Column(db.Boolean)
 	recovery_target = db.Column(db.String())
@@ -1407,6 +1408,8 @@ class PowerTime(db.Model):
 	action = db.Column(db.Integer, db.ForeignKey('actions.id'))
 	on_check = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	points = db.Column(db.Integer)
+	value_rank = db.Column(db.Boolean)
+	
 	
 	def format(self):
 		return {
@@ -1426,6 +1429,7 @@ class PowerTime(db.Model):
 			'trait': self.trait,
 			'math': self.math,
 			'math_value': self.math_value,
+			'math_units': self.math_units,
 			'recovery_penalty': self.recovery_penalty,
 			'recovery_incurable': self.recovery_incurable,
 			'recovery_target': self.recovery_target,
@@ -1458,7 +1462,8 @@ class PowerTime(db.Model):
 			'check_type': self.check_type,
 			'action': self.action,
 			'on_check': self.on_check,
-			'points': self.points
+			'points': self.points,
+			'value_rank': self.value_rank
 		}
 
 

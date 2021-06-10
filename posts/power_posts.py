@@ -3575,6 +3575,7 @@ def power_time_post(entry, body, cells):
 	trait = entry.trait
 	math = entry.math
 	math_value = entry.math_value
+	math_units = entry.math_units
 	recovery_penalty = entry.recovery_penalty
 	recovery_incurable = entry.recovery_incurable
 	degree = entry.degree
@@ -3596,6 +3597,7 @@ def power_time_post(entry, body, cells):
 	check_type = entry.check_type
 	action = entry.action
 	on_check = entry.on_check
+	value_rank = entry.value_rank
 
 	title_name = get_name(PowerTimeType, title)
 	body['title'] = title_name
@@ -3620,6 +3622,7 @@ def power_time_post(entry, body, cells):
 	mod = integer_convert(mod)
 	factor = integer_convert(factor)
 	times = math(3)
+	math_units = get_name(Unit, math_units)
 
 	on_check = get_name(Check, on_check)
 
@@ -3650,7 +3653,7 @@ def power_time_post(entry, body, cells):
 	cells = cell('Time Type', 20, [type], cells)
 
 	vcells = vcell('value', 17, [measure_type, value, units])
-	vcells = vcell('math', 30, [measure_type, trait, math, math_value, '= Time Rank'], vcells)
+	vcells = vcell('math', 30, [measure_type, trait, math, math_value, math_units], vcells)
 	vcells = vcell('rank',35, [measure_type, rank1, rank1_value, rank_math, rank2, rank2_value], vcells)
 	vcells = vcell('gm', 13, ['Set by GM'], vcells)
 	vcells = vcell('player', 16, ['Set by Player'], vcells)

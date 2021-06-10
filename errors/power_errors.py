@@ -3079,6 +3079,7 @@ def power_time_post_errors(data):
 	trait = data['trait']
 	math = data['math']
 	math_value = data['math_value']
+	math_units = data['math_units']
 	recovery_penalty = data['recovery_penalty']
 	recovery_incurable = data['recovery_incurable']
 	turns = data['turns']
@@ -3097,6 +3098,7 @@ def power_time_post_errors(data):
 	check_type = data['check_type']
 	action = data['action']
 	points = data['points']
+	value_rank = data['value_rank']
 
 
 
@@ -3136,15 +3138,16 @@ def power_time_post_errors(data):
 	errors = required(keyword, 'Keyword', errors)
 	errors = required(title, 'Title', errors)
 
-	errors = variable_fields('value', 'Time Value', value_type, [value, units], errors)
-	errors = variable_field('value', value_type, 'Value', value, errors)
+	errors = variable_fields('value', 'Time Value', value_type, [units, value], errors)
+	errors = variable_field('value', value_type, 'Time Value', value, errors)
 	errors = variable_field('value', value_type, 'Units', units, errors)
 
-	errors = variable_fields('math', 'Time Math', value_type, [trait_type, trait, math, math_value], errors)
+	errors = variable_fields('math', 'Time Math', value_type, [trait_type, trait, math, math_value, math_units], errors)
 	errors = variable_field('math', value_type, 'Trait Type', trait_type, errors)
 	errors = variable_field('math', value_type, 'Trait', trait, errors)
 	errors = variable_field('math', value_type, 'Math', math, errors)
 	errors = variable_field('math', value_type, 'Value', math_value, errors)
+	errors = variable_field('math', value_type, 'Units', math_units, errors)
 
 	errors = variable_fields('rank', 'Time Measurement', value_type, [rank_math], errors)
 	errors = select_of('rank', 'uses rank math', 'time value type', value_type, [rank1, rank1_value], ['first rank', 'first value'], errors)

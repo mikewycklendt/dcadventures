@@ -86,6 +86,7 @@ function time_submit() {
 	const trait = select("time_trait")
 	const math = select("time_math")
 	const math_value = select("time_math_value")
+	const math_units = select("time_math_units")
 	const recovery_penalty = select("time_recovery_penalty")
 	const recovery_incurable = check("time_recovery_incurable")
 	const degree = select("time_degree");
@@ -108,6 +109,7 @@ function time_submit() {
 	const action = select("time_action");
 	const on_check = select("time_on_check")
 	const points = select("points");
+	const value_rank = check("time_value_rank");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -147,6 +149,7 @@ function time_submit() {
 			'trait': trait,
 			'math': math,
 			'math_value': math_value,
+			'math_units': math_units,
 			'recovery_penalty': recovery_penalty,
 			'recovery_incurable': recovery_incurable,
 			'degree': degree,
@@ -168,7 +171,8 @@ function time_submit() {
 			'check_type': check_type,
 			'action': action,
 			'on_check': on_check,
-			'points': points
+			'points': points,
+			'value_rank': value_rank
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

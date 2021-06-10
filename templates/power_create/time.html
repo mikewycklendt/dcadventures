@@ -136,7 +136,13 @@
 						{% endfor %}
 					</select>
 				</div>
-			
+				
+				<div style="display: none;">
+					<div class="check-div-fit">
+						<input type="checkbox" id="time_value_rank" class="medium-checkbox med-checkbox" > Rank As Value
+					</div>	
+				</div>
+					
 			</div>
 
 			<div id="time-math">
@@ -175,6 +181,13 @@
 					</select>
 				</div>
 
+				<select class="select-sml" id="time_math_units" name="time_math_units">
+					<option value="">Units</option>
+					<option value="time">Time Rank</option>
+					{% for t in times %}
+						<option value={{t.id}}>{{t.name}}</option>
+					{% endfor %}
+				</select>
 			</div>
 
 			<div id="time-turns">

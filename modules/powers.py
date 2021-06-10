@@ -216,7 +216,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	unit_type = MeasureType.query.all()
 
-	units = Unit.query.all()
+	units = db.session.query(Unit).filter(Unit.hide == None).all()
 
 	visual = db.session.query(SubSense).filter_by(sense_id=6)
 
@@ -5429,6 +5429,7 @@ def power_post_time():
 	trait = request.get_json()['trait']
 	math = request.get_json()['math']
 	math_value = request.get_json()['math_value']
+	math_units = request.get_json()['math_units']
 	recovery_penalty = request.get_json()['recovery_penalty']
 	recovery_incurable = request.get_json()['recovery_incurable']
 	degree = request.get_json()['degree']
@@ -5462,6 +5463,7 @@ def power_post_time():
 	action = request.get_json()['action']
 	on_check = request.get_json()['on_check']
 	points = request.get_json()['points']
+	value_rank = request.get_json()['value_rank']
 
 
 	errors = power_time_post_errors(data)
@@ -5486,6 +5488,7 @@ def power_post_time():
 	math = db_integer(Math, math)
 	action = db_integer(Action, action)
 	on_check = db_integer(Check, on_check)
+	math_units = db_integer(Unit, math_units)
 
 	degree = db_integer(PowerDegree, degree)
 	circ = db_integer(PowerCirc, circ)
@@ -5564,7 +5567,9 @@ def power_post_time():
 						check_type = check_type,
 						action = action,
 						on_check = on_check,
-						points = points
+						points = points,
+						value_rank = value_rank,
+						math_units = math_units
 					)
 
 	db.session.add(entry)

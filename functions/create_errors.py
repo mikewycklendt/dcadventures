@@ -178,9 +178,15 @@ def select(fields, errors):
 	return (errors)
 
 
-def variable_fields(value, name, field, fields, errors):
+def variable_fields(value, name, field, fields, errors, exception=False, excep_val='e'):
 	error_msgs = errors['error_msgs']
 	error = False
+
+	if exception:
+		return (errors)
+
+	if exception == excep_val:
+		return (errors)
 
 	if field != value:
 		return (errors)
@@ -349,9 +355,15 @@ def value_limit(limit, selects, names, errors):
 	return (errors)
 
 	
-def variable_field(value, field, name, f, errors, mod=False):
+def variable_field(value, field, name, f, errors, mod=False, exception=False, excep_val='e'):
 	error_msgs = errors['error_msgs']
 	error = False
+
+	if exception:
+		return (errors)
+
+	if exception == excep_val:
+		return (errors)
 
 	if field != value:
 		return (errors)
