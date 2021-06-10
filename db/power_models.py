@@ -910,6 +910,8 @@ class PowerDegree(db.Model):
 	restore = db.Column(db.String())
 	restore_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	restore_val = db.Column(db.Integer)
+	no_reattempt_effort = db.Column(db.Boolean)
+	reattempt_effort = db.Column(db.Boolean)
 
 
 	def format(self):
@@ -1022,7 +1024,9 @@ class PowerDegree(db.Model):
 			'communication_acute': self.communication_acute,
 			'restore': self.restore,
 			'restore_descriptor': self.restore_descriptor,
-			'restore_val': self.restore_val
+			'restore_val': self.restore_val,
+			'no_reattempt_effort': self.no_reattempt_effort,
+			'reattempt_effort': self.reattempt_effort
 		}
 
 

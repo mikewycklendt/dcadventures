@@ -2814,6 +2814,8 @@ def power_degree_post(entry, body, cells):
 	restore = entry.restore
 	restore_descriptor = entry.restore_descriptor
 	restore_val = entry.restore_val
+	reattempt_effort = entry.reattempt_effort
+	no_reattempt_effort = entry.no_reattempt_effort
 
 	title_name = get_name(PowerDegreeType, title)
 	body['title'] = title_name
@@ -3006,9 +3008,13 @@ def power_degree_post(entry, body, cells):
 
 	vcells = vcell('no_act', 12, ["Can't Act"], vcells)
 
-	vcells = vcell('no_reattempt', 18, ["Can't Reattempt"], vcells)
+	no_reattempt_effort = check_string('Unless Using Extra Effort', no_reattempt_effort)
+	w = width(18, 25, no_reattempt_effort)
+	vcells = vcell('no_reattempt', w, ["Can't Reattempt", no_reattempt_effort], vcells)
 	
-	vcells = vcell('reattempt', 18, ["Can Reattempt"], vcells)
+	reattempt_effort = check_string('But Only With Extra Effort', reattempt_effort)
+	w = width(18, 25, reattempt_effort)
+	vcells = vcell('reattempt', w, ["Can Reattempt", reattempt_effort], vcells)
 
 	vcells = vcell('descriptor', 30, [descriptor_effect, descriptor, 'on', descriptor_target], vcells)
 

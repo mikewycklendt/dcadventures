@@ -4604,6 +4604,8 @@ def power_post_degree():
 	restore = request.get_json()['restore']
 	restore_descriptor = request.get_json()['restore_descriptor']
 	restore_val = request.get_json()['restore_val']
+	reattempt_effort = request.get_json()['reattempt_effort']
+	no_reattempt_effort = request.get_json()['no_reattempt_effort']
 
 	errors = power_degree_post_errors(data)
 
@@ -4804,7 +4806,9 @@ def power_post_degree():
 						communication_acute = communication_acute,
 						restore = restore,
 						restore_descriptor = restore_descriptor,
-						restore_val = restore_val)
+						restore_val = restore_val,
+						reattempt_effort = reattempt_effort,
+						no_reattempt_effort = no_reattempt_effort)
 
 	db.session.add(entry)
 	db.session.commit()

@@ -32,7 +32,9 @@ function deg_mod_type() {
 					{'val': ['weaken'], 'div': 'deg-mod-weaken'},
 					{'val': ['restore'], 'div': 'deg-mod-restore'},
 					{'val': ['reverse'], 'div': 'deg-mod-reverse'},
-					{'val': ['understand'], 'div': 'deg-mod-understand'}];
+					{'val': ['understand'], 'div': 'deg-mod-understand'},
+					{'val': ['reattempt'], 'div': 'deg-mod-reattempt'},
+					{'val': ['no_reattempt'], 'div': 'deg-mod-no-reattempt'}];
 
 	select_opacity_shared(select, options);
 }
@@ -390,6 +392,8 @@ function deg_mod_submit() {
 	const restore = select("deg_mod_restore");
 	const restore_descriptor = select("deg_mod_restore_descriptor");
 	const restore_val = select("deg_mod_restore_val");
+	const no_reattempt_effort = check("deg_mod_no_reattempt_effort");
+	const reattempt_effort = check("deg_mod_reattempt_effort")
 	
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -516,7 +520,9 @@ function deg_mod_submit() {
 			'communication_acute': communication_acute,
 			'restore': restore,
 			'restore_descriptor': restore_descriptor,
-			'restore_val': restore_val
+			'restore_val': restore_val,
+			'no_reattempt_effort': no_reattempt_effort,
+			'reattempt_effort': reattempt_effort
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
