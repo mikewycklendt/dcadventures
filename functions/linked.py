@@ -255,7 +255,8 @@ def linked_ref(table, value, name, column, body):
 	body['error_msgs'] = error_msgs
 	if error:
 		body['success'] = False
-
+		body['error'] = True
+		
 	return (body)
 	
 def linked_field(table, value, name, column, insert, body, check=False):
