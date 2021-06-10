@@ -82,13 +82,13 @@ def table_db_columns_create():
 
 	name = 'Base Power Setting'
 
-	entry = PowerDes(power=True, name=name)
+	entry = PowerDes(power=True, name=name, hidden=True)
 	db.session.add(entry)
 	db.session.commit()
 
 	name = 'All Descriptors'
 
-	entry = PowerDes(all=True, name=name, hidden=True )
+	entry = PowerDes(all=True, name=name)
 	db.session.add(entry)
 	db.session.commit()
 
