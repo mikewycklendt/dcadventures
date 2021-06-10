@@ -2786,6 +2786,7 @@ class PowerDes(db.Model):
 	any_descriptor = db.Column(db.Boolean)
 	hidden_name = db.Column(db.String())
 	power = db.Column(db.Boolean)
+	all = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -2815,5 +2816,7 @@ class PowerDes(db.Model):
 			'any_material': self.any_material,
 			'any_energy': self.any_energy,
 			'any_descriptor': self.any_descriptor,
-			'hidden_name': self.hidden_name
+			'hidden_name': self.hidden_name,
+			'power': self.power,
+			'all': self.all
 		}
