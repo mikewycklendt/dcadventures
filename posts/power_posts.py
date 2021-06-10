@@ -3640,7 +3640,7 @@ def power_time_post(entry, body, cells):
 	
 	
 
-	time_effect_select = [{'type': 'prepare', 'name': 'Time to Prepare'}, {'type': 'recur', 'name': 'Time Between Recurring Check'}, {'type': 'action', 'name': 'Time Action Takes'}, {'type': 'limit', 'name': 'Time Limit to Respond'}, {'type': 'lasts', 'name': 'Time Result Lasts'}, {'type': 'condition', 'name': 'Time Condition Lasts'}, {'type': 'condition_effect', 'name': 'Time Until Condition Takes Effect'}, {'type': 'effect', 'name': 'Time Effect Happens'}, {'type': 'repeat', 'name': 'Time Until Repeat Check'}, {'type': 'check', 'name': 'Time Until Next Check'}, {'type': 'action', 'name': 'Time Until Take Another Action'}, {'type': 'reattempt', 'name': 'Time Until Reattempt'}, {'type': 'recover', 'name': 'Recovery Time'}, {'type': 'points', 'name': 'Points Restored'}]
+	time_effect_select = [{'type': 'prepare', 'name': 'Time to Prepare'}, {'type': 'recur', 'name': 'Time Between Recurring Check'}, {'type': 'action', 'name': 'Time Action Takes'}, {'type': 'limit', 'name': 'Time Limit to Respond'}, {'type': 'limit_condition', 'name': 'Time Limit to Change Condition'}, {'type': 'lasts', 'name': 'Time Result Lasts'}, {'type': 'condition', 'name': 'Time Condition Lasts'}, {'type': 'condition_effect', 'name': 'Time Until Condition Takes Effect'}, {'type': 'effect', 'name': 'Time Effect Happens'}, {'type': 'repeat', 'name': 'Time Until Repeat Check'}, {'type': 'check', 'name': 'Time Until Next Check'}, {'type': 'action', 'name': 'Time Until Take Another Action'}, {'type': 'reattempt', 'name': 'Time Until Reattempt'}, {'type': 'recover', 'name': 'Recovery Time'}, {'type': 'points', 'name': 'Points Restored'}]
 	type = selects(type, time_effect_select)
 
 	

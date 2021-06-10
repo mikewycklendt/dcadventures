@@ -693,7 +693,7 @@ class PowerDC(db.Model):
 	variable_check = db.Column(db.Boolean)
 	variable = db.Column(db.Integer, db.ForeignKey('power_check.id'))
 	title = db.Column(db.Integer, db.ForeignKey('power_dc_type.id'))
-	time = db.Column(db.Integer, db.ForeignKey('power_time.id'))
+	
 	effect_target = db.Column(db.String())
 	equipment_use = db.Column(db.String())
 	equipment_type = db.Column(db.Integer, db.ForeignKey('equipment_type.id'))
