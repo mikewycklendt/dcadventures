@@ -79,6 +79,37 @@
 
 	<div id="deg-mod-effect">
 
+		<div id="deg-mod-restore">
+			<div>
+				<select class="select-sml" id="deg_mod_restore" name="deg_mod_restore" onchange="deg_mod_restore()">
+					{% for r in restore %}
+						<option value="{{r.type}}">{{r.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				<select class="descriptor-sml" id="deg_mod_restore_descriptor" name="deg_mod_restore_descriptor">
+					<option value="">Works on Effects With Descriptor</option>
+					<option value="">Use Descriptor Form to Put Options Here</option>
+					{% for d in descriptor_options %}
+						<option value={{d.id}}>{{d.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div class="hidden" id="deg-mod-restore-val">
+				<select class="select-sml" id="deg_mod_restore_val" name="deg_mod_restore_val">
+					<option value="">Points</option>
+					<option value="rank">Power Rank</option>
+					<option value="extra">Extra Rank</option>
+					{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+
 		<div class="hidden" id="deg-mod-understand">
 			<div class="check-div-fit">
 				<input type="checkbox" id="deg_mod_communication_acute" class="medium-checkbox med-checkbox" > Requires Acute Sense

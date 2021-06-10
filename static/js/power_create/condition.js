@@ -22,6 +22,8 @@ let condition_grid = {'titles': false,
 					'font': 80,
 					'mod': []}
 
+let condition_counts = {'persistent': 0}
+
 function condition_submit() {
 
 	const columns = condition_grid.columns;
@@ -75,6 +77,11 @@ function condition_submit() {
 
 			condition_grid.columns.length = 0;
 			condition_grid.columns = jsonResponse.rows;
+
+			if (condition_type == 'damage') {
+				selects_add('condition', "Power's Damage Condition Effect Works on Incurable", 'persistent-sml')
+				condition_counts.persistent += 1;
+			}
 
 			const table_id = jsonResponse.table_id;
 			const route = '/advantage/' + table_id + '/delete/'

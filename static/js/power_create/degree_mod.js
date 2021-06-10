@@ -30,6 +30,7 @@ function deg_mod_type() {
 					{'val': ['null', 'uncontrol', 'detect'], 'div': 'deg-mod-effect-type'},
 					{'val': ['null_condition'], 'div': 'deg-mod-null-condition'},
 					{'val': ['weaken'], 'div': 'deg-mod-weaken'},
+					{'val': ['restore'], 'div': 'deg-mod-restore'},
 					{'val': ['reverse'], 'div': 'deg-mod-reverse'},
 					{'val': ['understand'], 'div': 'deg-mod-understand'}];
 
@@ -263,13 +264,20 @@ function deg_mod_weaken_type() {
 	select_opacity_shared(select, options)
 }
 
+function deg_mod_restore() {
+	const select = 'deg_mod_restore';
+	const options = [{'val': ['points', 'degree'], 'div': 'deg-mod-restore-val'}]
+
+	select_opacity_shared(select, options);
+}
+
 
 let deg_mod_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
 					'mod': []}
 
-let degree_counts = {'mind': 0};
+let degree_counts = {'mind': 0, 'persistent': 0, 'weaken': 0};
 
 function deg_mod_submit() {
 
@@ -379,6 +387,9 @@ function deg_mod_submit() {
 	const reverse_type = select("deg_mod_reverse_type");
 	const reverse = select("deg_mod_reverse");
 	const communication_acute = check("deg_mod_communication_acute")
+	const restore = select("deg_mod_restore");
+	const restore_descriptor = select("deg_mod_restore_descriptor");
+	const restore_val = select("deg_mod_restore_val");
 	
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -390,6 +401,9 @@ function deg_mod_submit() {
 	const opp_selects = 'degree-opp-title-sml';
 	const select_title = 'degree-title-sml';
 	const weaken_sml = 'weaken-sml';
+
+	const persistent_sml = 'persistent-sml';
+	const persistent_degree = 'persistent-degree';
 
 	response = fetch('/power/degree/create', {
 		method: 'POST',
@@ -499,7 +513,10 @@ function deg_mod_submit() {
 			'weaken_max': weaken_max,
 			'reverse_type': reverse_type,
 			'reverse': reverse,
-			'communication_acute': communication_acute
+			'communication_acute': communication_acute,
+			'restore': restore,
+			'restore_descriptor': restore_descriptor,
+			'restore_val': restore_val
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
@@ -529,7 +546,14 @@ function deg_mod_submit() {
 			}
 
 			if (type == 'weaken') {
-				selects_add(id, keyword, weaken_sml);
+				selects_add(title_id, title_name, weaken_sml);
+				degree_counts.weaken += 1;
+			}
+
+			if (condition_type == 'damage') {
+				selects_add('degree', 'Degree Effect Works on Incurable', 'persistent-sml', degree_counts.persistent)
+				selects_add(title_id, title_name, persistent_degree);
+				degree_counts.persistent += 1;
 			}
 
 			deg_mod_grid.columns.length = 0;
@@ -537,7 +561,7 @@ function deg_mod_submit() {
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/degree/delete/'
-			create_table('power', jsonResponse, deg_mod_grid, route, [selects], title_id, [select_title]);
+			create_table('power', jsonResponse, deg_mod_grid, route, [selects], title_id, [select_title, weaken_sml, persistent_degree]);
 			clear_errors(err_line, errors)
 
 

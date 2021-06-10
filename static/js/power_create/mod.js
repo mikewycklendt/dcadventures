@@ -494,6 +494,21 @@ function mod_cumulative() {
 	check_drop(check, div, entry);
 }
 
+function mod_persistent() {
+	const check = 'mod_persistent';
+	const div = 'mod-persistent';
+	const entry = 'mod-entry';
+
+	check_drop(check, div, entry);
+}
+
+function mod_persistent_type() {
+	const select = 'mod_persistent_type';
+	const options = [{'val': 'degree', 'name': 'mod-persistent-degree'}]
+
+	select_opacity(select, options);
+}
+
 let mod_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
@@ -643,7 +658,8 @@ function mod_submit() {
 	const progressive_degree_type = select("mod_progressive_degree_type");
 	const cumulative = check("mod_cumulative");
 	const cumulative_degree = select("mod_cumulative_degree");
-	
+	const persistent_type = select("mod_persistent_type");
+	const persistent_degree = select("mod_persistent_degree");
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
 	
@@ -794,7 +810,9 @@ function mod_submit() {
 			'progressive_degree_all': progressive_degree_all,
 			'progressive_degree_type': progressive_degree_type,
 			'cumulative': cumulative,
-			'cumulative_degree': cumulative_degree
+			'cumulative_degree': cumulative_degree,
+			'persistent_type': persistent_type,
+			'persistent_degree': persistent_degree
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

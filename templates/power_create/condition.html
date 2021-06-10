@@ -105,18 +105,20 @@
 
 				<div>
 					<select class="select-entry" id="condition_damage_value" name="condition_damage_value">
+						<option value="">Amount</option>
 						{% for i in positives %}
 							<option value={{i}}>{{i}}</option>
 						{% endfor %}
 					</select>
 				</div>
 
-				<div style="text-align: center;">
+				<div class="vcenter">
 					Conditions
 				</div>
 
 				<div>
 					<select class="select-entry" id="condition_damage" name="condition_damage">
+						<option value="">Change</option>
 						{% for u in updown %}
 							<option value={{u.id}}>{{u.name}}</option>
 						{% endfor %}

@@ -149,7 +149,7 @@
 
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="mod_persistent" class="medium-checkbox med-checkbox"> Persistent
+				<input type="checkbox" id="mod_persistent" class="medium-checkbox med-checkbox" onclick="mod_persistent()"> Persistent
 			</div>
 		</div>
 		
@@ -242,6 +242,30 @@
 		</div>
 
 	</div>
+
+	<div id="mod-persistent">
+		<div class="valign">
+			Persistent
+		</div>
+
+		<div>
+			<select class="select-sml persistent-sml" id="mod_persistent_type" name="mod_persistent_type" onchange="mod_persistent_type()">
+				<option value="">Persistent Type</option>
+				{% for p in persistent_type %}
+					<option value="{{p.type}}">{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div class="hidden" id="mod-persistent-degree">
+			<select class="persistent-degree select-sml" id="mod_persistent_degree" name="mod_persistent_degree">
+				<option value="">Degree Group That Can Remove Incurable Conditions</option>
+				{% for p in power_degree_type %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>	
 
 	<div id="mod-cumulative">
 		<div class="valign">
@@ -478,6 +502,9 @@
 		<div>
 			<select class="feedback-sml select-sml" id="mod_feedback_effect" name="mod_feedback_effect">
 				<option value="">Feedback Type</option>
+				{% for f in feedback_type %}
+					<option value="{{f.type}}">{{f.name}}</option>
+				{% endfor %}
 			</select> 
 		</div>
 

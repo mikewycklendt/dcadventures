@@ -992,6 +992,8 @@ def mod_post_errors(data):
 	progressive_degree_type = data['progressive_degree_type']
 	cumulative = data['cumulative']
 	cumulative_degree = data['cumulative_degree']
+	persistent_type = data['persistent_type']
+	persistent_degree = data['persistent_degree']
 
 	errors = id_check(PowerCost, cost, 'Cost', errors)
 	errors = id_check(PowerRanks, ranks, 'Ranks', errors)
@@ -1009,7 +1011,7 @@ def mod_post_errors(data):
 	errors = id_check(PowerDegree, progressive_degree, 'Progressive Degree', errors)
 	errors = id_check(PowerDegreeType, progressive_degree_type, 'Progressive Degree by Group', errors)
 	errors = id_check(PowerDegreeType, cumulative_degree, 'Cumulative Degree Group', errors)
-
+	errors = id_check(PowerDegreeType, persistent_degree, 'Persistent Degree Group', errors)
 
 	errors = power_check(power_id, errors)
 
@@ -1185,6 +1187,11 @@ def mod_post_errors(data):
 	errors = check_field(feedback, 'Feedback', 'Feedback Type', feedback_effect, errors, True)
 	errors = check_field(feedback, 'Feedback', 'Resistance', feedback_type, errors)
 	errors = check_field(feedback, 'Feedback', 'Feedbacl Cover', feedback_cover, errors)
+
+	errors = check_fields(persistent, 'Persistent', [persistent_type], errors)
+	errors = check_field(persistent, 'Persistent', 'Persistent Type', persistent_type, errors, True)
+	errors = variable_fields('degree', 'Degree Effect Works on Incurable', persistent_type, [persistent_degree], errors)
+	errors = variable_field('degree', persistent_type, 'Persaistent Degree Group', persistent_degree, errors)
 
 	errors = variable_fields('mod', 'Feedback', feedback_type, [feedback_mod], errors)
 	errors = variable_field('mod', feedback_type, 'Feedback Resistance Modifier', feedback_mod, errors)
@@ -2387,6 +2394,9 @@ def power_degree_post_errors(data):
 	weaken_val = data['weaken_val']
 	reverse_type = data['reverse_type']
 	reverse = data['reverse']
+	restore = data['restore']
+	restore_descriptor = data['restore_descriptor']
+	restore_val = data['restore_val']
 
 
 	errors = power_check(power_id, errors)
@@ -2446,6 +2456,7 @@ def power_degree_post_errors(data):
 	errors = id_check(PowerDes, effect_descriptor, 'Effect Descriptor', errors)
 	errors = id_check(Power, effect_power, 'Power Effect', errors)
 	errors = id_check(Condition, null_condition, 'Nullified Condition', errors)
+	errors = id_check(PowerDes, restore_descriptor, 'Restore Descriptor', errors)
 
 	errors = int_check(resist_trait, 'Resistance Trait', errors)
 	errors = int_check(skill_trait, 'Skill Check Trait', errors)
@@ -2622,6 +2633,12 @@ def power_degree_post_errors(data):
 	errors = variable_fields('reverse', 'Reverse Degree Effect', type, [reverse_type, reverse], errors)
 	errors = variable_field('reverse', type, 'Degree Type', reverse_type, errors)
 	errors = variable_field('reverse', type, 'Degree', reverse, errors)
+
+	errors = variable_fields('restore', 'Restore Points', type, [restore, restore_descriptor], errors)
+	errors = variable_field('restore', type, 'Restore Points Type', restore, errors)
+	errors = variable_field('restore', type, 'Restore Descriptor', restore_descriptor, errors)
+	errors = variable_field('degree', restore, 'Points', restore_val, errors)
+	errors = variable_field('points', restore, 'Points', restore_val, errors)
 
 	errors = linked_field(condition1, linked, PowerDegree, 'Condition', 'Degree of Success/Failure rule', 'linked degree', errors)
 	errors = linked_field(condition2, linked, PowerDegree, 'Condition', 'Degree of Success/Failure rule', 'linked degree', errors)

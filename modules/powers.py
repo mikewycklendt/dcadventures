@@ -275,7 +275,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	check_targets =  [{'type': '', 'name': 'Check Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'partner', 'name': 'Psrtner'}]
 
-	check_multiple =  [{'type': '', 'name': 'If Multiple'}, {'type': 'turn', 'name': 'Chosen on Turn'}, {'type': 'x', 'name': 'Chosen when Aquiring Power'}, {'type': 'overwrite', 'name': 'Overwrites Check'}]
+	check_multiple =  [{'type': '', 'name': 'If Multiple'}, {'type': 'turn', 'name': 'Chosen on Turn'}, {'type': 'x', 'name': 'Chosen when Aquiring Power'}, {'type': 'overwrite', 'name': 'Overwrites Check'}, {'type': 'when', 'name': 'Determined by When'}, {'type': 'frequency', 'name': 'Determined by Frequency'}]
 
 	check_sense_type = [{'type': '', 'name': 'Sense Use Type'}, {'type': 'any', 'name': 'Any Use of Sense'}, {'type': 'skill', 'name': 'Sense Used With Skill'}, {'type': 'power', 'name': 'Sense Used With Power'}]
 
@@ -321,7 +321,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	defense_multiple = [{'type': '', 'name': 'If Multiple'}, {'type': 'all', 'name': 'All take Effect'}, {'type': 'turn', 'name': 'Choose on Turn'}, {'type': 'x', 'name': 'Choose When Aquiring Effect'}]
 
-	deg_mod_type = [{'type': 'measure', 'name': 'Measurement'}, {'type': 'condition', 'name': 'Condition Change'}, {'type': 'null_condition', 'name': 'Nullify Condition'}, {'type': 'action', 'name': 'Action Change'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'time', 'name': 'Time Modifier'}, {'type': 'damage', 'name': 'Damage'}, {'type': 'level', 'name': 'Level'}, {'type': 'knowledge', 'name': 'Gain Knowledge'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'check', 'name': 'Check'}, {'type': 'broke', 'name': 'Object Broken'}, {'type': 'destroy', 'name': 'Object Destroyed'}, {'type': 'dc', 'name': 'Attach DC to Object'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'null', 'name': 'Effect Nullified'}, {'type': 'uncontrol', 'name': 'Effect Uncontrolled'}, {'type': 'detect', 'name': "Detect Effect"}, {'type': 'act', 'name': 'Can Act'}, {'type': 'no_act', 'name': "Can't Act"}, {'type': 'no_reattempt', 'name': "Can't Reattempt"}, {'type': 'reattempt', 'name': "Can Reattempt"}, {'type': 'understand', 'name': 'Understand Communication'}, {'type': 'sense', 'name': 'Sense Condition'}, {'type': 'weaken', 'name': 'Weaken'}, {'type': 'reverse', 'name': 'Reverse Degree Effect'}]
+	deg_mod_type = [{'type': 'measure', 'name': 'Measurement'}, {'type': 'condition', 'name': 'Condition Change'}, {'type': 'null_condition', 'name': 'Nullify Condition'}, {'type': 'action', 'name': 'Action Change'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'time', 'name': 'Time Modifier'}, {'type': 'damage', 'name': 'Damage'}, {'type': 'level', 'name': 'Level'}, {'type': 'knowledge', 'name': 'Gain Knowledge'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'check', 'name': 'Check'}, {'type': 'broke', 'name': 'Object Broken'}, {'type': 'destroy', 'name': 'Object Destroyed'}, {'type': 'dc', 'name': 'Attach DC to Object'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'null', 'name': 'Effect Nullified'}, {'type': 'uncontrol', 'name': 'Effect Uncontrolled'}, {'type': 'detect', 'name': "Detect Effect"}, {'type': 'act', 'name': 'Can Act'}, {'type': 'no_act', 'name': "Can't Act"}, {'type': 'no_reattempt', 'name': "Can't Reattempt"}, {'type': 'reattempt', 'name': "Can Reattempt"}, {'type': 'understand', 'name': 'Understand Communication'}, {'type': 'sense', 'name': 'Sense Condition'}, {'type': 'weaken', 'name': 'Weaken'}, {'type': 'restore', 'name': 'Restore Points'}, {'type': 'reverse', 'name': 'Reverse Degree Effect'}]
 
 	deg_mod_weaken_type = [{'type': '', 'name': 'Points Type'}, {'type': 'val', 'name': 'Value'}, {'type': 'degree', 'name': 'Value Per Degree'}, {'type': 'check', 'name': 'Check Difference'}]
 
@@ -441,6 +441,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	
 	partners = [{'type': '', 'name': 'N/A'}, {'type': 'power', 'name': 'Same Power'}, {'type': 'device', 'name': 'Device'}, {'type': 'both', 'name': 'Power or Device'}, {'type': 'skill', 'name': 'Skill Check'}]
 
+	persistent_type = [{'type': 'degree', 'name': 'Degree Effect Works on Incurable'}, {'type': 'condition', 'name': "Power's Damage Condition Effect Works on Incurable"}]
+
 	permanent_type = [{'type': 'trait', 'name': 'Changes to Traits Permanent'}, {'type': 'create', 'name': 'Created Objects Permanent'}, {'type': 'insub', 'name': 'Permanently Insubstantial'}]
 
 	permanence = [{'type': '', 'name': 'Permanence'},{'type': 'temp', 'name': 'Temporary'}, {'type': 'perm', 'name': 'Permanent'}, {'type': 'turn', 'name': 'Chosen on Turn'}]
@@ -468,6 +470,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	resistance_type = [{'type': '', 'name': 'Applies to'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'trait', 'name': 'Check Type'}, {'type': 'harmed', 'name': 'Subject Harmed'}]
 
 	resistant = [{'type': '', 'name': 'Affects'}, {'type': 'sense', 'name': 'Sense'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'power', 'name': 'Power'}]
+
+	restore = [{'type': '', 'name': 'Restore Points Type'}, {'type': 'points', 'name': 'Points'}, {'type': 'degree', 'name': 'Points Per Degree'}, {'type': 'char', 'name': 'Character Rsnk in Affected Trait'}, {'type': 'player', 'name': 'Player Rank in Affected Trait'}]
 
 	result = [{'type': '', 'name': 'Result'}, {'type': 'high', 'name': 'Higher'}, {'type': 'low', 'name': 'Lower'}]
 
@@ -625,7 +629,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											check_sense_type=check_sense_type, check_sense_target=check_sense_target, descriptor_effect_type=descriptor_effect_type, effect_type=effect_type, effortless_type=effortless_type,
 											feedback_resist=feedback_resist, source_type=source_type, sense_micro=sense_micro, micro_expertise=micro_expertise, unreliable_type=unreliable_type, rank_type=rank_type,
 											incurable_type=incurable_type, deg_mod_weaken_type=deg_mod_weaken_type, progressive_type=progressive_type, affects_others_type=affects_others_type, 
-											affects_others_req=affects_others_req, area_type=area_type, concentration_type=concentration_type, auto_type=auto_type)
+											affects_others_req=affects_others_req, area_type=area_type, concentration_type=concentration_type, auto_type=auto_type, persistent_type=persistent_type, feedback_type=feedback_type,
+											restore=restore)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -2665,6 +2670,8 @@ def power_post_mod():
 	progressive_degree_type  = request.get_json()['progressive_degree_type']
 	cumulative_degree = request.get_json()['cumulative_degree']
 	cumulative = request.get_json()['cumulative']
+	persistent_type = request.get_json()['persistent_type']
+	persistent_degree = request.get_json()['persistent_degree']
 
 
 	cost = db_integer(PowerCost, cost)
@@ -2684,6 +2691,7 @@ def power_post_mod():
 	progressive_degree = db_integer(PowerDegree, progressive_degree)
 	progressive_degree_type = db_integer(PowerDegreeType, progressive_degree_type)
 	cumulative_degree = db_integer(PowerDegreeType, cumulative_degree)
+	persistent_degree = db_integer(PowerDegreeType, persistent_degree)
 
 	power_id = integer(power_id)
 	extra_id = db_integer(Extra, extra_id)
@@ -2887,7 +2895,9 @@ def power_post_mod():
 							progressive_degree_all = progressive_degree_all,
 							progressive_degree_type = progressive_degree_type,
 							cumulative_degree = cumulative_degree,
-							cumulative = cumulative
+							cumulative = cumulative,
+							persistent_type = persistent_type,
+							persistent_degree = persistent_degree
 						)
 
 		db.session.add(entry)
@@ -4591,6 +4601,9 @@ def power_post_degree():
 	reverse_type = request.get_json()['reverse_type']
 	reverse = request.get_json()['reverse']
 	communication_acute = request.get_json()['communication_acute']
+	restore = request.get_json()['restore']
+	restore_descriptor = request.get_json()['restore_descriptor']
+	restore_val = request.get_json()['restore_val']
 
 	errors = power_degree_post_errors(data)
 
@@ -4625,6 +4638,7 @@ def power_post_degree():
 	effect_descriptor = db_integer(PowerDes, effect_descriptor)
 	effect_power = db_integer(Power, effect_power)
 	null_condition = db_integer(Condition, null_condition)
+	restore_descriptor = db_integer(PowerDes, restore_descriptor)
 
 	opposed = db_integer(PowerOpposed, opposed)
 	resist_dc = db_integer(PowerDC, resist_dc)
@@ -4672,7 +4686,7 @@ def power_post_degree():
 	knowledge_mind_count = integer(knowledge_mind_count)
 	weaken_max = integer(weaken_max)
 	weaken_val = integer(weaken_val)
-
+	restore_val = integer(restore_val)
 
 	body = {}
 	body['success'] = True
@@ -4787,7 +4801,10 @@ def power_post_degree():
 						weaken_val = weaken_val,
 						reverse_type = reverse_type,
 						reverse = reverse,
-						communication_acute = communication_acute)
+						communication_acute = communication_acute,
+						restore = restore,
+						restore_descriptor = restore_descriptor,
+						restore_val = restore_val)
 
 	db.session.add(entry)
 	db.session.commit()

@@ -1076,6 +1076,8 @@ def mod_post(entry, body, cells):
 	progressive_degree_type = entry.progressive_degree_type
 	cumulative = entry.cumulative
 	cumulative_degree = entry.cumulative_degree
+	persistent_type = entry.persistent_type
+	persistent_degree = entry.persistent_degree
 
 
 	body = one_multiple(PowerMod, power_id, body)
@@ -1097,6 +1099,7 @@ def mod_post(entry, body, cells):
 	progressive_degree = get_keyword(PowerDegree. progressive_degree)
 	progressive_degree_type = get_name(PowerDegreeType, progressive_degree_type)
 	cumulative_degree = get_name(PowerDegreeType, cumulative_degree)
+	persistent_degree = get_name(PowerDegreeType, persistent_degree)
 
 	limited_trait = trait_select(limited_trait, limited_trait_type)
 	subtle_null_trait = trait_select(subtle_null_trait, subtle_null_trait_type)
@@ -1194,7 +1197,10 @@ def mod_post(entry, body, cells):
 
 	group = string(' Group', concentration_check_type)
 	concentration_type_select = [{'type': '', 'name': 'Concentration Type'}, {'type': 'require', 'name': 'Effect Requires Concentration'}, {'type': 'check', 'name': 'Success on ' + concentration_check_type + concentration_check + ' Check' + group}, {'type': 'opposed', 'name': 'Concentration for Success on ' + concentration_opposed + ' Opponent Check Group'}]
+	concentration_type = selects(concentration_type, concentration_type_select)
 
+	persistent_type_select = [{'type': 'degree', 'name': 'Degree Effect Works on Incurable'}, {'type': 'condition', 'name': "Power's Damage Condition Effect Works on Incurable"}]
+	persistent_type = selects(persistent_type, persistent_type_select)
 
 	cells = cell('Extra', 15, [extra])
 	cells = check_cell('Affects Objects', 16, affects_objects, cells, True)
@@ -1211,7 +1217,11 @@ def mod_post(entry, body, cells):
 	new_mod = mod_cell('Selective', 12, [selective], new_mod)
 	body = mod_add(area, new_mod, body)
 
-	cells = check_cell('Persistant', 10, persistent, cells)
+	cells = check_cell('Persistant', 10, persistent, cells, True)
+	new_mod = mod_create('Persistent', 15)
+	new_mod = mod_cell('Type:', 6, [persistent_type], new_mod)
+	new_mod = mod_cell('Degree Group', 17, [persistent_degree], new_mod)
+	body = mod_add(persistent, new_mod, body)
 
 	cells = check_cell('Incurable', 8, incurable, cells, True)
 	new_mod = mod_create('Incurable', 12)
@@ -2201,7 +2211,7 @@ def power_check_post(entry, body, cells):
 	check_sense_target = [{'type': '', 'name': 'Sense Use Type'}, {'type': 'player', 'name': 'Player Uses '}, {'type': 'opp', 'name': 'Opponent Uses '}, {'type': 'team', 'name': 'Teammate Uses '}]
 	sense_target = selects(sense_target, check_sense_target)
 
-	check_multiple =  [{'type': '', 'name': 'If Multiple'}, {'type': 'turn', 'name': 'Chosen on Turn'}, {'type': 'x', 'name': 'Chosen when Aquiring Power'}, {'type': 'overwrite', 'name': 'Overwrites ' + overwrite}]
+	check_multiple =  [{'type': '', 'name': 'If Multiple'}, {'type': 'turn', 'name': 'Chosen on Turn'}, {'type': 'x', 'name': 'Chosen when Aquiring Power'}, {'type': 'overwrite', 'name': 'Overwrites ' + overwrite}, {'type': 'when', 'name': 'Determined by When'}, {'type': 'frequency', 'name': 'Determined by Frequency'}]
 	multiple = selects(multiple, check_multiple)
 
 	maintain_concentrate = check_string(' While Concentrating', maintain_concentrate)
@@ -2801,6 +2811,9 @@ def power_degree_post(entry, body, cells):
 	reverse_type = entry.reverse_type
 	reverse = entry.reverse
 	communication_acute = entry.communication_acute
+	restore = entry.restore
+	restore_descriptor = entry.restore_descriptor
+	restore_val = entry.restore_val
 
 	title_name = get_name(PowerDegreeType, title)
 	body['title'] = title_name
@@ -2833,6 +2846,7 @@ def power_degree_post(entry, body, cells):
 	effect_descriptor = get_name(PowerDes, effect_descriptor)
 	effect_power = get_name(Power, effect_power)
 	null_condition = get_name(Condition, null_condition)
+	restore_descriptor = get_name(PowerDes, restore_descriptor)
 
 	measure_type = math_convert(measure_type)
 	value_type = math_convert(value_type)
@@ -2883,7 +2897,7 @@ def power_degree_post(entry, body, cells):
 	level_direction = integer_convert(level_direction)
 	weaken_max = integer_convert(weaken_max)
 	weaken_val = integer_convert(weaken_val)
-
+	restore_val = integer_convert(restore_val)
 
 	updown = [{'type': '', 'name': 'Direction'}, {'type': 1, 'name': 'One Level Up'}, {'type': -1, 'name': 'One Level Down'}]
 	level_direction = selects(level_direction, updown) 
@@ -3005,6 +3019,11 @@ def power_degree_post(entry, body, cells):
 	vcells = vcell('weaken', 25, [weaken_val, 'Points Lost'], vcells, weaken_type, 'val')
 	vcells = vcell('weaken', 35, [weaken_val, 'Points Lost Per Degree'], vcells, weaken_type, 'degree')
 	vcells = vcell('weaken', 45, ['Lose Points Equal to Difference in Check'], vcells, weaken_type, 'check')
+
+	vcells = vcell('restore', 45, ['Restore', restore_val, 'Points Against', restore_descriptor], vcells, restore, 'points')
+	vcells = vcell('restore', 55, ['Restore', restore_val, 'Points Per Degree Against', restore_descriptor], vcells, restore, 'degree')
+	vcells = vcell('restore', 60, ['Restore Character Rank of Trait Agaomst', restore_descriptor], vcells, restore, 'char')
+	vcells = vcell('restore', 60, ['Restore Players Rank of Trait Against', restore_descriptor], vcells, restore, 'player')
 
 	vcells = vcell('reverse', 40, [reverse_type, reverse, 'Efffect Reversed'], vcells)
 

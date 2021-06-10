@@ -907,6 +907,9 @@ class PowerDegree(db.Model):
 	reverse_type = db.Column(db.String())
 	reverse = db.Column(db.Integer, db.ForeignKey('power_degree.id'))
 	communication_acute = db.Column(db.Boolean)
+	restore = db.Column(db.String())
+	restore_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
+	restore_val = db.Column(db.Integer)
 
 
 	def format(self):
@@ -1016,7 +1019,10 @@ class PowerDegree(db.Model):
 			'weaken_max': self.weaken_max,
 			'reverse_type': self.reverse_type,
 			'reverse': self.reverse,
-			'communication_acute': self.communication_acute
+			'communication_acute': self.communication_acute,
+			'restore': self.restore,
+			'restore_descriptor': self.restore_descriptor,
+			'restore_val': self.restore_val
 		}
 
 
@@ -2183,6 +2189,8 @@ class PowerMod(db.Model):
 	progressive_degree_type = db.Column(db.Integer, db.ForeignKey('power_degree_type.id'))
 	cumulative = db.Column(db.Boolean)
 	cumulative_degree = db.Column(db.Integer, db.ForeignKey('power_degree_type.id'))
+	persistent_type = db.Column(db.String())
+	persistent_degree = db.Column(db.Integer, db.ForeignKey('power_degree_type.id'))
 
 	def format(self):
 		return {
@@ -2322,7 +2330,9 @@ class PowerMod(db.Model):
 			'progressive_degree': self.progressive_degree,
 			'progressive_degree_all': self.progressive_degree_all,
 			'progressive_degree_type': self.progressive_degree_type,
-			'cumulative_degree': self.cumulative_degree
+			'cumulative_degree': self.cumulative_degree,
+			'persistent_type': self.persistent_type,
+			'persistent_degree': self.persistent_degree
 		}
 
 class PowerRanged(db.Model):
