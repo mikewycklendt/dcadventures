@@ -85,7 +85,7 @@
 #time-value {
 	display: none;
 	opacity: 0%;
-	grid-template-columns: 20% 30% 50%;
+	grid-template-columns: 20% 4% 20%% 50%;
 	transition: all .3s ease-in;
 }
 
