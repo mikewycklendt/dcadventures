@@ -217,6 +217,12 @@ body{
 	font-size: 140%;
 }
 
+.text-med input[type="text"] {
+	height: 1.7vw;
+	padding: .6vw;
+	font-size: 110%;
+}
+
 .text-small input[type="text"] {
 	height: 1.1vw;
 	font-size: 80%;

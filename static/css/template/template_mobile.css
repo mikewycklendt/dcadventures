@@ -301,6 +301,14 @@
 	font-size: 130%;
 }
 
+
+.text-med input[type="text"] {
+	height: 3.5vw;
+	width: 93%;
+	padding: 1vw;
+	font-size: 110%;
+}
+
 .text-small input[type="text"] {
 	height: 2.5vw;
 	width: 93%;
