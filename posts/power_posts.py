@@ -2357,7 +2357,7 @@ def power_circ_post(entry, body, cells):
 	success_check = get_keyword(PowerCheck, success_check)
 	success_check_type = get_name(PowerCheckType, success_check_type)
 	success_check_bonus = get_keyword(PowerCheck, success_check_bonus)
-	success_check_type_bonus = get_name(PowerCheckType, success_check_type_bonus)\
+	success_check_type_bonus = get_name(PowerCheckType, success_check_type_bonus)
 	success_opposed = get_keyword(PowerOpposed, success_opposed)
 	success_opposed_type = get_name(PowerOpposedType, success_opposed_type)
 	success_opposed_bonus = get_keyword(PowerOpposed, success_opposed_bonus)
