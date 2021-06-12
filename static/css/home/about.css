@@ -25,7 +25,7 @@
 }
 
 #about-content {
-	display: flex;
+	display: block;
 	align-self: center;
 	border: 1px solid #af0101;
 	width: 70%;
