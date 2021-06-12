@@ -171,9 +171,9 @@ body{
 	outline-offset: -4px;
 	width: 40vw;
 	height: 80vh;
-	opacity: 100%;
+	opacity: 0%;
 	transition: all .2s ease-out;
-	overflow: scroll;
+	overflow: hidden;
 }
 
 .login {

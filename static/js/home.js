@@ -18,7 +18,7 @@ function show_signup() {
 	show_div(div, 'block');
 }
 
-function login_signup() {
+function signup_close() {
 	const div = 'signup';
 
 	hide_div(div, 2);

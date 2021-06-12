@@ -14,3 +14,25 @@ function hide_div(div_input, time=3) {
 	div.style.opacity = '0%';
 	setTimeout(function(){div.style.display = 'none';}, time);
 }
+
+
+function show_modal(div_input) {
+	const div = document.getElementById(div_input);
+	const modal = document.getElementById('modal');
+
+	show_div(modal, 'flex');
+
+	div.style.display = 'block';
+	setTimeout(function(){div.style.opacity = '100%';}, 10)
+	
+}
+
+function hide_modal(div_input) {
+	const modal = document.getElementById('modal');
+	const div = document.getElementById(div_input);\
+
+	hide_div(modal, 2);
+
+	div.style.opacity = '0%';
+	setTimeout(function(){div.style.display = 'none';}, 200);
+}
