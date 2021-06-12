@@ -18,7 +18,7 @@ function hide_div(div_input, time=3) {
 
 function show_modal(div_input) {
 	const div = document.getElementById(div_input);
-	const modal = document.getElementById('modal');
+	const modal = 'modal';
 
 	show_div(modal, 'flex');
 
@@ -29,7 +29,7 @@ function show_modal(div_input) {
 }
 
 function hide_modal(div_input) {
-	const modal = document.getElementById('modal');
+	const modal = 'modal';
 	const div = document.getElementById(div_input);
 
 	hide_div(modal, 2);
