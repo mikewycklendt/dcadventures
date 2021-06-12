@@ -2,24 +2,22 @@
 function show_about() {
 	const div = 'about';
 
-	show_div(modal, 'flex');
-	show_div(div, 'block');
+	show_modal(div);
 }
 
 function about_close() {
 	const div = 'about';
 
-	hide_div(div, 2);
+	hide_modal(div);
 }
 function show_signup() {
 	const div = 'signup';
 
-	show_div(modal, 'flex');
-	show_div(div, 'block');
+	show_modal(div);
 }
 
 function signup_close() {
 	const div = 'signup';
 
-	hide_div(div, 2);
+	hide_modal(div);
 }
