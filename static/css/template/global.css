@@ -275,3 +275,11 @@ input[type=text]:focus {
 	width: fit-content;
 	height: fit-content;
 }
+
+.red {
+	color: #af0101;
+}
+
+.blue {
+	color: #245681;
+}

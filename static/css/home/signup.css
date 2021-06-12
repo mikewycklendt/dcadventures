@@ -3,11 +3,22 @@
 	display: none;
 }
 
+
+#signup-banner {
+	display: flex;
+	width: 100%;
+	height: fit-content;
+	align-self: center;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+}
+
 #signup-words {
 	display: flexbox;
 	align-self: center;
 	border: 1px solid #af0101;
-	width: 60%;
+	width: 70%;
 	padding: 5%;
 	font-family: Comic, 'Monda', Verdana;
 	font-size: 200%;
