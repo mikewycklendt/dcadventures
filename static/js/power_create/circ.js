@@ -120,8 +120,8 @@ function circ_success() {
 	const select = 'circ_success';
 	const options = [{'val': 'check', 'div': 'circ-success-check'},
 					{'val': 'check_type', 'div': 'circ-success-check-type'},
-					{'val': '', 'div': ''},
-					{'val': '', 'div': ''}];
+					{'val': 'opposed', 'div': 'circ-success-opposed'},
+					{'val': 'opposed_type', 'div': 'circ-success-opposed-type'}];
 
 	select_opacity(select, options);
 }
@@ -130,8 +130,8 @@ function circ_success_bonus() {
 	const select = 'circ_success';
 	const options = [{'val': 'check', 'div': 'circ-success-check-bonus'},
 					{'val': 'check_type', 'div': 'circ-success-check-type-bonus'},
-					{'val': '', 'div': ''},
-					{'val': '', 'div': ''},
+					{'val': 'opposed', 'div': 'circ-success-opposed-bonus'},
+					{'val': 'opposed_type', 'div': 'circ-success-opposed-type-bonus'},
 					{'val': 'trait', 'div': 'circ-success-trait'}];
 
 	select_opacity(select, options);
