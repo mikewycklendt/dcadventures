@@ -127,7 +127,7 @@ function circ_success() {
 }
 
 function circ_success_bonus() {
-	const select = 'circ_success';
+	const select = 'circ_success_bonus';
 	const options = [{'val': 'check', 'div': 'circ-success-check-bonus'},
 					{'val': 'check_type', 'div': 'circ-success-check-type-bonus'},
 					{'val': 'opposed', 'div': 'circ-success-opposed-bonus'},
