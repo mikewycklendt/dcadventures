@@ -217,7 +217,7 @@ a {
 	display: inline-block;	
 }
 
-#modal {
+.modal {
 	display: none; /* Hidden by default */
 	align-items: center;
 	align-content: center;

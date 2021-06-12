@@ -1,41 +1,45 @@
-<div class="modal-content" id="login">
+<div class="modal" id="login">
 
-	<div class="close-div">
-		 <div id="login_close" class="close" onclick="login_close()"></div>
-	</div>
+	<div class="modal-content">
 
-	<div id="login-banner">
-		<img src="/static/img/login.png" width="80%">
-	</div>
-
-	<div class="login-field">
-		<div class="valign">
-			Username:
+		<div class="close-div">
+			 <div id="login_close" class="close" onclick="login_close()"></div>
 		</div>
-
-		<div class="text-big">
-			<input type="text" id="username" name="username">
-		</div>
-	</div>
-
 	
-	<div class="login-field">
-		<div class="valign">
-			Password:
+		<div id="login-banner">
+			<img src="/static/img/login.png" width="80%">
 		</div>
-
-		<div class="text-big">
-			<input type="text" id="password" name="password">
+	
+		<div class="login-field">
+			<div class="valign">
+				Username:
+			</div>
+	
+			<div class="text-big">
+				<input type="text" id="username" name="username">
+			</div>
 		</div>
-	</div>	
-
-	<div id="login-btn">
-		<div></div>
-
-		<div>
-			<div class="login" onclick="login()">
-				Login
+	
+		
+		<div class="login-field">
+			<div class="valign">
+				Password:
+			</div>
+	
+			<div class="text-big">
+				<input type="text" id="password" name="password">
+			</div>
+		</div>	
+	
+		<div id="login-btn">
+			<div></div>
+	
+			<div>
+				<div class="login" onclick="login()">
+					Login
+				</div>
 			</div>
 		</div>
 	</div>
+	
 </div>
