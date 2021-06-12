@@ -26,21 +26,6 @@
 	grid-area: blank;
 }
 
-#signup{
-	display: table-cell;
-	grid-area: signup;
-	vertical-align: middle;
-	text-align: center;
-}
-
-#about{
-	display: table-cell;
-	grid-area: about;
-	align-content: center;
-	vertical-align: middle;
-	text-align: center;
-}
-
 #buttons {
 	display: grid;
 	grid-area: homebuttons;
