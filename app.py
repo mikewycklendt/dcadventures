@@ -105,9 +105,12 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 	stylesheets.append({"style": "/static/css/home/about.css"})
 	stylesheets.append({"style": "/static/css/home/signup.css"})
 
+	modals = ['/home/about.html', '/home/signup.html']
+
 	
 
-	return render_template(template, includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
+	return render_template(template, includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar,
+							modals=modals)
 	
 
 

@@ -67,6 +67,8 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	skill_includes = {'base_form': 'skill_create/base_form.html', 'dc': 'skill_create/dc_table.html', 'levels': 'skill_create/levels.html', 'degree_mod': 'skill_create/degree_mod.html', 'circ': 'skill_create/circ.html', 'alt_check': 'skill_create/alt_check.html', 'opposed': 'skill_create/opposed.html', 'modifiers': 'skill_create/modifiers.html', 'time': 'skill_create/time.html', 'ability': 'skill_create/ability.html', 'move': 'skill_create/move.html'}
 	
+	modals = ['']
+	
 	title = 'DC Adventures Online Roleplaying Game: Create Enhanced Skill'
 	stylesheets.append({"style": "/static/css/skill_create/skill_create.css"})
 
@@ -326,7 +328,7 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 							speed=speed, distance=distance, distances=distances, trait_type=trait_type, measure_effect_circ=measure_effect_circ, measure_type=measure_type, offers=offers, bonus_circ=bonus_circ, bonus_dc=bonus_dc, bonus_degree=bonus_degree,
 							bonus_opposed=bonus_opposed, bonus_time=bonus_time, bonus_move=bonus_move, bonus_check=bonus_check, bonus_circ_type=bonus_circ_type, bonus_dc_type=bonus_dc_type, bonus_degree_type=bonus_degree_type,
 							bonus_move_type=bonus_move_type, bonus_time_type=bonus_time_type, materials=materials, multiple_time=multiple_time, effect_target=effect_target, equip_type=equip_type, equipmwnt=equipmwnt, 
-							features=features, partner=partner, degree_type=degree_type, when=when, skill_check=skill_check, circ_trait=circ_trait, nature=nature, equipment_use=equipment_use, recovery=recovery)
+							features=features, partner=partner, degree_type=degree_type, when=when, skill_check=skill_check, circ_trait=circ_trait, nature=nature, equipment_use=equipment_use, recovery=recovery, modals=modals)
 
 
 @skill.route('/skill/create', methods=['POST'])

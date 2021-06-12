@@ -62,6 +62,8 @@ def weapon_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=met
 
 	weapon_includes = {'base_form': 'weapon_create/base_form.html', 'descriptor': 'weapon_create/descriptor.html', 'condition': 'weapon_create/condition.html', 'benefit': 'weapon_create/benefit.html'}
 
+	modals = ['']
+	
 	title = 'DC Adventures Online Roleplaying Game: Create Weapon'
 	stylesheets.append({"style": "/static/css/weapon_create/weapon_create.css"})
 
@@ -127,7 +129,7 @@ def weapon_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=met
 	return render_template(template, includehtml=includehtml, title=title, stylesheets=stylesheets, weapon_includes=weapon_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, weapon_cat=weapon_cat, powers=powers, materials=materials, origins=origins,
 							sources=sources, mediums=mediums, condition=condition, conditions=conditions, updown=updown, benefits=benefits, defenses=defenses, area=area, advantages=advantages, conceal=conceal,
-							senses=senses)
+							senses=senses, modals=modals)
 
 @weap.route('/weapon/create', methods=['POST'])
 def post_weapon(): 

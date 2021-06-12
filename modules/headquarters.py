@@ -64,6 +64,8 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 
 	headquarters_includes = {'base_form': 'headquarters_create/base_form.html', 'addon': 'headquarters_create/addon.html', 'feature': 'headquarters_create/feature.html'}
 	
+	modals = ['']
+	
 	title = 'DC Adventures Online Roleplaying Game: Create Headquarters'
 	stylesheets.append({"style": "/static/css/headquarters_create/headquarters_create.css"})
 
@@ -117,7 +119,7 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 
 	return render_template(template, includehtml=includehtml, title=title, stylesheets=stylesheets, headquarters_includes=headquarters_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, head_toughness=head_toughness, head_size=head_size, addons=addons, features=features,
-							equipment=equipment, equipment_type=equipment_type, weapon_cat=weapon_cat, head_features=head_features)
+							equipment=equipment, equipment_type=equipment_type, weapon_cat=weapon_cat, head_features=head_features, modals=modals)
 
 @head.route('/headquarters/size/select', methods=['POST'])
 def headquarters_size_select():

@@ -62,6 +62,8 @@ def vehicle_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=me
 
 	vehicle_includes = {'base_form': 'vehicle_create/base_form.html', 'powers': 'vehicle_create/powers.html', 'feature': 'vehicle_create/feature.html'}
 	
+	modals = ['']
+	
 	title = 'DC Adventures Online Roleplaying Game: Create Vehicle'
 	stylesheets.append({"style": "/static/css/vehicle_create/vehicle_create.css"})
 
@@ -112,7 +114,7 @@ def vehicle_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=me
 
 	return render_template(template, includehtml=includehtml, title=title, stylesheets=stylesheets, vehicle_includes=vehicle_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, vehicle_type=vehicle_type, vehicle_size=vehicle_size, power_type=power_type,
-							features=features, equioment=equipment, equipment_type=equipment_type, addons=addons, weapon_cat=weapon_cat)
+							features=features, equioment=equipment, equipment_type=equipment_type, addons=addons, weapon_cat=weapon_cat, modals=modals)
 
 @vehicle.route('/vehicle/size/select', methods=['POST'])
 def vehicle_size_select():

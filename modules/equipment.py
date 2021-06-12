@@ -65,6 +65,8 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	equipment_includes = {'base_form': 'equipment_create/base_form.html', 'damaged': 'equipment_create/damaged.html', 'opposed': 'equipment_create/opposed.html', 'modifiers': 'equipment_create/modifiers.html', 'check': 'equipment_create/check.html', 'limits': 'equipment_create/limits.html', 'descriptor': 'equipment_create/descriptors.html', 'feature': 'equipment_create/feature.html', 'effect': 'equipment_create/effect.html', 'belt': 'equipment_create/belt.html'}
 
+	modals = ['']
+
 	if request.MOBILE:
 		stylesheets.append({"style": "/static/css/template/template_mobile.css"})
 		stylesheets.append({"style": "/static/css/template/selects_mobile.css"})
@@ -190,7 +192,7 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 							ranged=ranged, subsenses=subsenses, cover=cover, concealment=concealment, maneuvers=maneuvers, weapon_melee=weapon_melee, weapon_ranged=weapon_ranged, tools=tools, powers=powers,
 							consequences=consequences, creatures=creatures, emotions=emotions, conflicts=conflicts, professions=professions, modifier_type=modifier_type, modifier_effect=modifier_effect,
 							modifier_trigger=modifier_trigger, multiple=multiple, traits=traits, actions=actions, origins=origins, sources=sources, mediums=mediums, weapon_cat=weapon_cat, features=features, belt=belt,
-							move=move, locks=locks)
+							move=move, locks=locks, modals=modals)
 
 
 

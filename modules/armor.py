@@ -63,6 +63,8 @@ def armor_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	armor_includes = {'base_form': 'armor_create/base_form.html', 'descriptor': 'armor_create/descriptor.html', 'defense': 'armor_create/defense.html'}
 	
+	modals = ['']
+
 	title = 'DC Adventures Online Roleplaying Game: Create Armor'
 	stylesheets.append({"style": "/static/css/advantage_create/armor_create.css"})
 
@@ -110,7 +112,7 @@ def armor_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	return render_template(template, includehtml=includehtml, title=title, stylesheets=stylesheets, armor_includes=armor_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, armor_type=armor_type, defenses=defenses, origins=origins, sources=sources,
-							mediums=mediums, materials=materials)
+							mediums=mediums, materials=materials, modals=modals)
 							
 
 @arm.route('/armor/create', methods=['POST'])

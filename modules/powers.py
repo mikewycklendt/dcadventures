@@ -68,6 +68,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	power_includes = {'base_form': 'power_create/base_form.html', 'range': 'power_create/range.html', 'resisted_by': 'power_create/resisted_by.html', 'reverse_effect': 'power_create/reverse_effect.html', 'move': 'power_create/move.html', 'levels': 'power_create/levels.html', 'category': 'power_create/category.html', 'sense': 'power_create/sense.html', 'ranks': 'power_create/ranks.html', 'circ': 'power_create/circ.html', 'create': 'power_create/create.html', 'damage': 'power_create/damage.html', 'extras': 'power_create/extras.html', 'degree_mod': 'power_create/degree_mod.html', 'defense': 'power_create/defense.html', 'character': 'power_create/character.html', 'environment': 'power_create/environment.html', 'descriptors': 'power_create/descriptors.html', 'resist': 'power_create/resist.html', 'change_action': 'power_create/change_action.html', 'mod': 'power_create/mod.html', 'dc_table': 'power_create/dc_table.html', 'time': 'power_create/time.html', 'alt_check': 'power_create/alt_check.html', 'degree': 'power_create/degree.html', 'opposed': 'power_create/opposed.html', 'ranged': 'power_create/ranged.html', 'minion': 'power_create/minion.html', 'cost': 'power_create/cost.html', 'ranks': 'power_create/ranks.html', 'condition': 'power_create/condition.html'}
 
+	modals = ['']
+	
 	if request.MOBILE:
 		stylesheets.append({"style": "/static/css/template/template_mobile.css"})
 		stylesheets.append({"style": "/static/css/template/selects_mobile.css"})
@@ -636,7 +638,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											feedback_resist=feedback_resist, source_type=source_type, sense_micro=sense_micro, micro_expertise=micro_expertise, unreliable_type=unreliable_type, rank_type=rank_type,
 											incurable_type=incurable_type, deg_mod_weaken_type=deg_mod_weaken_type, progressive_type=progressive_type, affects_others_type=affects_others_type, 
 											affects_others_req=affects_others_req, area_type=area_type, concentration_type=concentration_type, auto_type=auto_type, persistent_type=persistent_type, feedback_type=feedback_type,
-											restore=restore, check_forms=check_forms, success=success, success_target=success_target)
+											restore=restore, check_forms=check_forms, success=success, success_target=success_target, modals=modals)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
