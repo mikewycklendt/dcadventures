@@ -23,13 +23,14 @@ function show_modal(div_input) {
 	show_div(modal, 'flex');
 
 	div.style.display = 'block';
+	div.style.overflow = 'scroll';
 	setTimeout(function(){div.style.opacity = '100%';}, 10)
 	
 }
 
 function hide_modal(div_input) {
 	const modal = document.getElementById('modal');
-	const div = document.getElementById(div_input);\
+	const div = document.getElementById(div_input);
 
 	hide_div(modal, 2);
 
