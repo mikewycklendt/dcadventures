@@ -16,15 +16,16 @@
 }
 
 #about-book {
-	display: flexbox;
+	display: flex;
 	align-self: center;
+	width: 35%;
 	border: 1px solid #af0101;
 	padding: 3%;
 	width: 35%;
 }
 
 #about-content {
-	display: flexbox;
+	display: flex;
 	align-self: center;
 	border: 1px solid #af0101;
 	width: 70%;

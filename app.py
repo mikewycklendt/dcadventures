@@ -105,7 +105,8 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 	stylesheets.append({"style": "/static/css/home/about.css"})
 	stylesheets.append({"style": "/static/css/home/signup.css"})
 
-	modals = ['/template/login.html']
+	modals = ['/home/about.html']
+
 
 	
 

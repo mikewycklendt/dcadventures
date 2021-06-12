@@ -97,6 +97,10 @@
 	
 		{% include '/template/login.html' %}
 
+		{% for m in modals %}
+			{% include m %}
+		{% endfor %}
+
 			
 		<script src="/static/js/functions/functions.js"></script>
 		<script src="/static/js/template.js"></script>
