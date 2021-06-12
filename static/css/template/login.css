@@ -1,8 +1,6 @@
  
-#login-grid {
-	display: grid;
-	grid-auto-rows: auto;
-	gap: 5px;
+#login {
+	display: none;
 }
 
 #login-btn {

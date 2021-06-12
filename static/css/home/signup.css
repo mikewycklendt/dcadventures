@@ -1,8 +1,6 @@
  
-#signup-grid {
-	display: grid;
-	grid-auto-rows: auto;
-	gap: 5px;
+#signup {
+	display: none;
 }
 
 #signup-words {
