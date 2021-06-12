@@ -570,6 +570,8 @@ class PowerCirc(db.Model):
 	success_opposed_type = db.Column(db.Integer, db.ForeignKey('power_opposed_type.id'))
 	success_opposed_bonus = db.Column(db.Integer, db.ForeignKey('power_opposed.id'))
 	success_opposed_type_bonus = db.Column(db.Integer, db.ForeignKey('power_opposed_type.id'))
+	success_bonus_trait_type = db.Column(db.String())
+	success_bonus_trait = db.Column(db.Integer)
 	
 	def format(self):
 		return {
@@ -638,7 +640,9 @@ class PowerCirc(db.Model):
 			'success_opposed': self.success_opposed,
 			'success_opposed_type': self.success_opposed_type,
 			'success_opposed_bonus': self.success_opposed_bonus,
-			'success_opposed_type_bonus': self.success_opposed_type_bonus
+			'success_opposed_type_bonus': self.success_opposed_type_bonus,
+			'success_bonus_trait_type': self.success_bonus_trait_type,
+			'success_bonus_trait': self.success_bonus_trait
 		}
 
 

@@ -1976,6 +1976,8 @@ def power_circ_post_errors(data):
 	success_opposed_type = data['success_opposed_type']
 	success_opposed_bonus = data['success_opposed_bonus']
 	success_opposed_type_bonus = data['success_opposed_type_bonus']
+	success_bonus_trait_type = data['success_bonus_trait_type']
+	success_bonus_trait = data['success_bonus_trait']
  
 
 	errors = power_check(power_id, errors)
@@ -2036,6 +2038,9 @@ def power_circ_post_errors(data):
 	errors = variable_field('opposed_type', success_bonus, 'Variable Check Group', success_opposed_type_bonus, errors)	
 	errors = variable_fields('opposed', 'Applied To', success_bonus, [success_opposed_bonus], errors)	
 	errors = variable_field('opposed', success_bonus, 'Opponent Check', success_opposed_bonus, errors)
+	errors = variable_fields('trait', 'Applied To', success_bonus, [success_bonus_trait_type, success_bonus_trait], errors)
+	errors = variable_field('trait', success_bonus, 'Trait Type', success_bonus_trait_type, errors)
+	errors = variable_field('trait', success_bonus, 'Trait', success_bonus_trait, errors)
 	
 
 	errors = variable_fields('opposed_type', 'Success On', success, [success_opposed_type], errors)

@@ -4093,6 +4093,12 @@ def power_post_circ():
 	success_check_type = request.get_json()['success_check_type']
 	success_check_bonus = request.get_json()['success_check_bonus']
 	success_check_type_bonus = request.get_json()['success_check_type_bonus']
+	success_opposed = request.get_json()['success_opposed']
+	success_opposed_type = request.get_json()['success_opposed_type']
+	success_opposed_bonus = request.get_json()['success_opposed_bonus']
+	success_opposed_type_bonus = request.get_json()['success_opposed_type_bonus']
+	success_bonus_trait_type = request.get_json()['success_bonus_trait_type']
+	success_bonus_trait = request.get_json()['success_bonus_trait']
 
 	errors = power_circ_post_errors(data)
 
@@ -4128,6 +4134,10 @@ def power_post_circ():
 	success_check_bonus = db_integer(PowerCheck, success_check_bonus)
 	success_check = db_integer(PowerCheck, success_check)
 	success_check_type = db_integer(PowerCheckType, success_check_type)
+	success_opposed = db_integer(PowerOpposed, success_opposed)
+	success_opposed_type = db_integer(PowerOpposedType, success_opposed_type)
+	success_opposed_bonus = db_integer(PowerOpposed, success_opposed_bonus)
+	success_opposed_type_bonus = db_integer(PowerOpposedType, success_opposed_type_bonus)
 
 	mod = integer(mod)
 	speed = integer(speed)
@@ -4139,6 +4149,7 @@ def power_post_circ():
 	measure_mod = integer(measure_mod)
 	max = integer(max)
 	trait = integer(trait)
+	success_bonus_trait = integer(success_bonus_trait)
 
 	body = {}
 	body['success'] = True
@@ -4206,7 +4217,13 @@ def power_post_circ():
 						success_check = success_check,
 						success_check_type = success_check_type,
 						success_check_bonus = success_check_bonus,
-						success_check_type_bonus = success_check_type_bonus
+						success_check_type_bonus = success_check_type_bonus,
+						success_opposed = success_opposed,
+						success_opposed_type = success_opposed_type,
+						success_opposed_bonus = success_opposed_bonus,
+						success_opposed_type_bonus = success_opposed_type_bonus,
+						success_bonus_trait_type = success_bonus_trait_type,
+						success_bonus_trait = success_bonus_trait
 					)
 
 	db.session.add(entry)

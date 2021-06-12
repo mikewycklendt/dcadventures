@@ -224,6 +224,8 @@ function circ_submit() {
 	const success_opposed_type = select("circ_success_opposed_type");
 	const success_opposed_bonus = select("circ_success_opposed_bonus");
 	const success_opposed_type_bonus = select("circ_success_opposed_type_bonus");
+	const success_bonus_trait = select("circ_success_bonus_trait");
+	const success_bonus_trait_type = select("circ_success_bonus_trait_type");
 
 	const errors = 'circ-err';
 	const err_line = 'circ-err-line';
@@ -297,7 +299,9 @@ function circ_submit() {
 			'success_opposed': success_opposed,
 			'success_opposed_type': success_opposed_type,
 			'success_opposed_bonus': success_opposed_bonus,
-			'success_opposed_type_bonus': success_opposed_type_bonus
+			'success_opposed_type_bonus': success_opposed_type_bonus,
+			'success_bonus_trait': success_bonus_trait,
+			'success_bonus_trait_type': success_bonus_trait_type
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
