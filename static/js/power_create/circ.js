@@ -28,7 +28,8 @@ function circ_effect() {
 					{'val': 'env', 'div': 'circ-env'},
 					{'val': 'nature', 'div': 'circ-nature'},
 					{'val': 'descriptor', 'div': 'circ-descriptor'},
-					{'val': 'conflict', 'div': 'circ-conflict'}]
+					{'val': 'conflict', 'div': 'circ-conflict'},
+					{'val': 'success', 'div': 'circ-success'}]
 
 	select_opacity(select, options);
 }
@@ -115,6 +116,41 @@ function circ_conflict() {
 	select_opacity(select, options);
 }
 
+function circ_success() {
+	const select = 'circ_success';
+	const options = [{'val': 'check', 'div': 'circ-success-check'},
+					{'val': 'check_type', 'div': 'circ-success-check-type'},
+					{'val': '', 'div': ''},
+					{'val': '', 'div': ''}];
+
+	select_opacity(select, options);
+}
+
+function circ_success_bonus() {
+	const select = 'circ_success';
+	const options = [{'val': 'check', 'div': 'circ-success-check-bonus'},
+					{'val': 'check_type', 'div': 'circ-success-check-type-bonus'},
+					{'val': '', 'div': ''},
+					{'val': '', 'div': ''},
+					{'val': 'trait', 'div': 'circ-success-trait'}];
+
+	select_opacity(select, options);
+}
+
+function circ_success_bonus_trait_type() {
+	const select = 'circ_success_bonus_trait_type';
+	const fill = 'circ_success_bonus_trait';
+
+	id_select(select, fill, trait_select);
+}
+
+function circ_success_bonus_trait() {
+	const filter = select('circ_success_bonus_trait_type');
+	const fill = 'circ_success_bonus_trait';
+
+	id_select(fill, fill, trait_filter, filter);
+}
+
 let circ_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
@@ -177,6 +213,17 @@ function circ_submit() {
 	const conflict_grab = select("circ_conflict_grab");
 	const rank = check("circ_rank");
 	const apply = select("circ_apply");
+	const success = select("circ_success");
+	const success_bonus = select("circ_success_bonus");
+	const success_target = select("circ_success_target");
+	const success_check = select("circ_success_check");
+	const success_check_type = select("circ_success_check_type");
+	const success_check_bonus = select("circ_success_check_bonus");
+	const success_check_type_bonus = select("circ_success_check_type_bonus");
+	const success_opposed = select("circ_success_opposed");
+	const success_opposed_type = select("circ_success_opposed_type");
+	const success_opposed_bonus = select("circ_success_opposed_bonus");
+	const success_opposed_type_bonus = select("circ_success_opposed_type_bonus");
 
 	const errors = 'circ-err';
 	const err_line = 'circ-err-line';
@@ -239,7 +286,18 @@ function circ_submit() {
 			'conflict': conflict,
 			'conflict_grab': conflict_grab,
 			'rank': rank,
-			'apply': apply
+			'apply': apply,
+			'success': success,
+			'success_bonus': success_bonus,
+			'success_target': success_target,
+			'success_check': success_check,
+			'success_check_type': success_check_type,
+			'success_check_bonus': success_check_bonus,
+			'success_check_type_bonus': success_check_type_bonus,
+			'success_opposed': success_opposed,
+			'success_opposed_type': success_opposed_type,
+			'success_opposed_bonus': success_opposed_bonus,
+			'success_opposed_type_bonus': success_opposed_type_bonus
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

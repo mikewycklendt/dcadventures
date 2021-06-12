@@ -253,7 +253,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	bonus_type = [{'type': 'flat', 'name': 'Flat'}, {'type': 'rank', 'name': 'Per Rank'}]
 
-	circ_effect = [{'type': '', 'name': 'Condition'}, {'type': 'condition', 'name': 'Condition Effect'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'trait', 'name': 'Applied to other Check'}, {'type': 'measure', 'name': 'If Measurement'}, {'type': 'level', 'name': 'If Level'}, {'type': 'speed', 'name': 'If Speed'}, {'type': 'target', 'name': 'If Target'}, {'type': 'tools', 'name': 'If Tools'}, {'type': 'materials', 'name': 'If Materials'}, {'type': 'env', 'name': 'If Environment'}, {'type': 'nature', 'name': 'If Nature'}, {'type': 'conflict', 'name': 'If Conflict Action'}, {'type': 'effect', 'name': 'Against Effect'}]
+	circ_effect = [{'type': '', 'name': 'Condition'}, {'type': 'condition', 'name': 'Condition Effect'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'trait', 'name': 'Applied to other Check'}, {'type': 'measure', 'name': 'If Measurement'}, {'type': 'level', 'name': 'If Level'}, {'type': 'speed', 'name': 'If Speed'}, {'type': 'target', 'name': 'If Target'}, {'type': 'tools', 'name': 'If Tools'}, {'type': 'materials', 'name': 'If Materials'}, {'type': 'env', 'name': 'If Environment'}, {'type': 'nature', 'name': 'If Nature'}, {'type': 'conflict', 'name': 'If Conflict Action'}, {'type': 'success', 'name': 'If Successful'}, {'type': 'effect', 'name': 'Against Effect'}]
 
 	circ_null = [{'type': '', 'name': 'Nullified'}, {'type': 'trait', 'name': 'From Trait'}, {'type': 'descriptor', 'name': 'From Descriptor'}, {'type': 'condition', 'name': 'From Condition'}]
 
@@ -270,6 +270,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	character = [{'type': 'size', 'name': 'Size Rank'}]
 
 	char_multiple = [{'type': '', 'name': 'If Multiple'}, {'type': 'all', 'name': 'All take Effect'}, {'type': 'turn', 'name': 'Choose on Turn'}, {'type': 'x', 'name': 'Choose When Aquiring Effect'}]
+
+	check_forms = [{'type': 'check', 'name': 'Varible Check'}, {'type': 'check_type', 'name': 'Variable Check Group'}, {'type': 'opposed', 'name': 'Opponent Check'}, {'type': 'opposed_type', 'name': 'Opponent Check Group'}]
 
 	check_frequency = [{'type': '', 'name': 'Frequency'}, {'type': 'always', 'name': 'Always'}, {'type': 'choice', 'name': 'Player Choice'}, {'type': 'gm', 'name': 'GN Choice'}, {'type': 'active', 'name': 'Active Target'}, {'type': 'object', 'name': 'Inanimate Object'}, {'type': 'maintain', 'name': 'Maintain Effect'}]
 
@@ -509,6 +511,10 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	subtle_type = [{'type': '', 'name': 'Subtle Type'}, {'type': 'detect', 'name': 'Detectable'}, {'type': 'undetectable', 'name': 'Undetectable'}, {'type': 'notice', 'name': 'Effect Not Noticeable'}, {'type': 'invisible', 'name': 'Effect Target Invisible'}, {'type': 'understand', 'name': 'Not Understandable'}, {'type': 'silent', 'name': 'Silent'}]
 
+	success_target = [{'type': '', 'name': 'Bonus Target'}, {'type': 'player', 'name': 'Successful Player'}, {'type': 'choice', 'name': 'Successful Players Choice'}]
+
+	success = [{'type': '', 'nsme': 'Applied to'}, {'type': 'same', 'nsme': 'Same Check'}, {'type': 'trait', 'nsme': 'All Checks of Trait'}, {'type': 'check', 'name': 'Varible Check'}, {'type': 'check_type', 'name': 'Variable Check Group'}, {'type': 'opposed', 'name': 'Opponent Check'}, {'type': 'opposed_type', 'name': 'Opponent Check Group'}]
+
 	suffocation_type = [{'type': '',  'name': 'Suffocation Type'}, {'type': 'all',  'name': 'All'}, {'type': 'x',  'name': 'Variable'}, {'type': 'water',  'name': 'Underwater'}, {'type': 'alien',  'name': 'Alien Atmosphere'}, {'type': 'forced',  'name': 'Forced'}]
 
 	targets = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'anyone', 'name': 'Anyone'}]
@@ -630,7 +636,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											feedback_resist=feedback_resist, source_type=source_type, sense_micro=sense_micro, micro_expertise=micro_expertise, unreliable_type=unreliable_type, rank_type=rank_type,
 											incurable_type=incurable_type, deg_mod_weaken_type=deg_mod_weaken_type, progressive_type=progressive_type, affects_others_type=affects_others_type, 
 											affects_others_req=affects_others_req, area_type=area_type, concentration_type=concentration_type, auto_type=auto_type, persistent_type=persistent_type, feedback_type=feedback_type,
-											restore=restore)
+											restore=restore, check_forms=check_forms, success=success, success_target=success_target)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -4078,6 +4084,13 @@ def power_post_circ():
 	conflict_grab = request.get_json()['conflict_grab']
 	rank = request.get_json()['rank']
 	apply = request.get_json()['apply']
+	success = request.get_json()['success']
+	success_bonus = request.get_json()['success_bonus']
+	success_target = request.get_json()['success_target']
+	success_check = request.get_json()['success_check']
+	success_check_type = request.get_json()['success_check_type']
+	success_check_bonus = request.get_json()['success_check_bonus']
+	success_check_type_bonus = request.get_json()['success_check_type_bonus']
 
 	errors = power_circ_post_errors(data)
 
@@ -4109,6 +4122,10 @@ def power_post_circ():
 	conflict = db_integer(ConflictAction, conflict)
 	lasts = db_integer(PowerTime, lasts)
 
+	success_check_type_bonus = db_integer(PowerCheckType, success_check_type_bonus)
+	success_check_bonus = db_integer(PowerCheck, success_check_bonus)
+	success_check = db_integer(PowerCheck, success_check)
+	success_check_type = db_integer(PowerCheckType, success_check_type)
 
 	mod = integer(mod)
 	speed = integer(speed)
@@ -4180,7 +4197,14 @@ def power_post_circ():
 						conflict = conflict,
 						conflict_grab = conflict_grab,
 						rank = rank,
-						apply = apply
+						apply = apply,
+						success = success,
+						success_bonus = success_bonus,
+						success_target = success_target,
+						success_check = success_check,
+						success_check_type = success_check_type,
+						success_check_bonus = success_check_bonus,
+						success_check_type_bonus = success_check_type_bonus
 					)
 
 	db.session.add(entry)

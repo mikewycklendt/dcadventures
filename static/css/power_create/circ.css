@@ -13,7 +13,7 @@
 	display: grid;
 	width: 98%;
 	gap: .2VW;
-	grid-template-columns: 10% 20% 70%;
+	grid-template-columns: 10% 15% 75%;
 	grid-auto-rows: auto;
 }
 
@@ -23,6 +23,14 @@
 	transition: all .3s ease-out;
 	gap: 3px;
 	grid-template-columns: 30% 40% 30%;
+}
+
+#circ-success {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	gap: 3px;
+	grid-template-columns: 15% 15% 15% 20% 35%;
 }
 
 #circ-tools {

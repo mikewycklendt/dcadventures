@@ -1,28 +1,27 @@
-function home_button_placement() {
-	const sidebargrid = document.getElementById("sidebargrid");
-	console.log('sidebargrid: ' + sidebargrid.scrollHeight)
-	const homeimg = document.getElementById("home-img");
-	console.log('home-img: ' + homeimg.scrollHeight)
-	const splashes = document.getElementsByClassName("splash");
-	const splash = splashes[0];
-	let sidebar_height = sidebargrid.scrollHeight;
-	console.log(sidebar_height);
-	splash.style.height = sidebar_height + "px";
-	blank = document.getElementById("blank");
-	buttons = document.getElementById("buttons");
-	below - document.getElementById("belos");
-	splash_60 = sidebar_height * .6;
-	splash_15 = sidebar_height * .15;
-	splash_25 = sidebar_height * .25;
-	console.log(splash_60);
-	blank.style.height = splash_60 + "px";
-	buttons.style.height = splash_15 + "px";
-	below.style.height = splash_25 + "px";
+
+function show_about() {
+	const div = 'about';
+
+	show_div(modal, 'flex');
+	show_div(div, 'block');
 }
 
-function resize_item() {
-	window.onresize = home_button_placement;
+function about_close() {
+	const div = 'about';
+
+	hide_div(div, 2);
+	hide_div(modal, 2);
+}
+function show_signup() {
+	const div = 'signup';
+
+	show_div(modal, 'flex');
+	show_div(div, 'block');
 }
 
+function login_signup() {
+	const div = 'signup';
 
-
+	hide_div(div, 2);
+	hide_div(modal, 2);
+}

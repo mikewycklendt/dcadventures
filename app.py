@@ -90,7 +90,7 @@ migrate = Migrate(app, db)
 
 @app.route('/')
 def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, title=title):
-	includehtml = 'home.html'
+	includehtml = '/home/home.html'
 
 
 	if request.MOBILE:
@@ -101,6 +101,11 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 		stylesheets.append({"style": "/static/css/template/template.css"})
 		template = 'template.html'
 		stylesheets.append({"style": "/static/css/home/home.css"})
+	
+	stylesheets.append({"style": "/static/css/home/about.css"})
+	stylesheets.append({"style": "/static/css/home/signup.css"})
+
+	
 
 	return render_template(template, includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 	

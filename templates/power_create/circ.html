@@ -63,6 +63,135 @@
 		</div>
 
 		<div>
+
+			<div id="circ-success">
+				<div>
+					<select class="select-sml" id="circ_success" name="circ_success" onchange="circ_success()">
+						<option value="">Success On</option>
+						{% for c in check_forms %}
+							<option value="{{c.type}}">{{c.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="circ_success_target" name="circ_success_target">
+						{% for s in success_target %}
+							<option value="{{s.type}}">{{s.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="circ_success_bonus" name="circ_success_bonus" onchange="circ_success_bonus()">
+						{% for s in success %}
+							<option value="{{s.type}}">{{s.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<div class="hidden" id="circ-success-check">
+						<select class="check-sml" id="circ_success_check" name="circ_success_check">
+							<option value="">Success On Check</option>
+							<option value="">Use Variable Check Form to Put Options Here</option>
+							{% for p in power_check %}
+								<option value={{p.id}}>{{p.name}}}</option>
+							{% endfor %}
+						</select>
+					</div>
+					
+					<div class="hidden" id="circ-success-check-type">
+						<select class="check-title-sml" id="circ_success_check_type" name="circ_success_check_type">
+							<option value="">Success On Check Group</option>
+							<option value="">Use Variable Check Form to Put Options Here</option>
+							{% for p in power_check_type %}
+								<option value={{p.id}}>{{p.name}}}</option>
+							{% endfor %}
+						</select>
+					</div>
+					
+					<div class="hidden" id="circ-opposed-check">
+						<select class="opposed-sml" id="circ_success_opposed" name="circ_success_opposed">
+							<option value="">Success On Check</option>
+							<option value="">Use Opponent Check Form to Put Options Here</option>
+							{% for p in power_opposed %}
+								<option value={{p.id}}>{{p.name}}}</option>
+							{% endfor %}
+						</select>
+					</div>
+					
+					<div class="hidden" id="circ-success-opposed-type">
+						<select class="opposed-title-sml" id="circ_success_opposed_type" name="circ_success_opposed_type">
+							<option value="">Success On Check Group</option>
+							<option value="">Use Opponent Check Form to Put Options Here</option>
+							{% for p in power_opposed_type %}
+								<option value={{p.id}}>{{p.name}}}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+				
+				<div>
+					<div class="hidden" id="circ-success-check-bonus">
+						<select class="check-sml" id="circ_success_check_bonus" name="circ_success_check_bonus">
+							<option value="">Bonus On Check</option>
+							<option value="">Use Variable Check Form to Put Options Here</option>
+							{% for p in power_check %}
+								<option value={{p.id}}>{{p.name}}}</option>
+							{% endfor %}
+						</select>
+					</div>
+					
+					<div class="hidden" id="circ-success-check-type-bonus">
+						<select class="check-title-sml" id="circ_success_check_type_bonus" name="circ_success_check_type_bonus">
+							<option value="">Bonus On Check Group</option>
+							<option value="">Use Variable Check Form to Put Options Here</option>
+							{% for p in power_check_type %}
+								<option value={{p.id}}>{{p.name}}}</option>
+							{% endfor %}
+						</select>
+					</div>
+					
+					<div class="hidden" id="circ-opposed-check-bonus">
+						<select class="opposed-sml" id="circ_success_opposed_bonus" name="circ_success_opposed_bonus">
+							<option value="">Bonus On Check</option>
+							<option value="">Use Opponent Check Form to Put Options Here</option>
+							{% for p in power_opposed %}
+								<option value={{p.id}}>{{p.name}}}</option>
+							{% endfor %}
+						</select>
+					</div>
+					
+					<div class="hidden" id="circ-success-opposed-type-bonus">
+						<select class="opposed-title-sml" id="circ_success_opposed_type_bonus" name="circ_success_opposed_type_bonus">
+							<option value="">Bonus On Check Group</option>
+							<option value="">Use Opponent Check Form to Put Options Here</option>
+							{% for p in power_opposed_type %}
+								<option value={{p.id}}>{{p.name}}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+					<div class="hidden split" id="circ-success-trait">
+						<div>
+							<select class="select-sml" id="circ_success_bonus_trait_type" name="circ_success_bonus_trait_type" onchange="circ_success_bonus_trait_type()">
+								<option value="">Bonus On</option>
+								{% for b in base_traits %}
+									<option value="{{b.type}}">{{b.name}}</option>
+								{% endfor %}
+								<option value="advantage">Advantage</option>
+							</select> 
+						</div>
+
+						<div>
+							<select class="select-sml" id="circ_success_bonus_trait" name="circ_success_bonus_trait" onchange="circ_success_bonus_trait">
+								<option value="">Trait</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
 			
 			<div id="circ-conflict">
 				<div>
@@ -513,7 +642,7 @@
 		<div class="text-sml">
 			<input type="text" id="circ_keyword" name="circ_keyword" placeholder="Keyword">
 		</div>
-		
+
 		<div>
 			<div class="btn-entry" id="circ_submit" name="circ_submit" onclick="circ_submit()">
 				 Add

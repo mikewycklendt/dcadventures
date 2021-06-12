@@ -258,3 +258,20 @@ input[type=text]:focus {
 .text-blue input[type="text"] {
 	background-color: lightblue;
 }
+
+.modal-row {
+	display: flex;
+	width: 100%;
+	height: fit-content;
+	align-self: center;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+}
+
+.box-center {
+	display: flexbox;
+	align-self: center;
+	width: fit-content;
+	height: fit-content;
+}

@@ -1,0 +1,20 @@
+ 
+#signup-grid {
+	display: grid;
+	grid-auto-rows: auto;
+	gap: 5px;
+}
+
+#signup-words {
+	display: flexbox;
+	align-self: center;
+	border: 1px solid #af0101;
+	width: 60%;
+	padding: 5%;
+	font-family: Comic, 'Monda', Verdana;
+	font-size: 200%;
+	color: #af0101;
+	text-align: center;
+}
+
+

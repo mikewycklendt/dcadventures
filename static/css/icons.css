@@ -179,3 +179,13 @@
 	content: '\f470';
 	display: inline-block;
 }
+
+.construct-icon::before {
+	font-family: 'FontAwesome';
+	content: '\f85d';
+	display: inline-block;
+}
+
+.huge-icon::before {
+	font-size: 600%;
+}

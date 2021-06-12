@@ -1965,12 +1965,32 @@ def power_circ_post_errors(data):
 	conflict = data['conflict']
 	conflict_grab = data['conflict_grab']
 	apply = data['apply']
-
+	success = data['success_target']
+	success_bonus = data['success_bonus']
+	success_target = data['success_target']
+	success_check = data['success_check']
+	success_check_type = data['success_check_type']
+	success_check_bonus = data['success_check_bonus']
+	success_check_type_bonus = data['success_check_type_bonus']
+	success_opposed = data['success_opposed']
+	success_opposed_type = data['success_opposed_type']
+	success_opposed_bonus = data['success_opposed_bonus']
+	success_opposed_type_bonus = data['success_opposed_type_bonus']
+ 
 
 	errors = power_check(power_id, errors)
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
 	errors = extra_check(extra_id, 'Extra', errors)
+
+	errors = id_check(PowerCheckType, success_check_type_bonus, 'Bonus On Check Group', errors)
+	errors = id_check(PowerCheck, success_check_bonus, 'Bonus On Check', errors)
+	errors = id_check(PowerCheckType, success_check_type, 'If Successful On Check Group', errors)
+	errors = id_check(PowerCheck, success_check, 'If Successful On Check', errors)
+	errors = id_check(PowerOpposedType, success_opposed_type_bonus, 'Bonus On Opponent Check Group', errors)
+	errors = id_check(PowerOpposed, success_opposed_bonus, 'Bonus On Opponent Check', errors)
+	errors = id_check(PowerOpposed, success_opposed, 'If Successful On Opponent Check', errors)
+	errors = id_check(PowerOpposedType, success_opposed_type, 'If Successful On Opponent Check Group', errors)
 
 	errors = int_check(mod, 'Modifier', errors)
 	errors = int_check(speed, 'Speed', errors)
@@ -2002,6 +2022,31 @@ def power_circ_post_errors(data):
 	errors = required(title, 'Title', errors)
 	errors = required(circ_target, 'Target', errors)
 	errors = required(apply, 'Applies', errors)
+
+	errors = variable_fields('success', 'If Success', effect, [success, success_bonus, success_target], errors)
+	errors = variable_field('success', effect, 'Success On', success, errors)
+	errors = variable_field('success', effect, 'Applied To', success_bonus, errors)
+	errors = variable_field('success', effect, 'Bonus Target', success_target, errors)
+
+	errors = variable_fields('check_type', 'Applied To', success_bonus, [success_check_type_bonus], errors)
+	errors = variable_field('check_type', success_bonus, 'Variable Check Group', success_check_type_bonus, errors)	
+	errors = variable_fields('check', 'Applied To', success_bonus, [success_check_bonus], errors)	
+	errors = variable_field('check', success_bonus, 'Vaariable Check', success_check_bonus, errors)
+	errors = variable_fields('opposed_type', 'Applied To', success_bonus, [success_opposed_type_bonus], errors)
+	errors = variable_field('opposed_type', success_bonus, 'Variable Check Group', success_opposed_type_bonus, errors)	
+	errors = variable_fields('opposed', 'Applied To', success_bonus, [success_opposed_bonus], errors)	
+	errors = variable_field('opposed', success_bonus, 'Opponent Check', success_opposed_bonus, errors)
+	
+
+	errors = variable_fields('opposed_type', 'Success On', success, [success_opposed_type], errors)
+	errors = variable_field('opposed_type', success, 'Success On Opponent Check Group', success_opposed_type, errors)
+	errors = variable_fields('opposed', 'Success On', success, [success_opposed], errors)
+	errors = variable_field('opposed', success, 'Success On Opponent Check', success_opposed, errors)
+	errors = variable_fields('check_type', 'Success On', success, [success_check_type], errors)
+	errors = variable_field('check_type', success, 'Success On Variable Check Group', success_check_type, errors)
+	errors = variable_fields('check', 'Success On', success, [success_check], errors)
+	errors = variable_field('check', success, 'Success On Variable Check', success_check, errors)
+
 
 	errors = variable_fields('condition', 'Circumstance Effect', effect, [condition_type], errors)
 	errors = variable_field('condition', effect, 'Condition Type', condition_type, errors)

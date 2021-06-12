@@ -343,3 +343,25 @@
 	font-size: 90%; 
 	padding: 2%;
 }
+
+.divide-sml {
+	display: block;
+	margin-bottom: 2.5vw;
+}
+
+.divide-md {
+	display: block;
+	margin-bottom: 4vw;
+}
+
+.divide-med {
+	display: block;
+	margin-bottom: 7vw;
+}
+
+.divide-big {
+	display: block;
+	margin-bottom: 12vw;
+}
+
+

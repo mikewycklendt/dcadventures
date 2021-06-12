@@ -2331,6 +2331,13 @@ def power_circ_post(entry, body, cells):
 	conflict = entry.conflict
 	rank = entry.rank
 	apply = entry.apply
+	success = entry.success
+	success_bonus = entry.success_bonus
+	success_target = entry.success_target
+	success_check = entry.success_check
+	success_check_type = enty.success_check_type
+	success_check_bonus = entry.success_check_bonus
+	success_check_type_bonus = entry.success_check_type_bonus
 
 	title_name = get_name(PowerCircType, title)
 	body['title'] = title_name
@@ -2340,6 +2347,11 @@ def power_circ_post(entry, body, cells):
 	measure_trait = trait_select(measure_trait, measure_trait_type)
 	trait = trait_select(trait, trait_type)
 
+	success_check = get_keyword(PowerCheck, success_check)
+	success_check_type = get_name(PowerCheckType, success_check_type)
+	success_check_bonus = get_keyword(PowerCheck, success_check_bonus)
+	success_check_type_bonus = get_name(PowerCheckType, success_check_type_bonus)
+ 
 	level_type = get_name(LevelType, level_type)
 	level = get_name(Levels, level)
 	condition1 = get_name(Condition, condition1)
@@ -2396,6 +2408,18 @@ def power_circ_post(entry, body, cells):
 	grab_type = [{'type': '', 'name': 'Grab Type'}, {'type': 'primary', 'name': 'Primary Hand'}, {'type': 'off', 'name': 'Off Hand'}, {'type': 'any', 'name': 'Any Hand'}, {'type': 'both', 'name': 'Both Hands'}, {'type': 'all', 'name': 'All Limbs'}]
 	conflict_grab = selects(conflict_grab, grab_type)
 
+
+	success_target_select = [{'type': '', 'name': 'Bonus Target'}, {'type': 'player', 'name': 'Player'}, {'type': 'choice', 'name': 'Players Choice'}]
+	success_target = selects(success_target, success_target_select)
+
+	success_select = [{'type': 'check', 'name': success_check + ' Check'}, {'type': 'check_type', 'name': success_check_type + ' Check Group'}, {'type': 'opposed', 'name': 'Opponent Check'}, {'type': 'opposed_type', 'name': 'Opponent Check Group'}]
+	success = selects(success, success_select)
+
+	success_bonus_select = [{'type': 'same', 'nsme': 'Same Check'}, {'type': 'trait', 'nsme': 'All Checks of Trait'}, {'type': 'check', 'name': success_check_bonus + ' Check'}, {'type': 'check_type', 'name': success_check_type_bonus + ' Check Group'}, {'type': 'opposed', 'name': 'Opponent Check'}, {'type': 'opposed_type', 'name': 'Opponent Check Group'}]
+	success_bonus = selects(success_bonus, success_bonus_select)
+
+	
+
 	cells = cell('Keyword', 15, [keyword])
 	cells = cell('Extra', 15, [extra], cells)
 	cells = cell('Target', 12, [circ_target], cells)
@@ -2403,6 +2427,8 @@ def power_circ_post(entry, body, cells):
 	cells = check_cell('Per Rank', 9, rank, cells)
 	cells = cell('Applies', 11, [apply], cells)
 	cells = cell('Lasts', 15, [lasts], cells)
+
+	vcells = vcell('success', 65, ['Modifier On', success_target, 'for', success_bonus, 'If Success on', success, 'Check'], vcells)
 
 	vcells = vcell('condition', 25, [condition1, 'to', condition2], 'e', condition_type, 'condition')
 	vcells = vcell('condition', 17, [conditions, 'Conditions', conditions_effect], vcells, condition_type, 'damage')

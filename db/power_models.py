@@ -559,6 +559,17 @@ class PowerCirc(db.Model):
 	conflict_grab = db.Column(db.String())
 	rank = db.Column(db.Boolean)
 	apply = db.Column(db.String())
+	success = db.Column(db.String())
+	success_bonus = db.Column(db.String())
+	success_target = db.Column(db.String())
+	success_check = db.Column(db.Integer, db.ForeignKey('power_check.id'))
+	success_check_type = db.Column(db.Integer, db.ForeignKey('power_check_type.id'))
+	success_check_bonus = db.Column(db.Integer, db.ForeignKey('power_check.id'))
+	success_check_type_bonus = db.Column(db.Integer, db.ForeignKey('power_check_type.id'))
+	success_opposed = db.Column(db.Integer, db.ForeignKey('power_opposed.id'))
+	success_opposed_type = db.Column(db.Integer, db.ForeignKey('power_opposed_type.id'))
+	success_opposed_bonus = db.Column(db.Integer, db.ForeignKey('power_opposed.id'))
+	success_opposed_type_bonus = db.Column(db.Integer, db.ForeignKey('power_opposed_type.id'))
 	
 	def format(self):
 		return {
@@ -616,7 +627,18 @@ class PowerCirc(db.Model):
 			'conflict': self.conflict,
 			'conflict_grab': self.conflict_grab,
 			'rank': self.rank,
-			'apply': self.apply
+			'apply': self.apply,
+			'success': self.success,
+			'success_bonus': self.success_bonus,
+			'success_target': self.success_target,
+			'success_check': self.success_check,
+			'success_check_type': self.success_check_type,
+			'success_check_bonus': self.success_check_bonus,
+			'success_check_type_bonus': self.success_check_type_bonus,
+			'success_opposed': self.success_opposed,
+			'success_opposed_type': self.success_opposed_type,
+			'success_opposed_bonus': self.success_opposed_bonus,
+			'success_opposed_type_bonus': self.success_opposed_type_bonus
 		}
 
 
