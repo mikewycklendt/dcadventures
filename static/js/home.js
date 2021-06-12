@@ -2,7 +2,8 @@
 function show_about() {
 	const div = 'about';
 
-	show_div(div, 'flex');
+	show_div(modal, 'flex');
+	show_div(div, 'block');
 }
 
 function about_close() {
@@ -13,7 +14,8 @@ function about_close() {
 function show_signup() {
 	const div = 'signup';
 
-	show_div(div, 'flex');
+	show_div(modal, 'flex');
+	show_div(div, 'block');
 }
 
 function login_signup() {
