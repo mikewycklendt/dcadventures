@@ -64,7 +64,7 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 
 	headquarters_includes = {'base_form': 'headquarters_create/base_form.html', 'addon': 'headquarters_create/addon.html', 'feature': 'headquarters_create/feature.html'}
 	
-	modals = ['']
+	modals = []
 	
 	title = 'DC Adventures Online Roleplaying Game: Create Headquarters'
 	stylesheets.append({"style": "/static/css/headquarters_create/headquarters_create.css"})

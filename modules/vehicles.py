@@ -62,7 +62,7 @@ def vehicle_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=me
 
 	vehicle_includes = {'base_form': 'vehicle_create/base_form.html', 'powers': 'vehicle_create/powers.html', 'feature': 'vehicle_create/feature.html'}
 	
-	modals = ['']
+	modals = []
 	
 	title = 'DC Adventures Online Roleplaying Game: Create Vehicle'
 	stylesheets.append({"style": "/static/css/vehicle_create/vehicle_create.css"})

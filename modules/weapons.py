@@ -62,7 +62,7 @@ def weapon_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=met
 
 	weapon_includes = {'base_form': 'weapon_create/base_form.html', 'descriptor': 'weapon_create/descriptor.html', 'condition': 'weapon_create/condition.html', 'benefit': 'weapon_create/benefit.html'}
 
-	modals = ['']
+	modals = []
 	
 	title = 'DC Adventures Online Roleplaying Game: Create Weapon'
 	stylesheets.append({"style": "/static/css/weapon_create/weapon_create.css"})

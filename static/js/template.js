@@ -1,8 +1,11 @@
+const modal = 'modal';
 
 function show_login() {
 	const div = 'login';
 
-	show_div(div, 'flex');
+	show_div(modal, 'flex');
+	show_div(div, 'block');
+
 }
 
 function login_close() {
