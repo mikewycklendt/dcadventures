@@ -35,5 +35,6 @@ function hide_modal(div_input) {
 	hide_div(modal, 2);
 
 	div.style.opacity = '0%';
+	div.style.overflow = 'hidden';
 	setTimeout(function(){div.style.display = 'none';}, 200);
 }
