@@ -283,3 +283,8 @@ input[type=text]:focus {
 .blue {
 	color: #245681;
 }
+
+.trait-div {
+	grid-template-columns: 40% 60%;
+	gap: 3px;
+}

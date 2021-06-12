@@ -513,9 +513,9 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	subtle_type = [{'type': '', 'name': 'Subtle Type'}, {'type': 'detect', 'name': 'Detectable'}, {'type': 'undetectable', 'name': 'Undetectable'}, {'type': 'notice', 'name': 'Effect Not Noticeable'}, {'type': 'invisible', 'name': 'Effect Target Invisible'}, {'type': 'understand', 'name': 'Not Understandable'}, {'type': 'silent', 'name': 'Silent'}]
 
-	success_target = [{'type': '', 'name': 'Bonus Target'}, {'type': 'player', 'name': 'Successful Player'}, {'type': 'choice', 'name': 'Successful Players Choice'}]
+	success_target = [{'type': '', 'name': 'Target'}, {'type': 'player', 'name': 'Successful Player'}, {'type': 'choice', 'name': 'Successful Players Choice'}, {'type': 'opponent', 'name': 'Opposing Player'}]
 
-	success = [{'type': '', 'nsme': 'Applied to'}, {'type': 'same', 'nsme': 'Same Check'}, {'type': 'trait', 'nsme': 'All Checks of Trait'}, {'type': 'check', 'name': 'Varible Check'}, {'type': 'check_type', 'name': 'Variable Check Group'}, {'type': 'opposed', 'name': 'Opponent Check'}, {'type': 'opposed_type', 'name': 'Opponent Check Group'}]
+	success = [{'type': '', 'name': 'Applied to'}, {'type': 'same', 'name': 'Same Check'}, {'type': 'trait', 'name': 'All Checks of Trait'}, {'type': 'check', 'name': 'Variable Check'}, {'type': 'check_type', 'name': 'Variable Check Group'}, {'type': 'opposed', 'name': 'Opponent Check'}, {'type': 'opposed_type', 'name': 'Opponent Check Group'}]
 
 	suffocation_type = [{'type': '',  'name': 'Suffocation Type'}, {'type': 'all',  'name': 'All'}, {'type': 'x',  'name': 'Variable'}, {'type': 'water',  'name': 'Underwater'}, {'type': 'alien',  'name': 'Alien Atmosphere'}, {'type': 'forced',  'name': 'Forced'}]
 
