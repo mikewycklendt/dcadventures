@@ -305,7 +305,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	condition = [{'type': '', 'name': 'Condition Type'}, {'type': 'active', 'name': 'Active Condition'}, {'type': 'change', 'name': 'Condition Change'}, {'type': 'damage', 'name': 'Damage Condition'}, {'type': 'null', 'name': 'Nullify Condition'}]
 
-	condition_type = [{'type': '', 'name': 'Condition Type'}, {'type': 'condition', 'name': 'Condition Change'}, {'type': 'damage', 'name': 'Damage Condition'}]
+	condition_type = [{'type': '', 'name': 'Condition Type'}, {'type': 'condition', 'name': 'Condition Change'}, {'type': 'damage', 'name': 'Damage Condition'}, {'type': 'inflict', 'name': 'Inflict Condition'}]
 
 	create_multiple = [{'type': '', 'name': 'If Multiple'}, {'type': 'all', 'name': 'All take Effect'}, {'type': 'turn', 'name': 'Choose on Turn'}, {'type': 'x', 'name': 'Choose When Aquiring Effect'}, {'type': 'stack', 'name': 'Stackable'}]
 
@@ -4604,6 +4604,8 @@ def power_post_degree():
 	condition1 = request.get_json()['condition1']
 	condition2 = request.get_json()['condition2']
 	condition_turns = request.get_json()['condition_turns']
+	condition_inflict = request.get_json()['condition_inflict']
+	condition_inflict_descriptor = request.get_json()['condition_inflict_descriptor']
 	keyword = request.get_json()['keyword']
 	nullify = request.get_json()['nullify']
 	nullify_type = request.get_json()['nullify_type']
@@ -4653,6 +4655,7 @@ def power_post_degree():
 	reattempt_effort = request.get_json()['reattempt_effort']
 	no_reattempt_effort = request.get_json()['no_reattempt_effort']
 
+
 	errors = power_degree_post_errors(data)
 
 	errors = level_reference('power_degree', level, errors)
@@ -4687,6 +4690,8 @@ def power_post_degree():
 	effect_power = db_integer(Power, effect_power)
 	null_condition = db_integer(Condition, null_condition)
 	restore_descriptor = db_integer(PowerDes, restore_descriptor)
+	condition_inflict = db_integer(Condition, condition_inflict)
+	condition_inflict_descriptor = db_integer(PowerDes, condition_inflict_descriptor)
 
 	opposed = db_integer(PowerOpposed, opposed)
 	resist_dc = db_integer(PowerDC, resist_dc)
@@ -4809,6 +4814,8 @@ def power_post_degree():
 						condition1 = condition1,
 						condition2 = condition2,
 						condition_turns = condition_turns,
+						condition_inflict = condition_inflict,
+						condition_inflict_descriptor = condition_inflict_descriptor,
 						keyword = keyword,
 						nullify = nullify,
 						nullify_type = nullify_type,

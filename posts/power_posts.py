@@ -1,5 +1,7 @@
 
 from os import error
+
+from flask.globals import g
 from models import Modifier, ModifierTable, LevelType, Levels, Damage, DamageType
 from db.rule_models import Ability, Defense, Element, EnvCondition, Action, ConflictAction, Skill, Check, Condition, Maneuver, Ranged, Sense, SubSense, Light, Ground, Range, Consequence, Material, Complex, Cover, Conceal, Phase, SkillTable, SkillType, Communication
 from db.measure_models import MeasureType, Unit, Math, Rank, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert
@@ -2811,6 +2813,8 @@ def power_degree_post(entry, body, cells):
 	condition1 = entry.condition1
 	condition2 = entry.condition2
 	condition_turns = entry.condition_turns
+	condition_inflict = entry.condition_inflict
+	condition_inflict_descriptor = entry.condition_inflict_descriptor
 	keyword = entry.keyword
 	nullify = entry.nullify
 	cumulative = entry.cumulative
@@ -2888,6 +2892,8 @@ def power_degree_post(entry, body, cells):
 	effect_power = get_name(Power, effect_power)
 	null_condition = get_name(Condition, null_condition)
 	restore_descriptor = get_name(PowerDes, restore_descriptor)
+	condition_inflict = get_name(Condition, condition_inflict)
+	condition_inflict_descriptor = get_name(PowerDes, condition_inflict_descriptor)
 
 	measure_type = math_convert(measure_type)
 	value_type = math_convert(value_type)
@@ -2990,6 +2996,7 @@ def power_degree_post(entry, body, cells):
 	word2 = check_string('+ Incurable', condition_incurable)
 	vcells = vcell('condition', 40, ['From', condition1, 'to', condition2], vcells, condition_type, 'condition')
 	vcells = vcell('condition', 40, [condition_damage_value, 'Conditions', condition_damage, word, word2], vcells, condition_type, 'damage')
+	vcells = vcell('condition', 45, ['Inflict', condition_inflict, '-', condition_inflict_descriptor], vcells, condition_type, 'inflict')
 
 	vcells = vcell('circ', 40, [circumstance, 'on', circ_target], vcells)
 	time = add_plus(time)

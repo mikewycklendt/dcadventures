@@ -888,6 +888,8 @@ class PowerDegree(db.Model):
 	condition1 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	condition_turns = db.Column(db.Integer, db.ForeignKey('power_time.id'))
+	condition_inflict = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	condition_inflict_descriptor  = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	keyword = db.Column(db.String())
 	nullify = db.Column(db.Integer)
 	nullify_type = db.Column(db.String())
@@ -1003,6 +1005,8 @@ class PowerDegree(db.Model):
 			'condition1': self.condition1,
 			'condition2': self.condition2,
 			'condition_turns': self.condition_turns,
+			'condition_inflict': self.condition_inflict,
+			'condition_inflict_descriptor': self.condition_inflict_descriptor,
 			'keyword': self.keyword,
 			'nullify': self.nullify,
 			'nullify_type': self.nullify_type,

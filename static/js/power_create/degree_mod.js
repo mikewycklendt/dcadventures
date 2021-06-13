@@ -96,7 +96,8 @@ function deg_mod_circ_trait_type() {
 function deg_mod_condition_type() {
 	const field = 'deg_mod_condition_type';
 	const options = [{'val': 'damage', 'div': 'deg-mod-condition-damage'},
-					{'val': 'condition', 'div': 'deg-mod-conditions'}];
+					{'val': 'condition', 'div': 'deg-mod-conditions'},
+					{'val': 'inflict', 'div': 'deg-mod-condition-inflict'}];
 
 	select_opacity(field, options);
 }
@@ -346,6 +347,8 @@ function deg_mod_submit() {
 	const condition1 = select("deg_mod_condition1");
 	const condition2 = select("deg_mod_condition2");
 	const condition_turns = select("deg_mod_condition_turns");
+	const condition_inflict = select("deg_mod_condition_inflict");
+	const condition_inflict_descriptor = select("deg_mod_condition_inflict_descriptor");
 	const keyword = text("deg_mod_keyword");
 	const nullify = select("deg_mod_nullify");
 	const nullify_type = select("deg_mod_nullify_type");
@@ -393,7 +396,7 @@ function deg_mod_submit() {
 	const restore_descriptor = select("deg_mod_restore_descriptor");
 	const restore_val = select("deg_mod_restore_val");
 	const no_reattempt_effort = check("deg_mod_no_reattempt_effort");
-	const reattempt_effort = check("deg_mod_reattempt_effort")
+	const reattempt_effort = check("deg_mod_reattempt_effort");
 	
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -475,6 +478,8 @@ function deg_mod_submit() {
 			'condition1': condition1,
 			'condition2': condition2,
 			'condition_turns': condition_turns,
+			'condition_inflict': condition_inflict,
+			'condition_inflict_descriptor': condition_inflict_descriptor,
 			'keyword': keyword,
 			'nullify': nullify,
 			'nullify_type': nullify_type,

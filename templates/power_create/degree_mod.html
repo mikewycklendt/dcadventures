@@ -764,6 +764,28 @@
 			</div>
 
 			<div>
+	
+				<div class="hidden small-big" id="deg-mod-condition-inflict">
+					<div>
+						<select class="select-sml" id="deg_mod_condition_inflict" name="deg_mod_condition_inflict">
+							<option value="">Condition</option>
+							{% for c in conditions %}
+								<option value={{c.id}}>{{c.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+					<div>
+						<select class="descriptor-sml" id="deg_mod_condition_inflict_descriptor" name="deg_mod_condition_inflict_descriptor">
+							<option value="">Descriptor</option>
+							<option value="">Use Descriptor form to Put Options Here</option>
+							{% for d in descriptor_options %}
+								<option value={{d.id}}>{{d.name}}</option>
+							{% endfor %}
+						</select> 
+					</div>
+				</div>
+
 				<div id="deg-mod-condition-damage">
 
 					<div>
