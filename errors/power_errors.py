@@ -2410,6 +2410,8 @@ def power_degree_post_errors(data):
 	condition1 = data['condition1']
 	condition2 = data['condition2']
 	condition_turns = data['condition_turns']
+	condition_inflict = data['condition_inflict']
+	condition_inflict_descriptor = data['condition_inflict_descriptor']
 	keyword = data['keyword']
 	nullify = data['nullify']
 	cumulative = data['cumulative']
@@ -2491,6 +2493,8 @@ def power_degree_post_errors(data):
 	errors = int_check(effect_descriptor_count, 'Effect Count', errors)
 	errors = int_check(weaken_max, 'Maximum Points Lost', errors)
 	errors = int_check(weaken_val, 'Points Lost', errors)
+	errors = id_check(Condition, condition_inflict, 'Inflict Condition', errors)
+	errors = id_check(PowerDes, condition_inflict_descriptor, 'Inflict Condition Descriptor', errors)
 
 	errors = id_check(PowerOpposed, opposed, 'Opposed Check', errors)
 	errors = id_check(PowerDC, resist_dc, 'Resistance Check DC', errors)
@@ -2564,6 +2568,10 @@ def power_degree_post_errors(data):
 	errors = variable_fields('damage', 'Damage Condition', condition_type, [condition_damage_value, condition_damage], errors)
 	errors = variable_field('damage', condition_type, 'Damage Value', condition_damage_value, errors)
 	errors = variable_field('damage', condition_type, 'Damage Direction', condition_damage, errors)
+
+	errors = variable_fields('inflict', 'Inflict Condition', condition_type, [condition_inflict, condition_inflict_descriptor], errors)
+	errors = variable_fields('inflict', condition_type, 'Condition', condition_inflict, errors)
+	errors = variable_fields('inflict', condition_type, 'Descriptor', condition_inflict_descriptor, errors)
 
 	errors = variable_fields('action', 'Action Change Effect', type, [action], errors)
 	errors = variable_field('action', type, 'Changed Action', action, errors)
