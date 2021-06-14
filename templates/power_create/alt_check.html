@@ -123,6 +123,9 @@
 				{% for c in check_frequency %}
 					<option value="{{c.type}}">{{c.name}}</option>
 				{% endfor %}
+				{% for c in added.check_frequency %}
+					<option value="{{c.type}}">{{c.name}}</option>
+				{% endfor %}
 			</select>
 		</div>
 

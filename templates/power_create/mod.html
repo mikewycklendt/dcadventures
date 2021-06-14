@@ -251,7 +251,7 @@
 		<div>
 			<select class="select-sml persistent-sml" id="mod_persistent_type" name="mod_persistent_type" onchange="mod_persistent_type()">
 				<option value="">Persistent Type</option>
-				{% for p in persistent_type %}
+				{% for p in added.persistent_type %}
 					<option value="{{p.type}}">{{p.name}}</option>
 				{% endfor %}
 			</select>
@@ -502,7 +502,7 @@
 		<div>
 			<select class="feedback-sml select-sml" id="mod_feedback_effect" name="mod_feedback_effect">
 				<option value="">Feedback Type</option>
-				{% for f in feedback_type %}
+				{% for f in added.feedback_type %}
 					<option value="{{f.type}}">{{f.name}}</option>
 				{% endfor %}
 			</select> 

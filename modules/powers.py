@@ -599,9 +599,9 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	
 	power_damage = linked_options(PowerDamage, Power, 'power_id', 'name')
 
+	added = {'check_frequency': check_frequency_special, 'feedback_type': feedback_type, 'persistent_type': persistent_type}
 
-
-
+	more = {}
 
 
 	return render_template(template, sense_time=sense_time, all_some=all_some, power_sense=power_sense, bonuses=bonuses, sense_type=sense_type, visual=visual, auditory=auditory, olfactory=olfactory, 
@@ -639,8 +639,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											check_sense_type=check_sense_type, check_sense_target=check_sense_target, descriptor_effect_type=descriptor_effect_type, effect_type=effect_type, effortless_type=effortless_type,
 											feedback_resist=feedback_resist, source_type=source_type, sense_micro=sense_micro, micro_expertise=micro_expertise, unreliable_type=unreliable_type, rank_type=rank_type,
 											incurable_type=incurable_type, deg_mod_weaken_type=deg_mod_weaken_type, progressive_type=progressive_type, affects_others_type=affects_others_type, 
-											affects_others_req=affects_others_req, area_type=area_type, concentration_type=concentration_type, auto_type=auto_type, persistent_type=persistent_type, feedback_type=feedback_type,
-											restore=restore, check_forms=check_forms, success=success, success_target=success_target, modals=modals)
+											affects_others_req=affects_others_req, area_type=area_type, concentration_type=concentration_type, auto_type=auto_type,
+											restore=restore, check_forms=check_forms, success=success, success_target=success_target, modals=modals, more=more, added=added)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
