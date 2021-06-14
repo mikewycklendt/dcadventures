@@ -277,7 +277,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	check_frequency = [{'type': '', 'name': 'Frequency'}, {'type': 'always', 'name': 'Always'}, {'type': 'choice', 'name': 'Player Choice'}, {'type': 'gm', 'name': 'GN Choice'}, {'type': 'active', 'name': 'Active Target'}, {'type': 'object', 'name': 'Inanimate Object'}, {'type': 'maintain', 'name': 'Maintain Effect'}]
 
-	check_frequency_special = [{'type': 'active_illusion', 'name': 'Maintain Active Illusion'}, {'type': 'static_illusion', 'name': 'Maintain Static Illusion'}]
+	check_frequency_special = [{'type': 'active_illusion', 'name': 'Maintain Active Illusion'}, {'type': 'static_illusion', 'name': 'Maintain Static Illusion'}, {'type': 'permeate_solid', 'name': 'Reverting to Solid Inside Solid Object'}]
 
 	check_targets =  [{'type': '', 'name': 'Check Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'partner', 'name': 'Psrtner'}]
 
@@ -5014,6 +5014,7 @@ def power_post_move():
 	permeate_type = request.get_json()['permeate_type']
 	permeate_speed = request.get_json()['permeate_speed']
 	permeate_cover = request.get_json()['permeate_cover']
+	permeate_condition_solid = request.get_json()['permeate_condition_solid']
 	equip_type = request.get_json()['equip_type']
 	equipment = request.get_json()['equipment']
 	equip_improvise = request.get_json()['equip_improvise']
@@ -5220,6 +5221,7 @@ def power_post_move():
 						permeate_type = permeate_type,
 						permeate_speed = permeate_speed,
 						permeate_cover = permeate_cover,
+						permeate_condition_solid = permeate_condition_solid,
 						equip_type = equip_type,
 						equipment = equipment,
 						equip_improvise = equip_improvise,

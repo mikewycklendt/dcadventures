@@ -2812,7 +2812,7 @@ def power_move_post_errors(data):
 	permeate_type = data['permeate_type']
 	permeate_speed = data['permeate_speed']
 	permeate_cover = data['permeate_cover']
-	permeate_condition = data['permeate_condition']
+	permeate_condition_solid = data['permeate_condition_solid']
 	equip_type = data['equip_type']
 	equipment = data['equipment']
 	concealment_sense = data['concealment_sense']
@@ -2982,6 +2982,8 @@ def power_move_post_errors(data):
 	errors = check_fields(permeate, 'Permeate', [permeate_type, permeate_speed], errors)
 	errors = check_field(permeate, 'Permeate', 'Permeate Type', permeate_type, errors)
 	errors = check_field(permeate, 'Permeate', 'Permeate Speed Rank Modifier', permeate_speed, errors)
+	errors = check_fields(permeate_condition_solid, 'Conditions', [condition], errors)
+	errors - check_field(permeate_condition_solid, 'Conditions', 'Movement Conditions Only Through Solids', condition, errors)
 
 	errors = check_fields(equip, 'Movement Equipment', [equipment], errors)
 	errors = check_field(equip, 'Movement Equipment', 'Equipment', equipment, errors)

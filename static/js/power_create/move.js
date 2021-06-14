@@ -204,6 +204,15 @@ function move_permeate() {
 	check_drop(check, div, entry);
 }
 
+function move_permeate_type() {
+	const select = 'move_permeate_type';
+	const options = [{'val': ['solid', 'any'], 'div': 'move-permeate-condition-solid'}]
+	const checks = ['move_permeate_condition_solid']
+
+	select_opacity_shared(select, options);
+	uncheck_all(checks);
+}
+
 function move_special() {
 	const check = 'move_special';
 	const div = 'move-special';
@@ -342,6 +351,8 @@ let move_grid = {'titles': false,
 					'font': 80,
 					'mod': []}
 
+let move_counts = {'permeate': 0};
+
 function move_submit() {
 
 	const columns = move_grid.columns;
@@ -447,6 +458,7 @@ function move_submit() {
 	const permeate_type = select("move_permeate_type");
 	const permeate_speed = select("move_permeate_speed");
 	const permeate_cover = check("move_permeate_cover");
+	const permeate_condition_solid = check("move_permeate_condition_solid");
 	const equip_type = select("move_equip_type");
 	const equipment = select("move_equipment");
 	const equip_improvise = check("move_equip_improvise");
@@ -569,6 +581,7 @@ function move_submit() {
 			'permeate_type': permeate_type,
 			'permeate_speed': permeate_speed,
 			'permeate_cover': permeate_cover,
+			'permeate_condition_solid': permeate_condition_solid,
 			'equip_type': equip_type,
 			'equipment': equipment,
 			'equip_improvise': equip_improvise,
@@ -607,6 +620,11 @@ function move_submit() {
 				if (add_title == true) {
 					selects_add(title_id, title_name, speed_type_sml);
 				}
+			}
+
+			if (permeate === true) {
+				selects_add('permeate_solid', 'Reverting to Solid Inside Solid Object', 'frequency-entry', move_counts.permeate);
+				move_counts.permeate += 1;
 			}
 
 			move_grid.columns.length = 0;

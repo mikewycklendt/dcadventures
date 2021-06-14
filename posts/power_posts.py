@@ -2225,7 +2225,7 @@ def power_check_post(entry, body, cells):
 
 	maintain_concentrate = check_string(' While Concentrating', maintain_concentrate)
 
-	check_frequency = [{'type': '', 'name': 'Frequency'}, {'type': 'always', 'name': 'Always'}, {'type': 'choice', 'name': "Player's Choice"}, {'type': 'gm', 'name': "GM's Choice"}, {'type': 'active', 'name': 'If the Target is Active'}, {'type': 'object', 'name': 'If the Target is an Inanimate Object'}, {'type': 'maintain', 'name': 'Maintain Effect' + maintain_concentrate}, {'type': 'active_illusion', 'name': 'Maintain Active Illusion'}, {'type': 'static_illusion', 'name': 'Maintain Static Illusion'}]
+	check_frequency = [{'type': '', 'name': 'Frequency'}, {'type': 'always', 'name': 'Always'}, {'type': 'choice', 'name': "Player's Choice"}, {'type': 'gm', 'name': "GM's Choice"}, {'type': 'active', 'name': 'If the Target is Active'}, {'type': 'object', 'name': 'If the Target is an Inanimate Object'}, {'type': 'maintain', 'name': 'Maintain Effect' + maintain_concentrate}, {'type': 'active_illusion', 'name': 'Maintain Active Illusion'}, {'type': 'static_illusion', 'name': 'Maintain Static Illusion'}, {'type': 'permeate_solid', 'name': 'Reverting to Solid Inside Solid Object'}]
 	frequency = selects(frequency, check_frequency)
 
 	consequence_null = check_string('Nullifies', consequence_null)
@@ -3196,6 +3196,7 @@ def power_move_post(entry, body, cells):
 	permeate_type = entry.permeate_type
 	permeate_speed = entry.permeate_speed
 	permeate_cover = entry.permeate_cover
+	permeate_condition_solid = entry.permeate_condition_solid
 	equip_type = entry.equip_type
 	equipment = entry.equipment
 	equip_improvise = entry.equip_improvise
@@ -3414,6 +3415,7 @@ def power_move_post(entry, body, cells):
 	new_mod = mod_cell('Type:', 8, [permeate_type], new_mod)
 	new_mod = mod_cell('Speed Modifier:', 18, [permeate_speed], new_mod)
 	new_mod = mod_cell('Provides Cover:', 18, [permeate_cover], new_mod)
+	new_mod = mod_cell('Conditions Only Through Solids', 28, [permeate_condition_solid], new_mod)
 	body = mod_add(permeate, new_mod, body)
 
 	cells = check_cell('Equipment', 11, equip, cells, True)

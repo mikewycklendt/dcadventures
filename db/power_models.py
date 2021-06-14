@@ -1161,6 +1161,7 @@ class PowerMove(db.Model):
 	permeate_type = db.Column(db.String())
 	permeate_speed = db.Column(db.Integer)
 	permeate_cover = db.Column(db.Boolean)
+	permeate_condition_solid = db.Column(db.Boolean)
 	equip_type = db.Column(db.Integer, db.ForeignKey('equipment_type.id'))
 	equipment = db.Column(db.Integer, db.ForeignKey('equipment.id'))
 	equip_improvise = db.Column(db.Boolean)
@@ -1271,6 +1272,7 @@ class PowerMove(db.Model):
 			'permeate_type': self.permeate_type,
 			'permeate_speed': self.permeate_speed,
 			'permeate_cover': self.permeate_cover,
+			'permeate_condition_solid': self.permeate_condition_solid,
 			'equip_type': self.equip_type,
 			'equipment': self.equipment,
 			'equip_improvise': self.equip_improvise,
