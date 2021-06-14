@@ -953,6 +953,8 @@ def mod_post_errors(data):
 	subtle_null_trait = data['subtle_null_trait']
 	others_type = data['others_type']
 	others_req = data['others_type']
+	others_opposed = data['others_opposed']
+	others_check = data['others_check']
 	others_carry = data['others_carry']
 	others_touch = data['others_touch']
 	others_touch_continuous = data['others_touch_continuous']
@@ -1016,6 +1018,8 @@ def mod_post_errors(data):
 	errors = id_check(PowerDegreeType, progressive_degree_type, 'Progressive Degree by Group', errors)
 	errors = id_check(PowerDegreeType, cumulative_degree, 'Cumulative Degree Group', errors)
 	errors = id_check(PowerDegreeType, persistent_degree, 'Persistent Degree Group', errors)
+	errors = id_check(PowerCheckType, others_check, 'Affects Others Variable Check Group', errors)
+	errors = id_check(PowerOpposedType, others_opposed, 'Affects Others Opponent Check Group', errors)
 
 	errors = power_check(power_id, errors)
 
@@ -1235,10 +1239,10 @@ def mod_post_errors(data):
 	errors = check_fields(cumulative, 'Cumulative', [cumulative_degree], errors)
 	errors = check_field(cumulative, 'Cumulative', 'Degree of Success/Failure Group', cumulative_degree, errors)
 	
-
 	errors = check_fields(others, 'Affects Others', [others_type], errors)
 	errors = check_field(others, 'Affects Others', 'Affects Others Type', others_type, errors)
-
+	errors = variable_field_of('attack', others_type, 'Variable Check Group or Opponent Check Group', [others_opposed, others_check], errors)
+	errors = seperate([others_opposed, others_check], 'Variable Check Group or Opponent Check Group', errors)
 
 	return (errors)
 

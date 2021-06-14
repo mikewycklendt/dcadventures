@@ -187,6 +187,11 @@ a {
 	gap: .3vw;
 }
 
+.auto-split {
+	grid-template-columns: auto auto;
+	gap: .3vw;
+}
+
 .small-text {
 	height: .9vw; 
 	width: 95%;

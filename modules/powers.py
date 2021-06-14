@@ -225,9 +225,9 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	action_type = [{'type': '', 'name': 'Action Type'}, {'type': 'auto', 'name': 'Automatic'}, {'type': 'base', 'name': 'Base Action'}, {'type': 'conflict', 'name': 'Conflict Action'}]
 
-	affects_others_type = [{'type': '', 'name': 'Affects Others Type'}, {'type': 'grant', 'name': 'Grants Affect to Others'}, {'type': 'affect', 'name': 'Effect Affects Others'}]
+	affects_others_type = [{'type': '', 'name': 'Affects Others Type'}, {'type': 'grant', 'name': 'Grants Affect to Others'}, {'type': 'affect', 'name': 'Effect Affects Others'}, {'type': 'attack', 'name': 'Impose Effect On Character'}]
 
-	affects_others_req = [{'type': '', 'name': 'Requirement'}, {'type': 'touch', 'name': 'Touch'}, {'type': 'carry', 'name': 'Carry'}]
+	affects_others_req = [{'type': '', 'name': 'Requirement'}, {'type': 'touch', 'name': 'Touch'}, {'type': 'carry', 'name': 'Carry'}, {'type': 'perception', 'name': 'Perception'}, {'type': 'communicate', 'name': 'Communication'}]
 
 	after = [{'type': '', 'name': 'After Check'}, {'type': 'always', 'name': 'Always'}, {'type': 'choice', 'name': 'Player Choice'}, {'type': 'gm', 'name': 'GM Choice'}, {'type': 'target', 'name': 'If Opponent Targeted'}, {'type': 'fail', 'name': 'After Player Failure'}, {'type': 'fail_choice', 'name': 'After Player Failure Optional'}, {'type': 'success', 'name': 'After Player Success'}, {'type': 'success_choice', 'name': 'After Player Success Optional'}, {'type': 'opp_fail', 'name': 'After Opponent Failure'}, {'type': 'opp_fail_choice', 'name': 'After Opponent Failure Optional'}, {'type': 'opp_success', 'name': 'After Opponent Success'}, {'type': 'opp_success_choice', 'name': 'After Opponent Success Optional'}]
 
@@ -2631,6 +2631,8 @@ def power_post_mod():
 	subtle_null_trait = request.get_json()['subtle_null_trait']
 	others_type = request.get_json()['others_type']
 	others_req = request.get_json()['others_req']
+	others_check = request.get_json()['others_check']
+	others_opposed = request.get_json()['others_opposed']
 	others_carry = request.get_json()['others_carry']
 	others_touch = request.get_json()['others_touch']
 	others_touch_continuous = request.get_json()['others_touch_continuous']
@@ -2705,6 +2707,8 @@ def power_post_mod():
 	progressive_degree_type = db_integer(PowerDegreeType, progressive_degree_type)
 	cumulative_degree = db_integer(PowerDegreeType, cumulative_degree)
 	persistent_degree = db_integer(PowerDegreeType, persistent_degree)
+	others_check = db_integer(PowerCheckType, others_opposed)
+	others_opposed = db_integer(PowerOpposedType, others_opposed)	
 
 	power_id = integer(power_id)
 	extra_id = db_integer(Extra, extra_id)
@@ -2860,6 +2864,8 @@ def power_post_mod():
 							subtle_null_trait = subtle_opponent_trait,
 							others_type = others_type,
 							others_req = others_req,
+							others_check = others_check,
+							others_opposed = others_opposed,
 							others_carry = others_carry,
 							others_touch = others_touch,
 							others_touch_continuous = others_touch_continuous,

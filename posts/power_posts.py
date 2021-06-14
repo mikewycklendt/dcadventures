@@ -1037,6 +1037,8 @@ def mod_post(entry, body, cells):
 	subtle_null_trait = entry.subtle_opponent_trait
 	others_type = entry.others_type
 	others_req = entry.others_req
+	others_check = entry.others_check
+	others_opposed = entry.others_opposed
 	others_carry = entry.others_carry
 	others_touch = entry.others_touch
 	others_touch_continuous = entry.others_touch_continuous
@@ -1105,6 +1107,8 @@ def mod_post(entry, body, cells):
 	progressive_degree_type = get_name(PowerDegreeType, progressive_degree_type)
 	cumulative_degree = get_name(PowerDegreeType, cumulative_degree)
 	persistent_degree = get_name(PowerDegreeType, persistent_degree)
+	others_check = get_name(PowerCheckType, others_check)
+	others_opposed = get_name(PowerOpposedType, others_opposed)
 
 	limited_trait = trait_select(limited_trait, limited_trait_type)
 	subtle_null_trait = trait_select(subtle_null_trait, subtle_null_trait_type)
@@ -1173,10 +1177,11 @@ def mod_post(entry, body, cells):
 	incurable_type_select  = [{'type': '', 'name': 'Incurable Type'}, {'type': 'counter', 'name': 'Cannot be Countered by Effect'}, {'type': 'permanent', 'name': 'Effect Permanent'}]
 	incurable_type = selects(incurable_type, incurable_type_select)
 
-	affects_others_type = [{'type': '', 'name': 'Affects Others Type'}, {'type': 'grant', 'name': 'Grants Affect to Others'}, {'type': 'affect', 'name': 'Effect Affects Others'}]
+	word = string(' Opponent', others_opposed)
+	affects_others_type = [{'type': '', 'name': 'Affects Others Type'}, {'type': 'grant', 'name': 'Grants Affect to Others'}, {'type': 'affect', 'name': 'Effect Affects Others'}, {'type': 'attack', 'name': 'Impose Effect On Character With ' + others_opposed + others_opposed + word + ' Check Group'}]
 	others_type = selects(others_type, affects_others_type)
 
-	affects_others_req = [{'type': '', 'name': 'Requirement'}, {'type': 'touch', 'name': 'Touch'}, {'type': 'carry', 'name': 'Carry'}]
+	affects_others_req = [{'type': '', 'name': 'Requirement'}, {'type': 'touch', 'name': 'Touch'}, {'type': 'carry', 'name': 'Carry'}, {'type': 'perception', 'name': 'Perception'}, {'type': 'communicate', 'name': 'Communication'}]
 	others_req = selects(others_req, affects_others_req)
 
 	area_type_select = [{'type': '', 'name': 'Area Type'}, {'type': 'affect', 'name': 'Affects All Targets in Area'}, {'type': 'descriptor', 'name': 'Affects All Targets with Descriptor'}, {'type': 'attach', 'name': 'Attaches Effect to Area'}, {'type': 'attach_descriptor', 'name': 'Attaches to All Targets in Area with Descriptor'}, {'type': 'range', 'name': 'Works with all Targets in Range'}, {'type': 'grant', 'name': 'Grants Effects to Others in Area'}]

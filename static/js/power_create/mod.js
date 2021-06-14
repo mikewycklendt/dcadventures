@@ -252,6 +252,13 @@ function mod_others_touch() {
 	check_opacity(check, div);
 }
 
+function mod_others_type() {
+	const select = 'mod_others_type';
+	const options = [{'val': 'attack', 'div': 'mod-others-attack'}];
+
+	select_opacity(select, options);
+}
+
 function mod_others_req() {
 	const select = 'mod_others_req';
 	const options = [{'val': 'touch', 'div': 'mod-others-touch'}]
@@ -611,6 +618,8 @@ function mod_submit() {
 	const subtle_null_trait = select("mod_subtle_null_trait");
 	const others_req = select("mod_others_req");
 	const others_type = select("mod_others_type");
+	const others_check = select("mod_others_check");
+	const others_opposed = select("mod_others_opposed");
 	const others_carry = check("mod_others_carry");
 	const others_touch = check("mod_others_touch");
 	const others_touch_continuous = check("mod_others_touch_continuous");
@@ -761,6 +770,8 @@ function mod_submit() {
 			'subtle_null_trait': subtle_null_trait,
 			'others_type': others_type,
 			'others_req': others_req,
+			'others_check': others_check,
+			'others_opposed': others_opposed,
 			'others_carry': others_carry,
 			'others_touch': others_touch,
 			'others_touch_continuous': others_touch_continuous,

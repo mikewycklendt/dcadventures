@@ -61,9 +61,6 @@
 				</div>
 			</div>	
 
-			<div class="shrunk" id="opposed-attack">
-				Attack:
-			</div>	
 		</div>
 
 		<div class="rows">
@@ -84,8 +81,8 @@
 
 			<div class="shrunk" id="opposed-attack-player">
 				<select class="select-sml" id="opposed_attack_player" name="opposed_attack_player">
-					<option value="">Range</option>
-					<option value="all">All Ranges</option>
+					<option value="">Player Attack Range</option>
+					<option value="any">Any Ranges</option>
 					{% for r in ranged %}
 						<option value={{r.id}}>{{r.name}}</option>
 					{% endfor %}
@@ -127,8 +124,8 @@
 
 			<div class="shrunk" id="opposed-attack-opp">
 				<select class="select-sml" id="opposed_attack_opp" name="opposed_attack_opp">
-					<option value="">Range</option>
-					<option value="all">All Ranges</option>
+					<option value="">Opponent Attack Range</option>
+					<option value="any">Any Ranges</option>
 					{% for r in ranged %}
 						<option value={{r.id}}>{{r.name}}</option>
 					{% endfor %}
