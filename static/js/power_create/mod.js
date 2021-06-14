@@ -254,7 +254,8 @@ function mod_others_touch() {
 
 function mod_others_type() {
 	const select = 'mod_others_type';
-	const options = [{'val': 'attack', 'div': 'mod-others-attack'}];
+	const options = [{'val': 'attack_check', 'div': 'mod-others-attack-check'},
+					{'val': 'attack_opposed', 'div': 'mod-others-attack-opposed'}];
 
 	select_opacity(select, options);
 }

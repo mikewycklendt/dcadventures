@@ -1305,26 +1305,24 @@
 			</select>
 		</div>
 
-		<div class="hidden auto-split" id="mod-others-attack">
-			<div>
-				<select class="opposed-title-sml" id="mod_others_opposed" name="mod_others_opposed">
-					<option value="">Opponent Check Group</option>
-					<option value="">Use Opponent Check Form to Put Options Here</option>
-					{% for p in power_oppoaed_type %}
-						<option value={{p.id}}>{{p.name}}</option>
-					{% endfor %}
-				</select>	
-			</div>
-			
-			<div>
-				<select class="check-title-sml" id="mod_others_check" name="mod_others_check">
-					<option value="">Check Group</option>
-					<option value="">Use Variable Check Form to Put Options Here</option>
-					{% for p in power_check_type %}
-						<option value={{p.id}}>{{p.name}}</option>
-					{% endfor %}
-				</select>	
-			</div>
+		<div class="hidden" id="mod-others-attack-opposed">
+			<select class="opposed-title-sml" id="mod_others_opposed" name="mod_others_opposed">
+				<option value="">Opponent Check Group</option>
+				<option value="">Use Opponent Check Form to Put Options Here</option>
+				{% for p in power_oppoaed_type %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>	
+		</div>
+		
+		<div class="hidden" id="mod-others-attack-check">
+			<select class="check-title-sml" id="mod_others_check" name="mod_others_check">
+				<option value="">Variable Check Group</option>
+				<option value="">Use Variable Check Form to Put Options Here</option>
+				{% for p in power_check_type %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>	
 		</div>
 
 		<div style="display: none;">

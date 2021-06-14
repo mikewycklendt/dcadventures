@@ -225,7 +225,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	action_type = [{'type': '', 'name': 'Action Type'}, {'type': 'auto', 'name': 'Automatic'}, {'type': 'base', 'name': 'Base Action'}, {'type': 'conflict', 'name': 'Conflict Action'}]
 
-	affects_others_type = [{'type': '', 'name': 'Affects Others Type'}, {'type': 'grant', 'name': 'Grants Affect to Others'}, {'type': 'affect', 'name': 'Effect Affects Others'}, {'type': 'attack', 'name': 'Impose Effect On Character'}]
+	affects_others_type = [{'type': '', 'name': 'Affects Others Type'}, {'type': 'grant', 'name': 'Grants Affect to Others'}, {'type': 'affect', 'name': 'Effect Affects Others'}, {'type': 'attack_check', 'name': 'Impose Effect On Character with Variable Check'}, {'type': 'attack_opposed', 'name': 'Impose Effect On Character with Opponent Check'}]
 
 	affects_others_req = [{'type': '', 'name': 'Requirement'}, {'type': 'touch', 'name': 'Touch'}, {'type': 'carry', 'name': 'Carry'}, {'type': 'perception', 'name': 'Perception'}, {'type': 'communicate', 'name': 'Communication'}]
 

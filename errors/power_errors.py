@@ -1241,8 +1241,10 @@ def mod_post_errors(data):
 	
 	errors = check_fields(others, 'Affects Others', [others_type], errors)
 	errors = check_field(others, 'Affects Others', 'Affects Others Type', others_type, errors)
-	errors = variable_field_of('attack', others_type, 'Variable Check Group or Opponent Check Group', [others_opposed, others_check], errors)
-	errors = seperate([others_opposed, others_check], 'Variable Check Group or Opponent Check Group', errors)
+	errors = variable_fields('attack_check', others_type, 'Impose Effect with Variable Check', [others_check], errors)
+	errors = variable_field('attack_check', others_type, 'Variable Check Group', others_check, errors)
+	errors = variable_fields('attack_opposed', others_type, 'Impose Effect with Opponent Check', [others_opposed], errors)
+	errors = variable_field('attack_opposed', others_type, 'Variable Check Group', others_opposed, errors)
 
 	return (errors)
 
