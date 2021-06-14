@@ -195,8 +195,6 @@ a {
 }
 
 .rows {
-	display: grid;
-	grid-auto-rows: auto;
 	gap: .3vw;
 }
 
@@ -287,6 +285,10 @@ input[type=text]:focus {
 .trait-div {
 	grid-template-columns: 40% 60%;
 	gap: 3px;
+}
+
+.grid {
+	display: grid;
 }
 
 .small-big {
