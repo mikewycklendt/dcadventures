@@ -640,7 +640,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											feedback_resist=feedback_resist, source_type=source_type, sense_micro=sense_micro, micro_expertise=micro_expertise, unreliable_type=unreliable_type, rank_type=rank_type,
 											incurable_type=incurable_type, deg_mod_weaken_type=deg_mod_weaken_type, progressive_type=progressive_type, affects_others_type=affects_others_type, 
 											affects_others_req=affects_others_req, area_type=area_type, concentration_type=concentration_type, auto_type=auto_type, persistent_type=persistent_type, feedback_type=feedback_type,
-											restore=restore, check_forms=check_forms, success=success, success_target=success_target, modals=modals, check_frequency_special=check_frequency_special)
+											restore=restore, check_forms=check_forms, success=success, success_target=success_target, modals=modals)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
