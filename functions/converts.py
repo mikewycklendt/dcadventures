@@ -405,6 +405,23 @@ def get_name(Table, value):
 			db.session.close()
 
 	return (value)
+	
+def descriptor_name(value):
+	
+	if value is None:
+		value = ''
+		return (value)
+	else:
+		try:
+			name_query = db.session.query(PowerDes).filter_by(id=value).one()
+			value = name_query.name
+		except:
+			print('no entry')
+			value = ''
+		finally:
+			db.session.close()
+
+	return (value)
 
 def get_multiple(Table, multiple):
 

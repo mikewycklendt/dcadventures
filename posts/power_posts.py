@@ -18,7 +18,7 @@ from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, Veh
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
 from db.linked_models import PowerCircType, PowerCheckType, PowerOpposedType, PowerDCType, PowerDegreeType, PowerMoveType, PowerRangedType, PowerTimeType
 
-from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects, preset_convert, db_multiple, id_multiple, get_multiple, var_string, check_when_convert
+from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects, preset_convert, db_multiple, id_multiple, get_multiple, var_string, check_when_convert, descriptor_name
 from functions.create import name_exist, db_insert, capitalize
 from functions.linked import link_add, delete_link, level_add, delete_level, linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link
 from functions.user_functions import user_item
@@ -119,6 +119,7 @@ def character_post(entry, body, cells):
 	appear_creature_narrow = entry.appear_creature_narrow
 	appear_costume = entry.appear_costume
 	insub_type = entry.insub_type
+	insub_descriptor = entry.insub_descriptor
 	insub_description = entry.insub_description
 	cost = entry.cost
 	ranks = entry.ranks
@@ -150,6 +151,7 @@ def character_post(entry, body, cells):
 	appear_creature = get_name(Creature, appear_creature)
 	appear_creature_narrow = get_name(NarrowCreature, appear_creature_narrow)
 	limbs_duration = get_name(PowerDuration, limbs_duration)
+	insub_descriptor = get_name(PowerDes, insub_descriptor)
 
 	limbs_rank = ('Limbs Per Rank', limbs_rank)
 
@@ -248,6 +250,7 @@ def character_post(entry, body, cells):
 	cells = check_cell('Insubstantial', 14, insubstantial, cells, True)
 	new_mod = mod_create('Insubstantial', 16)
 	new_mod = mod_cell('Type:', 6, [insub_type], new_mod)
+	new_mod = mod_cell('Descriptor', 12, [insub_descriptor], new_mod)
 	new_mod = mod_cell('Description:', 11, [insub_description], new_mod)
 	body = mod_add(insubstantial, new_mod, body)
 

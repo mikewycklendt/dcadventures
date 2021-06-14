@@ -571,16 +571,27 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="char_insub_type" name="char_insub_type">
+			<select class="select-sml" id="char_insub_type" name="char_insub_type" onchange="char_insub_type()">
 				{% for i in insub %}
 					<option value="{{i.type}}">{{i.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
 
+		<div class="hidden" id="char-insub-descriptor">
+			<select class="descriptor-sml" id="char_insub_descriptor" name="char_insub_descriptor">
+				<option value="">Descriptor</option>
+				<option value="">Use Descriptor form to Put Option Here</option>
+				{% for d in descriptor_options %}
+					<option value={{d.id}}>{{d.name}}</option>
+				{% endfor %}
+			</select> 
+		</div>
+
 		<div class="text-sml">
 			<input type="text" id="char_insub_des" name="char_insub_des" placeholder="Description">
 		</div>
+
 
 	</div>
 

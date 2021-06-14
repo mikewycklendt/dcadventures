@@ -250,6 +250,7 @@ def character_post_errors(data):
 	appear_creature = data['appear_creature']
 	appear_creature_narrow = data['appear_creature_narrow']
 	insub_type = data['insub_type']
+	insub_descriptor = data['insub_descriptor']
 	insub_description = data['insub_description']
 	cost = data['cost']
 	ranks = data['ranks']
@@ -280,6 +281,7 @@ def character_post_errors(data):
 	errors = id_check(Condition, limbs_condition, 'Condition', errors)
 	errors = id_check(Creature, appear_creature, 'Broad Form', errors)
 	errors = id_check(NarrowCreature, appear_creature_narrow, 'Narrow Form', errors)
+	errors = id_check(PowerDes, insub_descriptor, 'Insubstantial Descriptor', errora)
 
 	errors = together('an Increased Trait', [trait_type, value, increase], errors)
 	errors = check_field(limited, 'Limited', 'Limited By', limited_by, errors)
@@ -321,6 +323,8 @@ def character_post_errors(data):
 
 	errors = check_fields(insubstantial, 'Insubstantial', [insub_type], errors)
 	errors = check_field(insubstantial, 'Insubstantial', 'Insubstantial Type', insub_type, errors)
+	errors = variable_fields('energy', 'Insubstantial Energy', insub_type, [insub_descriptor], errors)
+	errors = variable_field('energy', insub_type, 'Descriptot', insub_descriptor, errors)
 
 	errors = check_fields(points, 'Hero Points', [points_type, points_value, points_trait, points_trait_type], errors)
 	errors = check_field(points, 'Hero Points', 'Points Type', points_type, errors)

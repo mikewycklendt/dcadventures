@@ -123,6 +123,15 @@ function char_insub() {
 	check_drop(check, div, entry);
 }
 
+function char_insub_type() {
+	const select = 'char_insub_type';
+	const options = [{'val': 'energy', 'div': 'char-insub-descriptor'}];
+	const fields = ['char_insub_descriptor']
+
+	reset_all(fields);
+	select_opacity(select, options);
+}
+
 function char_reduced_trait_type() {
 	const select = 'char_reduced_trait_type';
 	const fill = 'char_reduced_trait';
@@ -327,6 +336,7 @@ function char_submit() {
 	const appear_creature_other = text("char_appear_creature_other");
 	const appear_costume = check("char_appear_costume");
 	const insub_type = select("char_insub_type");
+	const insub_descriptor = select("char_insub_descriptor");
 	const insub_description = text("char_insub_des");
 	const cost = select("char_cost");
 	const ranks = select("char_ranks");
@@ -402,6 +412,7 @@ function char_submit() {
 			'appear_creature_other': appear_creature_other,
 			'appear_costume': appear_costume,
 			'insub_type': insub_type,
+			'insub_descriptor': insub_descriptor,
 			'insub_description': insub_description,
 			'cost': cost,
 			'ranks': ranks,

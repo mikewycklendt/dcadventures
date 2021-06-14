@@ -1513,6 +1513,7 @@ def power_post_character():
 	appear_creature_other = request.get_json()['appear_creature_other']
 	appear_costume = request.get_json()['appear_costume']
 	insub_type = request.get_json()['insub_type']
+	insub_descriptor = request.get_json()['insub_descriptor']
 	insub_description = request.get_json()['insub_description']
 	cost = request.get_json()['cost']
 	ranks = request.get_json()['ranks']
@@ -1543,6 +1544,7 @@ def power_post_character():
 	limbs_condition =  db_integer(Condition, limbs_condition)
 	appear_creature = db_integer(Creature, appear_creature)
 	appear_creature_narrow = db_integer(NarrowCreature, appear_creature_narrow)
+	insub_descriptor = db_integer(PowerDes, insub_descriptor)
 
 	trait = integer(trait)
 	value = integer(value)
@@ -1620,6 +1622,7 @@ def power_post_character():
 							appear_creature_narrow = appear_creature_narrow,
 							appear_costume = appear_costume,
 							insub_type = insub_type,
+							insub_descriptor = insub_descriptor,
 							insub_description = insub_description,
 							cost = cost,
 							ranks = ranks,

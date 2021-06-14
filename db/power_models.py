@@ -1579,6 +1579,7 @@ class PowerChar(db.Model):
 	appear_costume = db.Column(db.Boolean)
 	insub_type = db.Column(db.String())
 	insub_description = db.Column(db.String())
+	insub_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	cost = db.Column(db.Integer, db.ForeignKey('power_cost.id'))	
 	ranks = db.Column(db.Integer, db.ForeignKey('power_ranks.id'))
 	multiple = db.Column(db.String())
@@ -1646,6 +1647,7 @@ class PowerChar(db.Model):
 			'appear_creature_narrow': self.appear_creature_narrow,
 			'appear_costume': self.appear_costume,
 			'insub_type': self.insub_type,
+			'insub_descriptor': self.insub_descriptor,
 			'insub_description': self.insub_description,
 			'cost': self.cost,
 			'ranks': self.ranks,
