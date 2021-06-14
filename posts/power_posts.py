@@ -1176,7 +1176,7 @@ def mod_post(entry, body, cells):
 
 	incurable_type_select  = [{'type': '', 'name': 'Incurable Type'}, {'type': 'counter', 'name': 'Cannot be Countered by Effect'}, {'type': 'permanent', 'name': 'Effect Permanent'}]
 	incurable_type = selects(incurable_type, incurable_type_select)
-``
+	
 	affects_others_type = [{'type': '', 'name': 'Affects Others Type'}, {'type': 'grant', 'name': 'Grants Affect to Others'}, {'type': 'affect', 'name': 'Effect Affects Others'}, , {'type': 'attack_check', 'name': 'Impose Effect On Character with ' + others_check  + ' Variable Check Group'}, {'type': 'attack_opposed', 'name': 'Impose Effect On Character with ' + others_opposed +  ' Opponent Check Group'}]
 	others_type = selects(others_type, affects_others_type)
 
