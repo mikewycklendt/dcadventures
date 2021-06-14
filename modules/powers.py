@@ -277,6 +277,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	check_frequency = [{'type': '', 'name': 'Frequency'}, {'type': 'always', 'name': 'Always'}, {'type': 'choice', 'name': 'Player Choice'}, {'type': 'gm', 'name': 'GN Choice'}, {'type': 'active', 'name': 'Active Target'}, {'type': 'object', 'name': 'Inanimate Object'}, {'type': 'maintain', 'name': 'Maintain Effect'}]
 
+	check_frequency_special = [{'type': 'active_illusion', 'name': 'Maintain Active Illusion'}, {'type': 'static_illusion', 'name': 'Maintain Static Illusion'}]
+
 	check_targets =  [{'type': '', 'name': 'Check Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'partner', 'name': 'Psrtner'}]
 
 	check_multiple =  [{'type': '', 'name': 'If Multiple'}, {'type': 'turn', 'name': 'Chosen on Turn'}, {'type': 'x', 'name': 'Chosen when Aquiring Power'}, {'type': 'overwrite', 'name': 'Overwrites Check'}, {'type': 'when', 'name': 'Determined by When'}, {'type': 'frequency', 'name': 'Determined by Frequency'}]
@@ -385,7 +387,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	immunity_trait = [{'type': "power", 'name': 'Power'}, {'type': "extra", 'name': 'Extra'}, {'type': "skill", 'name': 'Skill'}, {'type': "bonus", 'name': 'Enhanced Skill'}, {'type': "interact", 'name': 'Any Interaction Skill'}, {'type': "manipulate", 'name': 'Any Manipulation Skill'}, {'type': "resist", 'name': 'Powers Resisted By'}, {'type': "alteration", 'name': 'Alteration Effects'}, {'type': "skill_emotion", 'name': "Skills Affecting Emotion"}, {'type': "power_emotion", 'name': "Powers Affecting Emotion"}, {'type': "trait_emotion", 'name': "All Traits Affecting Emotion"}, {'type': "all_emotion", 'name': 'All Emotion Effects'}]
 
-	immunity_type = [{'type': '', 'name': 'Immunity'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'damage', 'name': 'Damage Type'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'critiical', 'name': 'Critical Hits'}, {'type': 'env', 'name': 'Environment'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'emotion', 'name': 'Emotion'}, {'type': 'condition_effect', 'name': 'Condition from Effect'}, {'type': 'condition_attack', 'name': 'Condition from Attack'}, {'type': 'life', 'name': 'Life Support'}, {'type': 'eat', 'name': 'Eat Anything'}, {'type': 'timeline', 'name': 'Changes in Timeline'}]
+	immunity_type = [{'type': '', 'name': 'Immunity'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'damage', 'name': 'Damage Type'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'critiical', 'name': 'Critical Hits'}, {'type': 'env', 'name': 'Environment'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'emotion', 'name': 'Emotion'}, {'type': 'condition_effect', 'name': 'Condition from Effect'}, {'type': 'condition_attack', 'name': 'Condition from Attack'}, {'type': 'life', 'name': 'Life Support'}, {'type': 'eat', 'name': 'Eat Anything'}, {'type': 'timeline', 'name': 'Changes in Timeline'}, {'type': 'own', 'name': "Character's Powers"}]
 
 	incurable_type  = [{'type': '', 'name': 'Incurable Type'}, {'type': 'counter', 'name': 'Cannot be Countered by Effect'}, {'type': 'permanent', 'name': 'Effect Permanent'}]
 
@@ -513,7 +515,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	subtle_type = [{'type': '', 'name': 'Subtle Type'}, {'type': 'detect', 'name': 'Detectable'}, {'type': 'undetectable', 'name': 'Undetectable'}, {'type': 'notice', 'name': 'Effect Not Noticeable'}, {'type': 'invisible', 'name': 'Effect Target Invisible'}, {'type': 'understand', 'name': 'Not Understandable'}, {'type': 'silent', 'name': 'Silent'}]
 
-	success_target = [{'type': '', 'name': 'Target'}, {'type': 'player', 'name': 'Successful Player'}, {'type': 'choice', 'name': 'Successful Players Choice'}, {'type': 'opponent', 'name': 'Opposing Player'}]
+	success_target = [{'type': '', 'name': 'Target'}, {'type': 'player', 'name': 'Successful Player'}, {'type': 'choice', 'name': 'Successful Players Choice'}, {'type': 'communicate', 'name': 'Character Successful Player Communnicates With'}, {'type': 'opponent', 'name': 'Opposing Player'}]
 
 	success = [{'type': '', 'name': 'Applied to'}, {'type': 'same', 'name': 'Same Check'}, {'type': 'trait', 'name': 'All Checks of Trait'}, {'type': 'check', 'name': 'Variable Check'}, {'type': 'check_type', 'name': 'Variable Check Group'}, {'type': 'opposed', 'name': 'Opponent Check'}, {'type': 'opposed_type', 'name': 'Opponent Check Group'}]
 
@@ -638,7 +640,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											feedback_resist=feedback_resist, source_type=source_type, sense_micro=sense_micro, micro_expertise=micro_expertise, unreliable_type=unreliable_type, rank_type=rank_type,
 											incurable_type=incurable_type, deg_mod_weaken_type=deg_mod_weaken_type, progressive_type=progressive_type, affects_others_type=affects_others_type, 
 											affects_others_req=affects_others_req, area_type=area_type, concentration_type=concentration_type, auto_type=auto_type, persistent_type=persistent_type, feedback_type=feedback_type,
-											restore=restore, check_forms=check_forms, success=success, success_target=success_target, modals=modals)
+											restore=restore, check_forms=check_forms, success=success, success_target=success_target, modals=modals, check_frequency_special=check_frequency_special)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -3868,6 +3870,7 @@ def power_post_check():
 	attack_range = request.get_json()['attack_range']
 	consequence = request.get_json()['consequence']
 	consequence_target = request.get_json()['consequence_target']
+	consequence_mod = request.get_json()['consequence_mod']
 	consequence_null = request.get_json()['consequence_null']
 	defenseless = request.get_json()['defenseless']
 	touch = request.get_json()['touch']
@@ -3916,6 +3919,7 @@ def power_post_check():
 
 	trait = integer(trait)
 	action = integer(action)
+	consequence_mod = integer(consequence_mod)
 
 	body['created'] = created
 
@@ -3980,6 +3984,7 @@ def power_post_check():
 						attack_range = attack_range,
 						consequence = consequence,
 						consequence_target = consequence_target,
+						consequence_mod = consequence_mod,
 						consequence_null = consequence_null,
 						defenseless = defenseless,
 						touch = touch,

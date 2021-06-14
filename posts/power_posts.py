@@ -657,7 +657,7 @@ def defense_post(entry, body, cells):
 
 	word = check_string('Not ', immunity_except)
 	cells = check_cell('Immunity', 10, immunity, cells, True)
-	select =[{'type': 'trait', 'name': word + 'Immune From Trait', 'w': 18}, {'type': 'damage', 'name': word + 'Immune From Damage Type', 'w': 25}, {'type': 'descriptor', 'name': word + 'Immune From Descriptor', 'w': 25}, {'type': 'rule', 'name': word + 'Immune From Game Rule', 'w': 25}, {'type': 'consequence', 'name': word + 'Immune from Consequence', 'w': 25}, {'type': 'critical', 'name': word + 'Immune from Critical Hits', 'w': 25}, {'type': 'env', 'name': word + 'Immune from Environment', 'w': 30}, {'type': 'condition_effect', 'name': word + 'Immune from Effect Condition', 'w': 35}, {'type': 'condition_attack', 'name': word + 'Immune from Attack Condition', 'w': 35}, {'type': 'emotion', 'name': word + 'Immune from Emotion', 'w': 22}, {'type': 'life', 'name': 'Life Support', 'w': 15}, {'type': 'eat', 'name': 'Eat Anything', 'w': 15}, {'type': 'timeline', 'name': 'Immune from Changes in Timeline', 'w': 45}]
+	select =[{'type': 'trait', 'name': word + 'Immune From Trait', 'w': 18}, {'type': 'damage', 'name': word + 'Immune From Damage Type', 'w': 25}, {'type': 'descriptor', 'name': word + 'Immune From Descriptor', 'w': 25}, {'type': 'rule', 'name': word + 'Immune From Game Rule', 'w': 25}, {'type': 'consequence', 'name': word + 'Immune from Consequence', 'w': 25}, {'type': 'critical', 'name': word + 'Immune from Critical Hits', 'w': 25}, {'type': 'env', 'name': word + 'Immune from Environment', 'w': 30}, {'type': 'condition_effect', 'name': word + 'Immune from Effect Condition', 'w': 35}, {'type': 'condition_attack', 'name': word + 'Immune from Attack Condition', 'w': 35}, {'type': 'emotion', 'name': word + 'Immune from Emotion', 'w': 22}, {'type': 'life', 'name': 'Life Support', 'w': 15}, {'type': 'eat', 'name': 'Eat Anything', 'w': 15}, {'type': 'timeline', 'name': 'Immune from Changes in Timeline', 'w': 45}, {'type': 'own', 'name': "Immune From Powers Character Has", 'w': 35}]
 	new_mod = mod_create('Immunity', 17, immunity_type, select)
 	value = 'trait'
 	new_mod = mod_cell('Trait:', 15, [immunity_trait], new_mod, value)
@@ -2148,6 +2148,7 @@ def power_check_post(entry, body, cells):
 	attack_range = entry.attack_range
 	consequence = entry.consequence
 	consequence_target = entry.consequence_target
+	consequence_mod = entry.consequence_mod
 	consequence_null = entry.consequence_null
 	defenseless = entry.defenseless
 	touch = entry.touch
@@ -2201,6 +2202,7 @@ def power_check_post(entry, body, cells):
 	touch = check_string('Must Maintain Touch', touch)
 
 	attack = integer_convert(attack)
+	consequence_mod = integer_convert(consequence_mod)
 
 	targets = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'anyone', 'name': 'Anyone'}]
 	condition_target = selects(condition_target, targets)
@@ -2220,7 +2222,7 @@ def power_check_post(entry, body, cells):
 
 	maintain_concentrate = check_string(' While Concentrating', maintain_concentrate)
 
-	check_frequency = [{'type': '', 'name': 'Frequency'}, {'type': 'always', 'name': 'Always'}, {'type': 'choice', 'name': "Player's Choice"}, {'type': 'gm', 'name': "GM's Choice"}, {'type': 'active', 'name': 'If the Target is Active'}, {'type': 'object', 'name': 'If the Target is an Inanimate Object'}, {'type': 'maintain', 'name': 'Maintain Effect' + maintain_concentrate}]
+	check_frequency = [{'type': '', 'name': 'Frequency'}, {'type': 'always', 'name': 'Always'}, {'type': 'choice', 'name': "Player's Choice"}, {'type': 'gm', 'name': "GM's Choice"}, {'type': 'active', 'name': 'If the Target is Active'}, {'type': 'object', 'name': 'If the Target is an Inanimate Object'}, {'type': 'maintain', 'name': 'Maintain Effect' + maintain_concentrate}, {'type': 'active_illusion', 'name': 'Maintain Active Illusion'}, {'type': 'static_illusion', 'name': 'Maintain Static Illusion'}]
 	frequency = selects(frequency, check_frequency)
 
 	consequence_null = check_string('Nullifies', consequence_null)
@@ -2244,7 +2246,9 @@ def power_check_post(entry, body, cells):
 	vcells = vcell('opposed', 18, [opponent, opponent_type], vcells)
 	w = width(14, 10, mental)
 	vcells = vcell('sense', w, [sense_target, sense_type, sense, mental], vcells)
-	vcells = vcell('consequence', 30, [consequence_null, consequence, 'on', consequence_target], vcells)
+	word = string('With', [consequence_mod])
+	word2 = string('Modifier', [consequence_mod])
+	vcells = vcell('consequence', 30, [consequence_null, consequence, 'on', consequence_target, word, consequence_mod, word2], vcells)
 	vcells = vcell('target', 20, [target_type], vcells)
 	vcells = vcell('descriptor', 20, ['Check When Opponent Uses', descriptor, 'Descriptor'], vcells)
 	cells = drop_vcell('Trigger', [trigger_title], 9, trigger, vcells, cells)
@@ -2422,7 +2426,7 @@ def power_circ_post(entry, body, cells):
 	conflict_grab = selects(conflict_grab, grab_type)
 
 
-	success_target_select = [{'type': '', 'name': 'Bonus Target'}, {'type': 'player', 'name': 'Player'}, {'type': 'choice', 'name': 'Players Choice'}]
+	success_target_select = [{'type': '', 'name': 'Bonus Target'}, {'type': 'communicate', 'name': 'Communnicated Player'}, {'type': 'player', 'name': 'Player'}, {'type': 'choice', 'name': 'Players Choice'}]
 	success_target = selects(success_target, success_target_select)
 
 	success_select = [{'type': 'check', 'name': success_check + ' Check'}, {'type': 'check_type', 'name': success_check_type + ' Check Group'}, {'type': 'opposed', 'name': success_opposed + ' Check'}, {'type': 'opposed_type', 'name': success_opposed_type + ' Check Group'}]

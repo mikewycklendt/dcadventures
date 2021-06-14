@@ -486,6 +486,8 @@ function sense_submit() {
 			
 			if (sense_type == 'illusion') {
 				selects_add('illusion', 'Dsmsging Attack on Illusion', 'feedback-sml', sense_counts.illusion);
+				selects_add('active_illusion', 'Maintain Active Illusion', 'frequency-entry', sense_counts.illusion);
+				selects_add('static_illusion', 'Maintain Static Illusion', 'frequency-entry', sense_counts.illusion);
 				sense_counts.illusion += 1;	
 			}
 			

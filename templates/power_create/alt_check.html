@@ -119,9 +119,12 @@
 		</div>
 
 		<div>
-			<select class="entry-select" id="check_frequency" name="check_frequency" onchange="check_frequency()">
+			<select class="entry-select frequency-entry" id="check_frequency" name="check_frequency" onchange="check_frequency()">
 				{% for c in check_frequency %}
 					<option value="{{c.type}}">{{c.name}}</option>
+				{% endfor %}
+				{% for c in check_frequency_special %}
+					<option value="{{c.type}}">{{c.naME}}</option>
 				{% endfor %}
 			</select>
 		</div>
@@ -237,6 +240,20 @@
 					<option value="{{t.type}}">{{t.name}}</option>
 				{% endfor %}
 			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="check_consequence_mod" name="check_consequence_mod">
+				<option value="">Resistance Modifier</option>
+				<option value="rank">Power Rank</option>
+				<option value="extra">Extra Rank</option>
+				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select> 
 		</div>
 
 		<div>

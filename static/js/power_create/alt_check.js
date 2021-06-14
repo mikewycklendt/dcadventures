@@ -146,6 +146,7 @@ function check_submit() {
 	const maneuver = select("check_maneuver");
 	const consequence = select("check_consequence");
 	const consequence_target = select("check_consequence_target");
+	const consequence_mod = select("check_consequence_mod");
 	const consequence_null = check("check_consequence_null")
 	const defenseless = select("check_defenseless");
 	const touch = check("check_touch");
@@ -222,6 +223,7 @@ function check_submit() {
 			'maneuver':  maneuver,
 			'consequence': consequence,
 			'consequence_target': consequence_target,
+			'consequence_mod': consequence_mod,
 			'consequence_null': consequence_null,
 			'defenseless': defenseless,
 			'touch': touch,
