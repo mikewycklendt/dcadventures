@@ -3503,6 +3503,8 @@ def power_opposed_post(entry, body, cells):
 	variable_type = entry.variable_type
 	before = entry.before
 	after = entry.after
+	attack_player = entry.attack_player
+	attack_opp = entry.attack_opp
 
 	title_name = get_name(PowerOpposedType, title)
 	body['title'] = title_name
@@ -3518,7 +3520,8 @@ def power_opposed_post(entry, body, cells):
 	opponent_mod = integer_convert(opponent_mod)
 	player_check = get_name(Check, player_check)
 	opponent_check = get_name(Check, opponent_check)
-	
+	attack_player = get_name(Ranged, attack_player)
+	attack_opp = get_name(Ranged, attack_opp)
 
 	recurring_value = get_keyword(PowerTime, recurring_value)
 	degree = get_name(PowerDegreeType, degree)
@@ -3560,12 +3563,12 @@ def power_opposed_post(entry, body, cells):
 	cells = cell('Extra', 13, [extra], cells)
 	cells = cell('Player', 12, [trait], cells)
 	cells = cell('Mod', 6, [mod], cells)
-	cells = cell('Check', 10, [player_check], cells)
+	cells = cell('Check', 15, [attack_player, player_check], cells)
 	cella = check_cell('Secret', 8, player_secret, cells)
 
 	cells = cell('Opponent', 12, [opponent_trait], cells)
 	cells = cell('Mod', 6, [opponent_mod], cells)
-	cells = cell('Check', 10, [opponent_check], cells)
+	cells = cell('Check', 15, [attack_opp, opponent_check], cells)
 	
 	cells = check_cell('Secret', 8, secret, cells)
 

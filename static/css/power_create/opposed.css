@@ -77,6 +77,16 @@
 	grid-template-columns: 16% 25% 27% 15% 22%;
 }
 
+#opposed-attack {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .3s ease-out;
+	width: 96%;
+	gap: 3px;
+	grid-template-columns: 16% 25% 27% 15% 22%;
+}
+
 #opposed-row4 {
 	display: grid;
 	width: 96%;

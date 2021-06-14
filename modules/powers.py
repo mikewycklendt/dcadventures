@@ -5334,6 +5334,8 @@ def power_post_opposed():
 	after = request.get_json()['after']
 	power_check = request.get_json()['power_check']
 	power_action = request.get_json()['power_action']
+	attack_player = request.get_json()['attack_player']
+	attack_opp = request.get_json()['attack_opp']
 
 
 	power_id = db_integer(Power, power_id)
@@ -5359,6 +5361,8 @@ def power_post_opposed():
 	variable_type = db_integer(PowerCheckType, variable_type)
 	recurring_degree_type = db_integer(PowerDegreeType, recurring_degree_type)
 	primary = preset_convert('primary', attached)
+	attack_player = db_integer(Ranged, attack_player)
+	attack_opp = db_integer(Ranged, attack_opp)
 
 	trait = integer(trait)
 	mod = integer(mod)
@@ -5428,7 +5432,9 @@ def power_post_opposed():
 						variable_type = variable_type,
 						before = before,
 						after = after,
-						primary = primary
+						primary = primary,
+						attack_player = attack_player,
+						attack_opp = attack_opp
 					)			
 
 	db.session.add(entry)

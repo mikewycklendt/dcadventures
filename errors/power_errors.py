@@ -3051,7 +3051,8 @@ def power_opposed_post_errors(data):
 	after = data['after']
 	power_check = data['power_check']
 	power_action = data['power_action']
-
+	attack_player = data['attack_player']
+	attack_opp = data['attack_opp']
 
 	errors = power_check(power_id, errors)
 	errors = id_check(Power, power_id, 'Power', errors)
@@ -3062,6 +3063,8 @@ def power_opposed_post_errors(data):
 	errors = int_check(opponent_mod, 'Opponent Modifier', errors)
 	errors = id_check(Check, player_check, 'Player Check', errors)
 	errors = id_check(Check, opponent_check, 'Opponent Check', errors)
+	errors = id_check(Ranged, attack_player, 'Player Attack Range', errors)
+	errors = id_check(Ranged, attack_opp, 'Opponent Attack Range', errors)
 
 	errors = id_check(PowerDegreeType, degree, 'Degree Group', errors)
 	errors = id_check(PowerCircType, circ, 'Circumstance Group', errors)
@@ -3096,6 +3099,9 @@ def power_opposed_post_errors(data):
 	errors = select_check('1', opponent_check, dc_check, 'Skill Check', 'a DC value', errors)
 	errors = select_check('6', player_check, dc_check, 'Resistance Check', 'a DC value', errors)
 	errors = select_check('1', player_check, dc_check, 'Skill Check', 'a DC value', errors)
+
+	errors = variable_field('5', opponent_check, 'Opponent Attack Check Range', attack_opp, errors)
+	errors = variable_field('5', player_check, 'Player Attack Check Range', attack_player, errors)
 
 	errors = check_of(circ_check, 'Circumstance', 'a circums6ance modifier or circumstance group', [circ_value, circ], errors)
 	errors = check_of(dc_check, 'DC', ' a dc value or dc group', [dc_player, dc_type, dc], errors)

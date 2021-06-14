@@ -107,6 +107,30 @@ function opposed_time_check() {
 	check_drop(check, div, entry);
 }
 
+function opposed_opponent_check() {
+	const select = 'opposed_opponent_check'
+	const div = [{'val': '5', 'div': 'opposed-attack'}];
+	const options = [{'val': '5', 'div': 'opposed-attack-player'}];
+	const entry = 'opposed-entry';
+	const fields = ['opposed_attack_opp'];
+
+	reset_all(fields);
+	select_maxheight_entry(select, div, entry);
+	select_opacity(select, options)
+}
+
+function opposed_player_check() {
+	const select = 'opposed_player_check'
+	const div = [{'val': '5', 'div': 'opposed-attack'}];
+	const options = [{'val': '5', 'div': 'opposed-attack-player'}];
+	const entry = 'opposed-entry';
+	const fields = ['opposed_attack_player']
+
+	reset_all(fields);
+	select_maxheight_entry(select, div, entry);
+	select_opacity(select, options)
+}
+
 let opposed_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
@@ -161,6 +185,8 @@ function opposed_submit() {
 	const after = select("opposed_after");
 	const power_check = select("check");
 	const power_action = select("action");
+	const attack_player = select("opposed_attack_player");
+	const attack_opp = select("opposed_attack_opp");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -220,7 +246,9 @@ function opposed_submit() {
 			'before': before,
 			'after': after,
 			'power_check': power_check,
-			'power_action': power_action
+			'power_action': power_action,
+			'attack_player': attack_player,
+			'attack_opp': attack_opp
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
