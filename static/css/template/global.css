@@ -293,3 +293,14 @@ input[type=text]:focus {
 	grid-template-columns: 40% 60%;
 	gap: 3px;
 }
+
+.big-small {
+	grid-template-columns: 80% 20%;
+	gap: 3px;
+}
+
+.shrunk {
+	max-height: 0;
+	overflow: hidden;
+	transition: all .3s ease-out;
+}

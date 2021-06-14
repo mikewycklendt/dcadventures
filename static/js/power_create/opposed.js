@@ -110,13 +110,13 @@ function opposed_time_check() {
 function opposed_opponent_check() {
 	const select = 'opposed_opponent_check'
 	const div = [{'val': '5', 'div': 'opposed-attack'}];
-	const options = [{'val': '5', 'div': 'opposed-attack-player'}];
+	const options = [{'val': '5', 'div': 'opposed-attack-opp'}];
 	const entry = 'opposed-entry';
 	const fields = ['opposed_attack_opp'];
 
 	reset_all(fields);
 	select_maxheight_entry(select, div, entry);
-	select_opacity(select, options)
+	select_maxheight(select, options);
 }
 
 function opposed_player_check() {
@@ -128,7 +128,7 @@ function opposed_player_check() {
 
 	reset_all(fields);
 	select_maxheight_entry(select, div, entry);
-	select_opacity(select, options)
+	select_maxheight(select, options)
 }
 
 let opposed_grid = {'titles': false,

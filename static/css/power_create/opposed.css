@@ -58,7 +58,7 @@
 	width: 98%;
 	height: 1.2vw;
 	gap: 3px;
-	grid-template-columns: 40% 10% 40% 10%;
+	grid-template-columns: 40% 10% 50%;
 	grid-auto-rows: auto;
 }
 
@@ -68,6 +68,14 @@
 	width: 98%;
 	gap: 3px;
 	grid-template-columns: 15% 25% 10% 15% 25% 10%;
+}
+
+.opposed-row {
+	display: grid;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 15% 25% 25% 35%;
+	grid-auto-rows: auto;
 }
 
 #opposed-row3 {
