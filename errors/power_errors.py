@@ -1235,7 +1235,7 @@ def mod_post_errors(data):
 	errors = variable_field('increase', progressive_type, 'Degree by Group', progressive_degree_type, errors)
 	errors = variable_fields('repeat', 'Repeat Degree Effect', progressive_type, [progressive_degree], errors)
 	errors = variable_field('repeat', progressive_type, 'Repeat Degree Effect', progressive_degree, errors)
-	errors = required_entry_multiple('rank', progressive_type. 'Power', 'Progressive Effect Through the Powers Rank Effects', 'Variable Rank', PowerRanks, 'power_id', power_id, errors, None, 'extra')
+	errors = required_entry_multiple('rank', progressive_type, 'Power', 'Progressive Effect Through the Powers Rank Effects', 'Variable Rank', PowerRanks, 'power_id', power_id, errors, None, 'extra')
 
 	errors = check_fields(cumulative, 'Cumulative', [cumulative_degree], errors)
 	errors = check_field(cumulative, 'Cumulative', 'Degree of Success/Failure Group', cumulative_degree, errors)
