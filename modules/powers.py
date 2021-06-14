@@ -459,7 +459,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	precise_type = [{'type': '', 'name': 'Precise Type'}, {'type': 'objects', 'name': 'Fine Msnipulation of Objects'}, {'type': 'body', 'name': 'Effects Speecific Parts of Body'}, {'type': 'choice', 'name': 'Choose What Effect Affects'}]
 
-	progressive_type = [{'type': '', 'name': 'Progressive Type'}, {'type': 'increase', 'name': 'Failure Increases Effect Degree'}, {'type': 'repeat', 'name': 'Failure Repeats Effect'}]
+	progressive_type = [{'type': '', 'name': 'Progressive Type'}, {'type': 'increase', 'name': 'Failure Increases Effect Degree'}, {'type': 'repeat', 'name': 'Failure Repeats Effect'}, {'type': 'rank', 'name': 'Progress Through Rank Effects'}]
 
 	ranged_type = [{'type': '', 'name': 'Ranged Type'}, {'type': 'flat_units', 'name': 'Flat Units'}, {'type': 'distance_rank', 'name': 'Flat Distance Rank'}, {'type': 'units_rank', 'name': 'Units Per Rank'}, {'type': 'rank_rank', 'name': 'Distance Rank Per Rank'}, {'type': 'effect_mod', 'name': 'Effect Rank Modifier'}, {'type': 'trait_mod', 'name': 'Trait Rank Modifier'}, {'type': 'distance_mod', 'name': 'Distance Rank Modifier'}, {'type': 'check', 'name': 'Check Result'}, {'type': 'penalty', 'name': 'Range Penalty Modifier'}, {'type': 'general', 'name': 'General'}]
 

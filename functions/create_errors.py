@@ -996,7 +996,7 @@ def create_check(name, item_id, table, errors):
 
 	return (errors)
 
-def required_entry_multiple(value, field, trait, name, table_name, table, column,  id, errors):
+def required_entry_multiple(value, field, trait, name, table_name, table, column,  id, errors, extra='e', second_column='extra_id'):
 		
 	error_msgs = errors['error_msgs']
 	error = False
@@ -1009,10 +1009,21 @@ def required_entry_multiple(value, field, trait, name, table_name, table, column
 			id = int(id)
 			attribute = getattr(table, column)
 			the_filter = attribute == id
-			query = db.session.query(table).filter(the_filter).count()
+			if extra != 'e':
+				if extra is not None:
+					extra = int(extra)
+					words = ' for the extra this effect works with.'
+				else:
+					words = ' for the base power effect.'
+				second_attr = getattr(table, second_column)
+				second_filter = second_attr == extra
+				query = db.session.query(table).filter(the_filter, second_filter).count()				
+			else:
+				query = db.session.query(table).filter(the_filter).count()
+				words = '.'
 			if query < 2:
 				error = True
-				message = 'If this ' + trait + ' involves a ' + name + ' you must create at least two entries on the ' + table_name + ' form.'
+				message = 'If this ' + trait + ' involves a ' + name + ' you must create at least two entries on the ' + table_name + ' form' + words
 				error_msgs.append(message)
 		except:
 			error = True

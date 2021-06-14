@@ -1211,6 +1211,9 @@ def mod_post(entry, body, cells):
 	persistent_type_select = [{'type': 'degree', 'name': 'Degree Effect Works on Incurable'}, {'type': 'condition', 'name': "Power's Damage Condition Effect Works on Incurable"}]
 	persistent_type = selects(persistent_type, persistent_type_select)
 
+	progressive_type_select = [{'type': '', 'name': 'Progressive Type'}, {'type': 'increase', 'name': 'Failure Increases Effect Degree'}, {'type': 'repeat', 'name': 'Failure Repeats Effect'}, {'type': 'rank', 'name': 'Progress Through Rank Effects'}]
+	precise_type = selects(progressive_type, progressive_type_select)
+	
 	cells = cell('Extra', 15, [extra])
 	cells = check_cell('Affects Objects', 16, affects_objects, cells, True)
 	new_mod = mod_create('Affects Objects', 20)
