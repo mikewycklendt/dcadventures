@@ -58,7 +58,7 @@
 	width: 98%;
 	height: 1.2vw;
 	gap: 3px;
-	grid-template-columns: 40% 10% 50%;
+	grid-template-columns: 40% 10% 40% 10%;
 	grid-auto-rows: auto;
 }
 
