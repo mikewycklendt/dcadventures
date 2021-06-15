@@ -49,14 +49,14 @@
 
 #extras-row3 {
 	display: grid;
-	grid-template-columns: auto auto auto auto auto;
+	grid-template-columns: auto auto auto auto;
 	gap: .3vw;
 	font-size: 70%;
 }
 
 #extras-row4 {
 	display: grid;
-	grid-template-columns: auto auto auto auto auto;
+	grid-template-columns: auto auto auto auto auto auto;
 	gap: .3vw;
 	font-size: 70%;
 }
