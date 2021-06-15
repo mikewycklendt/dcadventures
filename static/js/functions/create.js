@@ -404,7 +404,7 @@ function select_maxheight_shared(select, options, entry) {
 }
 
 
-function select_opacity_shared(select, options) {
+function select_opacity_shared(select, options, exception='', value_in='e') {
 	const field = document.getElementById(select);
 	const val = field.options[field.selectedIndex].value;
 	let option;
@@ -428,7 +428,25 @@ function select_opacity_shared(select, options) {
 		if (match == true) {
 			show_opacity(div);
 		} else {
-			hide_opacity(div);
+			if (exception != '') {
+				let val;
+				const excep = document.getElementById(exception);
+				if (value_in != 'e') {
+					val = excep.options[excep.selectedIndex].value;
+				} else {
+					val = excep.checked;
+				}
+
+				if (value_in === val || val === true) {
+					ahow_opacity(div);
+				} else if (value_in === true && val != '') {
+					show_opacity(div);
+				} else {
+					hide_opacity(div);	
+				}
+			} else {
+				hide_opacity(div);	
+			}
 		}	
 	};
 }
