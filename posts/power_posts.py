@@ -4023,7 +4023,7 @@ def power_extra_post(entry, body, cells):
 
 	cells = check_cell('For Rank', 10, ranks_check, cells, True)
 	new_mod = mod_create('Limited to Rank', 18)
-	new_mod = mod_cell('Rank:' 7, [ranks_type, rank], new_mod)
+	new_mod = mod_cell('Rank:', 7, [ranks_type, rank], new_mod)
 	body = mod_add(ranks_check, new_mod, body)
 
 	cells = circ_cell('Description', 'Description', 12, des, cells, body)
