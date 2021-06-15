@@ -31,10 +31,11 @@ function opposed_attached() {
 					{'val': ['primary'], 'div': 'opposed-primary'}]
 	const fields = ['opposed_before', 'opposed_after', 'opposed_frequency']
 	const after = [{'val': ['after', 'after_var', 'after_opponent'], 'div': 'opposed-turn'}]
+	const check = 'opposed_recurring';
 
 	reset_all(fields);
 	select_opacity_shared(select, attached);
-	select_opacity_shared(select, after);
+	select_opacity_shared(select, after, check);
 	select_maxheight_shared(select, options, entry);
 	div_text(select, div, values);
 	div_text(select, opposed_div, values);
