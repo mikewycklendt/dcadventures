@@ -4021,7 +4021,7 @@ def power_extra_post(entry, body, cells):
 	new_mod = mod_cell('Range', 8, [range], new_mod)
 	body = mod_add(range_check, new_mod, body)
 
-	cells = check_cell('For Rank', 10, ranks_check, cells, True)
+	cells = check_cell('Rank Only', 10, ranks_check, cells, True)
 	new_mod = mod_create('Limited to Rank', 18)
 	new_mod = mod_cell('Rank:', 7, [ranks_type, rank], new_mod)
 	body = mod_add(ranks_check, new_mod, body)

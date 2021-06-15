@@ -3485,9 +3485,9 @@ def power_extra_post_errors(data):
 	errors = check_fields(range_check, 'Changes Range', [range], errors)
 	errors = check_field(range_check, 'Changes Range', 'Range', range, errors)
 
-	errors = check_fields(ranks_check, 'Rank Limited', [ranks_type, rank], errors)
-	errors = check_field(ranks_check, 'Rank Limited', 'Rank Type', ranks_type, errors)
-	errors = check_field(ranks_check, 'Rank Limited', 'Rank', rank, errors)
+	errors = check_fields(ranks_check, 'Rank Only', [ranks_type, rank], errors)
+	errors = check_field(ranks_check, 'Rank Only', 'Rank Type', ranks_type, errors)
+	errors = check_field(ranks_check, 'Rank Only', 'Rank', rank, errors)
 
 	errors = variable_fields('required', 'Overwrites Required', effect, [required], errors)
 	errors = variable_fields('required', effect, 'Overwrites Required', required, errors)
