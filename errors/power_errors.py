@@ -3427,6 +3427,9 @@ def power_extra_post_errors(data):
 	auto_check_type = data['auto_check_type']
 	auto_opposed = data['auto_opposed']
 	auto_opposed_type = data['auto_opposed_type']
+	ranks_check = data['ranks_check']
+	ranks_type = data['ranks_type']
+	rank = data['rank']
 
 	errors = power_check(power_id, errors)
 	errors = id_check(Power, power_id, 'Power', errors)
@@ -3481,6 +3484,10 @@ def power_extra_post_errors(data):
 
 	errors = check_fields(range_check, 'Changes Range', [range], errors)
 	errors = check_field(range_check, 'Changes Range', 'Range', range, errors)
+
+	errors = check_fields(ranks_check, 'Rank Limited', [ranks_type, rank], errors)
+	errors = check_field(ranks_check, 'Rank Limited', 'Rank Type', ranks_type, errors)
+	errors = check_field(ranks_check, 'Rank Limited', 'Rank', rank, errors)
 
 	errors = variable_fields('required', 'Overwrites Required', effect, [required], errors)
 	errors = variable_fields('required', effect, 'Overwrites Required', required, errors)

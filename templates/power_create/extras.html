@@ -126,13 +126,19 @@
 								
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="extra_range_check" class="medium-checkbox med-checkbox" onclick="extra_range_check()"> Changes Range
+				<input type="checkbox" id="extra_range_check" class="medium-checkbox med-checkbox" onclick="extra_range_check()"> Range
 			</div>
 		</div>	
 
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="extra_action_check" class="medium-checkbox med-checkbox" onclick="extra_action_check()"> Changes Action
+				<input type="checkbox" id="extra_action_check" class="medium-checkbox med-checkbox" onclick="extra_action_check()"> Action
+			</div>
+		</div>	
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="extra_ranks_check" class="medium-checkbox med-checkbox" onclick="extra_ranks_check()"> Rank Only
 			</div>
 		</div>	
 
@@ -155,6 +161,26 @@
 		</div>	
 	
 	</div>		
+
+	<div id="extras-ranks-check">
+		<div>
+			Limited to Rank
+		</div>
+
+		<div>
+			<select class="select-sml" id="extra_ranks_type" name="extra_ranks_type">
+				{% for m in measure_type %}
+					<option value="{{m.type}}">{{m.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml rank-sml" id="extra_ranks" name="extra_ranks">
+				<option value="">Rank</option>
+			</select> 
+		</div>
+	</div>
 
 	<div id="extras-auto">
 		<div>

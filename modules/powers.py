@@ -988,6 +988,9 @@ def power_post_extra():
 	auto_check_type = request.get_json()['auto_check_type']
 	auto_opposed = request.get_json()['auto_opposed']
 	auto_opposed_type = request.get_json()['auto_opposed_type']
+	ranks_check = request.get_json()['ranks_check']
+	ranks_type = request.get_json()['ranks_type']
+	rank = request.get_json()['rank']
 
 	power_id = integer(power_id)
 	inherit = db_integer(Power, inherit)
@@ -1000,6 +1003,7 @@ def power_post_extra():
 	auto_check_type = db_integer(PowerCheckType, auto_check_type)
 	auto_opposed = db_integer(PowerOpposed, auto_opposed)
 	auto_opposed_type = db_integer(PowerOpposedType, auto_opposed_type)
+	rank = db_integer(PowerRanks, rank)
 
 	extra_effect_count = integer(extra_effect_count)
 	cost = var_convert(cost)
@@ -1056,7 +1060,10 @@ def power_post_extra():
 						auto_check = auto_check,
 						auto_check_type = auto_check_type,
 						auto_opposed = auto_opposed,
-						auto_opposed_type = auto_opposed_type
+						auto_opposed_type = auto_opposed_type,
+						ranks_check = ranks_check,
+						ranks_type = ranks_type,
+						rank = rank
 					)
 
 		db.session.add(entry)

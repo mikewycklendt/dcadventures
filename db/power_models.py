@@ -240,6 +240,9 @@ class Extra(db.Model):
 	auto_check_type = db.Column(db.Integer, db.ForeignKey('power_check_type.id'))
 	auto_opposed = db.Column(db.Integer, db.ForeignKey('power_opposed.id'))
 	auto_opposed_type = db.Column(db.Integer, db.ForeignKey('power_opposed_type.id'))
+	ranks_check = db.Column(db.Boolean)
+	ranks_type  = db.Column(db.String())
+	rank = db.Column(db.Integer, db.ForeignKey('power_ranks.id'))
 
 	variable = db.Column(db.Boolean)
 	character = db.Column(db.Boolean)
@@ -326,7 +329,10 @@ class Extra(db.Model):
 			'auto_check': self.auto_check,
 			'auto_check_type': self.auto_check_type,
 			'auto_opposed': self.auto_opposed,
-			'auto_opposed_type': self.auto_opposed_type
+			'auto_opposed_type': self.auto_opposed_type,
+			'ranks_check': self.ranks_check,
+			'ranks_type': self.ranks_type,
+			'rank': self.rank
 		}
 
 class PowerCost(db.Model):

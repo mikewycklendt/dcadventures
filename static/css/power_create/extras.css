@@ -125,6 +125,16 @@
 	font-size: 80%;
 }
 
+#extras-ranks-check {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+	grid-template-columns: 24% 10% 15% 25%;
+	grid-auto-rows: auto;
+	font-size: 80%;
+}
+
 #extras-required {
 	display: none;
 	max-height: 0;

@@ -104,6 +104,14 @@ function extra_flat() {
 	uncheck_check(check, checks);
 }
 
+function extra_ranks_check() {
+	const check = 'extra_ranks_check';
+	const div = 'extras-ranks-check'
+	const entry = 'extras-entry';
+
+	check_drop(check, div, entry);
+}
+
 let extras_grid = {'titles': false,
 				'columns': [],
 				'font': 80,
@@ -166,6 +174,9 @@ function extras_submit() {
 	const auto_check_type = select("extra_auto_check_type");
 	const auto_opposed = select("extra_auto_opposed");
 	const auto_opposed_type = select("extra_auto_opposed_type");
+	const ranks_check = check("extra_ranks_check");
+	const ranks_type = select("extra_ranks_check");
+	const rank = select("extra_ranks");
 
 	
 	const errors = 'extras-err';
@@ -230,7 +241,10 @@ function extras_submit() {
 			'auto_check': auto_check,
 			'auto_check_type': auto_check_type,
 			'auto_opposed': auto_opposed,
-			'auto_opposed_type': auto_opposed_type
+			'auto_opposed_type': auto_opposed_type,
+			'ranks_check': ranks_check,
+			'ranks_type': ranks_type,
+			'rank': rank
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

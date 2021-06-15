@@ -406,6 +406,24 @@ def get_name(Table, value):
 
 	return (value)
 	
+def get_rank(Table, value):
+	
+	if value is None:
+		value = ''
+		return (value)
+	else:
+		try:
+			name_query = db.session.query(Table).filter_by(id=value).one()
+			value = name_query.ranks
+			value = str(value)
+		except:
+			print('no entry')
+			value = ''
+		finally:
+			db.session.close()
+
+	return (value)
+	
 def descriptor_name(value):
 	
 	if value is None:

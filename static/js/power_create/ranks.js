@@ -102,6 +102,10 @@ function ranks_submit() {
 			ranks_grid.columns.length = 0;
 			ranks_grid.columns = jsonResponse.rows;
 
+			if (extra == '0') {
+				selects_add(id, ranks, 'rank-sml');
+			}
+
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'
 			create_table('power', jsonResponse, ranks_grid, route);

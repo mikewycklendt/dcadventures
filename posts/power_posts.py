@@ -18,7 +18,7 @@ from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, Veh
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
 from db.linked_models import PowerCircType, PowerCheckType, PowerOpposedType, PowerDCType, PowerDegreeType, PowerMoveType, PowerRangedType, PowerTimeType
 
-from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects, preset_convert, db_multiple, id_multiple, get_multiple, var_string, check_when_convert, descriptor_name
+from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects, preset_convert, db_multiple, id_multiple, get_multiple, var_string, check_when_convert, descriptor_name, get_rank
 from functions.create import name_exist, db_insert, capitalize
 from functions.linked import link_add, delete_link, level_add, delete_level, linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link
 from functions.user_functions import user_item
@@ -3916,6 +3916,9 @@ def power_extra_post(entry, body, cells):
 	auto_type = entry.auto_type
 	auto_check = entry.auto_check
 	auto_check_type = entry.auto_check_type
+	ranks_check = entry.ranks_check
+	ranks_type = entry.ranks_type
+	rank = entry.rank
 
 
 	cost = var_string(cost)
@@ -3929,6 +3932,9 @@ def power_extra_post(entry, body, cells):
 	range = get_name(Ranged, range)
 	auto_check = get_keyword(PowerCheck, auto_check)
 	auto_check_type = get_name(PowerCheckType, auto_check_type)
+	rank = get_rank(PowerRanks, rank)
+
+	ranks_type = math_convert(ranks_type)
 
 	extra_type = [{'type': '', 'name': 'Effect Type'}, {'type': 'uncheck', 'name': 'Checked = Unchecked'}, {'type': 'over', 'name': 'Overwrite'}, {'type': 'filled', 'name': 'Overwrite Filled'}, {'type': 'required', 'name': 'Overwrites Required'}, {'type': 'add', 'name': 'Add'}]
 	type = selects(type, extra_type)
@@ -4014,6 +4020,11 @@ def power_extra_post(entry, body, cells):
 	new_mod = mod_create('Changes Range', 16)
 	new_mod = mod_cell('Range', 8, [range], new_mod)
 	body = mod_add(range_check, new_mod, body)
+
+	cells = check_cell('For Rank', 10, ranks_check, cells, True)
+	new_mod = mod_create('Limited to Rank', 18)
+	new_mod = mod_cell('Rank:' 7, [ranks_type, rank], new_mod)
+	body = mod_add(ranks_check, new_mod, body)
 
 	cells = circ_cell('Description', 'Description', 12, des, cells, body)
 
