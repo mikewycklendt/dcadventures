@@ -76,7 +76,7 @@
 
 				<div>
 					<select class="select-sml" id="circ_success_target" name="circ_success_target">
-						{% for s in success_target %}
+						{% for s in more.success_target %}
 							<option value="{{s.type}}">{{s.name}}</option>
 						{% endfor %}
 					</select>
@@ -84,7 +84,7 @@
 
 				<div>
 					<select class="select-sml" id="circ_success_bonus" name="circ_success_bonus" onchange="circ_success_bonus()">
-						{% for s in success %}
+						{% for s in more.success %}
 							<option value="{{s.type}}">{{s.name}}</option>
 						{% endfor %}
 					</select>

@@ -576,7 +576,7 @@
 #mod-points-reroll {
 	display: none;
 	opacity: 0%;
-	grid-template-columns: 25% 25% 25% 25%;
+	grid-template-columns: 25% 23% 27% 25%;
 	transition: all .3s ease-out;
 }
 
