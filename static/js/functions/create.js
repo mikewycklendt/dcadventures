@@ -201,6 +201,19 @@ function check_display(field, divdisplay) {
 	}
 }
 
+function check_hide(field, divdisplay) {
+	const check = document.getElementById(field);
+	const div = document.getElementById(divdisplay);
+
+	if (check.checked == true) {
+		div.style.opacity = '0%';
+		setTimeout(function(){div.style.display = 'none'}, 300);
+	} else {
+		div.style.display = 'grid';
+		setTimeout(function(){div.style.opacity = '100%'}, 10);
+	}
+}
+
 function clear_errors(line, div) {
 		
 	const errors_delete = document.getElementsByClassName(line);

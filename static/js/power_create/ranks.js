@@ -33,9 +33,11 @@ function ranks_unique()  {
 }
 
 function ranks_exclusive() {
-	const check = 'ranks_exclusive'
+	const check = 'ranks_exclusive';
+	const div = 'ranks-stack';
 	const checks = ['ranks_unique', 'ranks_stack']
 
+	check_hide(check, div);
 	uncheck_check(check, checks);
 }
 
