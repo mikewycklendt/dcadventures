@@ -46,7 +46,7 @@
 
 	<div class="opposed-row">
 		<div class="rows">
-			<div>
+			<div class="cell">
 				<select class="select-sml" id="opposed_trait_type" name="opposed_trait_type" onchange="opposed_trait_type()">
 					{% for t in traits %}
 						<option value="{{t.type}}">{{t.name}}</option>
@@ -55,7 +55,7 @@
 				</select>
 			</div>
 
-			<div>
+			<div class="cell">
 				<div class="check-div" style="width: 85%;">
 					<input type="checkbox" id="opposed_secret_player" class="medium-checkbox med-checkbox" > Secret
 				</div>
@@ -64,13 +64,13 @@
 		</div>
 
 		<div class="rows">
-			<div>
+			<div class="cell">
 				<select class="select-sml" id="opposed_trait" name="opposed_trait" onchange="opposed_trait()">
 					<option value="">Trait</option>
 				</select>
 			</div>	
 
-			<div>
+			<div class="cell">
 				<select class="select-sml" id="opposed_player_check" name="opposed_player_check" onchange="opposed_player_check()">
 					<option value="">Player Check Type</option>
 					{% for c in checks %}
@@ -91,7 +91,7 @@
 		</div>
 
 		<div class="rows">
-			<div class="grid small-big">
+			<div class="grid small-big cell">
 				<div>
 					<select class="select-sml" id="opposed_mod" name="opposed_mod">
 						<option value="">Mod</option>
@@ -113,7 +113,7 @@
 				</div>
 			</div>
 
-			<div>
+			<div class="cell">
 				<select class="select-sml" id="opposed_opponent_check" name="opposed_opponent_check" onchange="opposed_opponent_check()">
 					<option value="">Opponent Check Type</option>
 					{% for c in checks %}
@@ -135,7 +135,7 @@
 		</div>
 
 		<div class="rows">
-			<div class="grid big-small">
+			<div class="grid big-small cell">
 				<div>
 					<select class="select-sml" id="opposed_opponent_trait" name="opposed_opponent_trait" onchange="opposed_opponent_trait()">
 						<option value="">Trait</option>
@@ -155,7 +155,7 @@
 				</div>
 			</div>
 
-			<div class="grid split">			
+			<div class="grid split cell">			
 				<div>
 					<div class="check-div" style="width: 89%;">
 						<input type="checkbox" id="opposed_secret" class="medium-checkbox med-checkbox" > Secret
