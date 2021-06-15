@@ -2195,7 +2195,7 @@ class PowerMod(db.Model):
 	side_other = db.Column(db.String())
 	reflect_check = db.Column(db.Integer, db.ForeignKey('power_check.id'))
 	reflect_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
-	subtle_opposed = db.Column(db.Integer, db.ForeignKey('power_opposed.id'))
+	
 	subtle_null_trait_type = db.Column(db.String())
 	subtle_null_trait = db.Column(db.Integer)
 	others_type = db.Column(db.String())

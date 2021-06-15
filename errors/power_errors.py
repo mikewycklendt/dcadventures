@@ -1159,7 +1159,11 @@ def mod_post_errors(data):
 	errors = check_fields(subtle, 'Subtle', [subtle_type], errors)
 	errors = check_field(subtle, 'Subtle', 'Subtle Type', subtle_type, errors)
 	errors = variable_fields('detect', 'Detectable', subtle_type, [subtle_opposed], errors)
-	errors = variable_fields('detect', subtle_type, 'Subtle Opponent Check', subtle_opposed, errors)
+	errors = variable_field('detect', subtle_type, 'Subtle Opponent Check', subtle_opposed, errors)
+	errors = variable_fields('detect_trait', 'Detectable Only With Nullifying Trait', subtle_type, [subtle_opposed, subtle_null_trait_type, subtle_null_trait], errors)
+	errors = variable_field('detect_trait', subtle_type, 'Trait Type', subtle_null_trait_type, errors)
+	errors = variable_field('detect_trait', subtle_type, 'Trait', subtle_null_trait, errors)
+	errors = variable_field('detect_trait', subtle_type, 'Subtle Opponent Check', subtle_opposed, errors)
 
 	
 	errors = check_fields(points, 'Spend Points', [points_type], errors)

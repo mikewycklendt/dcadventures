@@ -517,7 +517,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	strength_based = [{'type': '', 'name': 'Strength Based'}, {'type': 'always', 'name': 'Always'}, {'type': 'turn', 'name': 'Chosen on Turn'}, {'type': 'x', 'name': 'Chosen With Power'}]
 
-	subtle_type = [{'type': '', 'name': 'Subtle Type'}, {'type': 'detect', 'name': 'Detectable'}, {'type': 'undetectable', 'name': 'Undetectable'}, {'type': 'notice', 'name': 'Effect Not Noticeable'}, {'type': 'invisible', 'name': 'Effect Target Invisible'}, {'type': 'understand', 'name': 'Not Understandable'}, {'type': 'silent', 'name': 'Silent'}]
+	subtle_type = [{'type': '', 'name': 'Subtle Type'}, {'type': 'detect', 'name': 'Detectable'}, {'type': 'undetectable', 'name': 'Undetectable'}, {'type': 'notice', 'name': 'Effect Not Noticeable'}, {'type': 'invisible', 'name': 'Effect Target Invisible'}, {'type': 'understand', 'name': 'Not Understandable'}, {'type': 'silent', 'name': 'Silent'}, {'type': 'detect_trait', 'name': 'Detectable Only With Nullifying Trait'}]
 
 	success_target = [{'type': '', 'name': 'Target'}, {'type': 'player', 'name': 'Successful Player'}, {'type': 'choice', 'name': 'Successful Players Choice'}, {'type': 'communicate', 'name': 'Character Successful Player Communnicates With'}, {'type': 'opponent', 'name': 'Opposing Player'}]
 
