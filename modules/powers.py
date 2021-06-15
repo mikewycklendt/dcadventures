@@ -443,6 +443,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	openings = [{'type': '', 'name': 'Move through'}, {'type': 'opening', 'name': 'Less than water tight'}, {'type': 'water', 'name': 'Less than air tight'}, {'type': 'solid', 'name': 'Through Solid'}, {'type': 'any', 'name': 'Throughh anything'}]
 
+	opposed_turn = [{'type': '', 'name': 'Turn'}, {'type': 'effect', 'name': 'Turn Effect is Attempted'}, {'type': 'opponent', 'name': 'Opponents Turn'}, {'type': 'opponent', 'name': "Player who used Effect's Turn"}, {'type': 'opponent', 'name': 'Opponents Turn'}, {'type': 'active_player', 'name': 'Players Turn While Effect is Active'}, {'type': 'active_opponent', 'name': 'Opponents Turn While Effect is Active'}]
+
 	outcome = [{'type': '', 'name': ''}, {'type': '<', 'name': 'Lower'}, {'type': '>', 'name': 'Higher'}]
 	
 	partners = [{'type': '', 'name': 'N/A'}, {'type': 'power', 'name': 'Same Power'}, {'type': 'device', 'name': 'Device'}, {'type': 'both', 'name': 'Power or Device'}, {'type': 'skill', 'name': 'Skill Check'}]
@@ -604,7 +606,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	added = {'check_frequency': check_frequency_special, 'feedback_type': feedback_type, 
 	'persistent_type': persistent_type, 'precise_type': precise_type_special}
 
-	more = {'success': success, 'success_target': success_target}
+	more = {'success': success, 'success_target': success_target, 'opposed_turn': opposed_turn}
 
 
 	return render_template(template, sense_time=sense_time, all_some=all_some, power_sense=power_sense, bonuses=bonuses, sense_type=sense_type, visual=visual, auditory=auditory, olfactory=olfactory, 
@@ -5356,6 +5358,7 @@ def power_post_opposed():
 	power_action = request.get_json()['power_action']
 	attack_player = request.get_json()['attack_player']
 	attack_opp = request.get_json()['attack_opp']
+	turn = request.get_json()['turn']
 
 
 	power_id = db_integer(Power, power_id)
@@ -5454,7 +5457,8 @@ def power_post_opposed():
 						after = after,
 						primary = primary,
 						attack_player = attack_player,
-						attack_opp = attack_opp
+						attack_opp = attack_opp,
+						turn = turn
 					)			
 
 	db.session.add(entry)

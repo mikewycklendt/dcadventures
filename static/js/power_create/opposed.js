@@ -30,9 +30,11 @@ function opposed_attached() {
 					{'val': ['after', 'after_var', 'after_opponent'], 'div': 'opposed-after'},
 					{'val': ['primary'], 'div': 'opposed-primary'}]
 	const fields = ['opposed_before', 'opposed_after', 'opposed_frequency']
+	const after = [{'val': ['after', 'after_var', 'after_opponent'], 'div': 'opposed-turn'}]
 
 	reset_all(fields);
 	select_opacity_shared(select, attached);
+	select_opacity_shared(select, after);
 	select_maxheight_shared(select, options, entry);
 	div_text(select, div, values);
 	div_text(select, opposed_div, values);
@@ -70,7 +72,9 @@ function opposed_recurring() {
 	const check = 'opposed_recurring';
 	const div = 'opposed-recurring';
 	const entry = 'opposed-entry';
+	const turn = 'opposed-turn';
 
+	check_display_only(check, turn);
 	check_drop(check, div, entry);
 }
 
@@ -183,6 +187,7 @@ function opposed_submit() {
 	const power_action = select("action");
 	const attack_player = select("opposed_attack_player");
 	const attack_opp = select("opposed_attack_opp");
+	const turn = select("opposed_turn")
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -244,7 +249,8 @@ function opposed_submit() {
 			'power_check': power_check,
 			'power_action': power_action,
 			'attack_player': attack_player,
-			'attack_opp': attack_opp
+			'attack_opp': attack_opp,
+			'turn': turn
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

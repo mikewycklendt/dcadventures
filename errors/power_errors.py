@@ -3064,6 +3064,7 @@ def power_opposed_post_errors(data):
 	power_action = data['power_action']
 	attack_player = data['attack_player']
 	attack_opp = data['attack_opp']
+	turn = data['turn']
 
 	errors = power_check(power_id, errors)
 	errors = id_check(Power, power_id, 'Power', errors)
@@ -3100,8 +3101,9 @@ def power_opposed_post_errors(data):
 	errors = required(description, 'Description', errors)
 	errors = required(title, 'Title', errors)
 
-	errors = check_fields(recurring, 'Recurring', [recurring_value], errors)
-	errors = check_field(recurring, 'Recurring', 'Recurring Value', recurring_value, errors)
+	errors = check_fields(recurring, 'Recurring', [recurring_value, turn], errors)
+	errors = check_field(recurring, 'Recurring', 'Time Betweem Checks', recurring_value, errors)
+	errors = check_field(recurring, 'Recurring', 'Turn', turn, errors)
 
 	errors = select_check('6', opponent_check, dc_check, 'Resistance Check', 'a DC', errors)
 	errors = select_check('1', opponent_check, dc_check, 'Skill Check', 'a DC', errors)
@@ -3128,6 +3130,9 @@ def power_opposed_post_errors(data):
 	errors = variable_field('after_var', attached, 'After Check', after, errors)
 	errors = variable_field('after_opponent', attached, 'After Check', after, errors)
 	errors = variable_field('primary', attached, 'Frequency', frequency, errors)
+	errors = variable_field('after_opponent', attached, 'After Check', turn, errors)
+	errors = variable_field('after_var', attached, 'After Check', turn, errors)
+	errors = variable_field('after', attached, 'After Check', turn, errors)
 
 	errors = select_of('opponent', 'Happens After an Opponent Check', 'Attached', attached, [opponent, opposed], ['Opponent Check'], errors)
 	errors = seperate([opposed, opponent], 'Opponent Check', errors)

@@ -201,6 +201,16 @@ function check_display(field, divdisplay) {
 	}
 }
 
+function check_display_only(field, divdisplay) {
+	const check = document.getElementById(field);
+	const div = document.getElementById(divdisplay);
+
+	if (check.checked == true) {
+		div.style.display = 'grid';
+		setTimeout(function(){div.style.opacity = '100%'}, 10);
+	}
+}
+
 function check_hide(field, divdisplay) {
 	const check = document.getElementById(field);
 	const div = document.getElementById(divdisplay);

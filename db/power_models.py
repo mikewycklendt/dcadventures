@@ -1346,6 +1346,7 @@ class PowerOpposed(db.Model):
 	primary = db.Column(db.Boolean)
 	attack_player = db.Column(db.Integer, db.ForeignKey('ranged.id'))
 	attack_opp = db.Column(db.Integer, db.ForeignKey('ranged.id'))
+	turn = db.Column(db.String())
 
 
 	def format(self):
@@ -1397,7 +1398,8 @@ class PowerOpposed(db.Model):
 			'after': self.after,
 			'primary': self.primary,
 			'attack_player': self.attack_player,
-			'attack_opp': self.attack_opp
+			'attack_opp': self.attack_opp,
+			'turn': self.turn
 		}
 
 

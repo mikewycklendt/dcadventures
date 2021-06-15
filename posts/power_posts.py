@@ -3516,6 +3516,7 @@ def power_opposed_post(entry, body, cells):
 	after = entry.after
 	attack_player = entry.attack_player
 	attack_opp = entry.attack_opp
+	turn = entry.turn
 
 	title_name = get_name(PowerOpposedType, title)
 	body['title'] = title_name
@@ -3559,7 +3560,10 @@ def power_opposed_post(entry, body, cells):
 	variable_check = one_of(variable, [variable, 'Variable Check'])
 	variable_check = one_of(variable_type, [variable_type, 'Variable Check'], variable_check)
 
-	attached_select = [{'type': '', 'name': 'Attached'}, {'type': 'primary', 'name': 'Primary Check'}, {'type': 'condition', 'name': 'Conditional Check'}, {'type': 'before', 'name': 'Before Primary Check'}, {'type': 'after', 'name': 'After Primary Check'}, {'type': 'before_var', 'name': 'Before Variable Check'}, {'type': 'after_var', 'name': 'After Variable Check'}, {'type': 'opponent', 'name': 'After Opponent Check'}]
+	opposed_turn = [{'type': 'effect', 'name': 'On Turn Effect is Attempted'}, {'type': 'opponent', 'name': 'On Opponents Turn'}, {'type': 'opponent', 'name': "On Player who used Effect's Turn"}, {'type': 'opponent', 'name': 'On Opponents Turn'}, {'type': 'active_player', 'name': 'On Players Turn While Effect is Active'}, {'type': 'active_opponent', 'name': 'On Opponents Turn While Effect is Active'}]
+	turn = selects(turn, opposed_turn)
+
+	attached = [{'type': '', 'name': 'Attached'}, {'type': 'primary', 'name': 'Primary Check'}, {'type': 'condition', 'name': 'Conditional'}, {'type': 'before', 'name': 'Before Primary Check'}, {'type': 'after', 'name': 'After Primary Check ' + turn}, {'type': 'before_var', 'name': 'Before  ' + variable_check + ' Variable Check'}, {'type': 'after_var', 'name': 'After ' + variable_check +  ' Variable Check ' + turn}, {'type': 'before_opponent', 'name': 'Before ' + opposed_check + ' Opponent Check'}, {'type': 'after_opponent', 'name': 'After ' + opposed_check + ' Opponent Check ' + turn}]
 	attached = selects(attached, attached_select)
 
 	after_select = [{'type': '', 'name': 'After Check'}, {'type': 'target', 'name': 'If Opponent Targeted'}, {'type': 'always', 'name': 'Always'}, {'type': 'choice', 'name': 'Player Choice'}, {'type': 'fail', 'name': 'After Player Failure'}, {'type': 'fail_choice', 'name': 'After Player Failure Optional'}, {'type': 'success', 'name': 'After Player Success'}, {'type': 'success_choice', 'name': 'After Player Success Optional'}, {'type': 'opp_fail', 'name': 'After Opponent Failure'}, {'type': 'opp_fail_choice', 'name': 'After Opponent Failure Optional'}, {'type': 'opp_success', 'name': 'After Opponent Success'}, {'type': 'opp_success_choice', 'name': 'After Opponent Success Optional'}]

@@ -127,7 +127,7 @@
 
 #opposed-button-row {
 	display: grid;
-	grid-template-columns: 35% 25% 20% 20%;
+	grid-template-columns: 30% 30% 20% 20%;
 }
 
 #opposed-hidden {

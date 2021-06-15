@@ -394,8 +394,8 @@
 		</div>
 
 		<div>
-			<select class="select-sml recur-title-sml" id="opposed_recurring_type" name="opposed_recurring_type">
-				<option value="">Time by Group</option>
+			<select class="select-sml time-title-sml" id="opposed_recurring_type" name="opposed_recurring_type">
+				<option value="">Time Effect by Group</option>
 				<option value="">Use Time Effect form to put options here</option>
 				{% for p in power_time_type %}
 					<option value={{p.id}}>{{p.name}}</option>
@@ -436,7 +436,16 @@
 	</div>
 
 	<div id="opposed-button-row">
+		<div></div>
+
 		<div>
+			<div class="hidden" id="opposed-turn">
+				<select class="select-entry" id="opposed_turn" name="opposed_turn">
+					{% for o in more.opposed_turn %}
+						<option value="{{o.type}}">{{o.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
 		</div>
 
 		<div>
