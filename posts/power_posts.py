@@ -1052,6 +1052,7 @@ def mod_post(entry, body, cells):
 	points_rerolls = entry.points_rerolls
 	points_reroll_result = entry.points_reroll_result
 	points_give = entry.points_give
+	points_negate = entry.points_negate
 	ranks = entry.ranks
 	cost = entry.cost	
 	extra = entry.extra
@@ -1197,6 +1198,7 @@ def mod_post(entry, body, cells):
 	points_give = integer_convert(points_give)
 	feedback_mod = integer_convert(feedback_mod)
 	advantage_rank = integer_convert(advantage_rank)
+	points_negate = integer_convert(points_negate)
 
 	feedback_type_select = [{'type': '', 'name': 'Feedback Type'}, {'type': 'mod', 'name': feedback_mod + ' Reaistance Modifier'}, {'type': 'defense', 'name': 'Power Rank For ' + feedback_defense}]
 	feedback_type = selects(feedback_type, feedback_type_select)
@@ -1376,15 +1378,17 @@ def mod_post(entry, body, cells):
 
 	cells = check_cell('Permanent', 10, permanent, cells)
 
-	cells = check_cell('Points', 8, points, cells, True)		
-	spend = [{'type': '', 'name': 'Effect'}, {'type': 'reroll', 'name': 'Spend to Re-roll', 'w': 20}, {'type': 'give', 'name': 'Spend to Give Points', 'w': 20}, {'type': 'negate', 'name': 'Spend to Negate Reroll', 'w': 20}]
-	new_mod = mod_create('Points Rerolls', 17, points_type, spend)
+	cells = check_cell('Rerolls', 9, points, cells, True)		
+	spend = [{'type': '', 'name': 'Effect'}, {'type': 'reroll', 'name': 'Spend to Re-roll', 'w': 20}, {'type': 'give', 'name': 'Give Luck Points', 'w': 20}, {'type': 'negate', 'name': 'Spend to Negate Reroll', 'w': 20}]
+	new_mod = mod_create('Rerolls', 17, points_type, spend)
 	value = 'reroll'
 	new_mod = mod_cell('Target:', 8, [points_reroll_target], new_mod, value)
 	new_mod = mod_cell('Cost:', 6, [points_reroll_cost], new_mod, value)
 	new_mod = mod_cell('Rerolls:', 10, [points_reroll_result], new_mod, value)
 	value = 'give'
 	new_mod = mod_cell('Points Per Round:', 18, [points_give], new_mod, value)
+	value = 'negate'
+	new_mod = mod_cell('Cost to Negate:', 16, [points_negate], new_mod, value)
 	body = mod_add(points, new_mod, body)
 
 	cells = check_cell('Ranks', 7, ranks_check, cells, True)

@@ -2658,6 +2658,7 @@ def power_post_mod():
 	points_rerolls = request.get_json()['points_rerolls']
 	points_reroll_result = request.get_json()['points_reroll_result']
 	points_give = request.get_json()['points_give']
+	points_negate = request.get_json()['points_negate']
 	ranks = request.get_json()['ranks']
 	cost = request.get_json()['cost']
 	columns = request.get_json()['columns']
@@ -2756,7 +2757,7 @@ def power_post_mod():
 	feedback_mod = integer(feedback_mod)
 	advantage_rank = integer(advantage_rank)
 	limited_material_other_tough = integer(limited_material_other_tough)
-
+	points_negate = integer(points_negate)
 
 	body = linked_ref(PowerDamage, area_damage, 'Damage Effect', 'effect', body)
 	body = linked_ref(PowerRangedType, area_ranged, 'Ranged Effect', 'effect', body)
@@ -2891,6 +2892,7 @@ def power_post_mod():
 							points_rerolls = points_rerolls,
 							points_reroll_result = points_reroll_result,
 							points_give = points_give,
+							points_negate = points_negate,
 							ranks = ranks,
 							cost = cost,
 							extra = extra,

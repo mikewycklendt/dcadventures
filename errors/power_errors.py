@@ -968,6 +968,7 @@ def mod_post_errors(data):
 	points_rerolls = data['points_rerolls']
 	points_reroll_result = data['points_reroll_result']
 	points_give = data['points_give']
+	points_negate = data['points_negate']
 	ranks = data['ranks']
 	cost = data['cost']
 	extra = data['extra']
@@ -1057,6 +1058,7 @@ def mod_post_errors(data):
 	errors = int_check(points_give, 'Points Given Per Round', errors)
 	errors = int_check(feedback_mod, 'Feedback Resistance Modifier', errors)
 	errors = int_check(advantage_rank, 'Advantage Ranks', errors)
+	errors = int_check(points_negate, 'Negate Reroll Cost', errors)
 
 	errors = check_fields(affects_objects, 'Affects Objects', [objects_alone, objects_character], errors)
 	errors = check_field(affects_objects, 'Affects Objects', 'Affect Object Alone', objects_alone, errors)
@@ -1168,6 +1170,8 @@ def mod_post_errors(data):
 	errors = variable_field('reroll', points_type, 'Re-roll Target', points_reroll_target, errors)
 	errors = variable_fields('give', 'Give Points', points_type, [points_give], errors)
 	errors = variable_field('give', points_type, 'Points Given Per Round', points_give, errors)
+	errors = variable_fields('negate', 'Negate Reroll', points_type, [points_negate], errors)
+	errors = variable_field('negate', points_type, 'Negate Reroll Cost', points_negate, errors)
 	
 	errors = check_fields(ranks_check, 'Gain Trait', [ranks_trait_type, ranks_trait, ranks_ranks, ranks_mod], errors)
 	errors = check_field(ranks_check, 'Gain Trait', 'Trait Type', ranks_trait_type, errors)

@@ -2213,6 +2213,7 @@ class PowerMod(db.Model):
 	points_rerolls = db.Column(db.Integer)
 	points_reroll_result = db.Column(db.String())
 	points_give = db.Column(db.Integer)
+	points_negate = db.Column(db.Integer)
 	ranks = db.Column(db.Integer, db.ForeignKey('power_ranks.id'))
 	cost = db.Column(db.Integer, db.ForeignKey('power_cost.id'))
 	extra_count = db.Column(db.Integer)
@@ -2358,6 +2359,7 @@ class PowerMod(db.Model):
 			'points_rerolls': self.points_rerolls,
 			'points_reroll_result': self.points_reroll_result,
 			'points_give': self.points_give,
+			'points_negate': self.points_negate,
 			'ranks_cost': self.ranks_cost,
 			'cost': self.cost,
 			'extra_count': self.extra_count,

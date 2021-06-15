@@ -1392,7 +1392,7 @@
 
 	<div id="mod-points">
 		<div>
-			Spend Points:
+			Rerolls:
 		</div>
 
 		<div>
@@ -1445,6 +1445,17 @@
 				<div>
 					<select class="select-sml" id="mod_points_give" name="mod_points_give">
 						<option value="">Points Per Round</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+			
+			<div id="mod-points-negate">
+				<div>
+					<select class="select-sml" id="mod_points_negate" name="mod_points_negate">
+						<option value="">Point Cost</option>
 						{% for i in positives %}
 							<option value={{i}}>{{i}}</option>
 						{% endfor %}

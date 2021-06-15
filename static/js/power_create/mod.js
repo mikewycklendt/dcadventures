@@ -300,7 +300,8 @@ function mod_ranks_trait() {
 function mod_points_type() {
 	const field = 'mod_points_type';
 	const options =  [{'val': 'reroll', 'div': 'mod-points-reroll'},
-					{'val': 'give', 'div': 'mod-points-give'},];
+					{'val': 'give', 'div': 'mod-points-give'},
+					{'val': 'negate', 'div': 'mod-points-negate'}];
 
 	
 	select_opacity(field, options)
@@ -634,6 +635,7 @@ function mod_submit() {
 	const points_rerolls = select("mod_points_rerolls");
 	const points_reroll_result = select("mod_points_reroll_result");
 	const points_give = select("mod_points_give");
+	const points_negate = select("mod_points_negate");
 	const ranks = select("mod_ranks");
 	const cost = select("mod_cost");
 	const extra = check("mod_extra");
@@ -786,6 +788,7 @@ function mod_submit() {
 			'points_rerolls': points_rerolls,
 			'points_reroll_result': points_reroll_result,
 			'points_give': points_give,
+			'points_negate': points_negate,
 			'ranks': ranks,
 			'cost': cost,
 			'columns': columns,
