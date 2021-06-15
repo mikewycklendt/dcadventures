@@ -1213,7 +1213,7 @@ def mod_post(entry, body, cells):
 
 	progressive_type_select = [{'type': '', 'name': 'Progressive Type'}, {'type': 'increase', 'name': 'Failure Increases Effect Degree'}, {'type': 'repeat', 'name': 'Failure Repeats Effect'}, {'type': 'rank', 'name': 'Progress Through Rank Effects'}]
 	precise_type = selects(progressive_type, progressive_type_select)
-	
+
 	cells = cell('Extra', 15, [extra])
 	cells = check_cell('Affects Objects', 16, affects_objects, cells, True)
 	new_mod = mod_create('Affects Objects', 20)
@@ -3844,6 +3844,7 @@ def power_ranks_post(entry, body, cells, base_cost, base_ranks):
 	effect = entry.effect
 	required = entry.required
 	required_type = entry.required_type
+	exclusive = entry.exclusive
 
 	ranks = integer_convert(ranks)
 
@@ -3862,6 +3863,7 @@ def power_ranks_post(entry, body, cells, base_cost, base_ranks):
 	cells = cell('Ranks', 12, [ranks], cells)
 	cells = cell('Cost', 12, [calculated], cells)
 	cells = check_cell('Unique', 8, unique, cells)
+	cells = check_cell('Exclusive', 12, exclusive, cells)
 	cells = circ_cell('Effect', 'Effect', 8, effect, cells, body)
 	cells = circ_cell('Required', 'Required Extra', 10, required, cells, body)
 	body = send(cells, body)

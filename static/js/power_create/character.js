@@ -443,10 +443,13 @@ function char_submit() {
 			
 			if (trait != '' || reduced_trait != '') {
 				selects_add('trait', 'Changes to Traits Permanent', 'permanent-sml', char_counts.trait);
+				char_counts.trait += 1;
 			}
 
 			if (insubstantial === true) {
 				selects_add('insub', 'Permanently Insubstantial', 'permanent-sml', char_counts.insub);	
+				selects_add('body', 'Effects Speecific Parts of Body', 'precise-sml', char_counts.insub);
+				char_counts.insub += 1;
 			}
 			
 			char_grid.columns.length = 0;

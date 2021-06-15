@@ -24,10 +24,19 @@ function ranks_required() {
 }
 
 function ranks_unique()  {
-	const check ='ranks_unique';
+	const check = 'ranks_unique';
 	const div = 'ranks-stack';
+	const checks = ['ranks_exclusive']
 
+	uncheck_check(check, checks);
 	check_display(check, div);
+}
+
+function ranks_exclusive() {
+	const check = 'ranks_exclusive'
+	const checks = ['ranks_unique', 'ranks_stack']
+
+	uncheck_check(check, checks);
 }
 
 let ranks_grid = {'titles': false,
@@ -53,6 +62,7 @@ function ranks_submit() {
 	const effect = text("ranks_effect")
 	const required = select("ranks_required");
 	const required_type = select("ranks_required_type");
+	const exclusive = check("ranks_exclusive");
 
 	const errors = 'ranks-err';
 	const err_line = 'ranks-err-line';
@@ -73,7 +83,8 @@ function ranks_submit() {
 			'base_flat': base_flat,
 			'effect': effect,
 			'required': required,
-			'required_type': required_type
+			'required_type': required_type,
+			'exclusive': exclusive
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

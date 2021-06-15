@@ -459,6 +459,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	precise_type = [{'type': '', 'name': 'Precise Type'}, {'type': 'objects', 'name': 'Fine Msnipulation of Objects'}, {'type': 'body', 'name': 'Effects Speecific Parts of Body'}, {'type': 'choice', 'name': 'Choose What Effect Affects'}]
 
+	precise_type_special = [{'type': 'body', 'name': 'Effects Speecific Parts of Body'}]
+
 	progressive_type = [{'type': '', 'name': 'Progressive Type'}, {'type': 'increase', 'name': 'Failure Increases Effect Degree'}, {'type': 'repeat', 'name': 'Failure Repeats Effect'}, {'type': 'rank', 'name': 'Progress Through Rank Effects'}]
 
 	ranged_type = [{'type': '', 'name': 'Ranged Type'}, {'type': 'flat_units', 'name': 'Flat Units'}, {'type': 'distance_rank', 'name': 'Flat Distance Rank'}, {'type': 'units_rank', 'name': 'Units Per Rank'}, {'type': 'rank_rank', 'name': 'Distance Rank Per Rank'}, {'type': 'effect_mod', 'name': 'Effect Rank Modifier'}, {'type': 'trait_mod', 'name': 'Trait Rank Modifier'}, {'type': 'distance_mod', 'name': 'Distance Rank Modifier'}, {'type': 'check', 'name': 'Check Result'}, {'type': 'penalty', 'name': 'Range Penalty Modifier'}, {'type': 'general', 'name': 'General'}]
@@ -599,7 +601,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	
 	power_damage = linked_options(PowerDamage, Power, 'power_id', 'name')
 
-	added = {'check_frequency': check_frequency_special, 'feedback_type': feedback_type, 'persistent_type': persistent_type}
+	added = {'check_frequency': check_frequency_special, 'feedback_type': feedback_type, 
+	'persistent_type': persistent_type, 'precise_type': precise_type_special}
 
 	more = {}
 
@@ -1279,6 +1282,7 @@ def power_post_ranks():
 	effect = request.get_json()['effect']
 	required = request.get_json()['required']
 	required_type = request.get_json()['required_type']
+	exclusive = request.get_json()['exclusive']
 
 	power_id = integer(power_id)
 	cost = db_integer(PowerCost, cost)
@@ -1295,7 +1299,8 @@ def power_post_ranks():
 							unique = unique,
 							effect = effect,
 							required = required,
-							required_type = required_type)
+							required_type = required_type,
+							exclusive = exclusive)
 
 		db.session.add(entry)
 		db.session.commit()

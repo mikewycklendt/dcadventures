@@ -361,6 +361,7 @@ class PowerRanks(db.Model):
 	effect = db.Column(db.String())
 	required = db.Column(db.Integer, db.ForeignKey('extras.id'))
 	required_type = db.Column(db.String())
+	exclusive = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -372,7 +373,8 @@ class PowerRanks(db.Model):
 			'unique': self.unique,
 			'effect': self.effect,
 			'required': self.required,
-			'required_type': self.required_type
+			'required_type': self.required_type,
+			'exclusive': self.exclusive
 		}
 
 class PowerCheck(db.Model):

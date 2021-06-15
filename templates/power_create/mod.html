@@ -449,8 +449,11 @@
 			Precise:
 		</div>
 
-		<select class="select-sml" id="mod_precise_type" name="mod_precise_type">
+		<select class="select-sml precise-sml" id="mod_precise_type" name="mod_precise_type">
 			{% for p in precise_type %}
+				<option value="{{p.type}}">{{p.name}}</option>
+			{% endfor %}
+			{% for p in added.precise_type %}
 				<option value="{{p.type}}">{{p.name}}</option>
 			{% endfor %}
 		</select>
