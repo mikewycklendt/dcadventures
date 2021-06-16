@@ -190,6 +190,12 @@ def narrow_creature_select():
 		if sub == 'variable-other':
 			options.append(var)
 			options.append(other)
+			if type_id == 21:
+				similar = db.session.query(NarrowCreature).filter(NarrowCreature.similar == True).first()
+				options.append({'id': similar.id, 'name': similar.name})
+			else:
+				same = db.session.query(NarrowCreature).filter(NarrowCreature.same == True).first()
+				options.append({'id': same.id, 'name': same.name})
 		for n in narrow:
 			options.append({'id': n.id, 'name': n.name})
 	except:

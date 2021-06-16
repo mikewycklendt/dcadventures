@@ -953,7 +953,7 @@ def db_integer(table, value, exception=False):
 			db.session.close()
 	elif value == 'time':
 		try:
-			query = db.session.query(table).filter_by(time=True, value=None).first()
+			query = db.session.query(table).filter_by(time=True).first()
 			value = query.id
 		except:
 			print(value)
@@ -962,7 +962,7 @@ def db_integer(table, value, exception=False):
 			db.session.close()
 	elif value == 'distance':
 		try:
-			query = db.session.query(table).filter_by(distance=True, value=None).first()
+			query = db.session.query(table).filter_by(distance=True).first()
 			value = query.id
 		except:
 			print(value)
@@ -971,7 +971,25 @@ def db_integer(table, value, exception=False):
 			db.session.close()
 	elif value == 'speed':
 		try:
-			query = db.session.query(table).filter_by(speed=True, value=None).first()
+			query = db.session.query(table).filter_by(speed=True).first()
+			value = query.id
+		except:
+			print(value)
+			return (value)
+		finally:
+			db.session.close()
+	elif value == 'same':
+		try:
+			query = db.session.query(table).filter_by(same=True).first()
+			value = query.id
+		except:
+			print(value)
+			return (value)
+		finally:
+			db.session.close()
+	elif value == 'similar':
+		try:
+			query = db.session.query(table).filter_by(similar=True).first()
 			value = query.id
 		except:
 			print(value)
@@ -1267,28 +1285,42 @@ def id_check(table, value_id, name, errors, exception=False):
 			error_msgs.append(message)
 		db.session.close()
 	elif value_id == 'select':
-		query = db.session.query(table).filter_by(select=True, value=None).first()
+		query = db.session.query(table).filter_by(select=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
 		db.session.close()
 	elif value_id == 'time':
-		query = db.session.query(table).filter_by(time=True, value=None).first()
+		query = db.session.query(table).filter_by(time=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
 		db.session.close()
 	elif value_id == 'distance':
-		query = db.session.query(table).filter_by(distance=True, value=None).first()
+		query = db.session.query(table).filter_by(distance=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
 		db.session.close()
 	elif value_id == 'speed':
-		query = db.session.query(table).filter_by(speed=True, value=None).first()
+		query = db.session.query(table).filter_by(speed=True).first()
+		if query is None:
+			message = 'Not a valid option for ' + name
+			error = True
+			error_msgs.append(message)
+		db.session.close()
+	elif value_id == 'same':
+		query = db.session.query(table).filter_by(same=True).first()
+		if query is None:
+			message = 'Not a valid option for ' + name
+			error = True
+			error_msgs.append(message)
+		db.session.close()
+	elif value_id == 'similar':
+		query = db.session.query(table).filter_by(similar=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True

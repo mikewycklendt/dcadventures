@@ -125,32 +125,6 @@ def home_mobile(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, m
 	return render_template('template_mobile.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
 
-@app.route('/narrow/create')
-def narrow_create():
-
-	entries = ['Same Size and Gender']
-
-	for i in entries:
-
-		entry = NarrowCreature(name=i, creature=21, similar=True)
-		db.session.add(entry)
-		db.session.commit()
-
-	entries = ['Same Mass']
-
-	for i in entries:
-
-		entry = NarrowCreature(name=i, same=True)
-		db.session.add(entry)
-		db.session.commit()
-	
-	results = NarrowCreature.query.all()
-
-	for result in results:
-		print (result.id)
-		print (result.name)
-
-	return ('creatures added')
 
 if __name__ == '__main__':
 	app.debug = True
