@@ -17,25 +17,6 @@ def creatures_create():
 
 	return ('creatures added')
 
-@app.route('/creatures/create')
-def creatures_create():
-
-	entries = ['Elves', 'Sea']
-
-	for i in entries:
-
-		entry = Creature(name=i)
-		db.session.add(entry)
-		db.session.commit()
-
-	results = Creature.query.all()
-
-	for result in results:
-		print (result.id)
-		print (result.name)
-
-	return ('creatures added')
-
 @app.route('/narrow/create')
 def narrow_create():
 
@@ -43,7 +24,7 @@ def narrow_create():
 
 	for i in entries:
 
-		entry = Narrow(name=i, creature=9, show=True)
+		entry = NarrowCreature(name=i, creature=9, show=True)
 		db.session.add(entry)
 		db.session.commit()
 
@@ -51,7 +32,7 @@ def narrow_create():
 
 	for i in entries:
 
-		entry = Narrow(name=i, creature=19, show=True)
+		entry = NarrowCreature(name=i, creature=19, show=True)
 		db.session.add(entry)
 		db.session.commit()
 
@@ -60,7 +41,7 @@ def narrow_create():
 
 	for i in entries:
 
-		entry = Narrow(name=i, creature=21, similar=True)
+		entry = NarrowCreature(name=i, creature=21, similar=True)
 		db.session.add(entry)
 		db.session.commit()
 
@@ -68,12 +49,12 @@ def narrow_create():
 
 	for i in entries:
 
-		entry = Narrow(name=i, same=True)
+		entry = NarrowCreature(name=i, same=True)
 		db.session.add(entry)
 		db.session.commit()
 	
 
-	results = Narrow.query.all()
+	results = NarrowCreature.query.all()
 
 	for result in results:
 		print (result.id)
