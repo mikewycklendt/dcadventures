@@ -55,6 +55,22 @@ def narrow_create():
 		db.session.add(entry)
 		db.session.commit()
 
+
+	entries = ['Same Size and Gender']
+
+	for i in entries:
+
+		entry = Narrow(name=i, creature=21, similar=True)
+		db.session.add(entry)
+		db.session.commit()
+
+	entries = ['Same Mass']
+
+	for i in entries:
+
+		entry = Narrow(name=i, same=True)
+		db.session.add(entry)
+		db.session.commit()
 	
 
 	results = Narrow.query.all()

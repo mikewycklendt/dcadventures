@@ -125,38 +125,32 @@ def home_mobile(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, m
 	return render_template('template_mobile.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
 
+@app.route('/narrow/create')
+def narrow_create():
 
-@app.route('/table/db')
-def table_db_columns_create():
+	entries = ['Same Size and Gender']
 
+	for i in entries:
 
-	name = 'Time Rank'
+		entry = NarrowCreature(name=i, creature=21, similar=True)
+		db.session.add(entry)
+		db.session.commit()
 
-	entry = Unit(time=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
+	entries = ['Same Mass']
 
-	name = 'Distance Rank'
+	for i in entries:
 
-	entry = Unit(distance=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-
-	name = 'Speed Rank'
-
-	entry = Unit(speed=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-
-
-	results = db.session.query(Unit).filter_by(hide=True).all()
+		entry = NarrowCreature(name=i, same=True)
+		db.session.add(entry)
+		db.session.commit()
+	
+	results = NarrowCreature.query.all()
 
 	for result in results:
 		print (result.id)
 		print (result.name)
 
-	return ('Unit Ranks db added')
-
+	return ('creatures added')
 
 if __name__ == '__main__':
 	app.debug = True
