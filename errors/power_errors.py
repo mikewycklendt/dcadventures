@@ -310,8 +310,7 @@ def character_post_errors(data):
 	errors = check_field(points, 'Hero Points', 'Trait Type', points_trait_type, errors)
 	errors = check_field(points, 'Hero Points', 'Trait', points_trait, errors)
 
-	errors = check_fields(appear, 'Alters Appearance', [appear_target, appear_form], errors)
-	errors = check_field(appear, 'Alters Appearance', 'Target', appear_target, errors)
+	errors = check_fields(appear, 'Alters Appearance', [appear_form], errors)
 	errors = check_field(appear, 'Alters Appearance', 'Form', appear_form, errors)
 
 	errors = variable_fields('broad', 'Broad Form', appear_form, [appear_creature], errors)

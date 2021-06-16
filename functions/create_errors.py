@@ -15,7 +15,7 @@ from db.skill_models import *
 from db.vehicle_models import *
 from db.weapon_models import *
 
-from functions.converts import get_name, db_integer
+from functions.converts import get_name, db_integer, integer
 
 from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
@@ -1093,6 +1093,59 @@ def required_rule(value, field, table, id, column, required, trait, rule, name, 
 
 	return (errors)
 
+def required_subrule(value, field, values, table, column, name, required, trait_name, trait_id, trait_column, errors, multiple=False, second_column=False, second_value=False, int_convert=False):
+		
+	error_msgs = errors['error_msgs']
+	error = True
+	count = 0
+	add = ''
+
+	message = 'If this rule ' + name + ' you musr create a ' + required ' for this ' + trait_name
+
+	if value != '' and value != True:
+		return (errors)
+
+	for v in values:
+		if v == field:
+			return (errors)
+	
+	id = int(trait_id)
+	trait = getattr(table, trait_column) 
+	trait_filter = trait == id
+	if second_column != False:
+		second_attr = getattr(table, second_column)
+		if int_convert:
+			second_value = integer(second_value)
+		second_filter = second_attr == second_value
+		check = db.session.query(table).filter(trait_filter, second_filter).first()
+	else:
+		check = db.session.query(table).filter(trait_filter).first()
+	if check is None:
+		error = True
+	else:
+		if second_column != False:
+			check = db.session.query(table).filter(trait_filter, second_filter).all()
+		else:
+			check = db.session.query(table).filter(trait_filter).all()
+		for c in check:
+			value_field = getattr(c, column)
+			for v in values:
+				if v == value_field:
+					count += 1 
+	if multiple:
+		if count > 1:
+			error = False
+	else:
+		if count > 0:
+			error = False 
+
+	if error:
+		error_msgs.append(message)
+		errors['error_msgs'] = error_msgs
+		errors['error'] = error
+
+	return (errors)
+
 	
 def required_variable(value, table, field, name, table_name, trait, selection, column, id, errors):
 		
@@ -1120,7 +1173,7 @@ def required_variable(value, table, field, name, table_name, trait, selection, c
 
 	return (errors)
 	
-def required_link_field(table, column, id, field, table_name, trait, fieldname, errors, second_column=False, second_value=False):
+def required_link_field(table, column, id, field, table_name, trait, fieldname, errors, second_column=False, second_value=False, int_convert=False):
 		
 	error_msgs = errors['error_msgs']
 	error = False
@@ -1133,6 +1186,8 @@ def required_link_field(table, column, id, field, table_name, trait, fieldname, 
 			check = db.session.query(table).filter(the_filter).first()
 		else:
 			second_attribute = getattr(table, second_column)
+			if int_convert:
+				second_value = integer(second_value)
 			second_filter = second_attribute == second_value
 			check = db.session.query(table).filter(the_filter, second_filter).first()
 		if check is None:
@@ -1153,8 +1208,7 @@ def required_link_field(table, column, id, field, table_name, trait, fieldname, 
 
 	return (errors)
 
-def variable_required_rules(value, field, rulename, required, table_name, table, column, id, errors, second_column=False, second_value=False, any=False):
-		
+def variable_required_rules(value, field, rulename, required, table_name, table, column, id, errors, second_column=False, second_value=False, any=False, int_convert=False):
 	error_msgs = errors['error_msgs']
 	error = False
 
@@ -1173,6 +1227,8 @@ def variable_required_rules(value, field, rulename, required, table_name, table,
 				second_filter = second_attribute != second_value
 			else:
 				second_attribute = getattr(table, second_column)
+				if int_convert:
+					second_value = integer(second_value)
 				second_filter = second_attribute == second_value
 			check = db.session.query(table).filter(the_filter, second_filter).first()
 		if check is None:
