@@ -331,6 +331,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	deg_mod_weaken_type = [{'type': '', 'name': 'Points Type'}, {'type': 'val', 'name': 'Value'}, {'type': 'degree', 'name': 'Value Per Degree'}, {'type': 'check', 'name': 'Check Difference'}]
 
+	degree_effect = [{'type': '', 'name': 'Degree Effects'}, {'type': 'all', 'name': 'All of Degree Effects'}, {'type': 'this', 'name': 'This Degree Effect'}, {'typw': 'choice', 'name': 'Chosen on Turn'}]
+
 	degree_type = [{'type': '', 'name': 'Degree Type'}, {'type': '>', 'name': '>'}, {'type': '<', 'name': '<'}, {'type': '>=', 'name': '>='}, {'type': '<=', 'name': '<='} ]
 
 	degree_multiple = [{'type': '', 'name': 'If Multiple'}, {'type': 'turn', 'name': 'Choose on Turn'}, {'type': 'x', 'name': 'Choose When Aquiring'}, {'type': 'all', 'name': 'All Take Effect'}]
@@ -606,7 +608,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	added = {'check_frequency': check_frequency_special, 'feedback_type': feedback_type, 
 	'persistent_type': persistent_type, 'precise_type': precise_type_special}
 
-	more = {'success': success, 'success_target': success_target, 'opposed_turn': opposed_turn}
+	more = {'success': success, 'success_target': success_target, 'opposed_turn': opposed_turn,
+			'degree_effect': degree_effect}
 
 
 	return render_template(template, sense_time=sense_time, all_some=all_some, power_sense=power_sense, bonuses=bonuses, sense_type=sense_type, visual=visual, auditory=auditory, olfactory=olfactory, 
@@ -2615,6 +2618,7 @@ def power_post_mod():
 	limited_language_type = request.get_json()['limited_language_type']
 	limited_degree_type = request.get_json()['limited_degree_type']
 	limited_degree = request.get_json()['limited_degree']
+	limited_degree_effect = request.get_json()['limited_degree_effect']
 	limited_sense = request.get_json()['limited_sense']
 	limited_subsense = request.get_json()['limited_subsense']
 	limited_sense_depend = request.get_json()['limited_sense_depend']
@@ -2709,7 +2713,7 @@ def power_post_mod():
 	area_ranged = db_integer(PowerRangedType, area_ranged)
 	area_damage = db_integer(PowerDamage, area_damage)
 	reflect_check = db_integer(PowerCheck, reflect_check)
-	subtle_opposed = db_integer(PowerOpposed, subtle_opposed)
+	subtle_opposed = db_integer(PowerOpposedType, subtle_opposed)
 	extra_circ = db_integer(PowerCircType, extra_circ)
 	extra_circ = db_integer(PowerDCType, extra_dc)
 	extra_circ = db_integer(PowerDegreeType, extra_degree)
@@ -2851,6 +2855,7 @@ def power_post_mod():
 							limited_language_type = limited_language_type,
 							limited_degree_type = limited_degree_type,
 							limited_degree = limited_degree,
+							limited_degree_effect = limited_degree_effect,
 							limited_sense = limited_sense,
 							limited_subsense = limited_subsense,
 							limited_sense_depend = limited_sense_depend,

@@ -21,7 +21,7 @@ from functions.create import name_exist, db_insert, capitalize
 from functions.linked import link_add, delete_link, level_add, delete_level, linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link
 from functions.user_functions import user_item
 
-from functions.create_errors import primary_exist, required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_field_of, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable, not_required, seperate_checks, checked_invalid_option, variable_fields_of, incompatible, valid_options, extra_option, variable_required_rules, cross_check, variable_field_required, dependent_of
+from functions.create_errors import primary_exist, required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_field_of, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable, not_required, seperate_checks, checked_invalid_option, variable_fields_of, incompatible, valid_options, extra_option, variable_required_rules, cross_check, variable_field_required, dependent_of, incompatible_multiple
 from functions.create_posts import send_multiple, one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string, circ_cell
 
 from create_functions.power_create import power_check, rule_check, rule_select, cost_check, extra_cost, extra_check, extra_convert, field_cost, multiple_cost, variable_cost, sense_cost, power_rules, valid_extra, ranks_error, ranks_function, cost_error, cost_exist, cost_check_table, degree_check, extra_cost_exist, multiple_error, trait_cost, power_sense_condition, power_reflect_immune, extra_rule_select
@@ -928,6 +928,7 @@ def mod_post_errors(data):
 	limited_language_type = data['limited_language_type']
 	limited_degree_type = data['limited_degree_type']
 	limited_degree = data['limited_degree']
+	limited_degree_effect = data['limited_degree_effect']
 	limited_sense = data['limited_sense']
 	limited_subsense = data['limited_subsense']
 	limited_descriptor = data['limited_descriptor']
@@ -1007,7 +1008,7 @@ def mod_post_errors(data):
 	errors = id_check(PowerDamage, area_damage, 'Damage Effect', errors)
 	errors = id_check(PowerRangedType, area_ranged, 'Ranged by Group', errors)
 	errors = id_check(PowerCheck, reflect_check, 'check', errors)
-	errors = id_check(PowerOpposed, subtle_opposed, 'Opponent Check', errors)
+	errors = id_check(PowerOpposedType, subtle_opposed, 'Opponent Check', errors)
 	errors = id_check(PowerCircType, extra_circ, 'Extra Circumstance', errors)
 	errors = id_check(PowerDCType, extra_dc, 'Extra DC', errors)
 	errors = id_check(PowerDegreeType, extra_degree, 'Extra Degree', errors)
@@ -1100,9 +1101,11 @@ def mod_post_errors(data):
 	errors = variable_fields('extra', 'Limited to Extra Effect', limited_type, [limited_extra], errors)
 	errors = variable_field('extra', limited_type, 'Extra', limited_extra, errors)
 
-	errors = variable_fields('degree', 'Limited by Degree of Success', limited_type, [limited_degree, limited_degree_type], errors)
+	errors = variable_fields('degree', 'Limited by Degree of Success', limited_type, [limited_degree, limited_degree_type, limited_degree_effect], errors)
 	errors = variable_field('degree', limited_type, 'Degree of Success', limited_degree, errors)
 	errors = variable_field('degree', limited_type, 'Degree Type', limited_degree_type, errors)
+	errors = variable_field('degree', limited_type, 'Effects', limited_degree_effect, errors)
+	errors = incompatible_multiple('this', limited_degree_effect, ['>', '>=', '<', '<='], limited_degree_tpe, 'is limited to this degrees effect', 'degree type', '=', errors)
 
 	errors = variable_fields('sense', 'Limited by Sense', limited_type, [limited_sense], errors)
 	errors = variable_field('sense', limited_type, 'Sense', limited_sense, errors)

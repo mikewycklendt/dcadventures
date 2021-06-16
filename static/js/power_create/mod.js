@@ -590,6 +590,7 @@ function mod_submit() {
 	const limited_language_type = select("mod_limited_language_type");
 	const limited_degree_type = select("mod_limited_degree_type");
 	const limited_degree = select("mod_limited_degree");
+	const limited_degree_effect = select("mod_limited_degree_effect");
 	const limited_sense = select("mod_limited_sense");
 	const limited_subsense = select("mod_limited_subsense");
 	const limited_sense_depend = check("mod_limited_sense_depend");
@@ -743,6 +744,7 @@ function mod_submit() {
 			'limited_language_type': limited_language_type,
 			'limited_degree_type': limited_degree_type,
 			'limited_degree': limited_degree,
+			'limited_degree_effect': limited_degree_effect,
 			'limited_sense': limited_sense,
 			'limited_subsense': limited_subsense,
 			'limited_sense_depend': limited_sense_depend,

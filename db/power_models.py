@@ -2173,6 +2173,7 @@ class PowerMod(db.Model):
 	limited_language_type = db.Column(db.String())
 	limited_degree_type = db.Column(db.String())
 	limited_degree = db.Column(db.Integer, db.ForeignKey('power_degree.id'))
+	limited_degree_effect = db.Column(db.String())
 	limited_sense = db.Column(db.Integer, db.ForeignKey('senses.id'))
 	limited_subsense = db.Column(db.String())
 	limited_sense_depend = db.Column(db.Boolean)
@@ -2319,6 +2320,7 @@ class PowerMod(db.Model):
 			'limited_language_type': self.limited_language_type,
 			'limited_degree_type': self.limited_degree_type,
 			'limited_degree': self.limited_degree,
+			'limited_degree_effect': self.limited_degree_effect,
 			'limited_sense': self.limited_sense,
 			'limited_subsense': self.limited_subsense,
 			'limited_sense_depend': self.limited_sense_depend,

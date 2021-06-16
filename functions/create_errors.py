@@ -440,7 +440,29 @@ def incompatible(value, field, dependent, val, f, fieldname, name, errors):
 			error = True
 				
 	if error:
-		message = 'If this rule uses ' + dependent + ' the ' + fieldname + ' cannot be set to ' + na,e
+		message = 'If this rule uses ' + dependent + ' the ' + fieldname + ' cannot be set to ' + name
+		error_msgs.append(message)
+
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def incompatible_multiple(value, field, values, f, dependent, fieldname, name, errors):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if field != value:
+		return (errors)
+	else:
+		for v in values:
+			if f == v:
+				error = True
+				
+	if error:
+		message = 'If this rule ' + dependent + ' the ' + fieldname + ' must be set to ' + name
 		error_msgs.append(message)
 
 

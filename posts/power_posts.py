@@ -1014,6 +1014,7 @@ def mod_post(entry, body, cells):
 	limited_language_type = entry.limited_language_type
 	limited_degree_type = entry.limited_degree_type
 	limited_degree = entry.limited_degree
+	limited_degree_effect = entry.limited_degree_effect
 	limited_sense = entry.limited_sense
 	limited_subsense = entry.limited_subsense
 	limited_descriptor = entry.limited_descriptor
@@ -1095,7 +1096,7 @@ def mod_post(entry, body, cells):
 	area_damage = get_keyword(PowerDamage, area_damage)
 	area_ranged = get_name(PowerRangedType, area_ranged)
 	reflect_check = get_keyword(PowerCheck, reflect_check)
-	subtle_opposed = get_keyword(PowerOpposed, subtle_opposed)
+	subtle_opposed = get_name(PowerOpposedType, subtle_opposed)
 	extra_degree = get_name(PowerDegreeType, extra_degree)
 	extra_dc = get_name(PowerDCType, extra_dc)
 	extra_circ = get_name(PowerCircType, extra_circ)
@@ -1216,6 +1217,9 @@ def mod_post(entry, body, cells):
 	progressive_type_select = [{'type': '', 'name': 'Progressive Type'}, {'type': 'increase', 'name': 'Failure Increases Effect Degree'}, {'type': 'repeat', 'name': 'Failure Repeats Effect'}, {'type': 'rank', 'name': 'Progress Through Rank Effects'}]
 	precise_type = selects(progressive_type, progressive_type_select)
 
+	degree_effect_select = [{'type': '', 'name': 'Effects'}, {'type': 'all', 'name': 'All of Degree Effects'}, {'type': 'this', 'name': 'This Degree Effect'}, {'typw': 'choice', 'name': 'Chosen on Turn'}]
+	limited_degree_effect = selects(limited_degree_effect, degree_effect_select)
+
 	cells = cell('Extra', 15, [extra])
 	cells = check_cell('Affects Objects', 16, affects_objects, cells, True)
 	new_mod = mod_create('Affects Objects', 20)
@@ -1269,6 +1273,7 @@ def mod_post(entry, body, cells):
 	value = 'degree'
 	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
 	new_mod = mod_cell('Degree:', 8, [limited_degree_type, limited_degree], new_mod, value)
+	new_mod = mod_cell('Effect', 8, [limited_degree_effect], new_mod, value)
 	value = 'sense'
 	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
 	new_mod = mod_cell('Sense:', 7, [limited_sense], new_mod, value)

@@ -858,7 +858,7 @@
 						{% for m in measure_type %}
 							<option value="{{m.type}}">{{m.name}}</option>
 						{% endfor %}
-					</select>		
+					</select>
 				</div>
 
 				<div>
@@ -871,7 +871,13 @@
 					</select>
 				</div>
 
-				<div></div>
+				<div>
+					<select class="select-sml" id="mod_limited_degree_effect" name="mod_limited_degree_effect">
+						{% for d in more.degree_effect %}
+							<option value="{{d.type}}">{{d.name}}</option>
+						{% endfor %}
+					</select>	
+				</div>
 			</div>
 
 			<div id="mod-limited-ground">
@@ -1258,8 +1264,8 @@
 		</div>
 
 		<div>
-			<select class="opposed-sml" id="mod_subtle_opposed" name="mod_subtle_opposed">
-				<option value="">Opponent Check</option>
+			<select class="opposed-title-sml" id="mod_subtle_opposed" name="mod_subtle_opposed">
+				<option value="">Opponent Check Group</option>
 				<option value="">Use Opponent Check form to put options here</option>
 				{% for p in power_opposed %}
 					<option value={{p.id}}>{{p.name}}</option>
