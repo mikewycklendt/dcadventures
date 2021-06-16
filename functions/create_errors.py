@@ -1100,7 +1100,7 @@ def required_subrule(value, field, values, table, column, name, required, trait_
 	count = 0
 	add = ''
 
-	message = 'If this rule ' + name + ' you musr create a ' + required + ' for this ' + trait_name
+	message = 'If this ' + name + ' you musr create a ' + required + ' for this ' + trait_name
 
 	if value != '' and value != True:
 		return (errors)
