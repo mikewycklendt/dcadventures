@@ -240,13 +240,31 @@
 
 	<div id="extras-required">
 		<div class="valign">
-			Required Extra:
+			Required:
 		</div>
 
 		<div>		
 			<select class="select-sml" id="extra_required" name="extra_required">
 				<option value=>Required Extra</option>
 			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="extra_required_power" name="extra_required_power" onchange="extra_required_power()">
+				<option value="">Required Power</option>
+				{% for p in powers %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div class="hidden" id="extra-required-power-rank">
+			<aelect class="select-sml" id="extra_required_power_rank" name="extra_required_power_rank">
+				<option value="">Ranks</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</aelect>
 		</div>
 	</div>
 

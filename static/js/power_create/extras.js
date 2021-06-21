@@ -112,6 +112,13 @@ function extra_ranks_check() {
 	check_drop(check, div, entry);
 }
 
+function extra_required_power() {
+	const select = 'extra_required_power';
+	const div = 'extra-required-power-rank';
+
+	select_opacity_any(select, div);
+}
+
 let extras_grid = {'titles': false,
 				'columns': [],
 				'font': 80,
@@ -138,6 +145,8 @@ function extras_submit() {
 	const type = select("extra_type");
 	const required_check = check("extra_required_check");
 	const required = select("extra_required");
+	const required_power = select("extra_required_power");
+	const required_power_rank = select("extra_required_power_rank");
 	const extra_effect = check("extra_extra_effect");
 	const extra_effect_count = select("extra_extra_effect_count");
 	const variable = check("extra_variable");
@@ -206,6 +215,8 @@ function extras_submit() {
 			'type': type,
 			'required_check': required_check,
 			'required': required,
+			'required_power': required_power,
+			'required_power_rank': required_power_rank,
 			'extra_effect': extra_effect,
 			'extra_effect_count': extra_effect_count,
 			'variable': variable,

@@ -3418,6 +3418,8 @@ def power_extra_post_errors(data):
 	type = data['type']
 	required_check = data['required_check']
 	required = data['required']
+	required_power = data['required_power']
+	required_power_rank = data['required_power_rank']
 	extra_effect = data['extra_effect']
 	extra_effect_count = data['extra_effect_count']
 	variable = data['variable']
@@ -3463,7 +3465,7 @@ def power_extra_post_errors(data):
 	errors = int_check(cost, 'Cost', errors)
 	errors = int_check(ranks, 'Ranks', errors)
 
-	errors = id_check(Power, inherit, 'Power', errors)
+	errors = id_check(Power, inherit, 'Inherited Power', errors)
 	errors = id_check(Action, action, 'Action', errors)
 	errors = id_check(Ranged, range, 'Range', errors)
 	errors = id_check(Skill, skill_type, 'Skill', errors)
@@ -3474,6 +3476,8 @@ def power_extra_post_errors(data):
 	errors = id_check(PowerOpposed, auto_opposed, 'Automatic Opponent Check', errors)
 	errors = id_check(PowerOpposedType, auto_opposed_type, 'Automatic Opponent Check Group', errors)
 
+	errors = id_check(Power, required_power, 'Required Power', errors
+
 	errors = required(name, 'Name', errors)
 	errors = not_required(alternate, cost, 'Cost', errors)
 	errors = not_required(alternate, ranks, 'Ranks', errors, 'x', cost)
@@ -3482,8 +3486,8 @@ def power_extra_post_errors(data):
 	errors = check_fields(extra_effect, 'Extra Effect', [extra_effect_count], errors)
 	errors = check_field(extra_effect, 'Extra Effect', 'Extra Effects Count', extra_effect_count, errors)
 
-	errors = check_fields(required_check, 'Required Extra', [required], errors)
-	errors = check_field(required_check, 'Required Extra', 'Required Extra', required, errors)
+	errors = check_of(required_check, 'Required', 'a Required Extra or Required Power', [required, required_power], errors)
+	errors = required_if_any(required_power, 'Required Power Ranks', required_power_rank, errors)
 
 	errors = check_fields(auto, 'Automatic Check', [auto_type], errors)
 	errors = check_field(auto, 'Automatic Check', 'Check Type', auto_type, errors)

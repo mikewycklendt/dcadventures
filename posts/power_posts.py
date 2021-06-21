@@ -3950,6 +3950,7 @@ def power_extra_post(entry, body, cells):
 	ranks = integer_convert(ranks)
 	inherit = get_name(Power,inherit)
 	required = get_name(Extra, required)
+	required_power = get_name(Power, required_power)
 
 	skill_type = get_name(Skill, skill_type)
 	skill = get_name(SkillBonus, skill)
@@ -3972,6 +3973,7 @@ def power_extra_post(entry, body, cells):
 	target = selects(target, target_select)
 
 	action_limit = integer_convert(action_limit)
+	required_power_rank = integer_convert(required_power_rank)
 
 	cells = cell('Name', 23, [name])
 	cells = cell('Cost', 12, [cost], cells)
@@ -3986,6 +3988,7 @@ def power_extra_post(entry, body, cells):
 	cells = check_cell('Required', 9, required_check, cells, True)
 	new_mod = mod_create('Required', 10)
 	new_mod = mod_cell('Extra:', 7, [required], new_mod)
+	new_mod = mod_cell('Power:', 7, [required_power_rank, 'Ranks of', required_power], new_mod)
 	body = mod_add(required_check, new_mod, body)
 
 	cells = check_cell('Automatic', 11, auto, cells, True)

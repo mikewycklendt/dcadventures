@@ -220,6 +220,8 @@ class Extra(db.Model):
 	type = db.Column(db.String())
 	required_check = db.Column(db.Boolean)
 	required = db.Column(db.Integer, db.ForeignKey('extras.id'))
+	required_power = db.Column(db.Integer, db.ForeignKey('powers.id'))
+	required_power_rank = db.Column(db.Integer)
 	extra_effect_count = db.Column(db.Integer)
 	extra_effect = db.Column(db.Boolean)
 	target_check = db.Column(db.Boolean)
@@ -287,6 +289,8 @@ class Extra(db.Model):
 			'type': self.type,
 			'required_check': self.required_check,
 			'required': self.required,
+			'required_power': self.required_power,
+			'required_power_rank': self.required_power_rank,
 			'variable': self.variable,
 			'character': self.character,
 			'circ': self.circ,

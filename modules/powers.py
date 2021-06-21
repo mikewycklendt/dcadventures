@@ -957,6 +957,8 @@ def power_post_extra():
 	type = request.get_json()['type']
 	required_check = request.get_json()['required_check']
 	required = request.get_json()['required']
+	required_power = request.get_json()['required_power']
+	required_power_rank = request.get_json()['required_power_rank']
 	extra_effect = request.get_json()['extra_effect']
 	extra_effect_count = request.get_json()['extra_effect_count']
 	variable = request.get_json()['variable']
@@ -1009,12 +1011,14 @@ def power_post_extra():
 	auto_opposed = db_integer(PowerOpposed, auto_opposed)
 	auto_opposed_type = db_integer(PowerOpposedType, auto_opposed_type)
 	rank = db_integer(PowerRanks, rank)
+	required_power = db_integer(Power, required_power)
 
 	extra_effect_count = integer(extra_effect_count)
 	cost = var_convert(cost)
 	ranks = var_convert(ranks)
 
 	action_limit = integer(action_limit)
+	required_power_rank = integer(required_power_rank)
 
 	try:
 		entry = Extra(power_id = power_id,
@@ -1030,6 +1034,8 @@ def power_post_extra():
 						type = type,
 						required_check = required_check,
 						required = required,
+						required_power = required_power,
+						required_power_rank = required_power_rank,
 						extra_effect = extra_effect,
 						extra_effect_count = extra_effect_count,
 						variable = variable,

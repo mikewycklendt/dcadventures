@@ -140,7 +140,7 @@
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
-	grid-template-columns: 24% 25% 25% 25%;
+	grid-template-columns: 24% 25% 25% 12%;
 	grid-auto-rows: auto;
 	font-size: 80%;
 }
