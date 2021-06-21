@@ -1952,7 +1952,7 @@ class PowerDefense(db.Model):
 			'immunity_consequence': self.immunity_consequence,
 			'immunity_suffocate': self.immunity_suffocate,
 			'immunity_fall_surface': self.immunity_fall_surface,
-			'immunity_fall_stop': self.immunity_fall_stop
+			'immunity_fall_stop': self.immunity_fall_stop,
 			'immunity_env': self.immunity_env,
 			'immunity_temp': self.immunity_temp,
 			'immunity_extremity': self.immunity_extremity,
