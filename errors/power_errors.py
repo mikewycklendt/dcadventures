@@ -3476,7 +3476,7 @@ def power_extra_post_errors(data):
 	errors = id_check(PowerOpposed, auto_opposed, 'Automatic Opponent Check', errors)
 	errors = id_check(PowerOpposedType, auto_opposed_type, 'Automatic Opponent Check Group', errors)
 
-	errors = id_check(Power, required_power, 'Required Power', errors
+	errors = id_check(Power, required_power, 'Required Power', errors)
 
 	errors = required(name, 'Name', errors)
 	errors = not_required(alternate, cost, 'Cost', errors)
