@@ -131,7 +131,7 @@ function defense_immunity_consequence() {
 	const options = [{'val': '5', 'div': 'defense-immunity-suffocate'},
 					{'val': '6', 'div': 'defense-immunity-fall'}];
 	const fields = ['defense_immunity_suffocate'];
-	const checks = ['defense_immunity_fall_surface'];
+	const checks = ['defense_immunity_fall_surface', 'defense_immunity_fall_stop'];
 
 	reset_all(fields);
 	uncheck_all(checks);
@@ -225,6 +225,7 @@ function defense_submit() {
 	const immunity_consequence = select("defense_immunity_consequence");
 	const immunity_suffocate = select("defense_immunity_suffocate");
 	const immunity_fall_surface = check("defense_immunity_fall_surface")
+	const immunity_fall_stop = check("defense_immunity_fall_stop");
 	const immunity_env = select("defense_immunity_env");
 	const immunity_temp = select("defense_immunity_temp");
 	const immunity_extremity = select("defense_immunity_extremity");
@@ -289,6 +290,7 @@ function defense_submit() {
 			'immunity_consequence': immunity_consequence,
 			'immunity_suffocate': immunity_suffocate,
 			'immunity_fall_surface': immunity_fall_surface,
+			'immunity_fall_stop': immunity_fall_stop,
 			'immunity_env': immunity_env,
 			'immunity_temp': immunity_temp,
 			'immunity_extremity': immunity_extremity,

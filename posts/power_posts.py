@@ -568,6 +568,8 @@ def defense_post(entry, body, cells):
 	cover_check = entry.cover_check
 	cover_type = entry.cover_type
 	immunity_consequence = entry.immunity_consequence
+	immunity_fall_stop = entry.immunity_fall_stop
+	immunity_fall_surface = entry.immunity_fall_surface
 	immunity_suffocate = entry.immunity_suffocate
 	immunity_env = entry.immunity_env
 	immunity_temp = entry.immunity_temp
@@ -673,6 +675,7 @@ def defense_post(entry, body, cells):
 	new_mod = mod_cell('Consequence:', 13, [immunity_consequence], new_mod, value)
 	new_mod = mod_cell('Suffocatiom Type', 18, [immunity_suffocate], new_mod, value)
 	new_mod = mod_cell('Requires Surface', 17, [immunity_fall_surface], new_mod, value)
+	new_mod = mod_cell('Can Stop with Handhold', 25, [immunity_fall_stop], new_mod, value)
 	value = 'env'
 	new_mod = mod_cell('Environment:', 14, [immunity_environment], new_mod, value)
 	new_mod = mod_cell('Environment Condition:', 22, [immunity_temp], new_mod, value)

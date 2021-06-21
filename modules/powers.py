@@ -2071,6 +2071,7 @@ def power_post_defense():
 	immunity_consequence = request.get_json()['immunity_consequence']
 	immunity_suffocate = request.get_json()['immunity_suffocate']
 	immunity_fall_surface = request.get_json()['immunity_fall_surface']
+	immunity_fall_stop = request.get_json()['immunity_fall_stop']
 	immunity_env = request.get_json()['immunity_env']
 	immunity_temp = request.get_json()['immunity_temp']
 	immunity_extremity = request.get_json()['immunity_extremity']
@@ -2152,6 +2153,7 @@ def power_post_defense():
 								immunity_consequence = immunity_consequence,
 								immunity_suffocate = immunity_suffocate,
 								immunity_fall_surface = immunity_fall_surface,
+								immunity_fall_stop = immunity_fall_stop,
 								immunity_env = immunity_env,
 								immunity_temp = immunity_temp,
 								immunity_extremity = immunity_extremity,
