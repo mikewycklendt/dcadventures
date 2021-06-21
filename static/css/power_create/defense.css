@@ -221,7 +221,7 @@
 	display: none;
 	opacity: 0%;
 	transition: all .3s ease-out;
-	grid-template-columns: 25% 75%;
+	grid-template-columns: 28% 72%;
 	gap: .2vw;
 }
 
