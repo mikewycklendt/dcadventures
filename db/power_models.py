@@ -1443,6 +1443,7 @@ class PowerTime(db.Model):
 	next = db.Column(db.Boolean)
 	scene = db.Column(db.Boolean)
 	instant = db.Column(db.Boolean)
+	never = db.Column(db.Boolean)
 	player = db.Column(db.Boolean)
 	gm = db.Column(db.Boolean)
 	maintain = db.Column(db.Boolean)
@@ -1517,7 +1518,8 @@ class PowerTime(db.Model):
 			'action': self.action,
 			'on_check': self.on_check,
 			'points': self.points,
-			'value_rank': self.value_rank
+			'value_rank': self.value_rank,
+			'never': self.never
 		}
 
 

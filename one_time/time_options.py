@@ -62,8 +62,14 @@ def time_db_columns_create():
 	entry = SkillTime(check=True, keyword=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
+	
+	name = 'Never Again'
 
-	results = db.session.query(SkillTime).filter_by(hide=True).all()
+	entry = PowerTime(never=True, keyword=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+
+	results = db.session.query(PowerTime).filter_by(hide=True).all()
 
 	for result in results:
 		print (result.id)

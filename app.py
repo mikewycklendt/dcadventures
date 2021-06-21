@@ -125,6 +125,24 @@ def home_mobile(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, m
 	return render_template('template_mobile.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
 
+@app.route('/time/options')
+def time_db_columns_create():
+	
+	name = 'Never Again'
+
+	entry = PowerTime(never=True, keyword=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+
+	results = db.session.query(PowerTime).filter_by(hide=True).all()
+
+	for result in results:
+		print (result.id)
+		print (result.keyword)
+
+	return ('time fields added')
+
+
 
 if __name__ == '__main__':
 	app.debug = True
