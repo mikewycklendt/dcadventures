@@ -41,7 +41,9 @@
 		
 		<div>
 			<select class="select-sml" id="dam_trait_type" name="dam_trait_type" onchange="dam_trait_type()">
-			{% for t in traits %}
+			<option value="this_power">This Power</option>
+			<option value="this_extra">This Extra</option>
+			{% for t in base_traits %}
 				<option value="{{t.type}}">{{t.name}}</option>
 			{% endfor %}
 			{% for o in object_damage %}

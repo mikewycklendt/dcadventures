@@ -2236,6 +2236,10 @@ class PowerMod(db.Model):
 	advantage_rank = db.Column(db.Integer)
 	advantage_rank_per = db.Column(db.Boolean)
 	advantage_effect = db.Column(db.Boolean)
+	advantage_bonus = db.Column(db.Boolean)
+	advantage_damage = db.Column(db.Integer, db.ForeignKey('power_damage.id'))
+	advantage_damage_bonus = db.Column(db.Integer)
+	advantage_damage_bonus_rank = db.Column(db.Boolean)
 	precise_type = db.Column(db.Boolean)
 	sustained_action = db.Column(db.Integer, db.ForeignKey('actions.id'))
 	sustained_no_move = db.Column(db.Boolean)
@@ -2383,6 +2387,10 @@ class PowerMod(db.Model):
 			'advantage_rank': self.advantage_rank,
 			'advantage_rank_per': self.advantage_rank_per,
 			'advantage_effect': self.advantage_effect,
+			'advantage_bonus': self.advantage_bonus,
+			'advantage_damage': self.advantage_damage,
+			'advantage_damage_bonus': self.advantage_damage_bonus,
+			'advantage_damage_bonus_rank': self.advantage_damage_bonus_rank,
 			'precise_type': self.precise_type,
 			'sustained_action': self.sustained_action,
 			'sustained_no_move': self.sustained_no_move,

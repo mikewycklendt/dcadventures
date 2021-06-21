@@ -425,6 +425,17 @@ function mod_adv() {
 	check_drop(check, div, entry);
 }
 
+function mod_advantage_bonus() {
+	const check = 'mod_advantage_bonus';
+	const div = 'mod-advantage-bonus';
+	const entry = 'mod-entry';
+	const fields = ['mod_advantage_damage', 'mod_advantage_damage_bonus']
+	const checks = ['mod_advantage_damage_bonus_rank']
+
+	reset_all(fields);
+	uncheck_all(checks);
+	check_drop(check, div, entry);
+}
 function mod_precise() {
 	const check = 'mod_precise';
 	const div = 'mod-precise';
@@ -657,6 +668,10 @@ function mod_submit() {
 	const advantage_rank = select("mod_advantage_rank");
 	const advantage_rank_per = check("mod_advantage_rank_per");
 	const advantage_effect = check("mod_advantage_effect");
+	const advantage_bonus = check("mod_advantage_bonus");
+	const advantage_damage = select("mod_advantage_damage");
+	const advantage_damage_bonus = select("mod_advantage_damage_bonus");
+	const advantage_damage_bonus_rank = check("mod_advantage_damage_bonus_rank");
 	const precise_type = select("mod_precise_type");
 	const sustained_action = select("mod_sustained_action");
 	const sustained_no_move = check("mod_sustained_no_move");
@@ -814,6 +829,10 @@ function mod_submit() {
 			'advantage_rank': advantage_rank,
 			'advantage_rank_per': advantage_rank_per,
 			'advantage_effect': advantage_effect,
+			'advantage_bonus': advantage_bonus,
+			'advantage_damage': advantage_damage,
+			'advantage_damage_bonus': advantage_damage_bonus,
+			'advantage_damage_bonus_rank': advantage_damage_bonus_rank,
 			'precise_type': precise_type,
 			'sustained_action': sustained_action,
 			'sustained_no_move': sustained_no_move,

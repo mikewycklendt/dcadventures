@@ -988,6 +988,10 @@ def mod_post_errors(data):
 	advantage = data['advantage']
 	advantage_rank = data['advantage_rank']
 	advantage_rank_per = data['advantage_rank_per']
+	advantage_bonus = data['advantage_bonus']
+	advantage_damage = data['advantage_damage']
+	advantage_damage_bonus = data['advantage_damage_bonus']
+	advantage_damage_bonus_rank = data['advantage_damage_bonus_rank']
 	precise_type = data['precise_type']
 	sustained_action = data['sustained_action']
 	concentration_type = data['concentration_type']
@@ -1023,6 +1027,7 @@ def mod_post_errors(data):
 	errors = id_check(PowerDegreeType, persistent_degree, 'Persistent Degree Group', errors)
 	errors = id_check(PowerCheckType, others_check, 'Affects Others Variable Check Group', errors)
 	errors = id_check(PowerOpposedType, others_opposed, 'Affects Others Opponent Check Group', errors)
+	errors = id_check(PowerDamage, advantage_damage, 'Advantage Damage', errors)
 
 	errors = power_check(power_id, errors)
 
@@ -1061,6 +1066,7 @@ def mod_post_errors(data):
 	errors = int_check(feedback_mod, 'Feedback Resistance Modifier', errors)
 	errors = int_check(advantage_rank, 'Advantage Ranks', errors)
 	errors = int_check(points_negate, 'Negate Reroll Cost', errors)
+	errors = int_check(advantage_damage_bonus, 'Advantage Damage Bonus', errors)
 
 	errors = check_fields(affects_objects, 'Affects Objects', [objects_alone, objects_character], errors)
 	errors = check_field(affects_objects, 'Affects Objects', 'Affect Object Alone', objects_alone, errors)
@@ -1221,6 +1227,9 @@ def mod_post_errors(data):
 	errors = check_fields(adv, 'Advantage Ranks', [advantage, advantage_rank], errors)
 	errors = check_field(adv, 'Advantage Ranks', 'Advantage', advantage, errors)
 	errors = check_field(adv, 'Advantage Ranks', 'Rsnks', advantage_rank, errors)
+	errors = check_fields(advantage_bonus, 'Advantage Damage Bonus', [advantage_damage, advantage_damage_bonus], errors)
+	errors = check_field(advantage_bonus, 'Advantage Damage Bonus', 'Damage Effect', advantage_damage, errors)
+	errors = check_field(advantage_bonus, 'Advantage Damage Bonus', 'Damage Bonus', advantage_damage_bonus, errors)
 
 	errors = check_fields(precise, 'Precise', [precise_type], errors)
 	errors = check_field(precise, 'Precise', 'Precise Type', precise_type, errors)

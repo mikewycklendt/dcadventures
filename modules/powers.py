@@ -2688,6 +2688,10 @@ def power_post_mod():
 	advantage_rank = request.get_json()['advantage_rank']
 	advantage_rank_per = request.get_json()['advantage_rank_per']
 	advantage_effect = request.get_json()['advantage_effect']
+	advantage_bonus = request.get_json()['advantage_bonus']
+	advantage_damage = request.get_jsom()['advantage_damage']
+	advantage_damage_bonus = request.get_json()['advantage_damage_bonus']
+	advantage_damage_bonus_rank = request.get_json()['advantage_damage_bonus_rank']
 	precise_type = request.get_json()['precise_type']
 	sustained_action = request.get_json()['sustained_action']
 	sustained_no_move = request.get_json()['sustained_no_move']
@@ -2728,6 +2732,7 @@ def power_post_mod():
 	persistent_degree = db_integer(PowerDegreeType, persistent_degree)
 	others_check = db_integer(PowerCheckType, others_opposed)
 	others_opposed = db_integer(PowerOpposedType, others_opposed)	
+	advantage_damage = db_integer(PowerDamage, advantage_damage)
 
 	power_id = integer(power_id)
 	extra_id = db_integer(Extra, extra_id)
@@ -2764,6 +2769,7 @@ def power_post_mod():
 	advantage_rank = integer(advantage_rank)
 	limited_material_other_tough = integer(limited_material_other_tough)
 	points_negate = integer(points_negate)
+	advantage_damage_bonus = integer(advantage_damage_bonus)
 
 	body = linked_ref(PowerDamage, area_damage, 'Damage Effect', 'effect', body)
 	body = linked_ref(PowerRangedType, area_ranged, 'Ranged Effect', 'effect', body)
@@ -2920,6 +2926,10 @@ def power_post_mod():
 							advantage_rank = advantage_rank,
 							advantage_rank_per = advantage_rank_per,
 							advantage_effect = advantage_effect,
+							advantage_bonus = advantage_bonus,
+							advantage_damage = advantage_damage,
+							advantage_damage_bonus = advantage_damage_bonus,
+							advantage_damage_bonus_rank = advantage_damage_bonus_rank,
 							precise_type = precise_type,
 							sustained_action = sustained_action,
 							sustained_no_move = sustained_no_move,

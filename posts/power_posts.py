@@ -1073,6 +1073,10 @@ def mod_post(entry, body, cells):
 	advantage_rank = entry.advantage_rank
 	advantage_rank_per = entry.advantage_rank_per
 	advantage_effect = entry.advantage_effect
+	advantage_bonus = entry.advantage_bonus
+	advantage_damage = entry.advantage_damage
+	advantage_damage_bonus = entry.advantage_damage_bonus
+	advantage_damage_bonus_rank = entry.advantage_damage_bonus_rank
 	precise_type = entry.precise_type
 	sustained_action = entry.sustained_action
 	concentration_type = entry.concentration_type
@@ -1111,6 +1115,7 @@ def mod_post(entry, body, cells):
 	persistent_degree = get_name(PowerDegreeType, persistent_degree)
 	others_check = get_name(PowerCheckType, others_check)
 	others_opposed = get_name(PowerOpposedType, others_opposed)
+	advantage_damage = get_keyword(PowerDamage, advantage_damage)
 
 	limited_trait = trait_select(limited_trait, limited_trait_type)
 	subtle_null_trait = trait_select(subtle_null_trait, subtle_null_trait_type)
@@ -1200,6 +1205,7 @@ def mod_post(entry, body, cells):
 	feedback_mod = integer_convert(feedback_mod)
 	advantage_rank = integer_convert(advantage_rank)
 	points_negate = integer_convert(points_negate)
+	advantage_damage_bonus = integer_convert(advantage_damage_bonus)
 
 	feedback_type_select = [{'type': '', 'name': 'Feedback Type'}, {'type': 'mod', 'name': feedback_mod + ' Reaistance Modifier'}, {'type': 'defense', 'name': 'Power Rank For ' + feedback_defense}]
 	feedback_type = selects(feedback_type, feedback_type_select)
@@ -1451,11 +1457,14 @@ def mod_post(entry, body, cells):
 	body = mod_add(feedback, new_mod, body)
 	
 	word = check_string('Per Rank', advantage_rank_per)
+	word2 = check_string('Per Rank', advantage_damage_bonus_rank)
+	advantage_damage_bonus = add_plus(advantage_damage_bonus)
 	cells = check_cell('Advantage', 11, adv, cells, True)
 	new_mod = mod_create('Advantage Ranks', 17)
 	new_mod = mod_cell('Advantage', 12, [advantage], new_mod)
 	new_mod = mod_cell('Ranks', 7, [advantage_rank, word], new_mod)
-	new_mod = mod_cell('Limited to Effect', 18, [advantage_effect], new_mod)	
+	new_mod = mod_cell('Limited to Effect', 18, [advantage_effect], new_mod)
+	new_mod = mod_cell('Damage Bonus:', 14, [advantage_damage_bonus, advantage_damage_bonus_rank, 'Bonus on', advantage_damage, 'Damage Effect'], errors)
 	body = mod_add(adv, new_mod, body)
 	
 	cells = check_cell('Noticeable', 11, noticeable, cells)
