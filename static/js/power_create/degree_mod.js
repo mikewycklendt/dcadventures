@@ -395,6 +395,7 @@ function deg_mod_submit() {
 	const restore = select("deg_mod_restore");
 	const restore_descriptor = select("deg_mod_restore_descriptor");
 	const restore_val = select("deg_mod_restore_val");
+	const no_reattempt_time = select("deg_mod_no_reattempt_time");
 	const no_reattempt_effort = check("deg_mod_no_reattempt_effort");
 	const reattempt_effort = check("deg_mod_reattempt_effort");
 	
@@ -526,6 +527,7 @@ function deg_mod_submit() {
 			'restore': restore,
 			'restore_descriptor': restore_descriptor,
 			'restore_val': restore_val,
+			'no_reattempt_time': no_reattempt_time,
 			'no_reattempt_effort': no_reattempt_effort,
 			'reattempt_effort': reattempt_effort
 		}),

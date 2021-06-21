@@ -127,6 +127,7 @@ function time_submit() {
 	const recur_title_sml = 'recur-title-sml';
 	const errors = 'time-err';
 	const err_line = 'time-err-line';
+	const reattempt_sml = 'reattempt-sml';
 
 	response = fetch('/power/time/create', {
 		method: 'POST',
@@ -214,6 +215,10 @@ function time_submit() {
 				selects_add(id, keyword, recur_sml);
 				selects_add_new(title_id, title_name, recur_title_sml);
 			};
+
+			if (type == 'reattempt') {
+				selects_add(id, keyword, reattempt_sml);
+			}
 
 			time_grid.columns.length = 0;
 			time_grid.columns = jsonResponse.rows;

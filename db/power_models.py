@@ -952,6 +952,7 @@ class PowerDegree(db.Model):
 	restore = db.Column(db.String())
 	restore_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	restore_val = db.Column(db.Integer)
+	no_reattempt_time = db.Column(db.Integer, db.ForeignKey('power_time.id'))
 	no_reattempt_effort = db.Column(db.Boolean)
 	reattempt_effort = db.Column(db.Boolean)
 
@@ -1069,6 +1070,7 @@ class PowerDegree(db.Model):
 			'restore': self.restore,
 			'restore_descriptor': self.restore_descriptor,
 			'restore_val': self.restore_val,
+			'no_reattempt_time': self.no_reattempt_time,
 			'no_reattempt_effort': self.no_reattempt_effort,
 			'reattempt_effort': self.reattempt_effort
 		}

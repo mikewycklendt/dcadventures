@@ -2483,6 +2483,7 @@ def power_degree_post_errors(data):
 	restore = data['restore']
 	restore_descriptor = data['restore_descriptor']
 	restore_val = data['restore_val']
+	no_reattempt_time = data['no_reattempt_time']
 
 
 	errors = power_check(power_id, errors)
@@ -2539,7 +2540,7 @@ def power_degree_post_errors(data):
 	errors = id_check(PowerDegree, linked, 'Linked Degree', errors)
 	errors = id_check(PowerCirc, circumstance, 'Circumstance Modifier Keyword', errors)
 	errors = id_check(PowerDegree, reverse, 'Reversed Degree', errors)
-
+	errors = id_check(PowerTime, no_reattempt_time, 'Reattempt Time', errors)
 
 	errors = id_check(PowerDes, effect_descriptor, 'Effect Descriptor', errors)
 	errors = id_check(Power, effect_power, 'Power Effect', errors)
@@ -2560,7 +2561,10 @@ def power_degree_post_errors(data):
 
 	errors = variable_fields('measure', 'Measurement Effect', type, [measure_effect, measure_type], errors)
 	errors = variable_field('measure', type, 'Measurement Effect', measure_effect, errors)
-	errors = variable_field('measure', type, 'Measurement Type', measure_type, errors) 
+	errors = variable_field('measure', type, 'Measurement Type', measure_type, errors)
+
+	errors = variable_fields('no_reattempt', "Can't Reattempt", type, [no_reattempt_time], errors)
+	errors = variable_field('no_reattempt', type, "Reattempt Time", no_reattempt_time, errors) 
 
 	errors = variable_fields('descriptor', 'Descriptor', type, [descriptor_effect, descriptor_target, descriptor], errors)
 	errors = variable_field('descriptor', type, 'Descriptor', descriptor, errors)

@@ -2057,6 +2057,7 @@ def sense_post(entry, body, cells):
 	vcells = vcell('precog', 30, [cognition_inactive, 'Precognition'], vcells)
 	vcells = vcell('postcog', 40, [cognition_inactive, 'Postcognition', cognition_self], vcells)
 	vcells = vcell('track', 40, ['Tracking at', track_speed, track_speed_type, 'Speed'], vcells)
+	vcells = vcell('trackless', 18, ['Trackless'], vcells)
 	cells = vcell_add('Effect', sense_type, vcells, cells)
 
 	cells = circ_cell('Circ', 'Circumstance', 6, circ, cells, body)
@@ -2894,6 +2895,7 @@ def power_degree_post(entry, body, cells):
 	restore_val = entry.restore_val
 	reattempt_effort = entry.reattempt_effort
 	no_reattempt_effort = entry.no_reattempt_effort
+	no_reattempt_time = entry.no_reattempt_time
 
 	title_name = get_name(PowerDegreeType, title)
 	body['title'] = title_name
@@ -2945,6 +2947,7 @@ def power_degree_post(entry, body, cells):
 	linked = get_keyword(PowerDegree, linked)
 	circumstance = get_circ(PowerCirc, circumstance)
 	reverse = get_keyword(PowerDegree, reverse)
+	no_reattempt_time = get_keyword(PowerTime, no_reattempt_time)
 
 	variable_id = db_integer(Check, 'x')
 
@@ -3090,8 +3093,8 @@ def power_degree_post(entry, body, cells):
 	vcells = vcell('no_act', 12, ["Can't Act"], vcells)
 
 	no_reattempt_effort = check_string('Unless Using Extra Effort', no_reattempt_effort)
-	w = width(18, 25, no_reattempt_effort)
-	vcells = vcell('no_reattempt', w, ["Can't Reattempt", no_reattempt_effort], vcells)
+	w = width(30, 25, no_reattempt_effort)
+	vcells = vcell('no_reattempt', w, ["Can't Reattempt for", no_reattempt_time, 'Time', no_reattempt_effort], vcells)
 	
 	reattempt_effort = check_string('But Only With Extra Effort', reattempt_effort)
 	w = width(18, 25, reattempt_effort)

@@ -497,7 +497,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	sense_time = [{'type': '', 'name': ''}, {'type': 'value', 'name': 'Value'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}]
 
-	sense_type =  [{'type': '', 'name': 'Effect Type'}, {'type': 'height', 'name': 'Heightened'}, {'type': 'resist', 'name': 'Resistant'}, {'type': 'conceal', 'name': 'Concealment'}, {'type': 'counter_conceal', 'name': 'Counters Concealment'}, {'type': 'communicate', 'name': 'Communication'}, {'type': 'light', 'name': 'No Light Penalty'}, {'type': 'illusion', 'name': 'Illusion'}, {'type': 'condition', 'name': 'Apply Condition to Sense'}, {'type': 'remote', 'name': 'Remote Sensing'}, {'type': 'precog', 'name': 'Precognition'}, {'type': 'postcog', 'name': 'Postcognition'}, {'type': 'track', 'name': 'Tracking'}]
+	sense_type =  [{'type': '', 'name': 'Effect Type'}, {'type': 'height', 'name': 'Heightened'}, {'type': 'resist', 'name': 'Resistant'}, {'type': 'conceal', 'name': 'Concealment'}, {'type': 'counter_conceal', 'name': 'Counters Concealment'}, {'type': 'communicate', 'name': 'Communication'}, {'type': 'light', 'name': 'No Light Penalty'}, {'type': 'illusion', 'name': 'Illusion'}, {'type': 'condition', 'name': 'Apply Condition to Sense'}, {'type': 'remote', 'name': 'Remote Sensing'}, {'type': 'precog', 'name': 'Precognition'}, {'type': 'postcog', 'name': 'Postcognition'}, {'type': 'track', 'name': 'Tracking'}, {'type': 'trackless', 'name': 'Trackless'}]
 
 	side_effects = [{'type': '', 'name': 'Side Effect'}, {'type': 'complication', 'name': 'Complication'}, {'type': 'level', 'name': 'Level'}, {'type': 'other', 'name': 'Other'}]
 
@@ -4707,6 +4707,7 @@ def power_post_degree():
 	restore_val = request.get_json()['restore_val']
 	reattempt_effort = request.get_json()['reattempt_effort']
 	no_reattempt_effort = request.get_json()['no_reattempt_effort']
+	no_reattempt_time = request.get_json()['no_reattempt_time']
 
 
 	errors = power_degree_post_errors(data)
@@ -4757,7 +4758,7 @@ def power_post_degree():
 	linked = db_integer(PowerDegree, linked)
 	circumstance = db_integer(PowerCirc, circumstance)
 	reverse = db_integer(PowerDegree, reverse)
-
+	no_reattempt_time = db_integer(PowerTime, no_reattempt_time)
 
 	resist_trait = integer(resist_trait)
 	skill_trait = integer(skill_trait)
@@ -4914,6 +4915,7 @@ def power_post_degree():
 						restore_descriptor = restore_descriptor,
 						restore_val = restore_val,
 						reattempt_effort = reattempt_effort,
+						no_reattempt_time = no_reattempt_time,
 						no_reattempt_effort = no_reattempt_effort)
 
 	db.session.add(entry)

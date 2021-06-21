@@ -111,7 +111,20 @@
 			</div>
 		</div>
 		
-		<div class="hidden" id="deg-mod-no-reattempt">
+		<div class="hidden auto-split" id="deg-mod-no-reattempt">
+			<div>
+				<select class="select-sml reattempt-sml" id="deg_mod_no_reattempt_time" name="deg_mod_no_reattempt_time">
+					<option value="">Time Until Reattempt</option>
+					<option value="turn">Turn</option>
+					<option value="round">Round</option>
+					<option value="next">Next Round</option>
+					<option value="scene">Scene</option>
+					<option value="never">Never Again</option>
+					{% for p in power_time %}
+						<option value={{p.id}}>{{p.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
 			<div class="check-div-fit">
 				<input type="checkbox" id="deg_mod_no_reattempt_effort" class="medium-checkbox med-checkbox" > Except with Extra Effort
 			</div>	
