@@ -123,7 +123,7 @@ def home_mobile(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, m
 	stylesheets.append({"style": "/static/css/template/template_mobile.css"})
 
 	return render_template('template_mobile.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
-
+`6tgy`
 
 
 if __name__ == '__main__':
